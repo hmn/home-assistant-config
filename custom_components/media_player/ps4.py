@@ -1,11 +1,8 @@
-"""
-Playstation 4 media_player using ps4-waker
-"""
+"""Playstation 4 media_player using ps4-waker."""
 import json
 import re
 import subprocess
 import logging
-import os
 from datetime import timedelta
 from urllib.parse import urlparse
 
@@ -14,8 +11,6 @@ import voluptuous as vol
 import homeassistant.util as util
 from homeassistant.components.media_player import (
     PLATFORM_SCHEMA,
-    ATTR_MEDIA_TITLE,
-    ATTR_MEDIA_CONTENT_ID,
     MEDIA_TYPE_CHANNEL,
     SUPPORT_TURN_ON,
     SUPPORT_TURN_OFF,
@@ -24,7 +19,6 @@ from homeassistant.components.media_player import (
     MediaPlayerDevice
 )
 from homeassistant.const import (
-    DEVICE_DEFAULT_NAME,
     STATE_IDLE,
     STATE_UNKNOWN,
     STATE_OFF,
@@ -33,7 +27,6 @@ from homeassistant.const import (
     CONF_HOST,
     CONF_FILENAME
 )
-from homeassistant.loader import get_component
 from homeassistant.helpers import config_validation as cv
 
 REQUIREMENTS = []
@@ -79,8 +72,9 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     ps4 = PS4Waker(host, credentials, games_filename)
     add_devices([PS4Device(name, ps4)], True)
 
+
 class PS4Device(MediaPlayerDevice):
-    """Representation of a PS4"""
+    """Representation of a PS4."""
 
     def __init__(self, name, ps4):
         """Initialize the ps4 device."""
@@ -95,7 +89,6 @@ class PS4Device(MediaPlayerDevice):
     @util.Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
     def update(self):
         """Retrieve the latest data."""
-
         data = self.ps4.search()
 
         self._media_title = data.get('running-app-name')
@@ -160,7 +153,6 @@ class PS4Device(MediaPlayerDevice):
         """List of available input sources."""
         return sorted(self.ps4.games.values())
 
-
     def turn_off(self):
         """Turn off media player."""
         self.ps4.standby()
@@ -170,11 +162,11 @@ class PS4Device(MediaPlayerDevice):
         self.ps4.wake()
 
     def media_pause(self):
-        """stop media"""
+        """Send keypress ps to return to menu."""
         self.ps4.remote('ps')
 
     def media_stop(self):
-        """stop media"""
+        """Send keypress ps to return to menu."""
         self.ps4.remote('ps')
 
     def select_source(self, source):
@@ -208,13 +200,14 @@ class PS4Waker(object):
         _LOGGER.debug('Running: %s', cmd)
 
         try:
-           return_value = subprocess.check_output(cmd, shell=True,
-                                                  timeout=10, stderr=subprocess.STDOUT)
-           return return_value.strip().decode('utf-8')
+            return_value = subprocess.check_output(cmd, shell=True,
+                                                   timeout=10,
+                                                   stderr=subprocess.STDOUT)
+            return return_value.strip().decode('utf-8')
         except subprocess.CalledProcessError:
-           _LOGGER.error('Command failed: %s', cmd)
+            _LOGGER.error('Command failed: %s', cmd)
         except subprocess.TimeoutExpired:
-           _LOGGER.error('Timeout for command: %s', cmd)
+            _LOGGER.error('Timeout for command: %s', cmd)
 
         return None
 
@@ -235,9 +228,11 @@ class PS4Waker(object):
             pass
 
     def wake(self):
+        """Wake PS4 up."""
         return self._run('')
 
     def search(self):
+        """List current info."""
         value = self._run('search')
 
         if value is None:
@@ -258,17 +253,21 @@ class PS4Waker(object):
         """Save current game"""
         if data.get('running-app-titleid'):
             if data.get('running-app-titleid') not in self.games.keys():
-                game = {data.get('running-app-titleid'): data.get('running-app-name')}
+                game = {data.get('running-app-titleid'):
+                        data.get('running-app-name')}
                 self.games.update(game)
                 self._save_games()
 
         return data
 
     def standby(self):
+        """Set PS4 into standby mode."""
         return self._run('standby')
 
     def start(self, titleId):
+        """Start game using titleId."""
         return self._run('start ' + titleId)
 
     def remote(self, key):
+        """Send remote key press."""
         return self._run('remote ' + key)
