@@ -50,7 +50,6 @@ climate:
   view: no
   entities:
     - switch.particle_relay1
-    - switch.particle_relay1_rest_switch
     - climate.bathroom
     - climate.cinema
     - climate.kitchen

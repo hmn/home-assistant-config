@@ -10,15 +10,6 @@
 #        service: switch.turn_off
 #        entity_id: switch.particle_relay1_rest_switch
 
-- platform: command_line
-  switches:
-    particle_relay1:
-      friendly_name: Particle relay reduced heating
-      command_on: 'curl -s -X POST -d "args=relay1:on" "!secret particle_relay_post_url"'
-      command_off: 'curl -s -X POST -d "args=relay1:off" "!secret particle_relay_post_url"'
-      command_state: 'curl -s -X GET "!secret particle_relay1_url" | jq ".result" | tr -d "\""'
-      value_template: '{{ value == "on" }}'
-
 #- platform: wake_on_lan
 #  mac_address: !secret lg_oled_mac
 #  host: 10.254.2.192

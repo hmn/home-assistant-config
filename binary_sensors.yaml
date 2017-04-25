@@ -4,15 +4,15 @@
 #
 ############################################################
 
-- platform: rest
-  name: Reduced heating
-  resource: !secret particle_relay1_url
-  method: GET
-  device_class: heat
-  value_template: '{{ value_json.result }}'
-  headers:
-    User-Agent: Home Assistant
-    Content-Type: application/json
+#- platform: rest
+#  name: Reduced heating
+#  resource: !secret particle_relay1_url
+#  method: GET
+#  device_class: heat
+#  value_template: '{{ value_json.result }}'
+#  headers:
+#    User-Agent: Home Assistant
+#    Content-Type: application/json
 
 - platform: mqtt
   state_topic: 'smartthings/Bedroom Motion/motion'
