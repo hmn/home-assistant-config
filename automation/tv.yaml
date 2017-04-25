@@ -69,6 +69,8 @@
       data:
         entity_id: media_player.lg_oled
         source: 'HDMI2'
+    - service: media_player.turn_on
+      entity_id: media_player.apple_tv
 
 #- alias: "TV app started"
 #  trigger:
@@ -79,10 +81,10 @@
 #    conditions:
 #      - condition: state
 #        entity_id: media_player.lg_oled
-#        state: 'playing' 
+#        state: 'playing'
 #      - condition: state
 #        entity_id: media_player.denon_avrx1300w
-#        state: 'on' 
+#        state: 'on'
 #  action:
 #    - service: media_player.select_source
 #      data:
