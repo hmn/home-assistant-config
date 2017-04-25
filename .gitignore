@@ -26,3 +26,4 @@ tts
 .ps4-wake.credentials.json
 ip_bans.yaml
 ps4-games.json
+particle.yaml

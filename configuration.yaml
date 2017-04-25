@@ -135,8 +135,7 @@ device_tracker: !include device_trackers.yaml
 input_boolean: !include input_boolean.yaml
 media_player: !include media_players.yaml
 notify: !include notify.yaml
-switch: !include switch.yaml
-
+switch: !include_dir_merge_list switches
 script: !include_dir_merge_named scripts
 automation: !include_dir_merge_list automation
 sensor: !include_dir_merge_list sensors
