@@ -123,10 +123,11 @@ light:
   allow_hue_groups: true
 
 logger:
-  default: debug
-  #default: warn
+  #default: debug
+  default: warn
   logs:
-    homeassistant.components.automation: debug
+    pylgtv.webos_client: critical
+
 
 
 binary_sensor: !include binary_sensors.yaml
