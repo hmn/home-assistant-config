@@ -1,0 +1,13 @@
+tv_on:
+  alias: TV ON
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.lg_oled
+  - service: media_player.turn_on
+    entity_id: media_player.denon_avrx1300w
+  - service: media_player.turn_on
+    entity_id: media_player.apple_tv
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_avrx1300w
+      source: 'Media Player'

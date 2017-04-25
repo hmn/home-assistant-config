@@ -1,0 +1,14 @@
+- alias: "Home"
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      state: 'home'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: script.mode_home
+    - service: notify.all
+      data:
+        message: "Welcome home"

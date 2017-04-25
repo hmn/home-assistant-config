@@ -1,0 +1,10 @@
+ps4_off:
+  alias: PS4 OFF
+  sequence:
+  - service: switch.turn_off
+    entity_id: switch.playstation_4
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_avrx1300w
+      source: 'Media Player'
+

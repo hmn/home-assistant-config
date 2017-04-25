@@ -1,0 +1,24 @@
+mode_wakeup:
+  alias: Wakeup
+  sequence:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.sleep
+    - service: scene.turn_on
+      entity_id: scene.bedroom_on
+    - service: scene.turn_on
+      entity_id: scene.kitchen_on
+    - service: switch.turn_off
+      data:
+        entity_id: switch.particle_relay1
+    - service: script.turn_on
+      data:
+        entity_id: script.computer_on
+#    - service: light.hue_activate_scene
+#      data:
+#        group_name: "Soveværelse"
+#        scene_name: "Dimmed"
+#    - service: light.hue_activate_scene
+#      data:
+#        group_name: "Køkken"
+#        scene_name: "Dimmed"

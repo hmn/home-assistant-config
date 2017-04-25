@@ -1,0 +1,53 @@
+- alias: "Motion in Kitchen"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_kitchen
+      state: 'on'
+  condition:
+#    - condition: sun
+#      after: sunset
+#      after_offset: "-1:00:00"
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.kitchen_on
+
+- alias: "Motion stopped in Kitchen"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_kitchen
+      state: 'off'
+      for:
+        minutes: 2
+  action:
+    service: scene.turn_on
+    entity_id: scene.kitchen_off
+
+- alias: "Motion in Bedroom"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_bedroom
+      state: 'on'
+  condition:
+#    - condition: sun
+#      after: sunset
+#      after_offset: "-1:00:00"
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.bedroom_on
+
+- alias: "Motion stopped in Bedroom"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_bedroom
+      state: 'off'
+      for:
+        minutes: 2
+  action:
+    service: scene.turn_on
+    entity_id: scene.bedroom_off

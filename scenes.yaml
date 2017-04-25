@@ -1,0 +1,48 @@
+- name: Relax
+  entities:
+    group.all_lights:
+      profile: relax
+- name: Read
+  entities:
+    group.all_lights:
+      profile: read
+- name: Concentrate
+  entities:
+    group.all_lights:
+      profile: concentrate
+- name: Energize
+  entities:
+    group.all_lights:
+      profile: energize
+
+- name: Sleep
+  entities:
+    group.all_lights:
+      state: off
+      brightness: 255
+      transition: 15
+
+- name: Away
+  entities:
+    group.all_lights:
+      state: off
+
+- name: Kitchen OFF
+  entities:
+    light.kitchen:
+      state: off
+- name: Kitchen ON
+  entities:
+    light.kitchen:
+      state: on
+      brightness: 255
+
+- name: Bedroom OFF
+  entities:
+    light.bedroom:
+      state: off
+- name: Bedroom ON
+  entities:
+    light.bedroom:
+      state: on
+      brightness: 255

@@ -1,0 +1,8 @@
+- platform: rest
+  name: Particle relay reduced heating
+  resource: !secret reduced_heating_sesnsor_url
+  method: GET
+  value_template: '{{ value_json.result }}'
+  headers:
+    User-Agent: Home Assistant
+    Content-Type: application/json

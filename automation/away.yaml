@@ -1,0 +1,19 @@
+- alias: "Away"
+  trigger:
+    - platform: zone
+      entity_id: device_tracker.henrik_nicolaisens_iphone
+      zone: zone.home
+      event: leave
+  condition:
+    condition: time
+    after: '10:00'
+  action:
+    - service: script.mode_away
+
+- alias: "Away all trackers"
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    state: 'not_home'
+  action:
+    - service: script.mode_away

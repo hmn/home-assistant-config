@@ -1,0 +1,12 @@
+mode_sleep:
+  alias: Go to sleep
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.sleep
+    - service: scene.turn_on
+      entity_id: scene.sleep
+    - service: script.turn_on
+      entity_id: script.computer_off
+    - service: script.turn_on
+      entity_id: script.tv_off

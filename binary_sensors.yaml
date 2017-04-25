@@ -1,0 +1,71 @@
+############################################################
+#
+# Home Assistant Binary Sensors
+#
+############################################################
+
+- platform: rest
+  name: Reduced heating
+  resource: !secret particle_relay1_url
+  method: GET
+  device_class: heat
+  value_template: '{{ value_json.result }}'
+  headers:
+    User-Agent: Home Assistant
+    Content-Type: application/json
+
+- platform: mqtt
+  state_topic: 'smartthings/Bedroom Motion/motion'
+  name: 'Motion Sensor Bedroom'
+  payload_on: 'active'
+  payload_off: 'inactive'
+  device_class: motion
+
+- platform: mqtt
+  state_topic: 'smartthings/Kitchen Motion/motion'
+  name: 'Motion Sensor Kitchen'
+  payload_on: 'active'
+  payload_off: 'inactive'
+  device_class: motion
+
+- platform: mqtt
+  state_topic: 'smartthings/Livingroom Motion/motion'
+  name: 'Motion Sensor Livingroom'
+  payload_on: 'active'
+  payload_off: 'inactive'
+  device_class: motion
+
+- platform: mqtt
+  state_topic: 'smartthings/Cinema Motion/motion'
+  name: 'Motion Sensor Cinema'
+  payload_on: 'active'
+  payload_off: 'inactive'
+  device_class: motion
+
+- platform: mqtt
+  state_topic: 'smartthings/Entrance/contact'
+  name: 'Entrance Contact'
+  payload_on: 'open'
+  payload_off: 'closed'
+  device_class: opening
+
+- platform: mqtt
+  state_topic: 'smartthings/Workshop/contact'
+  name: 'Workshop Contact'
+  payload_on: 'open'
+  payload_off: 'closed'
+  device_class: opening
+
+- platform: mqtt
+  state_topic: 'smartthings/Entrance/acceleration'
+  name: 'Entrance Acceleration'
+  payload_on: 'active'
+  payload_off: 'inactive'
+  device_class: moving
+
+- platform: mqtt
+  state_topic: 'smartthings/Workshop/acceleration'
+  name: 'Workshop Acceleration'
+  payload_on: 'active'
+  payload_off: 'inactive'
+  device_class: moving

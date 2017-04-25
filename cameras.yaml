@@ -1,0 +1,11 @@
+############################################################
+#
+# Home Assistant Camera Configuration
+#
+############################################################
+
+- platform: mjpeg
+  mjpeg_url: http://10.254.2.3/image/jpeg.cgi
+  name: Camera outside
+  username: !secret camera_username
+  password: !secret camera_password

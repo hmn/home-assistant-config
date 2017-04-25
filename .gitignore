@@ -1,0 +1,28 @@
+# Python cache
+__pycache__
+*.pyc
+
+# Other
+*.uuid
+*.conf
+*.db
+*.db-journal
+*.log
+*.noload
+*.txt
+*.sqlite
+*.xml
+*.backup
+*.py
+*.sh
+.HA_VERSION
+home-assistant.env
+home-assistant.*
+known_devices.yaml
+secrets.yaml
+zones.yaml
+deps
+tts
+.ps4-wake.credentials.json
+ip_bans.yaml
+ps4-games.json

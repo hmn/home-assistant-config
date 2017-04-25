@@ -1,0 +1,157 @@
+security:
+  name: Security
+  view: yes
+  entities:
+    - device_tracker.henrik_henrik
+    - camera.camera_outside
+    - group.all_lights
+    - group.motion
+    - scene.away
+    - scene.bedroom_off
+    - scene.bedroom_on
+    - scene.concentrate
+    - scene.energize
+    - scene.kitchen_off
+    - scene.kitchen_on
+    - scene.read
+    - scene.relax
+    - scene.sleep
+  icon: mdi:security-home
+
+settings:
+  name: Settings
+  view: yes
+  entities:
+    - group.all_automations
+    - group.all_scripts
+    - group.all_switches
+    - group.all_lights
+    - input_boolean.power_stay_on
+    - input_boolean.tv_stay_on
+    - input_boolean.sleep
+  icon: mdi:settings
+
+tado:
+  name: tado
+  view: yes
+  entities:
+    - group.climate
+    - group.heating
+    - group.temperature
+    - group.humidity
+    - group.tado_link
+    - group.tado_mode
+    - group.tado_power
+    - group.all_climate
+  icon: mdi:temperature-celsius
+
+climate:
+  name: Climate
+  view: no
+  entities:
+    - switch.particle_relay1
+    - switch.particle_relay1_rest_switch
+    - climate.bathroom
+    - climate.cinema
+    - climate.kitchen
+    - climate.bedroom
+    - climate.livingroom
+
+heating:
+  name: Heating
+  view: no
+  entities:
+    - sensor.bathroom_heating
+    - sensor.cinema_heating
+    - sensor.kitchen_heating
+    - sensor.bedroom_heating
+    - sensor.livingroom_heating
+
+temperature:
+  name: Temperature
+  view: no
+  entities:
+    - sensor.bathroom_temperature
+    - sensor.cinema_temperature
+    - sensor.kitchen_temperature
+    - sensor.bedroom_temperature
+    - sensor.livingroom_temperature
+
+humidity:
+  name: Humidity
+  view: no
+  entities:
+    - sensor.bathroom_humidity
+    - sensor.cinema_humidity
+    - sensor.kitchen_humidity
+    - sensor.bedroom_humidity
+    - sensor.livingroom_humidity
+
+tado_link:
+  name: tado link
+  view: no
+  entities:
+    - sensor.bathroom_link
+    - sensor.cinema_link
+    - sensor.kitchen_link
+    - sensor.bedroom_link
+    - sensor.livingroom_link
+
+tado_mode:
+  name: tado mode
+  view: no
+  entities:
+    - sensor.bathroom_tado_mode
+    - sensor.cinema_tado_mode
+    - sensor.kitchen_tado_mode
+    - sensor.bedroom_tado_mode
+    - sensor.livingroom_tado_mode
+
+tado_power:
+  name: tado power
+  view: no
+  entities:
+    - sensor.ewaldsvej_tado_bridge_status
+    - sensor.bathroom_overlay
+    - sensor.bathroom_power
+    - sensor.cinema_overlay
+    - sensor.cinema_power
+    - sensor.kitchen_overlay
+    - sensor.kitchen_power
+    - sensor.bedroom_overlay
+    - sensor.bedroom_power
+    - sensor.livingroom_overlay
+    - sensor.livingroom_power
+tv:
+  name: TV
+  view: yes
+  entities:
+    - sensor.plex
+    - sensor.sonarr_upcoming
+    - media_player.apple_tv
+    - media_player.apple_tv_2
+    - media_player.plex_web_chrome
+    - media_player.denon_avrx1300w
+    - media_player.lg_oled
+    - media_player.playstation_4
+    - switch.lg_oled_wol
+  icon: mdi:television
+
+motion:
+  name: Motion
+  view: no
+  entities:
+    - sensor.entrance_tilt_x
+    - sensor.entrance_tilt_y
+    - sensor.entrance_tilt_z
+    - sensor.workshop_tilt_x
+    - sensor.workshop_tilt_y
+    - sensor.workshop_tilt_z
+    - binary_sensor.entrance_acceleration
+    - binary_sensor.entrance_contact
+    - binary_sensor.workshop_acceleration
+    - binary_sensor.workshop_contact
+    - binary_sensor.motion_sensor_bedroom
+    - binary_sensor.motion_sensor_cinema
+    - binary_sensor.motion_sensor_kitchen
+    - binary_sensor.motion_sensor_livingroom

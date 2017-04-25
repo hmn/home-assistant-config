@@ -1,0 +1,45 @@
+###########################################################
+#
+# Home Assistant Customisations
+#
+############################################################
+
+switch.particle_relay1:
+  icon: mdi:temperature-celsius
+switch.particle_relay1_rest:
+  icon: mdi:temperature-celsius
+switch.particle_relay1_rest_switch:
+  icon: mdi:temperature-celsius
+witch.lg_oled_wol:
+  icon: mdi:television
+
+
+zone.home:
+  track_ios: true
+zone.work:
+  track_ios: true
+zone.parents:
+  track_ios: true
+zone.crossfit:
+  track_ios: true
+
+
+############################################################
+#
+# Groups
+#
+############################################################
+
+group.all_automations:
+  hidden: false
+group.all_scripts:
+  hidden: false
+group.all_switches:
+  hidden: true
+group.all_climate:
+  hidden: true
+group.all_devices:
+  hidden: false
+group.all_lights:
+  hidden: false
+

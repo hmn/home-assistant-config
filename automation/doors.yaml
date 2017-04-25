@@ -1,0 +1,50 @@
+- alias: "Entrance door knock"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrance_tilt_y
+    - platform: state
+      entity_id: binary_sensor.entrance_tilt_z
+  condition:
+    - condition: state
+      entity_id: binary_sensor.entrance_contact
+      state: 'off'
+    - condition: state
+      entity_id: device_tracker.henrik_nicolaisens_iphone
+      state: 'home'
+  action:
+    service: script.turn_on
+    entity_id: script.front_door_home
+
+- alias: "Entrance door knock while away"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrance_tilt_y
+    - platform: state
+      entity_id: binary_sensor.entrance_tilt_z
+  condition:
+    - condition: state
+      entity_id: binary_sensor.entrance_contact
+      state: 'off'
+    - condition: template
+      value_template: "{% if not is_state('device_tracker.henrik_nicolaisens_iphone', 'home') %}true{% endif %}"
+  action:
+    service: script.turn_on
+    entity_id: script.front_door_away
+
+- alias: "Entrance door open"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrance_contact
+      state: 'on'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: media_player.apple_tv_2
+        state: 'playing'
+      - condition: state
+        entity_id: switch.lg_oled_wol
+        state: 'on'
+  action:
+    service: script.turn_on
+    entity_id: script.front_door_home

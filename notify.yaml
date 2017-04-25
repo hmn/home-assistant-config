@@ -1,0 +1,33 @@
+- platform: syslog
+  name: syslog
+
+#- platform: smtp
+#  name: email
+#  server: smtp.gmail.com
+#  port: 587
+#  username: !secret smtp_username
+#  password: !secret smtp_password
+#  starttls: true
+#  sender: !secret notify_email_sender
+#  recipient: !secret notify_email_recipient
+
+- platform: html5
+  name: HTML5
+  gcm_api_key: !secret gcm_api_key
+  gcm_sender_id: !secret gcm_sender_id
+
+- platform: webostv
+  host: 10.254.2.192
+  name: tv
+
+- platform: ios
+  name: app
+  target: !secret notify_ios_target
+
+- platform: group
+  name: all
+  services:
+    - service: syslog
+    - service: html5
+    - service: tv
+    - service: app

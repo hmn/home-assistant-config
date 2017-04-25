@@ -1,0 +1,105 @@
+- alias: "Apple TV is playing"
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv_2
+      to: 'playing'
+      from: 'idle'
+    - platform: state
+      entity_id: media_player.apple_tv_2
+      to: 'playing'
+      from: 'off'
+    - platform: state
+      entity_id: media_player.apple_tv_2
+      to: 'playing'
+      from: 'paused'
+  condition:
+    - condition: sun
+      after: sunset
+      after_offset: "-1:00:00"
+  action:
+    service: scene.turn_on
+    entity_id: scene.kitchen_off
+
+- alias: "Apple TV is paused"
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv_2
+      to: 'paused'
+      from: 'playing'
+      for:
+        seconds: 30
+  action:
+    service: scene.turn_on
+    entity_id: scene.kitchen_on
+
+- alias: "PS4 switched on"
+  trigger:
+    - platform: state
+      entity_id: media_player.playstation_4
+      to: 'playing'
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon_avrx1300w
+        source: 'Game'
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.lg_oled
+        source: 'HDMI2'
+
+- alias: "PS4 switched off"
+  trigger:
+    - platform: state
+      entity_id: media_player.playstation_4
+      from: 'playing'
+      to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: template
+        value_template: "{% if is_state_attr('media_player.lg_oled', 'source', 'HDMI2') %}true{% endif %}"
+      - condition: template
+        value_template: "{% if is_state_attr('media_player.denon_avrx1300w', 'source', 'Game') %}true{% endif %}"
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon_avrx1300w
+        source: 'Media Player'
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.lg_oled
+        source: 'HDMI2'
+
+#- alias: "TV app started"
+#  trigger:
+#    - platform: template
+#      value_template: "{% if not is_state_attr('media_player.lg_oled', 'source', 'HDMI2') %}true{% endif %}"
+#  condition:
+#    condition: and
+#    conditions:
+#      - condition: state
+#        entity_id: media_player.lg_oled
+#        state: 'playing' 
+#      - condition: state
+#        entity_id: media_player.denon_avrx1300w
+#        state: 'on' 
+#  action:
+#    - service: media_player.select_source
+#      data:
+#        entity_id: media_player.denon_avrx1300w
+#        source: 'TV Audio'
+
+- alias: "Plex is playing"
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv_2
+      to: 'playing'
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon_avrx1300w
+        source: 'Media Player'
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.lg_oled
+        source: 'HDMI2'

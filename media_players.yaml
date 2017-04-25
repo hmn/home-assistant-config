@@ -1,0 +1,24 @@
+############################################################
+#
+# Home Assistant Media Players
+#
+############################################################
+
+- platform: plex
+#- platform: cast
+- platform: denonavr
+- platform: apple_tv
+  host: 10.254.2.182
+  login_id: !secret apple_tv_login_id
+- platform: webostv
+  host: 10.254.2.192
+  mac: !secret lg_oled_mac
+  name: LG OLED
+  customize:
+    sources:
+    - HDMI2
+    - netflix
+    - youtube
+    - Plex
+- platform: ps4
+  host: 10.254.2.191

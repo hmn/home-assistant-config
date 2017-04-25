@@ -1,0 +1,24 @@
+front_door_home:
+  alias: Front door knock or open
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.kitchen_on
+    - service: media_player.media_pause
+      entity_id: media_player.apple_tv
+    - service: media_player.media_pause
+      entity_id: media_player.apple_tv_2
+    - service: media_player.volume_mute
+      data:
+        entity_id: media_player.denon_avrx1300w
+        is_volume_muted: true
+    - service: notify.all
+      data:
+        message: "Front door action triggered, you have guests"
+
+front_door_away:
+  alias: Front door knock while away
+  sequence:
+    - service: notify.all
+      data:
+        message: "Knock on front door"
+
