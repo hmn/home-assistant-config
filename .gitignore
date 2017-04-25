@@ -13,7 +13,6 @@ __pycache__
 *.sqlite
 *.xml
 *.backup
-*.py
 *.sh
 .HA_VERSION
 home-assistant.env
