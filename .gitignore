@@ -7,6 +7,7 @@ __pycache__
 *.conf
 *.db
 *.db-journal
+*.db-wal
 *.log
 *.noload
 *.txt
@@ -17,12 +18,12 @@ __pycache__
 .HA_VERSION
 home-assistant.env
 home-assistant.*
-known_devices.yaml
-secrets.yaml
-zones.yaml
 deps
 tts
 .ps4-wake.credentials.json
-ip_bans.yaml
 ps4-games.json
+known_devices.yaml
+secrets.yaml
+zones.yaml
+ip_bans.yaml
 particle.yaml
