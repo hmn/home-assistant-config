@@ -124,7 +124,7 @@ light:
 
 logger:
   #default: debug
-  default: warn
+  default: info
   logs:
     pylgtv.webos_client: critical
 
