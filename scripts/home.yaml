@@ -11,6 +11,9 @@ mode_home:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.sleep
+    - service: notify.all
+      data:
+        message: "Welcome home"
 
 #    - service: tts.google_say
 #      data:
