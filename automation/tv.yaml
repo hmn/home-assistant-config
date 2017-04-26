@@ -72,24 +72,24 @@
     - service: media_player.turn_on
       entity_id: media_player.apple_tv
 
-#- alias: "TV app started"
-#  trigger:
-#    - platform: template
-#      value_template: "{% if not is_state_attr('media_player.lg_oled', 'source', 'HDMI2') %}true{% endif %}"
-#  condition:
-#    condition: and
-#    conditions:
-#      - condition: state
-#        entity_id: media_player.lg_oled
-#        state: 'playing'
-#      - condition: state
-#        entity_id: media_player.denon_avrx1300w
-#        state: 'on'
-#  action:
-#    - service: media_player.select_source
-#      data:
-#        entity_id: media_player.denon_avrx1300w
-#        source: 'TV Audio'
+- alias: "TV app started"
+ trigger:
+   - platform: template
+     value_template: "{% if not is_state_attr('media_player.lg_oled', 'source', 'HDMI2') %}true{% endif %}"
+ condition:
+   condition: and
+   conditions:
+     - condition: state
+       entity_id: media_player.lg_oled
+       state: 'playing'
+     - condition: state
+       entity_id: media_player.denon_avrx1300w
+       state: 'on'
+ action:
+   - service: media_player.select_source
+     data:
+       entity_id: media_player.denon_avrx1300w
+       source: 'TV Audio'
 
 - alias: "Plex is playing"
   trigger:
