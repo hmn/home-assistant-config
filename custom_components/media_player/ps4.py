@@ -239,15 +239,14 @@ class PS4Waker(object):
             return {}
 
         """Cleaning broken json"""
-        value = re.sub(r"\"type\"", r'"pstype"', value)
-        value = re.sub(r"{? *'(.+)': ([^,]*)", r'  \1: \2', value)
-        value = re.sub(r"{? *(.+): ([^,]*)", r'"\1": \2', value)
-        value = re.sub(r"'(.*)'", r'"\1"', value)
-        value = "{ " + value
+        value = re.sub(r".*[ ']([a-zA-Z-]+)'?: '(.*)'[ },]+", r'\t"\1":"\2",', value)
+        value = value.replace("\\", "")
+        value = "{\n" + value.strip(',') + "\n}"
 
         try:
             data = json.loads(value)
-        except json.decoder.JSONDecodeError:
+        except json.decoder.JSONDecodeError as e:
+            _LOGGER.error("Error decoding ps4 json : %s", e)
             data = {}
 
         """Save current game"""
