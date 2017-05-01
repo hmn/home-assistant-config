@@ -203,6 +203,7 @@ class PS4Waker(object):
             return_value = subprocess.check_output(cmd, shell=True,
                                                    timeout=10,
                                                    stderr=subprocess.STDOUT)
+            _LOGGER.debug('Return value: %s', return_value)
             return return_value.strip().decode('utf-8')
         except subprocess.CalledProcessError:
             _LOGGER.error('Command failed: %s', cmd)
