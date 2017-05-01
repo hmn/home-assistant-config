@@ -239,6 +239,9 @@ class PS4Waker(object):
         if value is None:
             return {}
 
+        if value.find("Could not detect any matching PS4 device") > -1:
+            return {}
+
         """Cleaning broken json"""
         value = re.sub(r".*[ ']([a-zA-Z-]+)'?: '(.*)'[ },]+", r'\t"\1":"\2",', value)
         value = value.replace("\\", "")
