@@ -3,6 +3,7 @@ import json
 import re
 import subprocess
 import logging
+import urllib.request
 from datetime import timedelta
 from urllib.parse import urlparse
 
@@ -132,6 +133,32 @@ class PS4Device(MediaPlayerDevice):
     def media_content_type(self):
         """Content type of current playing media."""
         return MEDIA_TYPE_CHANNEL
+
+    @property
+    def media_image_url(self):
+        """Image url of current playing media."""
+        gameid = self._media_content_id
+
+        if gameid is None:
+            return
+        # requests the json from site if there is a gameid
+        if gameid:
+            url = "https://kiot.nl/wp-admin/admin-ajax.php?action=cfdb-export&form=GameImages&show=Game-ID%2Cimage-url&role=Anyone&search=" + gameid + "&enc=JSON"
+            req = urllib.request.Request(url)
+
+            r = urllib.request.urlopen(req).read()
+            cont = json.loads(r.decode('utf-8'))
+            # Checks if returned list of json is equal to [] (empty).
+            if cont == []:
+                mediaurl = "https://kiot.nl/wp-content/gallery/games/notfound.jpg"
+            #if cont is not empty it will check if the returned game-id is the same as the requested one.
+            # and return the coressponing game-url
+            elif cont[0]['Game-ID'] == gameid:
+                mediaurl = cont[0]['image-url']
+            # in any other case it return an not found image.
+            else:
+                mediaurl = "https://kiot.nl/wp-content/gallery/games/notfound.jpg"
+        return mediaurl
 
     @property
     def media_title(self):
