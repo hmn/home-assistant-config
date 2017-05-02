@@ -26,6 +26,7 @@ from homeassistant.const import (
     STATE_PLAYING,
     CONF_NAME,
     CONF_HOST,
+    CONF_PORT,
     CONF_FILENAME
 )
 from homeassistant.helpers import config_validation as cv
@@ -38,6 +39,7 @@ SUPPORT_PS4 = SUPPORT_TURN_OFF | SUPPORT_TURN_ON | \
     SUPPORT_STOP | SUPPORT_SELECT_SOURCE
 
 DEFAULT_NAME = 'Playstation 4'
+DEFAULT_PORT = ''
 ICON = 'mdi:playstation'
 CONF_GAMES_FILENAME = 'games_filename'
 
@@ -51,6 +53,7 @@ MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=1)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_HOST): cv.string,
+    vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.string,
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Optional(CONF_FILENAME, default=PS4WAKER_CONFIG_FILE): cv.string,
     vol.Optional(CONF_GAMES_FILENAME, default=PS4_GAMES_FILE): cv.string
@@ -69,10 +72,11 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
         return False
 
     name = config.get(CONF_NAME)
+    port = config.get(CONF_PORT)
     credentials = hass.config.path(config.get(CONF_FILENAME))
     games_filename = hass.config.path(config.get(CONF_GAMES_FILENAME))
 
-    ps4 = PS4Waker(host, credentials, games_filename)
+    ps4 = PS4Waker(host, port, credentials, games_filename)
     add_devices([PS4Device(name, ps4)], True)
 
 
@@ -208,9 +212,10 @@ class PS4Device(MediaPlayerDevice):
 class PS4Waker(object):
     """The class for handling the data retrieval."""
 
-    def __init__(self, host, credentials, games_filename):
+    def __init__(self, host, port, credentials, games_filename):
         """Initialize the data object."""
         self._host = host
+        self._port = port
         self._credentials = credentials
         self._games_filename = games_filename
         self.games = {}
@@ -218,9 +223,15 @@ class PS4Waker(object):
 
     def _run(self, command):
         """Get the latest data with a shell command."""
+
+        bind_port = ''
+        if self._port not in['']:
+            bind_port = ' --bind-port ' + self._port
+
         cmd = 'ps4-waker -c ' + self._credentials + \
               ' -d ' + self._host + \
-              ' -t 5000 ' + \
+              ' -t 5000' + bind_port + \
+              ' ' + \
               command
         _LOGGER.debug('Running: %s', cmd)
 
@@ -265,13 +276,13 @@ class PS4Waker(object):
             return {}
 
         if value.find("Could not detect any matching PS4 device") > -1:
-            return {}
+            return {}            
 
         """Cleaning broken json"""
         value = re.sub(r".*[ ']([a-zA-Z-]+)'?: '(.*)'[ },]+", r'\t"\1":"\2",', value)
         value = value.replace("\\", "")
         value = "{\n" + value.strip(',') + "\n}"
-
+        
         try:
             data = json.loads(value)
         except json.decoder.JSONDecodeError as e:
