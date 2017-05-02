@@ -43,6 +43,8 @@ CONF_GAMES_FILENAME = 'games_filename'
 
 PS4WAKER_CONFIG_FILE = '.ps4-wake.credentials.json'
 PS4_GAMES_FILE = 'ps4-games.json'
+MEDIA_IMAGE_DEFAULT = None
+MEDIA_IMAGE_SEARCH = 'https://kiot.nl/wp-admin/admin-ajax.php?action=cfdb-export&form=GameImages&show=Game-ID%2Cimage-url&role=Anyone&enc=JSON&search='
 
 MIN_TIME_BETWEEN_SCANS = timedelta(seconds=10)
 MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=1)
@@ -84,6 +86,7 @@ class PS4Device(MediaPlayerDevice):
         self._state = STATE_UNKNOWN
         self._media_content_id = None
         self._media_title = None
+        self._media_image_url = MEDIA_IMAGE_DEFAULT
         self._current_source = None
         self._current_source_id = None
 
@@ -91,6 +94,22 @@ class PS4Device(MediaPlayerDevice):
     def update(self):
         """Retrieve the latest data."""
         data = self.ps4.search()
+
+        if (self._media_content_id is not None and
+            self._media_content_id is not data.get('running-app-titleid')):
+            _LOGGER.debug("titleid changed from %s to %s fetch new image",
+                          self._media_content_id,
+                          data.get('running-app-titleid'))
+
+            # requests the json from site if there is a gameid
+            try:
+                req = urllib.request.Request(MEDIA_IMAGE_SEARCH + self._media_content_id)
+                response = urllib.request.urlopen(req).read()
+                search_result = json.loads(response.decode('utf-8'))
+                if search_result:
+                    self._media_image_url = search_result[0]['image-url']
+            except urllib.error.URLError as e:
+                _LOGGER.debug('Fetching image-url for %s failed %s', self._media_content_id, e.reason)
 
         self._media_title = data.get('running-app-name')
         self._media_content_id = data.get('running-app-titleid')
@@ -137,28 +156,7 @@ class PS4Device(MediaPlayerDevice):
     @property
     def media_image_url(self):
         """Image url of current playing media."""
-        gameid = self._media_content_id
-
-        if gameid is None:
-            return
-        # requests the json from site if there is a gameid
-        if gameid:
-            url = "https://kiot.nl/wp-admin/admin-ajax.php?action=cfdb-export&form=GameImages&show=Game-ID%2Cimage-url&role=Anyone&search=" + gameid + "&enc=JSON"
-            req = urllib.request.Request(url)
-
-            r = urllib.request.urlopen(req).read()
-            cont = json.loads(r.decode('utf-8'))
-            # Checks if returned list of json is equal to [] (empty).
-            if cont == []:
-                mediaurl = "https://kiot.nl/wp-content/gallery/games/notfound.jpg"
-            #if cont is not empty it will check if the returned game-id is the same as the requested one.
-            # and return the coressponing game-url
-            elif cont[0]['Game-ID'] == gameid:
-                mediaurl = cont[0]['image-url']
-            # in any other case it return an not found image.
-            else:
-                mediaurl = "https://kiot.nl/wp-content/gallery/games/notfound.jpg"
-        return mediaurl
+        return self._media_image_url
 
     @property
     def media_title(self):
