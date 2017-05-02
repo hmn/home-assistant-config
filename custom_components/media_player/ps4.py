@@ -46,7 +46,13 @@ CONF_GAMES_FILENAME = 'games_filename'
 PS4WAKER_CONFIG_FILE = '.ps4-wake.credentials.json'
 PS4_GAMES_FILE = 'ps4-games.json'
 MEDIA_IMAGE_DEFAULT = None
-MEDIA_IMAGE_SEARCH = 'https://kiot.nl/wp-admin/admin-ajax.php?action=cfdb-export&form=GameImages&show=Game-ID%2Cimage-url&role=Anyone&enc=JSON&search='
+MEDIA_IMAGE_SEARCH = 'https://kiot.nl/wp-admin/admin-ajax.php' + \
+                     '?action=cfdb-export' + \
+                     '&form=GameImages' + \
+                     '&show=Game-ID%2Cimage-url' + \
+                     '&role=Anyone' + \
+                     '&enc=JSON' + \
+                     '&search='
 
 MIN_TIME_BETWEEN_SCANS = timedelta(seconds=10)
 MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=1)
@@ -99,21 +105,23 @@ class PS4Device(MediaPlayerDevice):
         """Retrieve the latest data."""
         data = self.ps4.search()
 
-        if (self._media_content_id is not None and
-            self._media_content_id is not data.get('running-app-titleid')):
+        if self._media_content_id is not None and \
+           self._media_content_id is not data.get('running-app-titleid'):
             _LOGGER.debug("titleid changed from %s to %s fetch new image",
                           self._media_content_id,
                           data.get('running-app-titleid'))
 
             # requests the json from site if there is a gameid
             try:
-                req = urllib.request.Request(MEDIA_IMAGE_SEARCH + self._media_content_id)
+                url = MEDIA_IMAGE_SEARCH + self._media_content_id
+                req = urllib.request.Request(url)
                 response = urllib.request.urlopen(req).read()
                 search_result = json.loads(response.decode('utf-8'))
                 if search_result:
                     self._media_image_url = search_result[0]['image-url']
             except urllib.error.URLError as e:
-                _LOGGER.debug('Fetching image-url for %s failed %s', self._media_content_id, e.reason)
+                _LOGGER.debug('Fetching image-url for %s failed %s',
+                              self._media_content_id, e.reason)
 
         self._media_title = data.get('running-app-name')
         self._media_content_id = data.get('running-app-titleid')
@@ -223,7 +231,6 @@ class PS4Waker(object):
 
     def _run(self, command):
         """Get the latest data with a shell command."""
-
         bind_port = ''
         if self._port not in['']:
             bind_port = ' --bind-port ' + self._port
@@ -276,13 +283,14 @@ class PS4Waker(object):
             return {}
 
         if value.find("Could not detect any matching PS4 device") > -1:
-            return {}            
+            return {}
 
         """Cleaning broken json"""
-        value = re.sub(r".*[ ']([a-zA-Z-]+)'?: '(.*)'[ },]+", r'\t"\1":"\2",', value)
+        value = re.sub(r".*[ ']([a-zA-Z-]+)'?: '(.*)'[ },]+",
+                       r'\t"\1":"\2",', value)
         value = value.replace("\\", "")
         value = "{\n" + value.strip(',') + "\n}"
-        
+
         try:
             data = json.loads(value)
         except json.decoder.JSONDecodeError as e:
