@@ -285,7 +285,7 @@ class PS4Waker(object):
         if value.find("Could not detect any matching PS4 device") > -1:
             return {}
 
-        """Get data between {}`"""
+        """Get data between `{}`"""
         value = re.findall(r'{([^]]*)}', value)[0]
         value = '{%s}' % value
 
