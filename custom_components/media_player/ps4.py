@@ -99,6 +99,7 @@ class PS4Device(MediaPlayerDevice):
         self._media_image_url = MEDIA_IMAGE_DEFAULT
         self._current_source = None
         self._current_source_id = None
+        self.update()
 
     @util.Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
     def update(self):
@@ -110,18 +111,7 @@ class PS4Device(MediaPlayerDevice):
             _LOGGER.debug("titleid changed from %s to %s fetch new image",
                           self._media_content_id,
                           data.get('running-app-titleid'))
-
-            # requests the json from site if there is a gameid
-            try:
-                url = MEDIA_IMAGE_SEARCH + self._media_content_id
-                req = urllib.request.Request(url)
-                response = urllib.request.urlopen(req).read()
-                search_result = json.loads(response.decode('utf-8'))
-                if search_result:
-                    self._media_image_url = search_result[0]['image-url']
-            except urllib.error.URLError as e:
-                _LOGGER.debug('Fetching image-url for %s failed %s',
-                              self._media_content_id, e.reason)
+            self.update_image(data.get('running-app-titleid'))
 
         self._media_title = data.get('running-app-name')
         self._media_content_id = data.get('running-app-titleid')
@@ -133,12 +123,13 @@ class PS4Device(MediaPlayerDevice):
                 self._state = STATE_PLAYING
             else:
                 self._state = STATE_IDLE
-        elif data.get('status') == 'Standby':
-            self._state = STATE_OFF
-            self._current_source = None
-            self._current_source_id = None
         else:
             self._state = STATE_OFF
+            self._media_title = None
+            self._media_content_id = None
+            self._current_source = None
+            self._current_source_id = None
+            self._media_image_url = MEDIA_IMAGE_DEFAULT
 
     @property
     def name(self):
@@ -197,24 +188,45 @@ class PS4Device(MediaPlayerDevice):
     def turn_on(self):
         """Turn on the media player."""
         self.ps4.wake()
+        self.update()
 
     def media_pause(self):
         """Send keypress ps to return to menu."""
         self.ps4.remote('ps')
+        self.update()
 
     def media_stop(self):
         """Send keypress ps to return to menu."""
         self.ps4.remote('ps')
+        self.update()
 
     def select_source(self, source):
         """Select input source."""
         for titleid, game in self.ps4.games.items():
             if source == game:
                 self.ps4.start(titleid)
+                self.update_image(titleid)
                 self._current_source_id = titleid
                 self._current_source = game
                 self._media_content_id = titleid
                 self._media_title = game
+                self.update()
+
+    def update_image(self, titleid):
+        """Update media_image from json lookup."""
+        if titleid is None:
+            self._media_image_url = MEDIA_IMAGE_DEFAULT
+            return
+        try:
+            url = MEDIA_IMAGE_SEARCH + titleid
+            req = urllib.request.Request(url)
+            response = urllib.request.urlopen(req).read()
+            search_result = json.loads(response.decode('utf-8'))
+            if search_result:
+                self._media_image_url = search_result[0]['image-url']
+        except urllib.error.URLError as e:
+            _LOGGER.debug('Fetching image-url for %s failed %s',
+                          titleid, e.reason)
 
 
 class PS4Waker(object):
