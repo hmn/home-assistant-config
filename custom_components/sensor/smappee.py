@@ -19,12 +19,12 @@ _LOGGER = logging.getLogger(__name__)
 
 SENSOR_PREFIX = 'Smappee'
 SENSOR_TYPES = {
-    'consumption': ['Consumption', 'mdi:power-plug'],
-    'solar': ['Solar', 'mdi:white-balance-sunny'],
-    'alwaysOn': ['Always On', 'mdi:gauge']
+    'solar': ['Solar', 'mdi:white-balance-sunny', 'remote'],
+    'alwaysOn': ['Always On', 'mdi:gauge', 'remote'],
+    'current': ['Current', 'mdi:power-plug', 'local']
 }
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(minutes=1)
+MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
@@ -87,8 +87,13 @@ class SmappeeSensor(Entity):
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         """Get the latest data from Smappee and update the state."""
-        data = self._smappee.get_consumption(self._location_id)
-        consumption = data.get('consumptions')[-1]
+        if SENSOR_TYPES[self._sensor][2] is 'remote':
+            data = self._smappee.get_consumption(self._location_id)
+            consumption = data.get('consumptions')[-1]
+            self._timestamp = consumption.get('timestamp')
+            self._state = consumption.get(self._sensor)
+        else:
+            data = self._smappee.active_power()
+            self._timestamp = datetime.utcnow().timestamp() * 1000.0
+            self._state = data
 
-        self._timestamp = consumption.get('timestamp')
-        self._state = consumption.get(self._sensor)

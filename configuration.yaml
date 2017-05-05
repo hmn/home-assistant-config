@@ -108,6 +108,7 @@ tado:
   password: !secret tado_password
 
 smappee:
+  host: 10.254.2.144
   client_id: !secret smappee_client_id
   client_secret: !secret smappee_client_secret
   username: !secret smappee_username

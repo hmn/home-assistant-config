@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 import voluptuous as vol
 
 from homeassistant.const import (
-    CONF_USERNAME, CONF_PASSWORD, CONF_NAME
+    CONF_USERNAME, CONF_PASSWORD, CONF_NAME, CONF_HOST
 )
 from homeassistant.util import Throttle
 from homeassistant.helpers.discovery import load_platform
@@ -22,9 +22,11 @@ REQUIREMENTS = ['smappy==0.2.11']
 _LOGGER = logging.getLogger(__name__)
 
 DEFAULT_NAME = 'Smappee'
+DEFAULT_HOST_PASSWORD = 'admin'
 
 CONF_CLIENT_ID = 'client_id'
 CONF_CLIENT_SECRET = 'client_secret'
+CONF_HOST_PASSWORD = 'host_password'
 
 DOMAIN = 'smappee'
 DATA_SMAPPEE = 'SMAPPEE'
@@ -37,6 +39,8 @@ CONFIG_SCHEMA = vol.Schema({
         vol.Required(CONF_CLIENT_SECRET): cv.string,
         vol.Required(CONF_USERNAME): cv.string,
         vol.Required(CONF_PASSWORD): cv.string,
+        vol.Required(CONF_HOST): cv.string,
+        vol.Optional(CONF_HOST_PASSWORD, default=DEFAULT_HOST_PASSWORD): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string
     }),
 }, extra=vol.ALLOW_EXTRA)
@@ -49,11 +53,13 @@ def setup(hass, config):
     username = config.get(DOMAIN).get(CONF_USERNAME)
     password = config.get(DOMAIN).get(CONF_PASSWORD)
     name = config.get(DOMAIN).get(CONF_NAME)
+    host = config.get(DOMAIN).get(CONF_HOST)
+    host_password = config.get(DOMAIN).get(CONF_HOST_PASSWORD)
 
     try:
-        smappee = Smappee(client_id, client_secret, username, password)
-    except:
-        _LOGGER.error("Setup of Smappee component failed")
+        smappee = Smappee(client_id, client_secret, username, password, host, host_password)
+    except Exception as e:
+        _LOGGER.error("Setup of Smappee component failed, %s", e)
         smappee = None
         return False
 
@@ -69,7 +75,7 @@ def setup(hass, config):
 class Smappee(object):
     """Stores data retrieved from Smappee sensor."""
 
-    def __init__(self, client_id, client_secret, username, password):
+    def __init__(self, client_id, client_secret, username, password, host, host_password):
         """Initialize the data."""
         import smappy
 
@@ -77,7 +83,15 @@ class Smappee(object):
             self._s = smappy.Smappee(client_id, client_secret)
             self._s.authenticate(username, password)
         except Exception as e:
+            self._s = None
             _LOGGER.error('Smappee authentication failed, %s', e)
+
+        try:
+            self._l = smappy.LocalSmappee(host)
+            self._l.logon(host_password)
+        except Exception as e:
+            self._l = None
+            _LOGGER.error('Local Smappee authentication failed, %s', e)
 
         self.locations = {}
         self.info = {}
@@ -129,3 +143,21 @@ class Smappee(object):
         """Turn off actuator."""
         """Duration = 300,900,1800,3600 or any other value for an undetermined period of time."""
         self._s.actuator_off(location_id, actuator_id, duration)
+
+    def active_power(self):
+        """Get sum of all instantanious active power values from local hub."""
+        if self._l:
+            return self._l.active_power()
+        return False
+
+    def report_instantaneous_values(self):
+        """ReportInstantaneousValues."""
+        if self._l:
+            return self._l.report_instantaneous_values()
+        return False
+
+    def load_instantaneous(self):
+        """LoadInstantaneous."""
+        if self._l:
+            return self._l.load_instantaneous()
+        return False
