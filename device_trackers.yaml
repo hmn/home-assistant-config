@@ -27,7 +27,7 @@
 #  password: !secret asus_password
 #  mode: ap
 
-- platform: locative
+#- platform: locative
 
 #- platform: owntracks
 
