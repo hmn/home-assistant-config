@@ -224,6 +224,8 @@ class PS4Device(MediaPlayerDevice):
             search_result = json.loads(response.decode('utf-8'))
             if search_result:
                 self._media_image_url = search_result[0]['image-url']
+            if search_result == []:
+                self._media_image_url = MEDIA_IMAGE_DEFAULT
         except urllib.error.URLError as e:
             _LOGGER.debug('Fetching image-url for %s failed %s',
                           titleid, e.reason)
