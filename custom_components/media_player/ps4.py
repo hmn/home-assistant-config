@@ -42,17 +42,12 @@ DEFAULT_NAME = 'Playstation 4'
 DEFAULT_PORT = ''
 ICON = 'mdi:playstation'
 CONF_GAMES_FILENAME = 'games_filename'
+CONF_IMAGEMAP_JSON = 'imagemap_json'
 
 PS4WAKER_CONFIG_FILE = '.ps4-wake.credentials.json'
 PS4_GAMES_FILE = 'ps4-games.json'
 MEDIA_IMAGE_DEFAULT = None
-MEDIA_IMAGE_SEARCH = 'https://kiot.nl/wp-admin/admin-ajax.php' + \
-                     '?action=cfdb-export' + \
-                     '&form=GameImages' + \
-                     '&show=Game-ID%2Cimage-url' + \
-                     '&role=Anyone' + \
-                     '&enc=JSON' + \
-                     '&search='
+MEDIA_IMAGEMAP_JSON = 'https://github.com/hmn/ps4-imagemap/raw/master/games.json'
 
 MIN_TIME_BETWEEN_SCANS = timedelta(seconds=10)
 MIN_TIME_BETWEEN_FORCED_SCANS = timedelta(seconds=1)
@@ -62,7 +57,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.string,
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Optional(CONF_FILENAME, default=PS4WAKER_CONFIG_FILE): cv.string,
-    vol.Optional(CONF_GAMES_FILENAME, default=PS4_GAMES_FILE): cv.string
+    vol.Optional(CONF_GAMES_FILENAME, default=PS4_GAMES_FILE): cv.string,
+    vol.Optional(CONF_IMAGEMAP_JSON, default=MEDIA_IMAGEMAP_JSON): cv.string
 })
 
 
@@ -81,24 +77,28 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     port = config.get(CONF_PORT)
     credentials = hass.config.path(config.get(CONF_FILENAME))
     games_filename = hass.config.path(config.get(CONF_GAMES_FILENAME))
+    gamesmap_json = config.get(CONF_IMAGEMAP_JSON)
 
     ps4 = PS4Waker(host, port, credentials, games_filename)
-    add_devices([PS4Device(name, ps4)], True)
+    add_devices([PS4Device(name, ps4, gamesmap_json)], True)
 
 
 class PS4Device(MediaPlayerDevice):
     """Representation of a PS4."""
 
-    def __init__(self, name, ps4):
+    def __init__(self, name, ps4, gamesmap_json):
         """Initialize the ps4 device."""
         self.ps4 = ps4
         self._name = name
         self._state = STATE_UNKNOWN
         self._media_content_id = None
         self._media_title = None
-        self._media_image_url = MEDIA_IMAGE_DEFAULT
+        #self._media_image_url = MEDIA_IMAGE_DEFAULT
         self._current_source = None
         self._current_source_id = None
+        self._gamesmap_json = gamesmap_json
+        self._gamesmap = None
+        self.load_gamesmap()
         self.update()
 
     @util.Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
@@ -106,12 +106,12 @@ class PS4Device(MediaPlayerDevice):
         """Retrieve the latest data."""
         data = self.ps4.search()
 
-        if self._media_content_id is not None and \
-           self._media_content_id is not data.get('running-app-titleid'):
-            _LOGGER.debug("titleid changed from %s to %s fetch new image",
-                          self._media_content_id,
-                          data.get('running-app-titleid'))
-            self.update_image(data.get('running-app-titleid'))
+        # if self._media_content_id is not None and \
+        #    self._media_content_id is not data.get('running-app-titleid'):
+        #     _LOGGER.debug("titleid changed from %s to %s fetch new image",
+        #                   self._media_content_id,
+        #                   data.get('running-app-titleid'))
+        #     self.update_image(data.get('running-app-titleid'))
 
         self._media_title = data.get('running-app-name')
         self._media_content_id = data.get('running-app-titleid')
@@ -129,7 +129,16 @@ class PS4Device(MediaPlayerDevice):
             self._media_content_id = None
             self._current_source = None
             self._current_source_id = None
-            self._media_image_url = MEDIA_IMAGE_DEFAULT
+            #self._media_image_url = MEDIA_IMAGE_DEFAULT
+
+    def load_gamesmap(self):
+        import urllib.request, json
+
+        try:
+            with urllib.request.urlopen(self._gamesmap_json) as url:
+                self._gamesmap = json.loads(url.read().decode())
+        except Exception as e:
+            _LOGGER.error("gamesmap json file could not be loaded, %s" % e)
 
     @property
     def name(self):
@@ -159,7 +168,12 @@ class PS4Device(MediaPlayerDevice):
     @property
     def media_image_url(self):
         """Image url of current playing media."""
-        return self._media_image_url
+        if self._media_content_id is None:
+            return MEDIA_IMAGE_DEFAULT
+        try:
+            return self._gamesmap[self._media_content_id]
+        except KeyError:
+            return MEDIA_IMAGE_DEFAULT
 
     @property
     def media_title(self):
@@ -205,30 +219,11 @@ class PS4Device(MediaPlayerDevice):
         for titleid, game in self.ps4.games.items():
             if source == game:
                 self.ps4.start(titleid)
-                self.update_image(titleid)
                 self._current_source_id = titleid
                 self._current_source = game
                 self._media_content_id = titleid
                 self._media_title = game
                 self.update()
-
-    def update_image(self, titleid):
-        """Update media_image from json lookup."""
-        if titleid is None:
-            self._media_image_url = MEDIA_IMAGE_DEFAULT
-            return
-        try:
-            url = MEDIA_IMAGE_SEARCH + titleid
-            req = urllib.request.Request(url)
-            response = urllib.request.urlopen(req).read()
-            search_result = json.loads(response.decode('utf-8'))
-            if search_result:
-                self._media_image_url = search_result[0]['image-url']
-            if search_result == []:
-                self._media_image_url = MEDIA_IMAGE_DEFAULT
-        except urllib.error.URLError as e:
-            _LOGGER.debug('Fetching image-url for %s failed %s',
-                          titleid, e.reason)
 
 
 class PS4Waker(object):
