@@ -43,7 +43,9 @@ DEFAULT_PORT = ''
 ICON = 'mdi:playstation'
 CONF_GAMES_FILENAME = 'games_filename'
 CONF_IMAGEMAP_JSON = 'imagemap_json'
+CONF_CMD = 'cmd'
 
+PS4WAKER_CMD = 'ps4-waker'
 PS4WAKER_CONFIG_FILE = '.ps4-wake.credentials.json'
 PS4_GAMES_FILE = 'ps4-games.json'
 MEDIA_IMAGE_DEFAULT = None
@@ -58,7 +60,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Optional(CONF_FILENAME, default=PS4WAKER_CONFIG_FILE): cv.string,
     vol.Optional(CONF_GAMES_FILENAME, default=PS4_GAMES_FILE): cv.string,
-    vol.Optional(CONF_IMAGEMAP_JSON, default=MEDIA_IMAGEMAP_JSON): cv.string
+    vol.Optional(CONF_IMAGEMAP_JSON, default=MEDIA_IMAGEMAP_JSON): cv.string,
+    vol.Optional(CONF_CMD, default=PS4WAKER_CMD): cv.string
 })
 
 
@@ -78,8 +81,9 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     credentials = hass.config.path(config.get(CONF_FILENAME))
     games_filename = hass.config.path(config.get(CONF_GAMES_FILENAME))
     gamesmap_json = config.get(CONF_IMAGEMAP_JSON)
+    cmd = config.get(CONF_CMD)
 
-    ps4 = PS4Waker(host, port, credentials, games_filename)
+    ps4 = PS4Waker(host, port, cmd, credentials, games_filename)
     add_devices([PS4Device(name, ps4, gamesmap_json)], True)
 
 
@@ -229,10 +233,11 @@ class PS4Device(MediaPlayerDevice):
 class PS4Waker(object):
     """The class for handling the data retrieval."""
 
-    def __init__(self, host, port, credentials, games_filename):
+    def __init__(self, host, port, cmd, credentials, games_filename):
         """Initialize the data object."""
         self._host = host
         self._port = port
+        self._cmd = cmd
         self._credentials = credentials
         self._games_filename = games_filename
         self.games = {}
@@ -244,7 +249,7 @@ class PS4Waker(object):
         if self._port not in['']:
             bind_port = ' --bind-port ' + self._port
 
-        cmd = 'ps4-waker -c ' + self._credentials + \
+        cmd = self._cmd + ' -c ' + self._credentials + \
               ' -d ' + self._host + \
               ' -t 5000' + bind_port + \
               ' ' + \
@@ -271,6 +276,8 @@ class PS4Waker(object):
                 f.close()
         except FileNotFoundError:
             self._save_games()
+        except ValueError as e:
+            _LOGGER.error('Games json file wrong: %s', e)
 
     def _save_games(self):
         try:
