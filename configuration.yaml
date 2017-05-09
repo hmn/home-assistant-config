@@ -130,7 +130,7 @@ light:
   allow_hue_groups: true
 
 tradfri:
-  host: 10.254.2.116
+  host: 10.254.2.117
   api_key: !secret tradfri_api_key
 
 logger:
