@@ -1,4 +1,4 @@
-- alias: "Known person in front of my door"
+- alias: "Face detection found Henrik"
   trigger:
     platform: event
     event_type: image_processing.detect_face
@@ -6,5 +6,13 @@
       entity_id: image_processing.dlib_face_outside_2
       name: 'Henrik'
   action:
-    service: script.turn_on
-    entity_id: script.front_door_home
+    - service: script.mode_home
+
+- alias: "Face detection found person"
+  trigger:
+    platform: event
+    event_type: image_processing.detect_face
+    event_data:
+      entity_id: image_processing.dlib_face_outside
+  action:
+    - service: script.face_all

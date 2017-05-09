@@ -22,3 +22,9 @@ front_door_away:
       data:
         message: "Knock on front door"
 
+face_all:
+  alias: Person detected outside
+  sequence:
+    - service: notify.all
+      data:
+        message: "Person detected outside"
