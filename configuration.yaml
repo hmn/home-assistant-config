@@ -135,9 +135,9 @@ tradfri:
 
 logger:
   #default: debug
-  default: info
-  logs:
-    pylgtv.webos_client: critical
+  default: warn
+  #logs:
+  #  pylgtv.webos_client: critical
 
 
 
