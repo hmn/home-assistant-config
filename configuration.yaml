@@ -129,6 +129,10 @@ light:
   allow_unreachable: true
   allow_hue_groups: true
 
+tradfri:
+  host: 10.254.2.116
+  api_key: !secret tradfri_api_key
+
 logger:
   #default: debug
   default: info
