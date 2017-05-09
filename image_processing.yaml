@@ -1,7 +1,9 @@
 - platform: dlib_face_detect
+  name: Person detected outside
   source:
     - entity_id: camera.outside
 - platform: dlib_face_identify
+  name: Face identified
   source:
     - entity_id: camera.outside
   faces:
