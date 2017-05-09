@@ -23,6 +23,11 @@ zone.parents:
 zone.crossfit:
   track_ios: true
 
+image_processing.dlib_face_outside:
+  friendly_name: Face detected outside
+image_processing.dlib_face_outside_2:
+  friendly_name: Known face identified
+
 
 ############################################################
 #

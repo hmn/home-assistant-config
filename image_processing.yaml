@@ -1,10 +1,9 @@
 - platform: dlib_face_detect
   source:
     - entity_id: camera.outside
-    - name: Face detected outside
+
 - platform: dlib_face_identify
   source:
     - entity_id: camera.outside
-    - name: Known face identified
   faces:
     Henrik: /config/faces/henrik.jpg
