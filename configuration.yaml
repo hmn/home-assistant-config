@@ -124,11 +124,6 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
-light:
-  platform: hue
-  allow_unreachable: true
-  allow_hue_groups: true
-
 tradfri:
   host: 10.254.2.117
   api_key: !secret tradfri_api_key
@@ -141,6 +136,7 @@ logger:
 
 
 
+light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
 camera: !include cameras.yaml
 device_tracker: !include device_trackers.yaml
