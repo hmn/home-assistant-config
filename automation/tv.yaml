@@ -12,10 +12,6 @@
       entity_id: media_player.apple_tv_2
       to: 'playing'
       from: 'paused'
-  condition:
-    - condition: sun
-      after: sunset
-      after_offset: "-1:00:00"
   action:
     service: scene.turn_on
     entity_id: scene.kitchen_off
@@ -28,6 +24,20 @@
       from: 'playing'
       for:
         seconds: 30
+  action:
+    service: scene.turn_on
+    entity_id: scene.kitchen_on
+
+- alias: "Apple TV is idle"
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv_2
+      to: 'idle'
+      from: 'playing'
+    - platform: state
+      entity_id: media_player.apple_tv_2
+      to: 'idle'
+      from: 'paused'
   action:
     service: scene.turn_on
     entity_id: scene.kitchen_on
