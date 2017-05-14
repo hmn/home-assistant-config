@@ -23,7 +23,7 @@
       to: 'paused'
       from: 'playing'
       for:
-        seconds: 30
+        seconds: 15
   action:
     service: scene.turn_on
     entity_id: scene.kitchen_on
