@@ -32,6 +32,11 @@
       state: 'on'
   condition:
     - condition: state
+      entity_id: light.kitchen
+      state: 'on'
+      for:
+        minutes: 2
+    - condition: state
       entity_id: binary_sensor.motion_sensor_kitchen
       state: 'off'
       for:
