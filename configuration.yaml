@@ -131,7 +131,10 @@ tradfri:
 logger:
   #default: debug
   default: warn
-  #logs:
+  logs:
+    homeassistant.components.automation: debug
+    homeassistant.components.script: debug
+    homeassistant.components.device_tracker: critical
   #  pylgtv.webos_client: critical
 
 
