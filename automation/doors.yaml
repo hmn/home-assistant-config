@@ -37,13 +37,13 @@
       entity_id: binary_sensor.entrance_contact
       state: 'on'
   condition:
-    condition: or
+    condition: and
     conditions:
       - condition: state
         entity_id: media_player.apple_tv_2
         state: 'playing'
       - condition: state
-        entity_id: switch.lg_oled_wol
+        entity_id: switch.lg_oled
         state: 'on'
   action:
     service: script.turn_on

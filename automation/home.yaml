@@ -1,14 +1,7 @@
 - alias: "Home"
   trigger:
-    - platform: state
-      entity_id: group.all_devices
-      state: 'home'
     - platform: zone
       entity_id: device_tracker.henrik_nicolaisens_iphone
-      zone: zone.home
-      event: enter
-    - platform: zone
-      entity_id: device_tracker.10d901cf25914a4087a11148ef4ad9b9
       zone: zone.home
       event: enter
   action:
