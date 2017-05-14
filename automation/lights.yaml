@@ -31,12 +31,11 @@
       entity_id: light.kitchen
       state: 'on'
   condition:
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.motion_sensor_kitchen
-        state: 'off'
-        for:
-          minutes: 2
+    - condition: state
+      entity_id: binary_sensor.motion_sensor_kitchen
+      state: 'off'
+      for:
+        minutes: 2
   action:
     service: scene.turn_on
     entity_id: scene.kitchen_off
