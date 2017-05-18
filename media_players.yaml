@@ -8,10 +8,10 @@
 #- platform: cast
 - platform: denonavr
 - platform: apple_tv
-  host: 10.254.2.182
+  host: 10.254.2.108
   login_id: !secret apple_tv_login_id
 - platform: webostv
-  host: 10.254.2.192
+  host: 10.254.2.118
   mac: !secret lg_oled_mac
   name: LG OLED
   customize:
@@ -21,7 +21,7 @@
     - youtube
     - Plex
 - platform: ps4
-  host: 10.254.2.191
+  host: 10.254.2.107
 - platform: spotify
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret

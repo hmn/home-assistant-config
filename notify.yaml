@@ -17,7 +17,7 @@
   gcm_sender_id: !secret gcm_sender_id
 
 - platform: webostv
-  host: 10.254.2.192
+  host: 10.254.2.118
   name: tv
 
 - platform: ios
