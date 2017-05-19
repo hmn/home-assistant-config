@@ -55,6 +55,7 @@ climate:
     - climate.kitchen
     - climate.bedroom
     - climate.livingroom
+    - climate.entrance
 
 heating:
   name: Heating
@@ -65,6 +66,7 @@ heating:
     - sensor.kitchen_heating
     - sensor.bedroom_heating
     - sensor.livingroom_heating
+    - sensor.entrance_heating
 
 temperature:
   name: Temperature
@@ -75,6 +77,7 @@ temperature:
     - sensor.kitchen_temperature
     - sensor.bedroom_temperature
     - sensor.livingroom_temperature
+    - sensor.entrance_temperature
 
 humidity:
   name: Humidity
@@ -85,6 +88,7 @@ humidity:
     - sensor.kitchen_humidity
     - sensor.bedroom_humidity
     - sensor.livingroom_humidity
+    - sensor.entrance_humidity
 
 tado_link:
   name: tado link
@@ -105,6 +109,7 @@ tado_mode:
     - sensor.kitchen_tado_mode
     - sensor.bedroom_tado_mode
     - sensor.livingroom_tado_mode
+    - sensor.entrance_tado_mode
 
 tado_power:
   name: tado power
@@ -121,6 +126,8 @@ tado_power:
     - sensor.bedroom_power
     - sensor.livingroom_overlay
     - sensor.livingroom_power
+    - sensor.entrance_overlay
+    - sensor.entrance_power
 tv:
   name: TV
   view: yes
