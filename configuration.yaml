@@ -135,6 +135,7 @@ logger:
     homeassistant.components.automation: debug
     homeassistant.components.script: debug
     homeassistant.components.device_tracker: critical
+    py.warnings: error
   #  pylgtv.webos_client: critical
 
 
