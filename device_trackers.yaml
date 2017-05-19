@@ -39,3 +39,4 @@
   host: 10.254.2.104
   username: !secret unifi_username
   password: !secret unifi_password
+  verify_ssl: false
