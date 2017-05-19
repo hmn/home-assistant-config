@@ -36,6 +36,6 @@
 #  password: !secret tado_password
 
 - platform: unifi
-  host: 10.254.2.1
+  host: 10.254.2.104
   username: !secret unifi_username
   password: !secret unifi_password
