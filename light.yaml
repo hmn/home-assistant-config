@@ -2,8 +2,8 @@
   allow_unreachable: true
   allow_hue_groups: true
 
-- platform: flux_led
-  devices:
-    10.254.2.178:
-      name: stairs
-      mode: "rgb"
+#- platform: flux_led
+#  devices:
+#    10.254.2.178:
+#      name: stairs
+#      mode: "rgb"
