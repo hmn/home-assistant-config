@@ -7,3 +7,4 @@
 #    10.254.2.178:
 #      name: stairs
 #      mode: "rgb"
+#      protocol: ledenet
