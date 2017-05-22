@@ -60,7 +60,7 @@
       entity_id: binary_sensor.entrance_contact
       state: 'off'
   condition:
-    - consition: state
+    - condition: state
       entity_id: binary_sensor.entrance_contact
       state: 'off'
   action:
