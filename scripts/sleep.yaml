@@ -4,6 +4,9 @@ mode_sleep:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.sleep
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.home
     - service: scene.turn_on
       entity_id: scene.sleep
     - service: script.turn_on

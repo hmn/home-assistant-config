@@ -12,3 +12,6 @@ tv_stay_on:
 
 sleep:
   name: Sleep
+
+home:
+  name: Home

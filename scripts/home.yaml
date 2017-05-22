@@ -1,6 +1,9 @@
 mode_home:
   alias: Home
   sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.home
     - service: switch.turn_off
       data:
         entity_id: switch.particle_relay1
