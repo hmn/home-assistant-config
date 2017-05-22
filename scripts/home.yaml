@@ -4,6 +4,9 @@ mode_home:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.home
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.sleep
     - service: switch.turn_off
       data:
         entity_id: switch.particle_relay1
@@ -11,9 +14,6 @@ mode_home:
       entity_id: script.computer_on
     - service: scene.turn_on
       entity_id: scene.kitchen_on
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.sleep
     - service: notify.all
       data:
         message: "Welcome home"

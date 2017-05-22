@@ -6,8 +6,9 @@
       entity_id: image_processing.dlib_face_outside_2
       name: 'Henrik'
   condition:
-    - condition: template
-      value_template: "{% if not is_state('device_tracker.henrik_nicolaisens_iphone', 'home') %}true{% endif %}"
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'off'
   action:
     - service: script.mode_home
 
