@@ -138,7 +138,8 @@ logger:
     py.warnings: error
   #  pylgtv.webos_client: critical
 
-
+automation: !include automations.yaml
+automation old: !include_dir_merge_list automation
 
 light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
@@ -150,7 +151,6 @@ notify: !include notify.yaml
 image_processing: !include image_processing.yaml
 switch: !include_dir_merge_list switches
 script: !include_dir_merge_named scripts
-automation: !include_dir_merge_list automation
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 group: !include groups.yaml
