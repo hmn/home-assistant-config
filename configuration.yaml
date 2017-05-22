@@ -130,7 +130,7 @@ tradfri:
 
 logger:
   #default: debug
-  default: warn
+  default: info
   logs:
     homeassistant.components.automation: debug
     homeassistant.components.script: debug
