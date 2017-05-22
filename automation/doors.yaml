@@ -56,10 +56,13 @@
       state: 'on'
       for:
         minutes: 30
-  condition:
     - platform: state
       entity_id: binary_sensor.entrance_contact
       state: 'off'
+#  condition:
+#    - platform: state
+#      entity_id: binary_sensor.entrance_contact
+#      state: 'off'
   action:
     service: notify.all
     data_template:
