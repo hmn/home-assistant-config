@@ -99,6 +99,7 @@ tado_link:
     - sensor.kitchen_link
     - sensor.bedroom_link
     - sensor.livingroom_link
+    - sensor.entrance_link
 
 tado_mode:
   name: tado mode

@@ -28,6 +28,9 @@ image_processing.dlib_face_outside:
 image_processing.dlib_face_outside_2:
   friendly_name: Known face identified
 
+sensor.smappee_home_solar:
+  hidden: true
+
 
 ############################################################
 #
