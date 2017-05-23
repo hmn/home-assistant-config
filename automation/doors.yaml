@@ -54,11 +54,11 @@
     - platform: state
       entity_id: binary_sensor.workshop_contact
       state: 'on'
-      for:
-        minutes: 30
     - platform: state
       entity_id: binary_sensor.entrance_contact
       state: 'off'
+      for:
+        minutes: 30
   condition:
     - condition: state
       entity_id: binary_sensor.entrance_contact
