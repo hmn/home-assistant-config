@@ -24,7 +24,7 @@ SENSOR_TYPES = {
     'current': ['Current', 'mdi:power-plug', 'local']
 }
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
+MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
