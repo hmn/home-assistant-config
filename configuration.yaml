@@ -72,7 +72,8 @@ history:
 
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
-  purge_days: 7
+  purge_days: 30
+  db_url: !secret db_url
   exclude:
     domains:
       - climate
