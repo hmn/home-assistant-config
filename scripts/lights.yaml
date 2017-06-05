@@ -4,8 +4,20 @@ lights_tv_on:
     - service: light.hue_activate_scene
       data:
         group_name: "Cinema"
-        scene_name: "Tropical twillight"
+        scene_name: "Tropical twilight"
     - service: light.hue_activate_scene
       data:
         group_name: "Kitchen"
         scene_name: "Dimmed"
+
+lights_tv_off:
+  alias: Set lights normal mode
+  sequence:
+    - service: light.hue_activate_scene
+      data:
+        group_name: "Cinema"
+        scene_name: "Bright"
+    - service: light.hue_activate_scene
+      data:
+        group_name: "Kitchen"
+        scene_name: "Bright"
