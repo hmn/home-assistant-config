@@ -96,7 +96,7 @@
         group_name: "Cinema"
         scene_name: "Tropical twilight"
 
-- alias: "Motion anywhere when sleeping"
+- alias: "Motion anywhere when in sleep mode"
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_kitchen
@@ -119,3 +119,28 @@
       data:
         group_name: "Cinema"
         scene_name: "Nightlight"
+
+- alias: "Motion stopped in sleep mode"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_kitchen
+      state: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_cinema
+      state: 'off'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_livingroom
+      state: 'off'
+      for:
+        minutes: 10
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'on'
+  action:
+    service: scene.turn_on
+    entity_id: scene.sleep
