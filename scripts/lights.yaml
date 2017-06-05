@@ -1,0 +1,11 @@
+lights_tv_on:
+  alias: Set lights to tv mode
+  sequence:
+    - service: light.hue_activate_scene
+      data:
+        group_name: "Cinema"
+        scene_name: "Tropical twillight"
+    - service: light.hue_activate_scene
+      data:
+        group_name: "Kitchen"
+        scene_name: "Dimmed"
