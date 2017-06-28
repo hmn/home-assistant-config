@@ -108,7 +108,20 @@ class Smappee(object):
                 self.locations[location_id] = location.get('name')
                 self.info[location_id] = self._s.get_service_location_info(location_id)
 
-    def get_consumption(self, location_id):
+    # def get_consumption(self, location_id):
+    #     """Update data from Smappee."""
+    #     # Start & End accept epoch (in milliseconds), datetime and pandas timestamps
+    #     # Aggregation:
+    #     # 1 = 5 min values (only available for the last 14 days),
+    #     # 2 = hourly values,
+    #     # 3 = daily values,
+    #     # 4 = monthly values,
+    #     # 5 = quarterly values
+    #     start = datetime.utcnow() - timedelta(minutes=30)
+    #     end = datetime.utcnow()
+    #     return self._s.get_consumption(location_id, start, end, 1)
+
+    def get_consumption(self, location_id, aggregation, delta):
         """Update data from Smappee."""
         # Start & End accept epoch (in milliseconds), datetime and pandas timestamps
         # Aggregation:
@@ -117,9 +130,9 @@ class Smappee(object):
         # 3 = daily values,
         # 4 = monthly values,
         # 5 = quarterly values
-        start = datetime.utcnow() - timedelta(minutes=30)
         end = datetime.utcnow()
-        return self._s.get_consumption(location_id, start, end, 1)
+        start = end - timedelta(minutes=delta)
+        return self._s.get_consumption(location_id, start, end, aggregation)
 
     def get_sensor_consumption(self, location_id, sensor_id):
         """Update data from Smappee."""
@@ -134,12 +147,12 @@ class Smappee(object):
         end = datetime.utcnow()
         return self._s.get_sensor_consumption(location_id, sensor_id, start, end, 1)
 
-    def actuator_on(self, location_id, actuator_id, duration = None):
+    def actuator_on(self, location_id, actuator_id, duration=None):
         """Turn on actuator."""
         """Duration = 300,900,1800,3600 or any other value for an undetermined period of time."""
         self._s.actuator_on(location_id, actuator_id, duration)
 
-    def actuator_off(self, location_id, actuator_id, duration = None):
+    def actuator_off(self, location_id, actuator_id, duration=None):
         """Turn off actuator."""
         """Duration = 300,900,1800,3600 or any other value for an undetermined period of time."""
         self._s.actuator_off(location_id, actuator_id, duration)
@@ -148,6 +161,7 @@ class Smappee(object):
         """Get sum of all instantanious active power values from local hub."""
         if self._l:
             return self._l.active_power()
+            print(self._l.active_power())
         return False
 
     def report_instantaneous_values(self):
