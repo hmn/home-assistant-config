@@ -116,10 +116,6 @@
       data:
         group_name: "Cinema"
         scene_name: "Nightlight"
-    - service: light.hue_activate_scene
-      data:
-        group_name: "Kitchen"
-        scene_name: "Nightlight"
 
 - alias: "Motion stopped in sleep mode"
   trigger:
