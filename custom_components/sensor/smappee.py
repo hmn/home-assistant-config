@@ -8,7 +8,6 @@ import logging
 import math
 from datetime import datetime, timedelta
 
-#from homeassistant.components.smappee import DATA_SMAPPEE, DOMAIN
 from custom_components.smappee import DATA_SMAPPEE, DOMAIN
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.helpers.entity import Entity
@@ -19,12 +18,14 @@ _LOGGER = logging.getLogger(__name__)
 
 SENSOR_PREFIX = 'Smappee'
 SENSOR_TYPES = {
-    'solar': ['Solar', 'mdi:white-balance-sunny', 'remote'],
-    'alwaysOn': ['Always On', 'mdi:gauge', 'remote'],
-    'current': ['Current', 'mdi:power-plug', 'local']
+    'solar': ['Solar', 'mdi:white-balance-sunny', 'local', 'W'],
+    'alwaysOn': ['Always On', 'mdi:gauge', 'remote', 'W'],
+    'current': ['Current', 'mdi:power-plug', 'local', 'W'],
+    'solar_today': ['Solar Today', 'mdi:white-balance-sunny', 'remote', 'kW'],
+    'current_today': ['Current Today', 'mdi:power-plug', 'remote', 'kW']
 }
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
+MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
@@ -48,7 +49,6 @@ class SmappeeSensor(Entity):
         self._location_id = location_id
         self._sensor = sensor
         self.data = None
-        self._unit_of_measurement = 'W'
         self._state = None
         self._timestamp = None
         self.update()
@@ -73,7 +73,7 @@ class SmappeeSensor(Entity):
     @property
     def unit_of_measurement(self):
         """Return the unit of measurement of this entity, if any."""
-        return self._unit_of_measurement
+        return SENSOR_TYPES[self._sensor][3]
 
     @property
     def device_state_attributes(self):
@@ -81,19 +81,42 @@ class SmappeeSensor(Entity):
         attr = {}
         attr['Location Id'] = self._location_id
         attr['Location Name'] = self._smappee.locations[self._location_id]
-        attr['Last Update'] = datetime.fromtimestamp(self._timestamp/1000.0)
+        attr['Last Update'] = self._timestamp
         return attr
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         """Get the latest data from Smappee and update the state."""
-        if SENSOR_TYPES[self._sensor][2] is 'remote':
-            data = self._smappee.get_consumption(self._location_id)
+        if SENSOR_TYPES[self._sensor][0] == 'Always On':
+            data = self._smappee.get_consumption(self._location_id, aggregation=1, delta=30)
             consumption = data.get('consumptions')[-1]
-            self._timestamp = consumption.get('timestamp')
+            self._timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             self._state = consumption.get(self._sensor)
+        elif SENSOR_TYPES[self._sensor][0] == 'Solar Today':
+            data = self._smappee.get_consumption(self._location_id, aggregation=3, delta=1440)
+            consumption = data.get('consumptions')[-1]
+            self._timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            self._state = round(consumption.get('solar') / 1000, 2)
+        elif SENSOR_TYPES[self._sensor][0] == 'Current Today':
+            data = self._smappee.get_consumption(self._location_id, aggregation=3, delta=1440)
+            consumption = data.get('consumptions')[-1]
+            self._timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            self._state = round(consumption.get('consumption') / 1000, 2)
+        elif SENSOR_TYPES[self._sensor][0] is 'Current':
+            data = self._smappee.load_instantaneous()
+            value1 = [float(i['value']) for i in data if i['key'].endswith('phase0ActivePower')]
+            value2 = [float(i['value']) for i in data if i['key'].endswith('phase1ActivePower')]
+            value3 = [float(i['value']) for i in data if i['key'].endswith('phase2ActivePower')]
+            current = sum(value1 + value2 + value3) / 1000
+            self._state = round(current, 2)
+            self._timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        elif SENSOR_TYPES[self._sensor][0] is 'Solar':
+            data = self._smappee.load_instantaneous()
+            value1 = [float(i['value']) for i in data if i['key'].endswith('phase3ActivePower')]
+            value2 = [float(i['value']) for i in data if i['key'].endswith('phase4ActivePower')]
+            value3 = [float(i['value']) for i in data if i['key'].endswith('phase5ActivePower')]
+            current = sum(value1 + value2 + value3) / 1000
+            self._state = round(current, 2)
+            self._timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         else:
-            data = self._smappee.active_power()
-            self._timestamp = datetime.utcnow().timestamp() * 1000.0
-            self._state = data
-
+            return None
