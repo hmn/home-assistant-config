@@ -40,3 +40,4 @@
   username: !secret unifi_username
   password: !secret unifi_password
   verify_ssl: false
+  track_new_devices: false
