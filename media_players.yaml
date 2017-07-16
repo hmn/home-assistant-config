@@ -7,9 +7,6 @@
 - platform: plex
 #- platform: cast
 - platform: denonavr
-- platform: apple_tv
-  host: 10.254.2.108
-  login_id: !secret apple_tv_login_id
 - platform: webostv
   host: 10.254.2.118
   mac: !secret lg_oled_mac

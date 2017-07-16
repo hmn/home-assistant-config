@@ -164,6 +164,8 @@ sun:
 #    aws_secret_access_key: !secret aws_secret_access_key
 #    region_name: !secret aws_region_name
 
+wake_on_lan:
+
 ifttt:
   key: !secret ifttt_key
 
@@ -177,6 +179,10 @@ smappee:
   client_secret: !secret smappee_client_secret
   username: !secret smappee_username
   password: !secret smappee_password
+
+apple_tv:
+  host: 10.254.2.108
+  login_id: !secret apple_tv_login_id
 
 mqtt:
   broker: 10.254.2.10
