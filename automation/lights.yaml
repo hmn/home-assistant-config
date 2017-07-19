@@ -94,7 +94,7 @@
     - service: light.hue_activate_scene
       data:
         group_name: "Cinema"
-        scene_name: "Tropical twilight"
+        scene_name: "TV"
 
 - alias: "Motion anywhere when in sleep mode"
   trigger:
