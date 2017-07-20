@@ -1,9 +1,14 @@
-floorplan:
-  name: Floorplan
+zones:
+  name: Zones
   view: yes
   entities:
-    - binary_sensor.floorplan
+    - group.floorplan
   icon: mdi:home
+
+floorplan:
+  name: Floorplan
+  entities:
+    - binary_sensor.floorplan
 
 security:
   name: Security
@@ -13,6 +18,7 @@ security:
     - camera.camera_outside
     - group.all_lights
     - group.motion
+    - group.floorplan
     - scene.away
     - scene.bedroom_off
     - scene.bedroom_on
