@@ -1,7 +1,9 @@
-zones:
-  name: Zones
+floorplan:
+  name: Floorplan
+  view: yes
   entities:
     - binary_sensor.floorplan
+  icon: mdi:home
 
 security:
   name: Security
