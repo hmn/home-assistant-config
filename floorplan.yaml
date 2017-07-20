@@ -52,8 +52,6 @@ groups:
      - light.cinema
      - light.kitchen
      - light.livingroom
-     - light.outside
-     - light.workshop
   states:
     - state: 'on'
       class: 'light-on'

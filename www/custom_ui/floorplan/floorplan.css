@@ -93,21 +93,21 @@ svg, svg * {
 /* Light */
 
 .light-off {
-  fill: #afafaf !important;
+  fill: #FFFFFF !important;
 }
 
 .light-on {
-  fill: #f8ff99 !important;
+  fill: #F9E99E !important;
 }
 
 /* Motion */
 
 .motion-off {
-  fill: #C3B7F4 !important;
+  fill: #FFFFFF !important;
 }
 
 .motion-on {
-  fill: #F8D2B9 !important;
+  fill: #D6E9EF !important;
 }
 
 /* Doorbell */
