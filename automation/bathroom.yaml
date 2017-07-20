@@ -29,7 +29,7 @@
   trigger:
     - platform: state
       entity_id: sensor.bathroom_heating
-      to: 0.0
+      state: '0.0'
       for:
         minutes: 30
   action:
