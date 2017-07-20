@@ -1,0 +1,36 @@
+- alias: "Bathroom humidity high"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bathroom_humidity
+      above: 65
+  action:
+    service: switch.turn_on
+    entity_id: switch.bathroom_fan
+
+- alias: "Bathroom humidity normal"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bathroom_humidity
+      below: 61
+  action:
+    service: switch.turn_off
+    entity_id: switch.bathroom_fan
+
+- alias: "Bathroom heating required"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bathroom_heating
+      above: 0
+  action:
+    service: switch.turn_on
+    entity_id: switch.bathroom_pump
+
+- alias: "Bathroom heating ok"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bathroom_heating
+      below: 0
+  action:
+    service: switch.turn_off
+    entity_id: switch.bathroom_pump
+
