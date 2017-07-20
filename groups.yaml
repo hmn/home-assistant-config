@@ -19,7 +19,7 @@ security:
     - camera.camera_outside
     - group.all_lights
     - group.motion
-    - group.floorplan
+    - group.zones
     - scene.away
     - scene.bedroom_off
     - scene.bedroom_on
