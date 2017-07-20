@@ -27,11 +27,11 @@
 
 - alias: "Bathroom heating ok"
   trigger:
-    - platform: numeric_state
+    - platform: state
       entity_id: sensor.bathroom_heating
-      below: 1
+      to: 0.0
       for:
-        minutes: 10
+        minutes: 30
   action:
     service: switch.turn_off
     entity_id: switch.bathroom_pump
