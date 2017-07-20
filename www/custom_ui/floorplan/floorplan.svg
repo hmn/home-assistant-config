@@ -4,7 +4,7 @@
     <g id="binary_sensor.motion_sensor_cinema">
         <rect x="1443.09" y="1243.5" width="567.391" height="510.709" style="fill:rgb(8,0,255);"/>
     </g>
-    <g id="binary_sensor.motion_sensor_livingroom" transform="matrix(1,0,0,1,0,-3)">
+    <g id="binary_sensor.motion_sensor_livingroom" transform="matrix(1,0,0,1.0032,0,-8.60538)">
         <rect x="660.557" y="1182.86" width="782.53" height="571.354" style="fill:rgb(8,0,255);"/>
     </g>
     <g transform="matrix(1,0,0,1.01316,0,-15.5656)">
@@ -17,6 +17,9 @@
     </g>
     <g id="binary_sensor.motion_sensor_entrance" transform="matrix(1.02524,0,0,1.02524,-51.2674,-17.4998)">
         <rect x="1266.42" y="218.434" width="765.023" height="474.985" style="fill:rgb(8,0,255);"/>
+    </g>
+    <g id="binary_sensor.motion_sensor_bathroom">
+        <rect x="719.45" y="699.759" width="235.579" height="478.27" style="fill:rgb(7,0,240);"/>
     </g>
     <g id="building.base">
         <g transform="matrix(6.12323e-17,-1,1,6.12323e-17,387.451,2254.12)">
@@ -210,7 +213,7 @@
             <path d="M-1.507,-2.424L-1.51,-3.349" style="fill:none;stroke:rgb(127,127,127);stroke-width:0.01px;"/>
         </g>
     </g>
-    <g id="light.binic" transform="matrix(0.615469,0,0,0.615469,558.237,664.875)">
+    <g id="light.cinema" transform="matrix(0.615469,0,0,0.615469,558.237,664.875)">
         <circle cx="1551.16" cy="1668.71" r="32.055" style="fill:rgb(255,228,0);"/>
     </g>
     <g id="light.livingroom" transform="matrix(1.11446,0,0,1.11446,-660.799,-393.109)">
