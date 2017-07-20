@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_kitchen
-      state: 'on'
+      to: 'on'
   condition:
 #    - condition: sun
 #      after: sunset
@@ -18,7 +18,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_kitchen
-      state: 'off'
+      to: 'off'
       for:
         minutes: 2
   action:
@@ -29,7 +29,7 @@
   trigger:
     - platform: state
       entity_id: light.kitchen
-      state: 'on'
+      to: 'on'
       for:
         minutes: 2
   condition:
@@ -46,7 +46,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_bedroom
-      state: 'on'
+      to: 'on'
   condition:
 #    - condition: sun
 #      after: sunset
@@ -62,7 +62,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_bedroom
-      state: 'off'
+      to: 'off'
       for:
         minutes: 2
   action:
@@ -73,16 +73,16 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_kitchen
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_bedroom
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_cinema
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_livingroom
-      state: 'on'
+      to: 'on'
   condition:
     - condition: sun
       after: sunset
@@ -100,13 +100,13 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_kitchen
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_cinema
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_livingroom
-      state: 'on'
+      to: 'on'
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -121,13 +121,13 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_sensor_kitchen
-      state: 'off'
+      to: 'off'
     - platform: state
       entity_id: binary_sensor.motion_sensor_cinema
-      state: 'off'
+      to: 'off'
     - platform: state
       entity_id: binary_sensor.motion_sensor_livingroom
-      state: 'off'
+      to: 'off'
   condition:
     - condition: state
       entity_id: input_boolean.sleep

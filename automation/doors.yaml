@@ -35,7 +35,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.entrance_contact
-      state: 'on'
+      to: 'on'
   condition:
     condition: and
     conditions:
@@ -53,10 +53,10 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.workshop_contact
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.entrance_contact
-      state: 'off'
+      to: 'off'
       for:
         minutes: 30
   condition:
