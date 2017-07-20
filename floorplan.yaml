@@ -29,6 +29,21 @@ groups:
 #       return "temp-high";
 #     '
 
+- name: Motion
+  entities:
+     - binary_sensor.motion_sensor_bedroom
+     - binary_sensor.motion_sensor_cinema
+     - binary_sensor.motion_sensor_kitchen
+     - binary_sensor.motion_sensor_livingroom
+  states:
+    - state: 'on'
+      class: 'motion-on'
+    - state: 'off'
+      class: 'motion-off'
+  action:
+    domain: homeassistant   # This optional parameter allows you to use other services such as homeassistant.toggle like here.
+    service: toggle
+
 - name: Lights
   entities:
      - light.bedroom
@@ -93,30 +108,30 @@ groups:
 #       to_state: 'off'
 #       duration: 10
 
-- name: Cameras
-  entities:
-    - camera.outside
-  states:
-    - state: 'idle'
-      class: 'camera-idle'
+# - name: Cameras
+#   entities:
+#     - camera.outside
+#   states:
+#     - state: 'idle'
+#       class: 'camera-idle'
 
-- name: Media Players
-  entities:
-    - media_player.apple_tv
-    - media_player.apple_tv_2
-    - media_player.plex_web_chrome
-    - media_player.denon_avrx1300w
-    - media_player.lg_oled
-    - media_player.playstation_4
-  states:
-    - state: 'off'
-      class: 'squeezebox-off'
-    - state: 'idle'
-      class: 'squeezebox-off'
-    - state: 'paused'
-      class: 'squeezebox-off'
-    - state: 'playing'
-      class: 'squeezebox-on'
+# - name: Media Players
+#   entities:
+#     - media_player.apple_tv
+#     - media_player.apple_tv_2
+#     - media_player.plex_web_chrome
+#     - media_player.denon_avrx1300w
+#     - media_player.lg_oled
+#     - media_player.playstation_4
+#   states:
+#     - state: 'off'
+#       class: 'squeezebox-off'
+#     - state: 'idle'
+#       class: 'squeezebox-off'
+#     - state: 'paused'
+#       class: 'squeezebox-off'
+#     - state: 'playing'
+#       class: 'squeezebox-on'
 
 
 #        - name: thermostat_temp

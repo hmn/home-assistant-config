@@ -100,6 +100,16 @@ svg, svg * {
   fill: #F8D2B9 !important;
 }
 
+/* Motion */
+
+.motion-off {
+  fill: #C3B7F4 !important;
+}
+
+.motion-on {
+  fill: #F8D2B9 !important;
+}
+
 /* Doorbell */
 
 .doorbell-off {
