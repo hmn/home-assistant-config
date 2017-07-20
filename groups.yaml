@@ -1,3 +1,8 @@
+zones:
+  name: Zones
+  entities:
+    - binary_sensor.floorplan
+
 security:
   name: Security
   view: yes
@@ -148,6 +153,7 @@ motion:
   name: Motion
   view: no
   entities:
+    - sensor.template_last_motion
     - sensor.entrance_tilt_x
     - sensor.entrance_tilt_y
     - sensor.entrance_tilt_z
