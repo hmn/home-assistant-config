@@ -93,11 +93,11 @@ svg, svg * {
 /* Light */
 
 .light-off {
-  fill: #C3B7F4 !important;
+  fill: #afafaf !important;
 }
 
 .light-on {
-  fill: #F8D2B9 !important;
+  fill: #f8ff99 !important;
 }
 
 /* Motion */
