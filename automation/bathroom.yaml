@@ -11,7 +11,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.bathroom_humidity
-      below: 61
+      below: 62
   action:
     service: switch.turn_off
     entity_id: switch.bathroom_fan
