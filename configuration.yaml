@@ -80,19 +80,16 @@ recorder:
     entities:
       - sun.sun
       - sensor.date
-      - sensor.bathroom_heating
       - sensor.cinema_heating
       - sensor.kitchen_heating
       - sensor.bedroom_heating
       - sensor.livingroom_heating
       - sensor.entrance_heating
-      - sensor.bathroom_temperature
       - sensor.cinema_temperature
       - sensor.kitchen_temperature
       - sensor.bedroom_temperature
       - sensor.livingroom_temperature
       - sensor.entrance_temperature
-      - sensor.bathroom_humidity
       - sensor.cinema_humidity
       - sensor.kitchen_humidity
       - sensor.bedroom_humidity
