@@ -46,3 +46,8 @@
     light.bedroom:
       state: on
       brightness: 255
+
+- name: Cinema OFF
+  entities:
+    light.cinema:
+      state: off
