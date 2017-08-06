@@ -21,6 +21,6 @@ front_door_away:
 face_all:
   alias: Person detected outside
   sequence:
-    - service: notify.all
+    - service: notify.webostv
       data:
         message: "Person detected outside"
