@@ -61,10 +61,12 @@ class SmappeeSwitch(SwitchDevice):
     def turn_on(self, **kwargs):
         """Turn on Comport Plug."""
         self._smappee.actuator_on(self._location_id, self._switch_id)
+        self._smappee.actuator_on(self._location_id, self._switch_id)
         self._state = True
 
     def turn_off(self, **kwargs):
         """Turn off Comport Plug."""
+        self._smappee.actuator_off(self._location_id, self._switch_id)
         self._smappee.actuator_off(self._location_id, self._switch_id)
         self._state = False
 
