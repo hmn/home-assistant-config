@@ -49,24 +49,3 @@
     service: script.turn_on
     entity_id: script.front_door_home
 
-- alias: "Workshop still open"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.workshop_contact
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.entrance_contact
-      to: 'off'
-      for:
-        minutes: 30
-  condition:
-    - condition: state
-      entity_id: binary_sensor.workshop_contact
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.entrance_contact
-      state: 'off'
-  action:
-    service: notify.all
-    data_template:
-      message: "Workshop door is still open."
