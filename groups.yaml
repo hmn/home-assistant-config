@@ -1,15 +1,15 @@
-floorplan:
-  name: Floorplan
-  view: yes
-  entities:
-    - group.zones
-  icon: mdi:home
+#floorplan:
+#  name: Floorplan
+#  view: yes
+#  entities:
+#    - group.zones
+#  icon: mdi:home
 
-zones:
-  name: Zones
-  entities:
-    - sensor.template_last_motion
-    - binary_sensor.floorplan
+#zones:
+#  name: Zones
+#  entities:
+#    - sensor.template_last_motion
+#    - binary_sensor.floorplan
 
 security:
   name: Security

@@ -13,9 +13,9 @@
 #  headers:
 #    User-Agent: Home Assistant
 #    Content-Type: application/json
-- platform: mqtt
-  state_topic: dummy/floorplan/sensor
-  name: Floorplan
+#- platform: mqtt
+#  state_topic: dummy/floorplan/sensor
+#  name: Floorplan
 
 - platform: mqtt
   state_topic: 'smartthings/Bedroom Motion/motion'
