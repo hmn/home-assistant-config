@@ -178,8 +178,9 @@ smappee:
   password: !secret smappee_password
 
 apple_tv:
-  host: 10.254.2.108
+  host: 10.254.2.195
   login_id: !secret apple_tv_login_id
+  name: apple_tv
 
 mqtt:
   broker: 10.254.2.10
