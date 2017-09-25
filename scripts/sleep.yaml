@@ -7,9 +7,7 @@ mode_sleep:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.home
-    - service: scene.turn_on
-      entity_id: scene.sleep
     - service: script.turn_on
       entity_id: script.computer_off
-    - service: homeassistant.turn_off
-      service_id: group.all_lights
+    - service: scene.turn_on
+      entity_id: scene.away

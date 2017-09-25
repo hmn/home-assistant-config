@@ -19,8 +19,6 @@
   entities:
     group.all_lights:
       state: off
-      brightness: 255
-      transition: 45
 
 - name: Away
   entities:
