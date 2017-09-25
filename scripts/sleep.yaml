@@ -11,5 +11,5 @@ mode_sleep:
       entity_id: scene.sleep
     - service: script.turn_on
       entity_id: script.computer_off
-    - service: script.turn_on
-      entity_id: script.tv_off
+    - service: homeassistant.turn_off
+      service_id: group.all_lights
