@@ -8,8 +8,6 @@ mode_away:
       data:
         entity_id: switch.particle_relay1
     - service: script.turn_on
-      entity_id: script.tv_off
-    - service: script.turn_on
       entity_id: script.computer_off
     - service: scene.turn_on
       entity_id: scene.away
