@@ -1,9 +1,9 @@
-- platform: dlib_face_detect
-  source:
-    - entity_id: camera.outside
+# - platform: dlib_face_detect
+#   source:
+#     - entity_id: camera.outside
 
-- platform: dlib_face_identify
-  source:
-    - entity_id: camera.outside
-  faces:
-    Henrik: /config/faces/henrik.jpg
+# - platform: dlib_face_identify
+#   source:
+#     - entity_id: camera.outside
+#   faces:
+#     Henrik: /config/faces/henrik.jpg
