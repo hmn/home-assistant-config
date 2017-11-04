@@ -193,9 +193,8 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
-tradfri:
-  host: 10.254.2.102
-  api_key: !secret tradfri_api_key
+#tradfri:
+#  host: 10.254.2.102
 
 logger:
   #default: debug
