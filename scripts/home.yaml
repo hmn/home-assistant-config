@@ -7,9 +7,8 @@ mode_home:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.sleep
-    - service: switch.turn_off
-      data:
-        entity_id: switch.particle_relay1
+    - service: script.turn_on
+      entity_id: script.climate_normal_mode
     - service: script.turn_on
       entity_id: script.computer_on
     - service: scene.turn_on

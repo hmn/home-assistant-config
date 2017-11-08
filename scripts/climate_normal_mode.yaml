@@ -1,0 +1,6 @@
+climate_normal_mode:
+  alias: Climate Normal Mode
+  sequence:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.particle_relay1

@@ -4,9 +4,8 @@ mode_away:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.home
-    - service: switch.turn_on
-      data:
-        entity_id: switch.particle_relay1
+    - service: script.turn_on
+      entity_id: script.climate_save_mode
     - service: script.turn_on
       entity_id: script.computer_off
     - service: scene.turn_on
