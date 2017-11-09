@@ -9,8 +9,13 @@
 - platform: denonavr
 - platform: webostv
   host: 10.254.2.118
-  mac: !secret lg_oled_mac
   name: LG OLED
+  timeout: 5
+  mac: !secret lg_oled_mac
+  turn_on_action:
+    service: wake_on_lan.send_magic_packet
+    data:
+      mac: !secret lg_oled_mac
   customize:
     sources:
     - HDMI2
