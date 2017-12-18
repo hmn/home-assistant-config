@@ -195,6 +195,8 @@ mqtt:
 
 alexa:
 
+cloud:
+
 #tradfri:
 #  host: 10.254.2.102
 
