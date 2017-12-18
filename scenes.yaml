@@ -37,16 +37,16 @@
 
 - name: Bedroom OFF
   entities:
-    light.bedroom:
-      state: off
     light.bedroom_2:
+      state: off
+    light.bedroom:
       state: off
 - name: Bedroom ON
   entities:
-    light.bedroom:
+    light.bedroom_2:
       state: on
       brightness: 255
-    light.bedroom_2:
+    light.bedroom:
       state: on
       brightness: 255
 
