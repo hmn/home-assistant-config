@@ -86,7 +86,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.nintendo_switch
-      state: 'on'
+      to: 'on'
   action:
     - service: media_player.select_source
       data:
