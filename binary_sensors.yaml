@@ -72,3 +72,7 @@
   payload_on: 'active'
   payload_off: 'inactive'
   device_class: moving
+
+- platform: ping
+    host: 10.254.2.128
+    name: Nintendo Switch

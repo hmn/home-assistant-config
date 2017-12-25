@@ -82,6 +82,46 @@
     - service: media_player.turn_on
       entity_id: media_player.apple_tv
 
+- alias: "Nintendo Switch switched on"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.nintendo_switch
+      state: 'on'
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon_avrx1300w
+        source: 'Switch'
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.lg_oled
+        source: 'HDMI2'
+
+- alias: "Nintendo Switch switched off"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.nintendo_switch
+      from: 'on'
+      to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: template
+        value_template: "{% if is_state_attr('media_player.lg_oled', 'source', 'HDMI2') %}true{% endif %}"
+      - condition: template
+        value_template: "{% if is_state_attr('media_player.denon_avrx1300w', 'source', 'Switch') %}true{% endif %}"
+  action:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon_avrx1300w
+        source: 'Media Player'
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.lg_oled
+        source: 'HDMI2'
+    - service: media_player.turn_on
+      entity_id: media_player.apple_tv
+
 - alias: "TV app started"
   trigger:
     - platform: template
