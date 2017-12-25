@@ -12,6 +12,8 @@ switch.particle_relay1_rest_switch:
   icon: mdi:temperature-celsius
 witch.lg_oled_wol:
   icon: mdi:television
+boolean_sensor.nintendo_switch:
+  icon: mdi:nintendo_switch
 
 
 zone.home:
