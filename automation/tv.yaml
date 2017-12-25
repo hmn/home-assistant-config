@@ -42,7 +42,7 @@
     service: scene.turn_on
     entity_id: scene.kitchen_on
 
-- alias: "PS4 switched on"
+- alias: "PS4 turned on"
   trigger:
     - platform: state
       entity_id: media_player.playstation_4
@@ -57,7 +57,7 @@
         entity_id: media_player.lg_oled
         source: 'HDMI2'
 
-- alias: "PS4 switched off"
+- alias: "PS4 turned off"
   trigger:
     - platform: state
       entity_id: media_player.playstation_4
@@ -82,10 +82,11 @@
     - service: media_player.turn_on
       entity_id: media_player.apple_tv
 
-- alias: "Nintendo Switch switched on"
+- alias: "Nintendo Switch turned on"
   trigger:
     - platform: state
       entity_id: binary_sensor.nintendo_switch
+      from: 'off'
       to: 'on'
   action:
     - service: media_player.select_source
@@ -97,7 +98,7 @@
         entity_id: media_player.lg_oled
         source: 'HDMI2'
 
-- alias: "Nintendo Switch switched off"
+- alias: "Nintendo Switch turned off"
   trigger:
     - platform: state
       entity_id: binary_sensor.nintendo_switch
