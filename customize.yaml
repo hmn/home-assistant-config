@@ -13,7 +13,7 @@ switch.particle_relay1_rest_switch:
 witch.lg_oled_wol:
   icon: mdi:television
 binary_sensor.nintendo_switch:
-  icon: mdi:nintendo_switch
+  icon: mdi:nintendo-switch
 
 
 zone.home:
