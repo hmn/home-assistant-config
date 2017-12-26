@@ -88,6 +88,12 @@
       entity_id: binary_sensor.nintendo_switch
       from: 'off'
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.nintendo_switch
+      state: 'on'
+      for:
+        minutes: 1
   action:
     - service: media_player.select_source
       data:
