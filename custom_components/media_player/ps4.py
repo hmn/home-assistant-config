@@ -132,6 +132,8 @@ class PS4Device(MediaPlayerDevice):
         if data.get('status') == 'Ok':
             if self._media_content_id is not None:
                 self._state = STATE_PLAYING
+                #Check if cover art is in the gamesmap
+                self.check_gamesmap()
             else:
                 self._state = STATE_IDLE
         else:
@@ -150,6 +152,33 @@ class PS4Device(MediaPlayerDevice):
                 self._gamesmap = json.loads(url.read().decode())
         except Exception as e:
             _LOGGER.error("gamesmap json file could not be loaded, %s" % e)
+
+    def check_gamesmap(self):
+        if self._media_content_id not in self._gamesmap:
+            #Attempt to get cover art from playstation store
+            self.ps_store_cover_art()
+
+    def ps_store_cover_art(self):
+        import requests, urllib
+        cover_art = None
+        try:
+            url = 'https://store.playstation.com/valkyrie-api/en/US/19/faceted-search/'+urllib.parse.quote(self._media_title.encode('utf-8'))
+            url +='?query='+urllib.parse.quote(self._media_title.encode('utf-8'))+'&platform=ps4'
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'}
+            r = requests.get(url, headers=headers)
+            for item in r.json()['included']:
+                if 'attributes' in item:
+                    if 'game-content-type' in item['attributes']:
+                        if "App" in item['attributes']['game-content-type'] or "Game" in item['attributes']['game-content-type']:
+                            if 'thumbnail-url-base' in item['attributes']:
+                                cover_art = item['attributes']['thumbnail-url-base']
+                                cover_art += '?w=512&h=512'
+                                break
+        except Exception as e:
+            _LOGGER.error("could not retrieve cover art, %s" % e)
+
+        if cover_art != None:
+            self._gamesmap[self._media_content_id] = cover_art
 
     @property
     def entity_picture(self):
