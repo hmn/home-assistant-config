@@ -1,0 +1,15 @@
+- platform: alpha_vantage
+  api_key: !secret alpha_vantage_apikey
+  symbols:
+    - DIS
+    - AMD
+    - ESOFT.CO
+    - AMAT
+    - GOOG
+    - AMZN
+    - APPL
+    - TSLA
+    - LINK.OL
+    - DKIGI.CO
+    - FUISP.CO
+    - MAJVAL.CO
