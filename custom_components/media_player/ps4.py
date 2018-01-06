@@ -132,6 +132,8 @@ class PS4Device(MediaPlayerDevice):
         if data.get('status') == 'Ok':
             if self._media_content_id is not None:
                 self._state = STATE_PLAYING
+                #Check if cover art is in the gamesmap
+                self.check_gamesmap()
             else:
                 self._state = STATE_IDLE
         else:
@@ -151,9 +153,13 @@ class PS4Device(MediaPlayerDevice):
         except Exception as e:
             _LOGGER.error("gamesmap json file could not be loaded, %s" % e)
 
-    def psn_cover_art(self):
-        import requests, urllib
+    def check_gamesmap(self):
+        if self._media_content_id not in self._gamesmap:
+            #Attempt to get cover art from playstation store
+            self.ps_store_cover_art()
 
+    def ps_store_cover_art(self):
+        import requests, urllib
         cover_art = None
         try:
             url = 'https://store.playstation.com/valkyrie-api/en/US/19/faceted-search/'+urllib.parse.quote(self._media_title.encode('utf-8'))
@@ -171,9 +177,8 @@ class PS4Device(MediaPlayerDevice):
         except Exception as e:
             _LOGGER.error("could not retrieve cover art, %s" % e)
 
-
-        return cover_art
-
+        if cover_art != None:
+            self._gamesmap[self._media_content_id] = cover_art
 
     @property
     def entity_picture(self):
@@ -181,12 +186,6 @@ class PS4Device(MediaPlayerDevice):
             return None
 
         if self._local_store is None:
-
-            cover_art = self.psn_cover_art()
-
-            if cover_art != None:
-                return cover_art
-
             image_hash = self.media_image_hash
 
             if image_hash is None:
