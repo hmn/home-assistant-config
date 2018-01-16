@@ -2,10 +2,8 @@
   api_key: !secret alpha_vantage_apikey
   symbols:
     - name: Disney
-      currency: DKK
       symbol: DIS
     - name: AMD
-      currency: USD
       symbol: AMD
     - name: Applied Materials
       symbol: AMAT
