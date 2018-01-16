@@ -182,10 +182,13 @@ stocks:
   name: Stocks
   view: no
   entities:
-    - sensor.dis
+    - sensor.disney
     - sensor.amd
-    - sensor.amat
-    - sensor.googl
-    - sensor.amzn
-    - sensor.aapl
-    - sensor.tsla
+    - sensor.applied_materials
+    - sensor.alphabet
+    - sensor.amazon
+    - sensor.apple
+    - sensor.tesla
+    - sensor.bitcoin
+    - sensor.usd
+    - sensor.euro
