@@ -365,6 +365,7 @@ class PS4Waker(object):
             data = json.loads(value)
         except json.decoder.JSONDecodeError as e:
             _LOGGER.error("Error decoding ps4 json : %s", e)
+            _LOGGER.error("ps4-waker json data : %s", value)
             data = {}
 
         """Save current game"""
