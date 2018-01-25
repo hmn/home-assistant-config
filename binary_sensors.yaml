@@ -78,7 +78,7 @@
   name: Nintendo Switch
 
 - platform: trend
-  sensor:
+  sensors:
     bathroom_humidity_falling:
       entity_id: sensor.bathroom_humidity
       friendly_name: Bathroom humidity falling
