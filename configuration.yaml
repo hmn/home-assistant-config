@@ -200,6 +200,20 @@ cloud:
 #tradfri:
 #  host: 10.254.2.102
 
+rest_command:
+  particle_relay1_on:
+    url: !secret particle_relay_post_url
+    method: post
+    payload: '{ "arg": "relay1:on" }'
+    timeout: 5
+    content_type: 'application/json'
+  particle_relay1_off:
+    url: !secret particle_relay_post_url
+    method: post
+    payload: '{ "arg": "relay1:off" }'
+    timeout: 5
+    content_type: 'application/json'
+
 logger:
   #default: debug
   default: info
