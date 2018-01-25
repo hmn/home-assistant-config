@@ -16,7 +16,7 @@
 - platform: mqtt
   state_topic: 'smartthings/Serverroom/temperature'
   name: 'Serverroom temperature'
-  unit_of_measurement: '°C'
+  unit_of_measurement: 'c'
 
 - platform: mqtt
   state_topic: 'smartthings/Entrance/threeAxis'
