@@ -76,3 +76,18 @@
 - platform: ping
   host: 10.254.2.128
   name: Nintendo Switch
+
+- platform: trend
+  sensor:
+    bathroom_humidity_falling:
+      entity_id: sensor.bathroom_humidity
+      friendly_name: Bathroom humidity falling
+      sample_duration: 7200
+      min_gradient: -0.0008
+      device_class: cold
+    bathroom_humidity_rising:
+      entity_id: sensor.bathroom_humidity
+      friendly_name: Bathroom humidity rising
+      sample_duration: 7200
+      min_gradient: 0.0008
+      device_class: heat
