@@ -84,7 +84,7 @@
       friendly_name: Bathroom humidity falling
       sample_duration: 7200
       min_gradient: -0.00138
-      device_class: cold
+      device_class: moisture
     bathroom_humidity_rising:
       entity_id: sensor.bathroom_humidity
       friendly_name: Bathroom humidity rising
