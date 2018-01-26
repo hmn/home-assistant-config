@@ -1,7 +1,7 @@
 - alias: "Bathroom humidity high"
   trigger:
     - platform: state
-      entity_id: sensor.bathroom_humidity_rising
+      entity_id: binary_sensor.bathroom_humidity_rising
       to: 'on'
   action:
     service: switch.turn_on
@@ -10,7 +10,7 @@
 - alias: "Bathroom humidity normal"
   trigger:
     - platform: state
-      entity_id: sensor.bathroom_humidity_rising
+      entity_id: binary_sensor.bathroom_humidity_rising
       to: 'off'
       for:
         minutes: 30
