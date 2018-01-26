@@ -12,11 +12,10 @@
     - platform: state
       entity_id: binary_sensor.bathroom_humidity_rising
       to: 'off'
-      for:
-        minutes: 30
   action:
-    service: switch.turn_off
-    entity_id: switch.bathroom_fan
+    - delay: '00:30:00'
+    - service: switch.turn_off
+      entity_id: switch.bathroom_fan
 
 - alias: "Bathroom cold outside"
   trigger:
