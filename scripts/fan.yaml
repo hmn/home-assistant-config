@@ -1,0 +1,7 @@
+bathroom_fan_off:
+  alias: Bathroom fan off
+  sequence:
+    - delay: '00:20:00'
+    - service: switch.turn_off
+      data:
+        entity_id: switch.bathroom_fan
