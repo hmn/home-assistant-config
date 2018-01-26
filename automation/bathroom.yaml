@@ -12,8 +12,22 @@
     - platform: state
       entity_id: binary_sensor.bathroom_humidity_rising
       to: 'off'
+    - platform: state
+      entity_id: binary_sensor.bathroom_humidity_falling
+      to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.bathroom_humidity_rising
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.bathroom_humidity_falling
+        state: 'off'
   action:
-    - service: script.bathroom_fan_off
+    - service: switch.turn_off
+      data:
+        entity_id: switch.bathroom_fan
 
 - alias: "Bathroom cold outside"
   trigger:
