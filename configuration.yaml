@@ -221,7 +221,9 @@ logger:
     homeassistant.components.automation: debug
     homeassistant.components.script: debug
     homeassistant.components.device_tracker: critical
+    custom_components.media_player.ps4: debug
     py.warnings: error
+    pyps4: debug
   #  pylgtv.webos_client: critical
 
 automation: !include automations.yaml
