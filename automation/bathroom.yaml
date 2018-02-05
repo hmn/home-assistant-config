@@ -12,18 +12,12 @@
     - platform: state
       entity_id: binary_sensor.bathroom_humidity_rising
       to: 'off'
-    - platform: state
-      entity_id: binary_sensor.bathroom_humidity_falling
-      to: 'off'
+      for:
+        minutes: 30
   condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.bathroom_humidity_rising
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.bathroom_humidity_falling
-        state: 'off'
+    - condition: state
+      entity_id: binary_sensor.bathroom_humidity_falling
+      state: 'off'
   action:
     - service: switch.turn_off
       data:
