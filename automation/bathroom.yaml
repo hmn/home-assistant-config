@@ -14,10 +14,6 @@
       to: 'off'
       for:
         minutes: 30
-  condition:
-    - condition: state
-      entity_id: binary_sensor.bathroom_humidity_falling
-      state: 'off'
   action:
     - service: switch.turn_off
       data:
