@@ -248,7 +248,7 @@ zone: !include zones.yaml
 group: !include groups.yaml
 scene: !include scenes.yaml
 
-#zwave:
-#  usb_path: /dev/ttyACM0
+zwave:
+  usb_path: /dev/ttyACM0
 #  debug: True
 #  device_config: !include zwave_device_config.yaml
