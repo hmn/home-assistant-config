@@ -18,7 +18,7 @@
 #  name: Floorplan
 
 - platform: mqtt
-  state_topic: 'smartthings/Bedroom Motion/motion'
+  state_topic: 'smartthings/Bedroom Motion/motion/state'
   name: 'Motion Sensor Bedroom'
   payload_on: 'active'
   payload_off: 'inactive'
@@ -32,42 +32,42 @@
   device_class: motion
 
 - platform: mqtt
-  state_topic: 'smartthings/Livingroom Motion/motion'
+  state_topic: 'smartthings/Livingroom Motion/motion/state'
   name: 'Motion Sensor Livingroom'
   payload_on: 'active'
   payload_off: 'inactive'
   device_class: motion
 
 - platform: mqtt
-  state_topic: 'smartthings/Cinema Motion/motion'
+  state_topic: 'smartthings/Cinema Motion/motion/state'
   name: 'Motion Sensor Cinema'
   payload_on: 'active'
   payload_off: 'inactive'
   device_class: motion
 
 - platform: mqtt
-  state_topic: 'smartthings/Entrance/contact'
+  state_topic: 'smartthings/Entrance/contact/state'
   name: 'Entrance Contact'
   payload_on: 'open'
   payload_off: 'closed'
   device_class: opening
 
 - platform: mqtt
-  state_topic: 'smartthings/Workshop/contact'
+  state_topic: 'smartthings/Workshop/contact/state'
   name: 'Workshop Contact'
   payload_on: 'open'
   payload_off: 'closed'
   device_class: opening
 
 - platform: mqtt
-  state_topic: 'smartthings/Entrance/acceleration'
+  state_topic: 'smartthings/Entrance/acceleration/state'
   name: 'Entrance Acceleration'
   payload_on: 'active'
   payload_off: 'inactive'
   device_class: moving
 
 - platform: mqtt
-  state_topic: 'smartthings/Workshop/acceleration'
+  state_topic: 'smartthings/Workshop/acceleration/state'
   name: 'Workshop Acceleration'
   payload_on: 'active'
   payload_off: 'inactive'

@@ -1,45 +1,45 @@
 - platform: mqtt
-  state_topic: 'smartthings/Office/energy'
+  state_topic: 'smartthings/Office/energy/state'
   name: 'Office energy usage'
   unit_of_measurement: 'kWh'
 
 - platform: mqtt
-  state_topic: 'smartthings/Office/power'
+  state_topic: 'smartthings/Office/power/state'
   name: 'Office current usage'
   unit_of_measurement: 'W'
 
 - platform: mqtt
-  state_topic: 'smartthings/Cinema/illuminance'
+  state_topic: 'smartthings/Cinema/illuminance/state'
   name: 'Cinema light'
   unit_of_measurement: 'lux'
 
 - platform: mqtt
-  state_topic: 'smartthings/Serverroom/temperature'
+  state_topic: 'smartthings/Serverroom/temperature/state'
   name: 'Serverroom temperature'
   unit_of_measurement: 'c'
 
 - platform: mqtt
-  state_topic: 'smartthings/Entrance/threeAxis'
+  state_topic: 'smartthings/Entrance/threeAxis/state'
   name: 'Entrance Tilt X'
   value_template: '{{ value.split(",")[0] }}'
 - platform: mqtt
-  state_topic: 'smartthings/Entrance/threeAxis'
+  state_topic: 'smartthings/Entrance/threeAxis/state'
   name: 'Entrance Tilt Y'
   value_template: '{{ value.split(",")[1] }}'
 - platform: mqtt
-  state_topic: 'smartthings/Entrance/threeAxis'
+  state_topic: 'smartthings/Entrance/threeAxis/state'
   name: 'Entrance Tilt Z'
   value_template: '{{ value.split(",")[2] }}'
 
 - platform: mqtt
-  state_topic: 'smartthings/Workshop/threeAxis'
+  state_topic: 'smartthings/Workshop/threeAxis/state'
   name: 'Workshop Tilt X'
   value_template: '{{ value.split(",")[0] }}'
 - platform: mqtt
-  state_topic: 'smartthings/Workshop/threeAxis'
+  state_topic: 'smartthings/Workshop/threeAxis/state'
   name: 'Workshop Tilt Y'
   value_template: '{{ value.split(",")[1] }}'
 - platform: mqtt
-  state_topic: 'smartthings/Workshop/threeAxis'
+  state_topic: 'smartthings/Workshop/threeAxis/state'
   name: 'Workshop Tilt Z'
   value_template: '{{ value.split(",")[2] }}'
