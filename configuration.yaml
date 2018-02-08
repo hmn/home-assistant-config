@@ -184,7 +184,9 @@ apple_tv:
   credentials: !secret apple_tv_credentials
 
 mqtt:
-  broker: 10.254.2.10
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
   discovery: true
   birth_message:
     topic: 'hass/status'
