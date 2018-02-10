@@ -192,3 +192,17 @@ stocks:
     - sensor.bitcoin
     - sensor.usd
     - sensor.euro
+
+energy:
+  name: Energy
+  view: no
+  entities:
+    - sensor.fibaro_wall_plug_energy
+    - sensor.fibaro_wall_plug_exporting
+    - sensor.fibaro_wall_plug_power
+    - sensor.fibaro_wall_plug_power_2
+    - sensor.smappee_home_always_on
+    - sensor.smappee_home_current
+    - sensor.smappee_home_current_today
+    - sensor.smappee_home_solar
+    - sensor.smappee_home_solar_today
