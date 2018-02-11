@@ -206,3 +206,14 @@ energy:
     - sensor.smappee_home_current_today
     - sensor.smappee_home_solar
     - sensor.smappee_home_solar_today
+
+smoke:
+  name: Smoke
+  view: no
+  entities:
+    - sensor.fibaro_system_fgss101_smoke_sensor_alarm_level
+    - sensor.fibaro_system_fgss101_smoke_sensor_alarm_type
+    - sensor.fibaro_system_fgss101_smoke_sensor_general
+    - sensor.fibaro_system_fgss101_smoke_sensor_heat
+    - sensor.fibaro_system_fgss101_smoke_sensor_smoke
+    - sensor.fibaro_system_fgss101_smoke_sensor_temperature
