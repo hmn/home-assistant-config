@@ -1,0 +1,59 @@
+- alias: Smoke Sensor SMOKE
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgss101_smoke_sensor_smoke
+  condition:
+        - condition: state
+          entity_id: sensor.fibaro_system_fgss101_smoke_sensor_smoke
+          state: '255'
+  action:
+    - service: notify.all
+      data:
+        message: "Fibaro Smoke Sensor - SMOKE DETECTED!"
+    - service: scene.turn_on
+      entity_id: scene.bedroom_on
+    - service: scene.turn_on
+      entity_id: scene.kitchen_on
+
+- alias: Smoke Sensor NOSMOKE
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgss101_smoke_sensor_smoke
+  condition:
+        - condition: state
+          entity_id: sensor.fibaro_system_fgss101_smoke_sensor_smoke
+          state: '0'
+  action:
+    service: notify.all
+    data:
+      message: "Fibaro Smoke Sensor - Smoke Cleared"
+
+- alias: Smoke Sensor OPENED
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
+  condition:
+    - condition: state
+      entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
+      state: '255'
+  action:
+    - service: notify.all
+      data:
+        message: "Fibaro Smoke Sensor - Cover Opened"
+    - service: scene.turn_on
+      entity_id: scene.bedroom_on
+    - service: scene.turn_on
+      entity_id: scene.kitchen_on
+
+- alias: Smoke Sensor CLOSED
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
+  condition:
+        - condition: state
+          entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
+          state: '0'
+  action:
+    - service: notify.all
+      data:
+        message: "Fibaro Smoke Sensor - Cover Closed"
