@@ -17,6 +17,7 @@
     platform: state
     entity_id: sensor.fibaro_system_fgss101_smoke_sensor_smoke
     to: '0'
+    from: '255'
   action:
     service: notify.all
     data:
@@ -41,6 +42,7 @@
     platform: state
     entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
     to: '0'
+    from: '255'
   action:
     - service: notify.all
       data:
