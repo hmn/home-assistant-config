@@ -158,10 +158,20 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
         if conf.get(host, {}).get('credentials'):
             credentials = conf[host]['credentials']
 
-    if not _check_ps4(host, credentials):
+    if host is None:
         request_configuration(host, name, hass, config,
                               add_devices, credentials)
         return
+
+    if credentials is None:
+        request_configuration(host, name, hass, config,
+                              add_devices, credentials)
+        return
+
+    # if not _check_ps4(host, credentials):
+    #     request_configuration(host, name, hass, config,
+    #                           add_devices, credentials)
+    #     return
 
     setup_ps4(host, name, hass,
               config, add_devices, credentials)
