@@ -90,3 +90,5 @@
       sample_duration: 7200
       min_gradient: 0.00277
       device_class: moisture
+
+- platform: flic
