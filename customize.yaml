@@ -33,6 +33,9 @@ zone.crossfit:
 sensor.smappee_home_solar:
   hidden: true
 
+binary_sensor.sensor_2:
+  device_class: motion
+
 
 ############################################################
 #
