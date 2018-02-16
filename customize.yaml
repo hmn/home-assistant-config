@@ -33,7 +33,7 @@ zone.crossfit:
 sensor.smappee_home_solar:
   hidden: true
 
-binary_sensor.sensor_2:
+binary_sensor.aeotec_dsb05_multisensor_motion:
   device_class: motion
 
 
