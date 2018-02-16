@@ -231,8 +231,6 @@ logger:
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation
 
-panel_custom: !include panel_custom.yaml
-
 light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
 camera: !include cameras.yaml
