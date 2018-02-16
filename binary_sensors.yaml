@@ -13,9 +13,6 @@
   headers:
     User-Agent: Home Assistant
     Content-Type: application/json
-#- platform: mqtt
-#  state_topic: dummy/floorplan/sensor
-#  name: Floorplan
 
 - platform: mqtt
   state_topic: 'smartthings/Bedroom Motion/motion/state'
@@ -34,13 +31,6 @@
 - platform: mqtt
   state_topic: 'smartthings/Livingroom Motion/motion/state'
   name: 'Motion Sensor Livingroom'
-  payload_on: 'active'
-  payload_off: 'inactive'
-  device_class: motion
-
-- platform: mqtt
-  state_topic: 'smartthings/Cinema Motion/motion/state'
-  name: 'Motion Sensor Cinema'
   payload_on: 'active'
   payload_off: 'inactive'
   device_class: motion

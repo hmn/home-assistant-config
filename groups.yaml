@@ -1,16 +1,3 @@
-#floorplan:
-#  name: Floorplan
-#  view: yes
-#  entities:
-#    - group.zones
-#  icon: mdi:home
-
-#zones:
-#  name: Zones
-#  entities:
-#    - sensor.template_last_motion
-#    - binary_sensor.floorplan
-
 security:
   name: Security
   view: yes
@@ -92,6 +79,8 @@ temperature:
     - sensor.bedroom_temperature
     - sensor.livingroom_temperature
     - sensor.entrance_temperature
+    - sensor.fibaro_system_fgss101_smoke_sensor_temperature
+    - sensor.entrance_multisensor_temperature
 
 humidity:
   name: Humidity
@@ -103,6 +92,7 @@ humidity:
     - sensor.bedroom_humidity
     - sensor.livingroom_humidity
     - sensor.entrance_humidity
+    - sensor.entrance_multisensor_relative_humidity
 
 tado_link:
   name: tado link
@@ -174,9 +164,9 @@ motion:
     - binary_sensor.workshop_acceleration
     - binary_sensor.workshop_contact
     - binary_sensor.motion_sensor_bedroom
-    - binary_sensor.motion_sensor_cinema
     - binary_sensor.motion_sensor_kitchen
     - binary_sensor.motion_sensor_livingroom
+    - binary_sensor.entrance_multisensor_motion
 
 stocks:
   name: Stocks
@@ -216,4 +206,3 @@ smoke:
     - sensor.fibaro_system_fgss101_smoke_sensor_general
     - sensor.fibaro_system_fgss101_smoke_sensor_heat
     - sensor.fibaro_system_fgss101_smoke_sensor_smoke
-    - sensor.fibaro_system_fgss101_smoke_sensor_temperature

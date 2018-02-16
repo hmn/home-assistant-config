@@ -33,7 +33,7 @@ zone.crossfit:
 sensor.smappee_home_solar:
   hidden: true
 
-binary_sensor.aeotec_dsb05_multisensor_motion:
+binary_sensor.entrance_multisensor_motion:
   device_class: motion
 
 
@@ -56,13 +56,3 @@ group.all_devices:
 group.all_lights:
   hidden: false
 
-
-############################################################
-#
-# Floorplan
-#
-############################################################
-
-#binary_sensor.floorplan:
-#  custom_ui_state_card: floorplan
-#  config: !include floorplan.yaml
