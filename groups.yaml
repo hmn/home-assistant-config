@@ -80,7 +80,7 @@ temperature:
     - sensor.livingroom_temperature
     - sensor.entrance_temperature
     - sensor.fibaro_system_fgss101_smoke_sensor_temperature
-    - sensor.entrance_multisensor_temperature
+    - sensor.aeotec_dsb05_multisensor_temperature_2
 
 humidity:
   name: Humidity
@@ -92,7 +92,7 @@ humidity:
     - sensor.bedroom_humidity
     - sensor.livingroom_humidity
     - sensor.entrance_humidity
-    - sensor.entrance_multisensor_relative_humidity
+    - sensor.aeotec_dsb05_multisensor_relative_humidity_2
 
 tado_link:
   name: tado link
