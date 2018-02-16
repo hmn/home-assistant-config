@@ -4,7 +4,7 @@
       entity_id: binary_sensor.motion_sensor_kitchen
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.entrance_multisensor_motion
+      entity_id: binary_sensor.sensor_2
       to: 'on'
   condition:
 #    - condition: sun
@@ -25,7 +25,7 @@
       for:
         minutes: 2
     - platform: state
-      entity_id: binary_sensor.entrance_multisensor_motion
+      entity_id: binary_sensor.sensor_2
       to: 'off'
       for:
         minutes: 2
