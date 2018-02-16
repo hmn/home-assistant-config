@@ -3,6 +3,9 @@
     - platform: state
       entity_id: binary_sensor.motion_sensor_kitchen
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.aeotec_dsb05_multisensor_motion
+      to: 'on'
   condition:
 #    - condition: sun
 #      after: sunset
@@ -21,26 +24,35 @@
       to: 'off'
       for:
         minutes: 2
-  action:
-    service: scene.turn_on
-    entity_id: scene.kitchen_off
-
-- alias: "Motion stopped in Kitchen but light is on"
-  trigger:
     - platform: state
-      entity_id: light.kitchen
-      to: 'on'
+      entity_id: binary_sensor.aeotec_dsb05_multisensor_motion
+      to: 'off'
       for:
         minutes: 2
   condition:
     - condition: state
       entity_id: binary_sensor.motion_sensor_kitchen
       state: 'off'
-      for:
-        minutes: 2
   action:
     service: scene.turn_on
     entity_id: scene.kitchen_off
+
+# - alias: "Motion stopped in Kitchen but light is on"
+#   trigger:
+#     - platform: state
+#       entity_id: light.kitchen
+#       to: 'on'
+#       for:
+#         minutes: 2
+#   condition:
+#     - condition: state
+#       entity_id: binary_sensor.motion_sensor_kitchen
+#       state: 'off'
+#       for:
+#         minutes: 2
+#   action:
+#     service: scene.turn_on
+#     entity_id: scene.kitchen_off
 
 - alias: "Motion in Bedroom"
   trigger:
@@ -69,84 +81,84 @@
     service: scene.turn_on
     entity_id: scene.bedroom_off
 
-- alias: "Motion anywhere at night"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_kitchen
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_bedroom
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_cinema
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_livingroom
-      to: 'on'
-  condition:
-    - condition: sun
-      after: sunset
-      after_offset: "-1:00:00"
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-  action:
-    - service: light.hue_activate_scene
-      data:
-        group_name: "Cinema"
-        scene_name: "TV"
+# - alias: "Motion anywhere at night"
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_kitchen
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_bedroom
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_cinema
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_livingroom
+#       to: 'on'
+#   condition:
+#     - condition: sun
+#       after: sunset
+#       after_offset: "-1:00:00"
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#   action:
+#     - service: light.hue_activate_scene
+#       data:
+#         group_name: "Cinema"
+#         scene_name: "TV"
 
-- alias: "Motion anywhere when in sleep mode"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_kitchen
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_cinema
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_livingroom
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'on'
-  action:
-    - service: light.hue_activate_scene
-      data:
-        group_name: "Cinema"
-        scene_name: "Nightlight"
+# - alias: "Motion anywhere when in sleep mode"
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_kitchen
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_cinema
+#       to: 'on'
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_livingroom
+#       to: 'on'
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'on'
+#   action:
+#     - service: light.hue_activate_scene
+#       data:
+#         group_name: "Cinema"
+#         scene_name: "Nightlight"
 
-- alias: "Motion stopped in sleep mode"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_kitchen
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_cinema
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_livingroom
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.motion_sensor_kitchen
-      state: 'off'
-      for:
-        minutes: 5
-    - condition: state
-      entity_id: binary_sensor.motion_sensor_cinema
-      state: 'off'
-      for:
-        minutes: 5
-    - condition: state
-      entity_id: binary_sensor.motion_sensor_livingroom
-      state: 'off'
-      for:
-        minutes: 5
-  action:
-    service: scene.turn_on
-    entity_id: scene.sleep
+# - alias: "Motion stopped in sleep mode"
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_kitchen
+#       to: 'off'
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_cinema
+#       to: 'off'
+#     - platform: state
+#       entity_id: binary_sensor.motion_sensor_livingroom
+#       to: 'off'
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'on'
+#     - condition: state
+#       entity_id: binary_sensor.motion_sensor_kitchen
+#       state: 'off'
+#       for:
+#         minutes: 5
+#     - condition: state
+#       entity_id: binary_sensor.motion_sensor_cinema
+#       state: 'off'
+#       for:
+#         minutes: 5
+#     - condition: state
+#       entity_id: binary_sensor.motion_sensor_livingroom
+#       state: 'off'
+#       for:
+#         minutes: 5
+#   action:
+#     service: scene.turn_on
+#     entity_id: scene.sleep
