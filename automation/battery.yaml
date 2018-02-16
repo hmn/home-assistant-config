@@ -4,7 +4,7 @@
     - platform: template
       value_template: >
         {% for zwave in states.zwave if zwave.attributes.battery_level %}
-          {%- if zwave.attributes.battery_level | int < 60 -%}
+          {%- if zwave.attributes.battery_level | int < 50 -%}
             {{true}}
           {%- endif -%}
         {%- endfor -%}
