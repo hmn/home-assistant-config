@@ -81,4 +81,4 @@
       min_gradient: 0.00277
       device_class: moisture
 
-- platform: flic
+# - platform: flic
