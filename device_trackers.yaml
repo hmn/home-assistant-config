@@ -35,6 +35,8 @@
 #  username: !secret tado_username
 #  password: !secret tado_password
 
+- platform: bluetooth_tracker
+
 - platform: unifi
   host: 10.254.2.104
   username: !secret unifi_username
