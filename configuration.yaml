@@ -155,12 +155,12 @@ ios:
 sun:
 
 # Text to speech
-#tts:
+tts:
 #  #- platform: google
-#  - platform: amazon_polly
-#    aws_access_key_id: !secret aws_access_key_id
-#    aws_secret_access_key: !secret aws_secret_access_key
-#    region_name: !secret aws_region_name
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: !secret aws_region_name
 
 wake_on_lan:
 
@@ -224,8 +224,10 @@ logger:
     homeassistant.components.script: debug
     homeassistant.components.device_tracker: critical
     custom_components.media_player.ps4: debug
+    homeassistant.components.smappee: debug
     py.warnings: error
     pyps4: debug
+    smappy: debug
   #  pylgtv.webos_client: critical
 
 automation: !include automations.yaml
