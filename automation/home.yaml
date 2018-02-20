@@ -1,46 +1,17 @@
-- alias: "Henrik's iPhone is in Home zone"
+- alias: "Henrik is Home"
   trigger:
     - platform: zone
       entity_id: device_tracker.henrik_nicolaisens_iphone
       zone: zone.home
       event: enter
-  condition:
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'off'
-  action:
-    - service: script.mode_home
-
-- alias: "Henrik's iPhone on unifi is in Home zone"
-  trigger:
     - platform: zone
-      entity_id: device_tracker.henrik_nicolaisens_iphone_unifi
+      entity_id: device_tracker.henriks_iphone
       zone: zone.home
       event: enter
-  condition:
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'off'
-  action:
-    - service: script.mode_home
-
-- alias: "Henrik's iPhone is Home"
-  trigger:
-    - platform: state
-      entity_id: device_tracker.henrik_nicolaisens_iphone
-      to: 'home'
-  condition:
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'off'
-  action:
-    - service: script.mode_home
-
-- alias: "Henrik's iPhone on unifi is Home"
-  trigger:
-    - platform: state
-      entity_id: device_tracker.henrik_nicolaisens_iphone_unifi
-      to: 'home'
+    - platform: zone
+      entity_id: device_tracker.henriks_iphone_bt
+      zone: zone.home
+      event: enter
   condition:
     - condition: state
       entity_id: input_boolean.home
