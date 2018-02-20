@@ -55,4 +55,10 @@ group.all_devices:
   hidden: false
 group.all_lights:
   hidden: false
+group.tado_link:
+  hidden: true
+group.tado_mode:
+  hidden: true
+group.tado_power:
+  hidden: true
 
