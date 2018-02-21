@@ -6,6 +6,9 @@
     - platform: state
       entity_id: binary_sensor.sensor_2
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.kitchen_motion_sensor
+      to: 'on'
   condition:
 #    - condition: sun
 #      after: sunset
@@ -29,9 +32,14 @@
       to: 'off'
       for:
         minutes: 2
+    - platform: state
+      entity_id: binary_sensor.sensor_2
+      to: 'off'
+      for:
+        minutes: 2
   condition:
     - condition: state
-      entity_id: binary_sensor.motion_sensor_kitchen
+      entity_id: binary_sensor.kitchen_motion_sensor
       state: 'off'
   action:
     service: scene.turn_on
