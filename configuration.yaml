@@ -225,6 +225,7 @@ logger:
     homeassistant.components.device_tracker: critical
     custom_components.media_player.ps4: debug
     homeassistant.components.smappee: debug
+    homeassistant.deconz: debug
     py.warnings: error
     pyps4: debug
     smappy: debug
