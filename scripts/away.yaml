@@ -9,7 +9,7 @@ mode_away:
     - service: script.turn_on
       entity_id: script.computer_off
     - service: scene.turn_on
-      entity_id: scene.away
+      entity_id: scene.all_off
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.sleep

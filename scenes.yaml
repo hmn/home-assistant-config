@@ -20,10 +20,24 @@
     group.all_lights:
       state: off
 
-- name: Away
+- name: All OFF
   entities:
     group.all_lights:
       state: off
+
+- name: All ON
+  entities:
+    light.bedroom_2:
+      state: on
+      brightness: 255
+    light.bedroom:
+      state: on
+      brightness: 255
+    light.kitchen:
+      state: on
+      brightness: 255
+    light.cinema:
+      state: on
 
 - name: Kitchen OFF
   entities:

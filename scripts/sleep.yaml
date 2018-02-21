@@ -10,4 +10,4 @@ mode_sleep:
     - service: script.turn_on
       entity_id: script.computer_off
     - service: scene.turn_on
-      entity_id: scene.away
+      entity_id: scene.all_off

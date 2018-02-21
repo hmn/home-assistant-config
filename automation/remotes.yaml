@@ -1,0 +1,17 @@
+- alias: "IKEA remote control turn on lights"
+  trigger:
+    - platform: state
+      entity_id: light.tradfri_remote_control_1
+      to: 'on'
+  action:
+    service: scene.turn_on
+    entity_id: scene.all_on
+
+- alias: "IKEA remote control turn off lights"
+  trigger:
+    - platform: state
+      entity_id: light.tradfri_remote_control_1
+      to: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.all_off
