@@ -64,6 +64,16 @@
       state: on
       brightness: 255
 
+- name: Entrance OFF
+  entities:
+    light.entrance:
+      state: off
+- name: Entrance ON
+  entities:
+    light.entrance:
+      state: on
+      brightness: 255
+
 - name: Cinema OFF
   entities:
     light.cinema:

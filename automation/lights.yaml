@@ -33,7 +33,7 @@
       for:
         minutes: 2
     - platform: state
-      entity_id: binary_sensor.sensor_2
+      entity_id: binary_sensor.kitchen_motion_sensor
       to: 'off'
       for:
         minutes: 2
@@ -88,6 +88,31 @@
   action:
     service: scene.turn_on
     entity_id: scene.bedroom_off
+
+
+- alias: "Motion in Entrance"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.sensor_2
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.entrance_on
+
+- alias: "Motion stopped in Entrance"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.sensor_2
+      to: 'off'
+      for:
+        minutes: 2
+  action:
+    service: scene.turn_on
+    entity_id: scene.entrance_off
 
 # - alias: "Motion anywhere at night"
 #   trigger:
