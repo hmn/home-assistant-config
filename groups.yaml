@@ -100,7 +100,16 @@ humidity:
     - sensor.aeotec_dsb05_multisensor_relative_humidity_2
     - sensor.bathroom_humidity_statistics_mean
     - sensor.weather_humidity
+
+weather:
+  name: Weather
+  view: no
+  entities:
+    - sensor.weather_temperature
+    - sensor.weather_dewpoint_temperature
+    - sensor.weather_humidity
     - sensor.weather_wind_speed
+    - sensor.weather_precipitation
 
 luminance:
   name: Luminance
