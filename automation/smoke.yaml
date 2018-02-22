@@ -27,6 +27,7 @@
   trigger:
     platform: state
     entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
+    from: '0'
     to: '255'
   action:
     - service: notify.all
