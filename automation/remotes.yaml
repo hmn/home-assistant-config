@@ -1,17 +1,29 @@
 - alias: "IKEA remote control turn on lights"
   trigger:
-    - platform: state
-      entity_id: light.tradfri_remote_control_1
-      to: 'on'
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: tradfri_remote_control
+        event: 1002
+  condition:
+    - condition: state
+      entity_id: light.entrance_light_1
+      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.all_on
 
 - alias: "IKEA remote control turn off lights"
   trigger:
-    - platform: state
-      entity_id: light.tradfri_remote_control_1
-      to: 'off'
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: tradfri_remote_control
+        event: 1002
+  condition:
+    - condition: state
+      entity_id: light.entrance_light_1
+      state: 'on'
   action:
     service: scene.turn_on
     entity_id: scene.all_off
