@@ -78,7 +78,7 @@
       entity_id: sensor.bathroom_humidity
       friendly_name: Bathroom humidity rising
       sample_duration: 7200
-      min_gradient: 0.00277
+      min_gradient: 0.005556
       device_class: moisture
 
 # - platform: flic
