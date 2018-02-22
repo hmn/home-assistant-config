@@ -1,8 +1,8 @@
 - alias: "Motion in Kitchen"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_kitchen
-      to: 'on'
+    # - platform: state
+    #   entity_id: binary_sensor.motion_sensor_kitchen
+    #   to: 'on'
     - platform: state
       entity_id: binary_sensor.sensor_2
       to: 'on'
@@ -19,11 +19,11 @@
 
 - alias: "Motion stopped in Kitchen"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_kitchen
-      to: 'off'
-      for:
-        minutes: 2
+    # - platform: state
+    #   entity_id: binary_sensor.motion_sensor_kitchen
+    #   to: 'off'
+    #   for:
+    #     minutes: 2
     - platform: state
       entity_id: binary_sensor.sensor_2
       to: 'off'
