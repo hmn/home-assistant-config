@@ -85,6 +85,7 @@ temperature:
     - sensor.fibaro_system_fgss101_smoke_sensor_temperature
     - sensor.aeotec_dsb05_multisensor_temperature_2
     - sensor.kitchen_motion_sensor
+    - sensor.serverroom_temperature
 
 humidity:
   name: Humidity
@@ -100,6 +101,13 @@ humidity:
     - sensor.bathroom_humidity_statistics_mean
     - sensor.weather_humidity
     - sensor.weather_wind_speed
+
+luminance:
+  name: Luminance
+  view: no
+  entities:
+    - sensor.aeotec_dsb05_multisensor_luminance_2
+    - sensor.kitchen_motion_sensor_2
 
 tado_link:
   name: tado link
