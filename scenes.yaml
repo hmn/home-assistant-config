@@ -68,9 +68,14 @@
   entities:
     light.entrance:
       state: off
+    light.entrance_2:
+      state: off
 - name: Entrance ON
   entities:
     light.entrance:
+      state: on
+      brightness: 255
+    light.entrance_2:
       state: on
       brightness: 255
 
