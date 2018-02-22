@@ -72,12 +72,10 @@ history:
 
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
-  purge_keep_days: 30
-  purge_interval: 1
   db_url: !secret db_url
-  # exclude:
-  #   domains:
-  #     - climate
+  exclude:
+    domains:
+      - climate
   #   entities:
   #     - sun.sun
   #     - sensor.date
@@ -138,16 +136,16 @@ recorder:
 
 # View all events in a logbook
 logbook:
-  # exclude:
-  #   entities:
-  #     - sensor.bathroom_temerature
-  #     - sensor.bathroom2_temerature
-  #     - sensor.bedroom_temerature
-  #     - sensor.cinema_temerature
-  #     - sensor.kitchen_temerature
-  #     - sensor.livingroom_temerature
-  #   domains:
-  #     - climate
+  exclude:
+    entities:
+      - sensor.bathroom_temerature
+      - sensor.bathroom2_temerature
+      - sensor.bedroom_temerature
+      - sensor.cinema_temerature
+      - sensor.kitchen_temerature
+      - sensor.livingroom_temerature
+    domains:
+      - climate
 
 ios:
 
