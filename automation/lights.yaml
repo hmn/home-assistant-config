@@ -45,9 +45,9 @@
 
 - alias: "Motion in Bedroom"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_bedroom
-      to: 'on'
+    # - platform: state
+    #   entity_id: binary_sensor.motion_sensor_bedroom
+    #   to: 'on'
     - platform: state
       entity_id: binary_sensor.bedroom_motion_sensor
       to: 'on'
@@ -61,20 +61,16 @@
 
 - alias: "Motion stopped in Bedroom"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_bedroom
-      to: 'off'
-      for:
-        minutes: 2
+    # - platform: state
+    #   entity_id: binary_sensor.motion_sensor_bedroom
+    #   to: 'off'
+    #   for:
+    #     minutes: 2
     - platform: state
       entity_id: binary_sensor.bedroom_motion_sensor
       to: 'off'
       for:
         minutes: 2
-  condition:
-    - condition: state
-      entity_id: binary_sensor.motion_sensor_bedroom
-      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.bedroom_off
