@@ -183,7 +183,7 @@ motion:
     - binary_sensor.motion_sensor_livingroom
     - binary_sensor.sensor_2
     - binary_sensor.kitchen_motion_sensor
-    - binary_sensor.tradfri_motion_sensor
+    - binary_sensor.bedroom_motion_sensor
 
 stocks:
   name: Stocks
