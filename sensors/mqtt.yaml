@@ -1,4 +1,13 @@
 - platform: mqtt
+  state_topic: 'iotbutton/G030PT033071JFHV'
+  name: 'Doorbell'
+  value_template: '{{ value_json.clickType }}'
+  json_attributes:
+    - serialNumber
+    - batteryVoltage
+    - clickType
+
+- platform: mqtt
   state_topic: 'smartthings/Serverroom/temperature/state'
   name: 'Serverroom temperature'
   unit_of_measurement: 'c'
