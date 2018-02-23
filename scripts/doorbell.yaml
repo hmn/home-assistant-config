@@ -1,0 +1,12 @@
+doorbell:
+  alias: Doorbell pressed
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.kitchen_on
+    - service: media_player.media_pause
+      entity_id: media_player.apple_tv
+    - service: media_player.media_pause
+      entity_id: media_player.apple_tv_2
+    - service: notify.all
+      data:
+        message: "Doorbell was pressed, you have guests."
