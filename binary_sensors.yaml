@@ -14,55 +14,6 @@
     User-Agent: Home Assistant
     Content-Type: application/json
 
-- platform: mqtt
-  state_topic: 'smartthings/Bedroom Motion/motion/state'
-  name: 'Motion Sensor Bedroom'
-  payload_on: 'active'
-  payload_off: 'inactive'
-  device_class: motion
-
-- platform: mqtt
-  state_topic: 'smartthings/Kitchen Motion/motion/state'
-  name: 'Motion Sensor Kitchen'
-  payload_on: 'active'
-  payload_off: 'inactive'
-  device_class: motion
-
-- platform: mqtt
-  state_topic: 'smartthings/Livingroom Motion/motion/state'
-  name: 'Motion Sensor Livingroom'
-  payload_on: 'active'
-  payload_off: 'inactive'
-  device_class: motion
-
-- platform: mqtt
-  state_topic: 'smartthings/Entrance/contact/state'
-  name: 'Entrance Contact'
-  payload_on: 'open'
-  payload_off: 'closed'
-  device_class: opening
-
-- platform: mqtt
-  state_topic: 'smartthings/Workshop/contact/state'
-  name: 'Workshop Contact'
-  payload_on: 'open'
-  payload_off: 'closed'
-  device_class: opening
-
-- platform: mqtt
-  state_topic: 'smartthings/Entrance/acceleration/state'
-  name: 'Entrance Acceleration'
-  payload_on: 'active'
-  payload_off: 'inactive'
-  device_class: moving
-
-- platform: mqtt
-  state_topic: 'smartthings/Workshop/acceleration/state'
-  name: 'Workshop Acceleration'
-  payload_on: 'active'
-  payload_off: 'inactive'
-  device_class: moving
-
 - platform: ping
   host: 10.254.2.128
   name: Nintendo Switch

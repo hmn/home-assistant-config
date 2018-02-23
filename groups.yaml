@@ -85,7 +85,6 @@ temperature:
     - sensor.fibaro_system_fgss101_smoke_sensor_temperature
     - sensor.aeotec_dsb05_multisensor_temperature_2
     - sensor.kitchen_motion_sensor
-    - sensor.serverroom_temperature
 
 humidity:
   name: Humidity
@@ -177,19 +176,6 @@ motion:
   view: no
   entities:
     - sensor.template_last_motion
-    - sensor.entrance_tilt_x
-    - sensor.entrance_tilt_y
-    - sensor.entrance_tilt_z
-    - sensor.workshop_tilt_x
-    - sensor.workshop_tilt_y
-    - sensor.workshop_tilt_z
-    - binary_sensor.entrance_acceleration
-    - binary_sensor.entrance_contact
-    - binary_sensor.workshop_acceleration
-    - binary_sensor.workshop_contact
-    - binary_sensor.motion_sensor_bedroom
-    - binary_sensor.motion_sensor_kitchen
-    - binary_sensor.motion_sensor_livingroom
     - binary_sensor.sensor_2
     - binary_sensor.kitchen_motion_sensor
     - binary_sensor.bedroom_motion_sensor
