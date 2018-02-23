@@ -1,0 +1,8 @@
+- alias: 'Doorbell pressed'
+  trigger:
+    platform: state
+    entity_id: sensor.doorbell
+  action:
+    service: notify.all
+    data_template:
+      message: "Doorbell was pressed, you have guests."
