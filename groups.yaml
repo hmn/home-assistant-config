@@ -203,9 +203,9 @@ energy:
     - sensor.fibaro_wall_plug_exporting
     - sensor.fibaro_wall_plug_power
     - sensor.fibaro_wall_plug_power_2
-    - sensor.smappee_home_always_on
-    - sensor.smappee_home_current
-    - sensor.smappee_home_current_today
+    - sensor.smappee_home_active_power
+    - sensor.smappee_home_always_on_today
+    - sensor.smappee_home_power_today
     - sensor.smappee_home_solar
     - sensor.smappee_home_solar_today
 
