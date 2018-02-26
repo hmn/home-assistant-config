@@ -184,11 +184,11 @@ motion:
   name: Motion
   view: no
   entities:
-    - binary_sensor.sensor_2
     - binary_sensor.kitchen_motion_sensor
     - binary_sensor.bedroom_motion_sensor
     - binary_sensor.entrance_motion_sensor_1
     - binary_sensor.entrance_motion_sensor_2
+    - binary_sensor.entrance_motion_sensor_3
 
 stocks:
   name: Stocks
