@@ -16,31 +16,31 @@
     service: scene.turn_on
     entity_id: scene.kitchen_off
 
-- alias: "Apple TV is paused"
-  trigger:
-    - platform: state
-      entity_id: media_player.apple_tv_2
-      to: 'paused'
-      from: 'playing'
-      for:
-        seconds: 15
-  action:
-    service: scene.turn_on
-    entity_id: scene.kitchen_on
-
-- alias: "Apple TV is idle"
-  trigger:
-    - platform: state
-      entity_id: media_player.apple_tv_2
-      to: 'idle'
-      from: 'playing'
-    - platform: state
-      entity_id: media_player.apple_tv_2
-      to: 'idle'
-      from: 'paused'
-  action:
-    service: scene.turn_on
-    entity_id: scene.kitchen_on
+# - alias: "Apple TV is paused"
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.apple_tv_2
+#       to: 'paused'
+#       from: 'playing'
+#       for:
+#         seconds: 15
+#   action:
+#     service: scene.turn_on
+#     entity_id: scene.kitchen_on
+#
+# - alias: "Apple TV is idle"
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.apple_tv_2
+#       to: 'idle'
+#       from: 'playing'
+#     - platform: state
+#       entity_id: media_player.apple_tv_2
+#       to: 'idle'
+#       from: 'paused'
+#   action:
+#     service: scene.turn_on
+#     entity_id: scene.kitchen_on
 
 - alias: "PS4 turned on"
   trigger:
