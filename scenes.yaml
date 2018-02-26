@@ -66,16 +66,26 @@
 
 - name: Entrance OFF
   entities:
-    light.entrance:
-      state: off
     light.entrance_2:
+      state: off
+    light.entrance:
       state: off
 - name: Entrance ON
   entities:
+    light.entrance_2:
+      state: on
+      brightness: 255
     light.entrance:
       state: on
       brightness: 255
-    light.entrance_2:
+
+- name: Entrance Closet OFF
+  entities:
+    light.entrance_closet_light_1:
+      state: off
+- name: Entrance Closet ON
+  entities:
+    light.entrance_closet_light_1:
       state: on
       brightness: 255
 

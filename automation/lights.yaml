@@ -100,6 +100,41 @@
     service: scene.turn_on
     entity_id: scene.entrance_off
 
+
+- alias: "Motion in Entrance Closet"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.entrance_closet_on
+
+- alias: "Motion stopped in Entrance Closet"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
+      to: 'off'
+      for:
+        minutes: 2
+  condition:
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_2
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
+      state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.entrance_closet_off
+
 # - alias: "Motion anywhere at night"
 #   trigger:
 #     - platform: state
