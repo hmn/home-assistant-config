@@ -1,10 +1,10 @@
 - alias: "Motion in Kitchen"
   trigger:
-    # - platform: state
-    #   entity_id: binary_sensor.motion_sensor_kitchen
-    #   to: 'on'
     - platform: state
-      entity_id: binary_sensor.sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_2
       to: 'on'
     - platform: state
       entity_id: binary_sensor.kitchen_motion_sensor
@@ -19,16 +19,6 @@
 
 - alias: "Motion stopped in Kitchen"
   trigger:
-    # - platform: state
-    #   entity_id: binary_sensor.motion_sensor_kitchen
-    #   to: 'off'
-    #   for:
-    #     minutes: 2
-    - platform: state
-      entity_id: binary_sensor.sensor_2
-      to: 'off'
-      for:
-        minutes: 2
     - platform: state
       entity_id: binary_sensor.kitchen_motion_sensor
       to: 'off'
@@ -45,9 +35,6 @@
 
 - alias: "Motion in Bedroom"
   trigger:
-    # - platform: state
-    #   entity_id: binary_sensor.motion_sensor_bedroom
-    #   to: 'on'
     - platform: state
       entity_id: binary_sensor.bedroom_motion_sensor
       to: 'on'
@@ -61,11 +48,6 @@
 
 - alias: "Motion stopped in Bedroom"
   trigger:
-    # - platform: state
-    #   entity_id: binary_sensor.motion_sensor_bedroom
-    #   to: 'off'
-    #   for:
-    #     minutes: 2
     - platform: state
       entity_id: binary_sensor.bedroom_motion_sensor
       to: 'off'
@@ -79,7 +61,13 @@
 - alias: "Motion in Entrance"
   trigger:
     - platform: state
-      entity_id: binary_sensor.sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_2
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
       to: 'on'
   condition:
     - condition: state
@@ -92,10 +80,22 @@
 - alias: "Motion stopped in Entrance"
   trigger:
     - platform: state
-      entity_id: binary_sensor.sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_1
       to: 'off'
       for:
         minutes: 2
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_2
+      to: 'off'
+      for:
+        minutes: 2
+  condition:
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_2
+      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.entrance_off
