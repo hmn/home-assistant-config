@@ -52,6 +52,7 @@ climate:
   view: no
   entities:
     - switch.particle_relay1
+    - binary_sensor.particle_relay_reduced_heating
     - climate.bathroom
     - climate.cinema
     - climate.kitchen
@@ -100,6 +101,8 @@ humidity:
     - sensor.bathroom_humidity_statistics_mean
     - sensor.weather_humidity
     - sensor.fibaro_wall_plug_relative_humidity
+    - binary_sensor.bathroom_humidity_falling
+    - binary_sensor.bathroom_humidity_rising
 
 weather:
   name: Weather
