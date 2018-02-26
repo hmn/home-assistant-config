@@ -27,3 +27,25 @@
   action:
     service: scene.turn_on
     entity_id: scene.all_off
+
+- alias: "Cinema remote control turn on lights"
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: cinema_dimmer_switch
+        event: 1002
+  action:
+    service: scene.turn_on
+    entity_id: scene.all_on
+
+- alias: "Cinema remote control turn off lights"
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: cinema_dimmer_switch
+        event: 4002
+  action:
+    service: scene.turn_on
+    entity_id: scene.all_off
