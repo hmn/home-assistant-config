@@ -99,6 +99,7 @@ humidity:
     - sensor.aeotec_dsb05_multisensor_relative_humidity_2
     - sensor.bathroom_humidity_statistics_mean
     - sensor.weather_humidity
+    - sensor.fibaro_wall_plug_relative_humidity
 
 weather:
   name: Weather
@@ -202,6 +203,7 @@ energy:
     - sensor.fibaro_wall_plug_exporting
     - sensor.fibaro_wall_plug_power
     - sensor.fibaro_wall_plug_power_2
+    - sensor.fibaro_wall_plug_velocity
     - sensor.smappee_home_active_power
     - sensor.smappee_home_always_on_today
     - sensor.smappee_home_power_today
