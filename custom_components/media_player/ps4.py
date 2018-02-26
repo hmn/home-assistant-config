@@ -32,7 +32,7 @@ CONF_CREDENTIALS_FILENAME = "credentials_filename"
 CONF_GAMES_FILENAME = 'games_filename'
 CONF_LOCAL_STORE = "local_store"
 
-CREDENTIALS_FILE = None
+CREDENTIALS_FILE = ''
 PS4_GAMES_FILE = '.ps4-games.json'
 MEDIA_IMAGE_DEFAULT = None
 LOCAL_STORE = 'games'
@@ -147,7 +147,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     else:
         host = config.get(CONF_HOST)
         name = config.get(CONF_NAME, DEFAULT_NAME)
-        if config.get(CONF_CREDENTIALS_FILENAME) is not None:
+        if config.get(CONF_CREDENTIALS_FILENAME) != '':
             credentials = hass.config.path(
                 config.get(CONF_CREDENTIALS_FILENAME))
         else:
