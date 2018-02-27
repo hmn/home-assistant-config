@@ -19,7 +19,7 @@ from homeassistant.helpers import config_validation as cv
 from homeassistant.util.json import load_json, save_json
 
 REQUIREMENTS = [
-    'https://github.com/hthiery/python-ps4/archive/master.zip'
+    'https://github.com/hmn/python-ps4/archive/master.zip'
     '#pyps4==dev']
 # REQUIREMENTS = ['pyps4==0.1.2']
 
