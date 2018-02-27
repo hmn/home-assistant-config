@@ -18,7 +18,10 @@ from homeassistant.const import (
 from homeassistant.helpers import config_validation as cv
 from homeassistant.util.json import load_json, save_json
 
-REQUIREMENTS = ['pyps4==0.1.2']
+REQUIREMENTS = [
+    'https://github.com/hthiery/python-ps4/archive/master.zip'
+    '#pyps4==dev']
+# REQUIREMENTS = ['pyps4==0.1.2']
 
 _CONFIGURING = {}
 _LOGGER = logging.getLogger(__name__)
@@ -271,7 +274,7 @@ class PS4Device(MediaPlayerDevice):
             if 'attributes' in item:
                 game = item['attributes']
                 if 'game-content-type' in game and \
-                    game['game-content-type'] in ['App', 'Game', 'Full Game']:
+                   game['game-content-type'] in ['App', 'Game', 'Full Game']:
                     if 'thumbnail-url-base' in game:
                         cover_art = game['thumbnail-url-base']
                         cover_art += '?w=512&h=512'
