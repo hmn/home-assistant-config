@@ -216,9 +216,12 @@ energy:
     - sensor.fibaro_wall_plug_velocity
     - sensor.smappee_home_active_power
     - sensor.smappee_home_always_on_today
+    - sensor.smappee_home_current
+    - sensor.smappee_home_power_factor
     - sensor.smappee_home_power_today
     - sensor.smappee_home_solar
     - sensor.smappee_home_solar_today
+    - sensor.smappee_home_voltage
 
 smoke:
   name: Smoke
