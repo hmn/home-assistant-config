@@ -218,17 +218,14 @@ rest_command:
     content_type: 'application/json'
 
 logger:
-  default: debug
-  #default: info
+  #default: debug
+  default: info
   logs:
-    homeassistant.components.automation: debug
-    homeassistant.components.script: debug
-    homeassistant.components.device_tracker: critical
     custom_components.media_player.ps4: debug
     homeassistant.components.smappee: debug
-    homeassistant.deconz: debug
-    homeassistant.components.deconz: debug
-    pydeconz: debug
+    #homeassistant.deconz: debug
+    #homeassistant.components.deconz: debug
+    #pydeconz: debug
     py.warnings: error
     pyps4: debug
     smappy: debug
