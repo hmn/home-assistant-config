@@ -218,8 +218,8 @@ rest_command:
     content_type: 'application/json'
 
 logger:
-  #default: debug
-  default: info
+  default: debug
+  #default: info
   logs:
     homeassistant.components.automation: debug
     homeassistant.components.script: debug
