@@ -232,3 +232,14 @@ smoke:
     - sensor.fibaro_system_fgss101_smoke_sensor_general
     - sensor.fibaro_system_fgss101_smoke_sensor_heat
     - sensor.fibaro_system_fgss101_smoke_sensor_smoke
+
+battery:
+  name: Battery
+  view: no
+  entities:
+    - sensor.cinema_dimmer_switch_battery_level
+    - sensor.henrik__ipad_battery_level
+    - sensor.henrik__ipad_battery_state
+    - sensor.henriks_iphone_battery_level
+    - sensor.henriks_iphone_battery_state
+    - sensor.tradfri_remote_control_battery_level
