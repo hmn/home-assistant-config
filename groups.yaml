@@ -243,3 +243,4 @@ battery:
     - sensor.henriks_iphone_battery_level
     - sensor.henriks_iphone_battery_state
     - sensor.tradfri_remote_control_battery_level
+    - sensor.fibaro_system_fgss101_smoke_sensor_power
