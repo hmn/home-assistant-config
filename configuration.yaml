@@ -229,6 +229,7 @@ logger:
     py.warnings: error
     pyps4: debug
     smappy: debug
+    pyps4.connection: debug
   #  pylgtv.webos_client: critical
 
 automation: !include automations.yaml
