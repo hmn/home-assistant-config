@@ -21,6 +21,8 @@ from homeassistant.util.json import load_json, save_json
 REQUIREMENTS = [
     'https://github.com/hmn/python-ps4/archive/master.zip'
     '#pyps4==dev']
+#    'https://github.com/hthiery/python-ps4/archive/master.zip'
+#    '#pyps4==dev']
 # REQUIREMENTS = ['pyps4==0.1.2']
 
 _CONFIGURING = {}
@@ -231,7 +233,8 @@ class PS4Device(MediaPlayerDevice):
                 self._media_content_id = None
                 self._current_source = None
                 self._current_source_id = None
-        except socket.timeout as ex:
+        except socket.timeout as error:
+            _LOGGER.debug("PS4 socket timed out, %s", error)
             self._state = STATE_OFF
             self._media_title = None
             self._media_content_id = None
