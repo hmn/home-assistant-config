@@ -13,6 +13,9 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
   action:
     service: scene.turn_on
     entity_id: scene.kitchen_on
@@ -42,6 +45,9 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
   action:
     service: scene.turn_on
     entity_id: scene.bedroom_on
@@ -73,6 +79,9 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
   action:
     service: scene.turn_on
     entity_id: scene.entrance_on
@@ -110,6 +119,9 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
   action:
     service: scene.turn_on
     entity_id: scene.entrance_closet_on
@@ -121,16 +133,6 @@
       to: 'off'
       for:
         minutes: 2
-  condition:
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_1
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_3
-      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.entrance_closet_off
