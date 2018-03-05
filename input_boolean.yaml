@@ -13,8 +13,8 @@ tv_stay_on:
 force_home_mode:
   name: Force Home mode on
 
-show_tado_groups:
-  name: Show Tado Groups
+# show_tado_groups:
+#   name: Show Tado Groups
 
 sleep:
   name: Sleep
