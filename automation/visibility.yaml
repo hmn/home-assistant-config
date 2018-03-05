@@ -8,7 +8,7 @@
   trigger:
     platform: state
     entity_id: input_boolean.show_tado_groups
-    state: on
+    to: 'on'
   action:
     service: group.set_visibility
     entity_id:
@@ -22,7 +22,7 @@
   trigger:
     platform: state
     entity_id: input_boolean.show_tado_groups
-    state: off
+    to: 'off'
   action:
     service: group.set_visibility
     entity_id:
