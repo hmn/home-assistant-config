@@ -8,5 +8,8 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.force_home_mode
+      state: 'off'
   action:
     - service: script.mode_away
