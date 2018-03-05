@@ -1,0 +1,33 @@
+############################################################
+#
+# Group visibility handling
+#
+############################################################
+
+- alias: 'Show Tado Groups'
+  trigger:
+    platform: state
+    entity_id: input_boolean.show_tado_groups
+    state: on
+  action:
+    service: group.set_visibility
+    entity_id:
+      - group.tado_link
+      - group.tado_mode
+      - group.tado_power
+    data:
+      visible: True
+
+- alias: 'Hide Tado Groups'
+  trigger:
+    platform: state
+    entity_id: input_boolean.show_tado_groups
+    state: off
+  action:
+    service: group.set_visibility
+    entity_id:
+      - group.tado_link
+      - group.tado_mode
+      - group.tado_power
+    data:
+      visible: False
