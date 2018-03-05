@@ -8,7 +8,5 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: time
-      after: '1:00'
   action:
     - service: script.mode_away
