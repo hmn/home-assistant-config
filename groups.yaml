@@ -244,3 +244,10 @@ battery:
     - sensor.henriks_iphone_battery_state
     - sensor.tradfri_remote_control_battery_level
     - sensor.fibaro_system_fgss101_smoke_sensor_power
+    - sensor.bedroom_motion_sensor_battery
+    - sensor.bedroom_motion_sensor_battery_2
+    - sensor.entrance_motion_sensor_1_battery
+    - sensor.entrance_multisensor_battery
+    - sensor.fibaro_system_fgss101_smoke_sensor_battery
+    - sensor.kitchen_motion_sensor_battery
+    - sensor.kitchen_motion_sensor_battery_2
