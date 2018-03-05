@@ -161,7 +161,7 @@ input_number:
     name: "Max Alert Threshold"
     icon: mdi:arrow-collapse-up
     mode: slider
-    min: -1
+    min: 0
     max: 100
     initial: 40
 
@@ -169,7 +169,7 @@ input_number:
     name: "Min Alert Threshold"
     icon: mdi:arrow-collapse-down
     mode: slider
-    min: -1
+    min: 0
     max: 100
     initial: 100
 
