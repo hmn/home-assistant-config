@@ -4,12 +4,12 @@ mode_away:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.home
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.sleep
     - service: script.turn_on
       entity_id: script.climate_save_mode
     - service: script.turn_on
       entity_id: script.computer_off
     - service: scene.turn_on
       entity_id: scene.all_off
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.sleep
