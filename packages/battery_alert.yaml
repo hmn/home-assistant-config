@@ -187,7 +187,7 @@ automation:
       entity_id:
         - input_number.battery_alert_threshold_min
         - input_number.battery_alert_threshold_max
-  action:
+  condition:
     - condition: template
       value_template: >
         {% macro battery_level() %}
@@ -215,6 +215,7 @@ automation:
           {%- endfor -%}
         {% endmacro %}
         {{ battery_level() | trim != "" and not is_state_attr('persistent_notification.lowbatteryalert', 'message', battery_level()) }}
+  action:
     - service: persistent_notification.create
       data_template:
         title: "Low Battery levels"
@@ -246,6 +247,7 @@ automation:
           {% endmacro %}
           {{ battery_level() }}
 
+
 - alias: battery_notification_clear
   trigger:
     - platform: time
@@ -255,7 +257,7 @@ automation:
       entity_id:
         - input_number.battery_alert_threshold_min
         - input_number.battery_alert_threshold_max
-  action:
+  condition:
     - condition: template
       value_template: >
         {% macro battery_level() %}
@@ -283,17 +285,18 @@ automation:
           {%- endfor -%}
         {% endmacro %}
         {{ battery_level() | trim == "" }}
+  action:
     - service: persistent_notification.dismiss
       data:
         notification_id: low-battery-alert
 
-- alias: battery_alert_slack
+- alias: battery_alert_all
   trigger:
     - platform: time
       at: '10:00:00'
     - platform: time
       at: '18:00:00'
-  action:
+  condition:
     - condition: template
       value_template: >
         {% macro battery_level() %}
@@ -321,7 +324,8 @@ automation:
           {%- endfor -%}
         {% endmacro %}
         {{ battery_level() | trim != "" }}
-    - service: notify.slack_notify
+  action:
+    - service: notify.all
       data_template:
         message: "Low Battery Levels"
         data:
