@@ -193,8 +193,8 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
-#homekit:
-#  pincode: !secret homekit_pincode
+homekit:
+  pincode: !secret homekit_pincode
 
 alexa:
 
