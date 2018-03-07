@@ -4,6 +4,10 @@
       entity_id: device_tracker.henrik_nicolaisens_iphone
       zone: zone.home
       event: leave
+    - platform: zone
+      entity_id: device_tracker.henrik_nicolaisens_iphone
+      zone: zone.work
+      event: enter
   condition:
     - condition: state
       entity_id: input_boolean.home

@@ -4,14 +4,6 @@
       entity_id: device_tracker.henrik_nicolaisens_iphone
       zone: zone.home
       event: enter
-    - platform: zone
-      entity_id: device_tracker.henriks_iphone
-      zone: zone.home
-      event: enter
-    - platform: zone
-      entity_id: device_tracker.henriks_iphone_bt
-      zone: zone.home
-      event: enter
   condition:
     - condition: state
       entity_id: input_boolean.home
