@@ -247,7 +247,11 @@ battery:
     - sensor.bedroom_motion_sensor_battery
     - sensor.bedroom_motion_sensor_battery_2
     - sensor.entrance_motion_sensor_1_battery
+    - sensor.entrance_motion_sensor_2_battery
     - sensor.entrance_multisensor_battery
     - sensor.fibaro_system_fgss101_smoke_sensor_battery
     - sensor.kitchen_motion_sensor_battery
     - sensor.kitchen_motion_sensor_battery_2
+    - sensor.__battery
+    - sensor.henrik_nicolaisen_battery
+    - sensor.henriks_ipad_battery
