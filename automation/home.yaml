@@ -10,3 +10,19 @@
       state: 'off'
   action:
     - service: script.mode_home
+
+- alias: "Henrik is already Home"
+  trigger:
+    - platform: homeassistant
+      event: start
+  condition:
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'off'
+    - condition: state
+      entity_id: device_tracker.henrik_nicolaisens_iphone
+      state: 'home'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.home
