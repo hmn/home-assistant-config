@@ -1,12 +1,6 @@
 - alias: "Motion in Kitchen"
   trigger:
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_1
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
-      to: 'on'
-    - platform: state
       entity_id: binary_sensor.kitchen_motion_sensor
       to: 'on'
   condition:
@@ -98,12 +92,20 @@
       to: 'off'
       for:
         minutes: 2
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
+      to: 'off'
+      for:
+        minutes: 2
   condition:
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_1
       state: 'off'
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_2
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
       state: 'off'
   action:
     service: scene.turn_on
@@ -133,6 +135,16 @@
       to: 'off'
       for:
         minutes: 2
+  condition:
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_2
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
+      state: 'off'
   action:
     service: scene.turn_on
     entity_id: scene.entrance_closet_off
