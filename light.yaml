@@ -17,9 +17,9 @@
   entities:
     - light.bedroom_light
 
-#- platform: hue
-#  allow_unreachable: true
-#  allow_hue_groups: true
+- platform: hue
+  allow_unreachable: true
+  allow_hue_groups: false
 
 #- platform: flux_led
 #  devices:
