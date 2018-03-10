@@ -22,12 +22,12 @@ from homeassistant.const import (
 from homeassistant.helpers import config_validation as cv
 from homeassistant.util.json import load_json, save_json
 
-# REQUIREMENTS = [
-#     'https://github.com/hmn/python-ps4/archive/master.zip'
-#     '#pyps4==dev']
+REQUIREMENTS = [
+    'https://github.com/hmn/python-ps4/archive/master.zip'
+    '#pyps4==dev']
 #    'https://github.com/hthiery/python-ps4/archive/master.zip'
 #    '#pyps4==dev']
-REQUIREMENTS = ['pyps4==0.1.3']
+# REQUIREMENTS = ['pyps4==0.1.3']
 
 _CONFIGURING = {}
 _LOGGER = logging.getLogger(__name__)
