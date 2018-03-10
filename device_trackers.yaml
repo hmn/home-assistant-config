@@ -31,9 +31,9 @@
 
 #- platform: owntracks
 
-- platform: tado
-  username: !secret tado_username
-  password: !secret tado_password
+#- platform: tado
+#  username: !secret tado_username
+#  password: !secret tado_password
 
 - platform: bluetooth_tracker
 
