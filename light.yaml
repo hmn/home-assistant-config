@@ -1,3 +1,17 @@
+- platform: group
+    name: Kitchen Lights
+    entities:
+      - light.kitchen_light
+      - light.kitchen_spot_1
+      - light.kitchen_spot_2
+      - light.kitchen_spot_3
+
+- platform: group
+    name: Entrance Lights
+    entities:
+      - light.entrance_light_1
+      - light.entrance_closet_light_1
+
 #- platform: hue
 #  allow_unreachable: true
 #  allow_hue_groups: true
