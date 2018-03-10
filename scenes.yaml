@@ -15,81 +15,81 @@
     group.all_lights:
       profile: energize
 
-- name: Sleep
-  entities:
-    group.all_lights:
-      state: off
-
-- name: All OFF
-  entities:
-    group.all_lights:
-      state: off
-
-- name: All ON
-  entities:
-    light.bedroom_2:
-      state: on
-      brightness: 255
-    light.bedroom:
-      state: on
-      brightness: 255
-    light.kitchen:
-      state: on
-      brightness: 255
-    light.cinema:
-      state: on
-
-- name: Kitchen OFF
-  entities:
-    light.kitchen:
-      state: off
-- name: Kitchen ON
-  entities:
-    light.kitchen:
-      state: on
-      brightness: 255
-
-- name: Bedroom OFF
-  entities:
-    light.bedroom_2:
-      state: off
-    light.bedroom:
-      state: off
-- name: Bedroom ON
-  entities:
-    light.bedroom_2:
-      state: on
-      brightness: 255
-    light.bedroom:
-      state: on
-      brightness: 255
-
-- name: Entrance OFF
-  entities:
-    light.entrance_2:
-      state: off
-    light.entrance:
-      state: off
-- name: Entrance ON
-  entities:
-    light.entrance_2:
-      state: on
-      brightness: 255
-    light.entrance:
-      state: on
-      brightness: 255
-
-- name: Entrance Closet OFF
-  entities:
-    light.entrance_closet_light_1:
-      state: off
-- name: Entrance Closet ON
-  entities:
-    light.entrance_closet_light_1:
-      state: on
-      brightness: 255
-
-- name: Cinema OFF
-  entities:
-    light.cinema:
-      state: off
+# - name: Sleep
+#   entities:
+#     group.all_lights:
+#       state: off
+#
+# - name: All OFF
+#   entities:
+#     group.all_lights:
+#       state: off
+#
+# - name: All ON
+#   entities:
+#     light.bedroom_2:
+#       state: on
+#       brightness: 255
+#     light.bedroom:
+#       state: on
+#       brightness: 255
+#     light.kitchen:
+#       state: on
+#       brightness: 255
+#     light.cinema:
+#       state: on
+#
+# - name: Kitchen OFF
+#   entities:
+#     light.kitchen:
+#       state: off
+# - name: Kitchen ON
+#   entities:
+#     light.kitchen:
+#       state: on
+#       brightness: 255
+#
+# - name: Bedroom OFF
+#   entities:
+#     light.bedroom_2:
+#       state: off
+#     light.bedroom:
+#       state: off
+# - name: Bedroom ON
+#   entities:
+#     light.bedroom_2:
+#       state: on
+#       brightness: 255
+#     light.bedroom:
+#       state: on
+#       brightness: 255
+#
+# - name: Entrance OFF
+#   entities:
+#     light.entrance_2:
+#       state: off
+#     light.entrance:
+#       state: off
+# - name: Entrance ON
+#   entities:
+#     light.entrance_2:
+#       state: on
+#       brightness: 255
+#     light.entrance:
+#       state: on
+#       brightness: 255
+#
+# - name: Entrance Closet OFF
+#   entities:
+#     light.entrance_closet_light_1:
+#       state: off
+# - name: Entrance Closet ON
+#   entities:
+#     light.entrance_closet_light_1:
+#       state: on
+#       brightness: 255
+#
+# - name: Cinema OFF
+#   entities:
+#     light.cinema:
+#       state: off

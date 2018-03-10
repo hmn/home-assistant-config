@@ -7,12 +7,17 @@ mode_wakeup:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.home
-    - service: scene.turn_on
-      entity_id: scene.bedroom_on
-    - service: scene.turn_on
-      entity_id: scene.kitchen_on
-    - service: scene.turn_on
-      entity_id: scene.cinema_off
+    - service: light.turn_on
+      data:
+        entity_id: light.bedroom_lights
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_lights
+        brightness: 255
+    - service: light.turn_off
+      data:
+        entity_id: light.cinema
     - service: script.turn_on
       entity_id: script.climate_normal_mode
     - service: script.turn_on

@@ -12,6 +12,11 @@
     - light.entrance_light_1
     - light.entrance_closet_light_1
 
+- platform: group
+  name: Bedroom Lights
+  entities:
+    - light.bedroom_light
+
 #- platform: hue
 #  allow_unreachable: true
 #  allow_hue_groups: true

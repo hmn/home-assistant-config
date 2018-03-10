@@ -1,20 +1,20 @@
-- alias: "Apple TV is playing"
-  trigger:
-    - platform: state
-      entity_id: media_player.apple_tv_2
-      to: 'playing'
-      from: 'idle'
-    - platform: state
-      entity_id: media_player.apple_tv_2
-      to: 'playing'
-      from: 'off'
-    - platform: state
-      entity_id: media_player.apple_tv_2
-      to: 'playing'
-      from: 'paused'
-  action:
-    service: scene.turn_on
-    entity_id: scene.kitchen_off
+# - alias: "Apple TV is playing"
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.apple_tv_2
+#       to: 'playing'
+#       from: 'idle'
+#     - platform: state
+#       entity_id: media_player.apple_tv_2
+#       to: 'playing'
+#       from: 'off'
+#     - platform: state
+#       entity_id: media_player.apple_tv_2
+#       to: 'playing'
+#       from: 'paused'
+#   action:
+#     service: scene.turn_on
+#     entity_id: scene.kitchen_off
 
 # - alias: "Apple TV is paused"
 #   trigger:

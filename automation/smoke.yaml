@@ -7,10 +7,10 @@
     - service: notify.all
       data:
         message: "Fibaro Smoke Sensor - SMOKE DETECTED!"
-    - service: scene.turn_on
-      entity_id: scene.bedroom_on
-    - service: scene.turn_on
-      entity_id: scene.kitchen_on
+    - service: light.turn_on
+      data:
+        entity_id: all.lights
+        brightness: 255
 
 - alias: Smoke Sensor NOSMOKE
   trigger:
@@ -33,10 +33,6 @@
     - service: notify.all
       data:
         message: "Fibaro Smoke Sensor - Cover Opened"
-    - service: scene.turn_on
-      entity_id: scene.bedroom_on
-    - service: scene.turn_on
-      entity_id: scene.kitchen_on
 
 - alias: Smoke Sensor CLOSED
   trigger:

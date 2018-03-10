@@ -36,6 +36,24 @@ sensor.smappee_home_solar:
 binary_sensor.entrance_motion_sensor_3:
   device_class: motion
 
+light.bathroom:
+  hidden: true
+light.bedroom:
+  hidden: true
+light.entertainment_area_1:
+  hidden: true
+light.entrance:
+  hidden: true
+light.entrance_2:
+  hidden: true
+light.kitchen:
+  hidden: true
+light.livingroom:
+  hidden: true
+light.outside:
+  hidden: true
+light.workshop:
+  hidden: true
 
 ############################################################
 #

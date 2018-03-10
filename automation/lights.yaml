@@ -11,8 +11,10 @@
       entity_id: input_boolean.home
       state: 'on'
   action:
-    service: scene.turn_on
-    entity_id: scene.kitchen_on
+    service: light.turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 255
 
 - alias: "Motion stopped in Kitchen"
   trigger:
@@ -26,8 +28,9 @@
       entity_id: binary_sensor.kitchen_motion_sensor
       state: 'off'
   action:
-    service: scene.turn_on
-    entity_id: scene.kitchen_off
+    service: light.turn_off
+    data:
+      entity_id: light.kitchen_lights
 
 
 - alias: "Motion in Bedroom"
@@ -43,8 +46,10 @@
       entity_id: input_boolean.home
       state: 'on'
   action:
-    service: scene.turn_on
-    entity_id: scene.bedroom_on
+    service: light.turn_on
+    data:
+      entity_id: light.bedroom_lights
+      brightness: 255
 
 - alias: "Motion stopped in Bedroom"
   trigger:
@@ -54,8 +59,9 @@
       for:
         minutes: 2
   action:
-    service: scene.turn_on
-    entity_id: scene.bedroom_off
+    service: light.turn_off
+    data:
+      entity_id: light.bedroom_lights
 
 
 - alias: "Motion in Entrance"
@@ -77,8 +83,10 @@
       entity_id: input_boolean.home
       state: 'on'
   action:
-    service: scene.turn_on
-    entity_id: scene.entrance_on
+    service: light.turn_on
+    data:
+      entity_id: light.entrance_lights
+      brightness: 255
 
 - alias: "Motion stopped in Entrance"
   trigger:
@@ -108,8 +116,9 @@
       entity_id: binary_sensor.entrance_motion_sensor_3
       state: 'off'
   action:
-    service: scene.turn_on
-    entity_id: scene.entrance_off
+    service: light.turn_off
+    data:
+      entity_id: light.entrance_lights
 
 
 - alias: "Motion in Entrance Closet"
@@ -125,8 +134,10 @@
       entity_id: input_boolean.home
       state: 'on'
   action:
-    service: scene.turn_on
-    entity_id: scene.entrance_closet_on
+    service: light.turn_on
+    data:
+      entity_id: light.entrance_closet_light_1
+      brightness: 255
 
 - alias: "Motion stopped in Entrance Closet"
   trigger:
@@ -146,8 +157,9 @@
       entity_id: binary_sensor.entrance_motion_sensor_3
       state: 'off'
   action:
-    service: scene.turn_on
-    entity_id: scene.entrance_closet_off
+    service: light.turn_off
+    data:
+      entity_id: light.entrance_closet_light_1
 
 # - alias: "Motion anywhere at night"
 #   trigger:

@@ -10,8 +10,10 @@
       entity_id: light.entrance_light_1
       state: 'off'
   action:
-    service: scene.turn_on
-    entity_id: scene.all_on
+    service: light.turn_on
+    data:
+      entity_id: all.lights
+      brightness: 255
 
 - alias: "IKEA remote control turn off lights"
   trigger:
@@ -25,8 +27,9 @@
       entity_id: light.entrance_light_1
       state: 'on'
   action:
-    service: scene.turn_on
-    entity_id: scene.all_off
+    service: light.turn_off
+    data:
+      entity_id: all.lights
 
 - alias: "Cinema remote control turn on lights"
   trigger:
@@ -36,8 +39,10 @@
         id: cinema_dimmer_switch
         event: 1002
   action:
-    service: scene.turn_on
-    entity_id: scene.all_on
+    service: light.turn_on
+    data:
+      entity_id: light.kitchen_lights
+      brightness: 255
 
 - alias: "Cinema remote control turn off lights"
   trigger:
@@ -47,5 +52,6 @@
         id: cinema_dimmer_switch
         event: 4002
   action:
-    service: scene.turn_on
-    entity_id: scene.all_off
+    service: light.turn_off
+    data:
+      entity_id: light.all.lights
