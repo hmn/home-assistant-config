@@ -218,18 +218,30 @@ class PS4Device(MediaPlayerDevice):
 
             if data.get('status') == 'Ok':
                 if self._source_selected is None:
-                    _LOGGER.debug("PS4 updating source, selected:%s current:%s running:%s", self._source_selected, self._source, data.get('running-app-name'))
+                    _LOGGER.debug(
+                        "updating source, selected:%s current:%s running:%s",
+                        self._source_selected,
+                        self._source,
+                        data.get('running-app-name'))
                     self._media_title = data.get('running-app-name')
                     self._media_content_id = data.get('running-app-titleid')
                     self._source = data.get('running-app-name')
                 elif self._source_selected == data.get('running-app-name'):
-                    _LOGGER.debug("PS4 selected source, selected:%s current:%s running:%s", self._source_selected, self._source, data.get('running-app-name'))
+                    _LOGGER.debug(
+                        "selected source, selected:%s current:%s running:%s",
+                        self._source_selected,
+                        self._source,
+                        data.get('running-app-name'))
                     self._media_title = data.get('running-app-name')
                     self._media_content_id = data.get('running-app-titleid')
                     self._source = data.get('running-app-name')
                     self._source_selected = None
                 else:
-                    _LOGGER.debug("PS4 still selecting source, selected:%s current:%s running:%s", self._source_selected, self._source, data.get('running-app-name'))
+                    _LOGGER.debug(
+                        "selecting source, selected:%s current:%s running:%s",
+                        self._source_selected,
+                        self._source,
+                        data.get('running-app-name'))
 
                 if self._media_content_id is not None:
                     self._state = STATE_PLAYING
@@ -392,12 +404,16 @@ class PS4Device(MediaPlayerDevice):
     def select_source(self, source):
         """Select input source."""
         if self._source_selected is not None:
-            _LOGGER.debug('Application %s is already in the process of starting (%s)', self._source_selected, source)
+            _LOGGER.debug(
+                'Application %s is already in the process of starting (%s)',
+                self._source_selected, source)
             return
 
         for title_id, game in self._games.items():
             if source == game:
-                _LOGGER.debug('Starting PS4 game %s (%s) using source %s', game, title_id, source)
+                _LOGGER.debug(
+                    'Starting PS4 game %s (%s) using source %s',
+                    game, title_id, source)
                 self._source_selected = source
                 self._source = source
                 self._media_title = game
