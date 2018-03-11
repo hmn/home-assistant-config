@@ -7,13 +7,9 @@ from datetime import timedelta
 import voluptuous as vol
 
 import homeassistant.util as util
-# from homeassistant.components.media_player import (
-#     ENTITY_IMAGE_URL, MEDIA_TYPE_CHANNEL, MediaPlayerDevice, PLATFORM_SCHEMA,
-#     SUPPORT_SELECT_SOURCE, SUPPORT_STOP, SUPPORT_TURN_OFF, SUPPORT_TURN_ON,
-# )
 from homeassistant.components.media_player import (
     ENTITY_IMAGE_URL, MEDIA_TYPE_CHANNEL, MediaPlayerDevice, PLATFORM_SCHEMA,
-    SUPPORT_SELECT_SOURCE, SUPPORT_TURN_OFF, SUPPORT_TURN_ON,
+    SUPPORT_SELECT_SOURCE, SUPPORT_STOP, SUPPORT_TURN_OFF, SUPPORT_TURN_ON,
 )
 from homeassistant.const import (
     CONF_FILENAME, CONF_HOST, CONF_NAME, STATE_IDLE, STATE_OFF, STATE_PLAYING,
@@ -32,10 +28,8 @@ REQUIREMENTS = [
 _CONFIGURING = {}
 _LOGGER = logging.getLogger(__name__)
 
-# SUPPORT_PS4 = SUPPORT_TURN_OFF | SUPPORT_TURN_ON | \
-#     SUPPORT_STOP | SUPPORT_SELECT_SOURCE
 SUPPORT_PS4 = SUPPORT_TURN_OFF | SUPPORT_TURN_ON | \
-    SUPPORT_SELECT_SOURCE
+    SUPPORT_STOP | SUPPORT_SELECT_SOURCE
 
 DEFAULT_NAME = 'Playstation 4'
 ICON = 'mdi:playstation'
@@ -372,13 +366,15 @@ class PS4Device(MediaPlayerDevice):
         """Turn on the media player."""
         self.ps4.wakeup()
 
-    # def media_pause(self):
-    #     """Send keypress ps to return to menu."""
-    #     self.ps4.remote('ps')
-    #
-    # def media_stop(self):
-    #     """Send keypress ps to return to menu."""
-    #     self.ps4.remote('ps')
+    def media_pause(self):
+        """Send keypress ps to return to menu."""
+        self.ps4.remote_control('ps')
+        self.ps4.remote_control('key_off')
+
+    def media_stop(self):
+        """Send keypress ps to return to menu."""
+        self.ps4.remote_control('ps')
+        self.ps4.remote_control('key_off')
 
     def select_source(self, source):
         """Select input source."""
