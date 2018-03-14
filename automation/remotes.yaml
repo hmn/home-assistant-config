@@ -12,7 +12,7 @@
   action:
     service: light.turn_on
     data:
-      entity_id: all.lights
+      entity_id: group.all_lights
       brightness: 255
 
 - alias: "IKEA remote control turn off lights"
@@ -29,7 +29,7 @@
   action:
     service: light.turn_off
     data:
-      entity_id: all.lights
+      entity_id: group.all_lights
 
 - alias: "Cinema remote control turn on lights"
   trigger:
@@ -54,4 +54,4 @@
   action:
     service: light.turn_off
     data:
-      entity_id: light.all.lights
+      entity_id: group.all_lights

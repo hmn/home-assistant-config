@@ -9,7 +9,7 @@
         message: "Fibaro Smoke Sensor - SMOKE DETECTED!"
     - service: light.turn_on
       data:
-        entity_id: all.lights
+        entity_id: group.all_lights
         brightness: 255
 
 - alias: Smoke Sensor NOSMOKE
