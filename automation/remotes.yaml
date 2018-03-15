@@ -31,13 +31,33 @@
     data:
       entity_id: group.all_lights
 
-- alias: "Cinema remote control turn on lights"
+- alias: "Cinema remote control turn on TV"
   trigger:
     - platform: event
       event_type: deconz_event
       event_data:
         id: cinema_dimmer_switch
         event: 1002
+  action:
+    - service: script.tv_on
+
+- alias: "Cinema remote control turn off TV"
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: cinema_dimmer_switch
+        event: 4002
+  action:
+    - service: script.tv_off
+
+- alias: "Cinema remote control turn on lights"
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: cinema_dimmer_switch
+        event: 2002
   action:
     service: light.turn_on
     data:
@@ -50,7 +70,7 @@
       event_type: deconz_event
       event_data:
         id: cinema_dimmer_switch
-        event: 4002
+        event: 3002
   action:
     service: light.turn_off
     data:
