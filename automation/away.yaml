@@ -8,26 +8,12 @@
       entity_id: device_tracker.henrik_nicolaisens_iphone
       zone: zone.work
       event: enter
+    - platform: state
+      entity_id: device_tracker.henrik_nicolaisens_iphone
+      state: 'not_home'
   condition:
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
     - condition: state
       entity_id: input_boolean.force_home_mode
       state: 'off'
-  action:
-    - service: script.mode_away
-
-- alias: "Henrik is already Away"
-  trigger:
-    - platform: homeassistant
-      event: start
-  condition:
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: state
-      entity_id: device_tracker.henrik_nicolaisens_iphone
-      state: not_home
   action:
     - service: script.mode_away

@@ -11,9 +11,9 @@ mode_home:
       entity_id: script.climate_normal_mode
     - service: script.turn_on
       entity_id: script.computer_on
-    - service: notify.all
-      data:
-        message: "Welcome home"
+    # - service: notify.all
+    #   data:
+    #     message: "Welcome home"
 
 #    - service: tts.google_say
 #      data:
