@@ -6,6 +6,6 @@
       event: enter
     - platform: state
       entity_id: device_tracker.henrik_nicolaisens_iphone
-      state: 'home'
+      to: 'home'
   action:
     - service: script.mode_home

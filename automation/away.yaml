@@ -10,7 +10,7 @@
       event: enter
     - platform: state
       entity_id: device_tracker.henrik_nicolaisens_iphone
-      state: 'not_home'
+      from: 'home'
   condition:
     - condition: state
       entity_id: input_boolean.force_home_mode
