@@ -39,6 +39,8 @@
       - condition: state
         entity_id: binary_sensor.bathroom_humidity_rising
         state: 'off'
+        for:
+          minutes: 30
       - condition: numeric_state
         entity_id: sensor.bathroom_humidity
         below: 40
