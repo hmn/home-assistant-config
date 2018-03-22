@@ -17,5 +17,8 @@
       event_data:
         id: tradfri_remote_control
         event: 1002
+    - platform: state
+      entity_id: sensor.bathroom_tado_mode
+      to: 'HOME'
   action:
     - service: script.mode_home

@@ -11,6 +11,9 @@
     - platform: state
       entity_id: device_tracker.henrik_nicolaisens_iphone
       from: 'home'
+    - platform: state
+      entity_id: sensor.bathroom_tado_mode
+      to: 'AWAY'
   condition:
     - condition: state
       entity_id: input_boolean.force_home_mode
