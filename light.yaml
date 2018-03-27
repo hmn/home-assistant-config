@@ -20,10 +20,6 @@
     - light.bedroom
     - light.bedroom_light
 
-- platform: hue
-  allow_unreachable: true
-  allow_hue_groups: true
-
 #- platform: flux_led
 #  devices:
 #    10.254.2.178:

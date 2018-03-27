@@ -201,6 +201,12 @@ alexa:
 
 cloud:
 
+hue:
+  bridges:
+    - host: 10.254.2.105
+      allow_unreachable: true
+      allow_hue_groups: true
+
 #tradfri:
 #  host: 10.254.2.102
 
