@@ -259,6 +259,5 @@ scene: !include scenes.yaml
 zwave:
   usb_path: /dev/ttyACM0
   network_key: !secret zwave_network_key
-  new_entity_ids: true
 #  debug: True
 #  device_config: !include zwave_device_config.yaml
