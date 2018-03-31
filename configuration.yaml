@@ -195,7 +195,6 @@ mqtt:
     payload: 'offline'
 
 homekit:
-  pincode: !secret homekit_pincode
 
 alexa:
 
