@@ -8,7 +8,6 @@
   name: Particle relay reduced heating
   resource: !secret particle_relay1_url
   method: GET
-  device_class: cold
   value_template: '{{ value_json.result }}'
   headers:
     User-Agent: Home Assistant
