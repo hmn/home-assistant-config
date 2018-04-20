@@ -68,7 +68,7 @@
 
 - alias: "Bathroom heating ok"
   trigger:
-    - condition: numeric_state
+    - platform: numeric_state
       entity_id: sensor.weather_temperature
       above: 18
     - platform: numeric_state
@@ -80,7 +80,7 @@
       - condition: numeric_state
         entity_id: sensor.weather_temperature
         above: 18
-      - platform: numeric_state
+      - condition: numeric_state
         entity_id: sensor.bathroom_heating
         below: 1
   action:
