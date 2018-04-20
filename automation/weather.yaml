@@ -7,12 +7,11 @@
     service: switch.turn_on
     entity_id: switch.climate_normal_mode
 
-#- alias: "Normal temperature outside"
-#  trigger:
-#    - platform: numeric_state
-#      entity_id: sensor.weather_temperature
-#      above: 15
-#  action:
-#    service: switch.turn_on
-#    entity_id: switch.climate_save_mode
-
+- alias: "Normal temperature outside"
+ trigger:
+   - platform: numeric_state
+     entity_id: sensor.weather_temperature
+     above: 20
+ action:
+   service: switch.turn_on
+   entity_id: switch.climate_save_mode
