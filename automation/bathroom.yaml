@@ -75,12 +75,14 @@
       entity_id: sensor.bathroom_heating
       below: 1
   condition:
-    - condition: numeric_state
-      entity_id: sensor.weather_temperature
-      above: 18
-    - platform: numeric_state
-      entity_id: sensor.bathroom_heating
-      below: 1
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.weather_temperature
+        above: 18
+      - platform: numeric_state
+        entity_id: sensor.bathroom_heating
+        below: 1
   action:
     service: switch.turn_off
     entity_id: switch.bathroom_pump
