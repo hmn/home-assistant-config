@@ -4,18 +4,18 @@
       entity_id: sensor.weather_temperature
       below: 10
   action:
-    service: switch.turn_on
-    entity_id: switch.climate_normal_mode
+    service: script.turn_on
+    entity_id: script.climate_normal_mode
 
-- alias: "Normal temperature outside"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.weather_temperature
-      below: 20
-      above: 10
-  action:
-    service: switch.turn_on
-    entity_id: switch.climate_normal_mode
+# - alias: "Normal temperature outside"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.weather_temperature
+#       below: 20
+#       above: 10
+#   action:
+#     service: script.turn_on
+#     entity_id: script.climate_normal_mode
 
 - alias: "Hot outside"
   trigger:
@@ -23,5 +23,5 @@
       entity_id: sensor.weather_temperature
       above: 20
   action:
-    service: switch.turn_on
-    entity_id: switch.climate_save_mode
+    service: script.turn_on
+    entity_id: script.climate_save_mode
