@@ -359,113 +359,113 @@ automation:
               {% endmacro %}
               {{ battery_level() }}
 
-- alias: battery_sensor_from_battery_level_attribute
-  trigger:
-    - platform: event
-      event_type: state_changed
-  condition:
-    - condition: template
-      value_template: "{{ trigger.event.data is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.old_state is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state.attributes.battery_level is defined }}"
-    - condition: template
-      value_template: "{{ 'battery' not in trigger.event.data.new_state.name | lower }}"
-    - condition: template
-      value_template: "{{ not is_state_attr(trigger.event.data.new_state.object_id, 'battery_sensor_creation_disabled', true) }}"
-  action:
-    - service: mqtt.publish
-      data_template:
-        topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/config"
-        retain: true
-        payload: >-
-          {
-            "device_class": "sensor",
-            "name": "{{ trigger.event.data.new_state.name }} Battery",
-            "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
-            "unit_of_measurement": "%"
-          }
-    - service: mqtt.publish
-      data_template:
-        topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state"
-        retain: true
-        payload: "{{ trigger.event.data.new_state.attributes.battery_level | int }}"
-
-- alias: battery_sensor_from_battery_attribute
-  trigger:
-    - platform: event
-      event_type: state_changed
-  condition:
-    - condition: template
-      value_template: "{{ trigger.event.data is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.old_state is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state.attributes.battery is defined }}"
-    - condition: template
-      value_template: "{{ 'battery' not in trigger.event.data.new_state.name | lower }}"
-    - condition: template
-      value_template: "{{ not is_state_attr(trigger.event.data.new_state.object_id, 'battery_sensor_creation_disabled', true) }}"
-  action:
-    - service: mqtt.publish
-      data_template:
-        topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/config"
-        retain: true
-        payload: >-
-          {
-            "device_class": "sensor",
-            "name": "{{ trigger.event.data.new_state.name }} Battery",
-            "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
-            "unit_of_measurement": "%"
-          }
-    - service: mqtt.publish
-      data_template:
-        topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state"
-        retain: true
-        payload: "{{ trigger.event.data.new_state.attributes.battery | int }}"
-
-- alias: battery_sensor_from_battery_numeric_attribute
-  trigger:
-    - platform: event
-      event_type: state_changed
-  condition:
-    - condition: template
-      value_template: "{{ trigger.event.data is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.old_state is not none }}"
-    - condition: template
-      value_template: "{{ trigger.event.data.new_state.attributes['Battery numeric'] is defined }}"
-    - condition: template
-      value_template: "{{ 'battery' not in trigger.event.data.new_state.name | lower }}"
-    - condition: template
-      value_template: "{{ not is_state_attr(trigger.event.data.new_state.object_id, 'battery_sensor_creation_disabled', true) }}"
-  action:
-    - service: mqtt.publish
-      data_template:
-        topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/config"
-        retain: true
-        payload: >-
-          {
-            "device_class": "sensor",
-            "name": "{{ trigger.event.data.new_state.name }} Battery",
-            "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
-            "unit_of_measurement": "%"
-          }
-    - service: mqtt.publish
-      data_template:
-        topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state"
-        retain: true
-        payload: "{{ (trigger.event.data.new_state.attributes['Battery numeric'] | int + 1) * 10 }}"
+# - alias: battery_sensor_from_battery_level_attribute
+#   trigger:
+#     - platform: event
+#       event_type: state_changed
+#   condition:
+#     - condition: template
+#       value_template: "{{ trigger.event.data is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.old_state is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state.attributes.battery_level is defined }}"
+#     - condition: template
+#       value_template: "{{ 'battery' not in trigger.event.data.new_state.name | lower }}"
+#     - condition: template
+#       value_template: "{{ not is_state_attr(trigger.event.data.new_state.object_id, 'battery_sensor_creation_disabled', true) }}"
+#   action:
+#     - service: mqtt.publish
+#       data_template:
+#         topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/config"
+#         retain: true
+#         payload: >-
+#           {
+#             "device_class": "sensor",
+#             "name": "{{ trigger.event.data.new_state.name }} Battery",
+#             "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
+#             "unit_of_measurement": "%"
+#           }
+#     - service: mqtt.publish
+#       data_template:
+#         topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state"
+#         retain: true
+#         payload: "{{ trigger.event.data.new_state.attributes.battery_level | int }}"
+#
+# - alias: battery_sensor_from_battery_attribute
+#   trigger:
+#     - platform: event
+#       event_type: state_changed
+#   condition:
+#     - condition: template
+#       value_template: "{{ trigger.event.data is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.old_state is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state.attributes.battery is defined }}"
+#     - condition: template
+#       value_template: "{{ 'battery' not in trigger.event.data.new_state.name | lower }}"
+#     - condition: template
+#       value_template: "{{ not is_state_attr(trigger.event.data.new_state.object_id, 'battery_sensor_creation_disabled', true) }}"
+#   action:
+#     - service: mqtt.publish
+#       data_template:
+#         topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/config"
+#         retain: true
+#         payload: >-
+#           {
+#             "device_class": "sensor",
+#             "name": "{{ trigger.event.data.new_state.name }} Battery",
+#             "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
+#             "unit_of_measurement": "%"
+#           }
+#     - service: mqtt.publish
+#       data_template:
+#         topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state"
+#         retain: true
+#         payload: "{{ trigger.event.data.new_state.attributes.battery | int }}"
+#
+# - alias: battery_sensor_from_battery_numeric_attribute
+#   trigger:
+#     - platform: event
+#       event_type: state_changed
+#   condition:
+#     - condition: template
+#       value_template: "{{ trigger.event.data is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state.attributes is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.old_state is not none }}"
+#     - condition: template
+#       value_template: "{{ trigger.event.data.new_state.attributes['Battery numeric'] is defined }}"
+#     - condition: template
+#       value_template: "{{ 'battery' not in trigger.event.data.new_state.name | lower }}"
+#     - condition: template
+#       value_template: "{{ not is_state_attr(trigger.event.data.new_state.object_id, 'battery_sensor_creation_disabled', true) }}"
+#   action:
+#     - service: mqtt.publish
+#       data_template:
+#         topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/config"
+#         retain: true
+#         payload: >-
+#           {
+#             "device_class": "sensor",
+#             "name": "{{ trigger.event.data.new_state.name }} Battery",
+#             "state_topic": "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state",
+#             "unit_of_measurement": "%"
+#           }
+#     - service: mqtt.publish
+#       data_template:
+#         topic: "homeassistant/sensor/{{ trigger.event.data.new_state.object_id }}_battery/state"
+#         retain: true
+#         payload: "{{ (trigger.event.data.new_state.attributes['Battery numeric'] | int + 1) * 10 }}"
