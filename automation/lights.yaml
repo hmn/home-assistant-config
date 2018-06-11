@@ -1,7 +1,7 @@
 - alias: "Motion in Kitchen"
   trigger:
     - platform: state
-      entity_id: binary_sensor.kitchen_motion_sensor
+      entity_id: binary_sensor.kitchen_motion_sensor_1
       to: 'on'
   condition:
     - condition: state
@@ -19,13 +19,13 @@
 - alias: "Motion stopped in Kitchen"
   trigger:
     - platform: state
-      entity_id: binary_sensor.kitchen_motion_sensor
+      entity_id: binary_sensor.kitchen_motion_sensor_1
       to: 'off'
       for:
         minutes: 2
   condition:
     - condition: state
-      entity_id: binary_sensor.kitchen_motion_sensor
+      entity_id: binary_sensor.kitchen_motion_sensor_1
       state: 'off'
   action:
     service: light.turn_off
@@ -36,7 +36,7 @@
 - alias: "Motion in Bedroom"
   trigger:
     - platform: state
-      entity_id: binary_sensor.bedroom_motion_sensor
+      entity_id: binary_sensor.bedroom_motion_sensor_1
       to: 'on'
   condition:
     - condition: state
@@ -54,7 +54,7 @@
 - alias: "Motion stopped in Bedroom"
   trigger:
     - platform: state
-      entity_id: binary_sensor.bedroom_motion_sensor
+      entity_id: binary_sensor.bedroom_motion_sensor_1
       to: 'off'
       for:
         minutes: 2

@@ -85,10 +85,10 @@ temperature:
     - sensor.entrance_temperature
     - sensor.fibaro_system_fgss101_smoke_sensor_temperature
     - sensor.aeotec_dsb05_multisensor_temperature_2
-    - sensor.kitchen_motion_sensor
+    - sensor.kitchen_motion_sensor_1
     - sensor.entrance_motion_sensor_1
     - sensor.entrance_motion_sensor_2
-    - sensor.bedroom_motion_sensor
+    - sensor.bedroom_motion_sensor_1
 
 humidity:
   name: Humidity
@@ -122,8 +122,8 @@ luminance:
   view: no
   entities:
     - sensor.aeotec_dsb05_multisensor_luminance_2
-    - sensor.kitchen_motion_sensor_lux
-    - sensor.bedroom_motion_sensor_lux
+    - sensor.kitchen_motion_sensor_1_lux
+    - sensor.bedroom_motion_sensor_1_lux
     - sensor.entrance_motion_sensor_1_lux
 
 tado_link:
@@ -184,8 +184,8 @@ motion:
   name: Motion
   view: no
   entities:
-    - binary_sensor.kitchen_motion_sensor
-    - binary_sensor.bedroom_motion_sensor
+    - binary_sensor.kitchen_motion_sensor_1
+    - binary_sensor.bedroom_motion_sensor_1
     - binary_sensor.entrance_motion_sensor_1
     - binary_sensor.entrance_motion_sensor_2
     - binary_sensor.entrance_motion_sensor_3
@@ -244,14 +244,14 @@ battery:
     - sensor.henriks_iphone_battery_state
     - sensor.office_remote_control_battery_level
     - sensor.fibaro_system_fgss101_smoke_sensor_power
-    - sensor.bedroom_motion_sensor_battery
-    - sensor.bedroom_motion_sensor_battery_2
+    - sensor.bedroom_motion_sensor_1_battery
+    - sensor.bedroom_motion_sensor_1_battery_2
     - sensor.entrance_motion_sensor_1_battery
     - sensor.entrance_motion_sensor_2_battery
     - sensor.entrance_multisensor_battery
     - sensor.fibaro_system_fgss101_smoke_sensor_battery
-    - sensor.kitchen_motion_sensor_battery
-    - sensor.kitchen_motion_sensor_battery_2
+    - sensor.kitchen_motion_sensor_1_battery
+    - sensor.kitchen_motion_sensor_1_battery_2
     - sensor.__battery
     - sensor.henrik_nicolaisen_battery
     - sensor.henriks_ipad_battery
