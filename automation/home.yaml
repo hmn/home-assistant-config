@@ -10,12 +10,12 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_dimmer_switch
+        id: cinema_switch
         event: 1002
     - platform: event
       event_type: deconz_event
       event_data:
-        id: tradfri_remote_control
+        id: office_remote_control
         event: 1002
     - platform: state
       entity_id: sensor.bathroom_tado_mode

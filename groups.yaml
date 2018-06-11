@@ -237,12 +237,12 @@ battery:
   name: Battery
   view: no
   entities:
-    - sensor.cinema_dimmer_switch_battery_level
+    - sensor.cinema_switch_battery_level
     - sensor.henrik__ipad_battery_level
     - sensor.henrik__ipad_battery_state
     - sensor.henriks_iphone_battery_level
     - sensor.henriks_iphone_battery_state
-    - sensor.tradfri_remote_control_battery_level
+    - sensor.office_remote_control_battery_level
     - sensor.fibaro_system_fgss101_smoke_sensor_power
     - sensor.bedroom_motion_sensor_battery
     - sensor.bedroom_motion_sensor_battery_2

@@ -3,7 +3,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: tradfri_remote_control
+        id: office_remote_control
         event: 1002
   condition:
     - condition: state
@@ -20,7 +20,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: tradfri_remote_control
+        id: office_remote_control
         event: 1002
   condition:
     - condition: state
@@ -36,7 +36,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_dimmer_switch
+        id: cinema_switch
         event: 1002
   action:
     - service: script.tv_on
@@ -46,7 +46,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_dimmer_switch
+        id: cinema_switch
         event: 4002
   action:
     - service: script.tv_off
@@ -56,7 +56,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_dimmer_switch
+        id: cinema_switch
         event: 2002
   action:
     service: light.turn_on
@@ -69,7 +69,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_dimmer_switch
+        id: cinema_switch
         event: 3002
   action:
     service: light.turn_off
