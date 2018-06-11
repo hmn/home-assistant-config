@@ -85,8 +85,8 @@ temperature:
     - sensor.entrance_temperature
     - sensor.fibaro_system_fgss101_smoke_sensor_temperature
     - sensor.aeotec_dsb05_multisensor_temperature_2
-    - sensor.kitchen_motion_sensor_1
-    - sensor.entrance_motion_sensor_1
+    - sensor.kitchen_motion_sensor_1_2
+    - sensor.entrance_motion_sensor_1_2
     - sensor.entrance_motion_sensor_2
     - sensor.bedroom_motion_sensor_1
 
@@ -122,9 +122,9 @@ luminance:
   view: no
   entities:
     - sensor.aeotec_dsb05_multisensor_luminance_2
-    - sensor.kitchen_motion_sensor_1_lux
-    - sensor.bedroom_motion_sensor_1_lux
-    - sensor.entrance_motion_sensor_1_lux
+    - sensor.kitchen_motion_sensor_1
+    - sensor.bedroom_motion_sensor_1_2
+    - sensor.entrance_motion_sensor_1
 
 tado_link:
   name: tado link
