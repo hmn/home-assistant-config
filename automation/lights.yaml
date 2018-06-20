@@ -70,7 +70,7 @@
       entity_id: binary_sensor.entrance_motion_sensor_1
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
       to: 'on'
     - platform: state
       entity_id: binary_sensor.entrance_motion_sensor_3
@@ -96,7 +96,7 @@
       for:
         minutes: 2
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
       to: 'off'
       for:
         minutes: 2
@@ -110,7 +110,7 @@
       entity_id: binary_sensor.entrance_motion_sensor_1
       state: 'off'
     - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
       state: 'off'
   action:
     service: light.turn_off
@@ -148,7 +148,7 @@
       entity_id: binary_sensor.entrance_motion_sensor_1
       state: 'off'
     - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
       state: 'off'
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_3

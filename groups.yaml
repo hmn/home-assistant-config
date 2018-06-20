@@ -187,7 +187,7 @@ motion:
     - binary_sensor.kitchen_motion_sensor_1
     - binary_sensor.bedroom_motion_sensor_1
     - binary_sensor.entrance_motion_sensor_1
-    - binary_sensor.entrance_motion_sensor_2
+    - binary_sensor.entrance_motion_sensor_2_2
     - binary_sensor.entrance_motion_sensor_3
 
 stocks:
