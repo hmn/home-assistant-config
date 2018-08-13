@@ -200,18 +200,18 @@ apple_tv:
   login_id: !secret apple_tv_login_id
   credentials: !secret apple_tv_credentials
 
-# mqtt:
-#   broker: core-mosquitto
-#   username: !secret mqtt_username
-#   password: !secret mqtt_password
-#   discovery: true
-#   client_id: homeassistant
-#   birth_message:
-#     topic: 'hass/status'
-#     payload: 'online'
-#   will_message:
-#     topic: 'hass/status'
-#     payload: 'offline'
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  discovery: true
+  client_id: homeassistant
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 homekit:
 
