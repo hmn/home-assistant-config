@@ -205,6 +205,8 @@ mqtt:
   username: !secret mqtt_username
   password: !secret mqtt_password
   client_id: homeassistant
+  discovery: true
+  discovery_prefix: homeassistant
   birth_message:
     topic: 'hass/status'
     payload: 'online'
@@ -243,7 +245,8 @@ rest_command:
 
 logger:
   #default: debug
-  default: info
+  #default: info
+  default: warning
   logs:
     custom_components.media_player.ps4: debug
     homeassistant.components.smappee: debug
