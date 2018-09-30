@@ -9,3 +9,5 @@
 #   name: Outside
 #   username: !secret camera_username
 #   password: !secret camera_password
+
+- platform: logi_circle
