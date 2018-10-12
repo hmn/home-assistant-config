@@ -73,7 +73,7 @@ history:
 influxdb:
   host: !secret influxdb_host
   port: 8086
-  database: homeassistant
+  database: home_assistant
   username: !secret influxdb_username
   password: !secret influxdb_password
   max_retries: 3
