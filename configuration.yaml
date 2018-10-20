@@ -78,16 +78,18 @@ influxdb:
   password: !secret influxdb_password
   max_retries: 3
   default_measurement: state
+  tags:
+    source: hass
 
-panel_iframe:
-  grafana:
-    title: Grafana
-    icon: mdi:chart-timeline
-    url: !secret grafana_url
-  influxdb:
-    title: InfluxDB
-    icon: mdi:chart-areaspline
-    url: !secret influxdb_url
+# panel_iframe:
+#   grafana:
+#     title: Grafana
+#     icon: mdi:chart-timeline
+#     url: !secret grafana_url
+#   influxdb:
+#     title: Chronograf
+#     icon: mdi:chart-areaspline
+#     url: !secret influxdb_url
 
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
