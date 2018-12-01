@@ -226,6 +226,10 @@ logi_circle:
   username: !secret logi_circle_username
   password: !secret logi_circle_password
 
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
 #hue:
 #  bridges:
 #    - host: 10.254.2.105
