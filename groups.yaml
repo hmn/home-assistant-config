@@ -196,6 +196,7 @@ tv:
     - media_player.lg_oled
     - media_player.playstation_4
     - switch.lg_oled_wol
+    - media_player.spotify
   icon: mdi:television
 
 motion:
