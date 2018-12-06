@@ -1,4 +1,21 @@
 security:
+  name: Interaction
+  view: yes
+  entities:
+    - script.mode_wakeup
+    - script.mode_sleep
+    - script.mode_home
+    - script.mode_away
+    - script.ps4_on
+    - script.ps4_off
+    - script.tv_on
+    - script.tv_off
+    - input_boolean.power_stay_on
+    - input_boolean.tv_stay_on
+    - input_boolean.force_home_mode
+  icon: mdi:gesture-tap
+
+security:
   name: Security
   view: yes
   entities:
@@ -30,7 +47,7 @@ settings:
     - group.all_lights
     - input_boolean.power_stay_on
     - input_boolean.tv_stay_on
-    - input_boolean.sleep
+    - input_boolean.force_home_mode
   icon: mdi:settings
 
 tado:
@@ -165,6 +182,7 @@ tado_power:
     - sensor.livingroom_power
     - sensor.entrance_overlay
     - sensor.entrance_power
+
 tv:
   name: TV
   view: yes
@@ -222,6 +240,11 @@ energy:
     - sensor.smappee_home_solar
     - sensor.smappee_home_solar_today
     - sensor.smappee_home_voltage
+    - sensor.fibaro_system_fgwpef_wall_plug_power
+    - sensor.fibaro_system_fgwpef_wall_plug_power_2
+    - sensor.fibaro_system_fgwpef_wall_plug_energy
+    - sensor.fibaro_system_fgwpef_wall_plug_rain_rate
+    - sensor.fibaro_system_fgwpef_wall_plug_exporting
 
 smoke:
   name: Smoke
@@ -255,3 +278,15 @@ battery:
     - sensor.__battery
     - sensor.henrik_nicolaisen_battery
     - sensor.henriks_ipad_battery
+    - sensor.henriks_iphone_battery_level_2
+    - sensor.henriks_iphone_battery_state_2
+
+smoke:
+  name: Cameras
+  view: no
+  entities:
+    - sensor.logi_circle_front_door_last_activity_2
+    - sensor.logi_circle_front_door_privacy_mode_2
+    - sensor.logi_circle_front_door_streaming_mode_2
+    - sensor.logi_circle_front_door_volume_2
+    - sensor.logi_circle_front_door_wifi_signal_category_2
