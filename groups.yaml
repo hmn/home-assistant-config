@@ -15,8 +15,8 @@ interaction:
     - input_boolean.force_home_mode
   icon: mdi:gesture-tap
 
-security:
-  name: Security
+lights:
+  name: Lights
   view: yes
   entities:
     - device_tracker.henrik_henrik
@@ -35,7 +35,7 @@ security:
     - scene.read
     - scene.relax
     - scene.sleep
-  icon: mdi:security-home
+  icon: mdi:lightbulb-on-outline
 
 settings:
   name: Settings
