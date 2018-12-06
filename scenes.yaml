@@ -1,19 +1,20 @@
-- name: Relax
-  entities:
-    group.all_lights:
-      profile: relax
-- name: Read
-  entities:
-    group.all_lights:
-      profile: read
-- name: Concentrate
-  entities:
-    group.all_lights:
-      profile: concentrate
-- name: Energize
-  entities:
-    group.all_lights:
-      profile: energize
+# - name: Relax
+#   entities:
+#     group.all_lights:
+#       profile: relax
+# - name: Read
+#   entities:
+#     group.all_lights:
+#       profile: read
+# - name: Concentrate
+#   entities:
+#     group.all_lights:
+#       profile: concentrate
+# - name: Energize
+#   entities:
+#     group.all_lights:
+#       profile: energize
+
 
 # - name: Sleep
 #   entities:
