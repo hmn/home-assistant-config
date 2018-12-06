@@ -290,3 +290,4 @@ cameras:
     - sensor.logi_circle_front_door_streaming_mode_2
     - sensor.logi_circle_front_door_volume_2
     - sensor.logi_circle_front_door_wifi_signal_category_2
+    - sensor.logi_circle_front_door_wifi_signal_strength_2
