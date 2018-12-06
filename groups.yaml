@@ -1,4 +1,4 @@
-security:
+interaction:
   name: Interaction
   view: yes
   entities:
@@ -281,7 +281,7 @@ battery:
     - sensor.henriks_iphone_battery_level_2
     - sensor.henriks_iphone_battery_state_2
 
-smoke:
+cameras:
   name: Cameras
   view: no
   entities:
