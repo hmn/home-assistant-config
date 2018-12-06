@@ -20,7 +20,6 @@ lights:
   view: yes
   entities:
     - device_tracker.henrik_henrik
-    - camera.camera_outside
     - group.all_lights
     - group.motion
     - group.zones
