@@ -1,4 +1,18 @@
-- alias: Smoke Sensor SMOKE
+- alias: "Smoke detected in Kitchen"
+  trigger:
+    - platform: state
+      entity_id: sensor.kitchen_nest_protect_smoke_status
+      from: 'Ok'
+  action:
+    - service: notify.all
+      data:
+        message: "Smoke detected in the Kitchen!"
+    - service: light.turn_on
+      data:
+        entity_id: group.all_lights
+        brightness: 255
+
+- alias: "Smoke detected by fibaro sensor"
   trigger:
     platform: state
     entity_id: sensor.fibaro_system_fgss101_smoke_sensor_smoke
@@ -6,13 +20,13 @@
   action:
     - service: notify.all
       data:
-        message: "Fibaro Smoke Sensor - SMOKE DETECTED!"
+        message: "Smoke detected by fibaro sensor!"
     - service: light.turn_on
       data:
         entity_id: group.all_lights
         brightness: 255
 
-- alias: Smoke Sensor NOSMOKE
+- alias: "Smoke cleared by fibaro sensor"
   trigger:
     platform: state
     entity_id: sensor.fibaro_system_fgss101_smoke_sensor_smoke
@@ -21,9 +35,9 @@
   action:
     service: notify.all
     data:
-      message: "Fibaro Smoke Sensor - Smoke Cleared"
+      message: "Smoke cleared from fibaro sensor"
 
-- alias: Smoke Sensor OPENED
+- alias: "Smoke sensor opened"
   trigger:
     platform: state
     entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
@@ -34,7 +48,7 @@
       data:
         message: "Fibaro Smoke Sensor - Cover Opened"
 
-- alias: Smoke Sensor CLOSED
+- alias: "Smoke sensor closed"
   trigger:
     platform: state
     entity_id: sensor.fibaro_system_fgss101_smoke_sensor_general
