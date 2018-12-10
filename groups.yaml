@@ -104,7 +104,7 @@ temperature:
     - sensor.aeotec_dsb05_multisensor_temperature
     - sensor.kitchen_motion_sensor_1_2
     - sensor.entrance_motion_sensor_1_2
-    - sensor.entrance_motion_sensor_2
+    - sensor.entrance_motion_sensor_2_2
     - sensor.bedroom_motion_sensor_1
 
 humidity:
@@ -208,7 +208,6 @@ motion:
     - binary_sensor.kitchen_motion_sensor_1
     - binary_sensor.bedroom_motion_sensor_1
     - binary_sensor.entrance_motion_sensor_1
-    - binary_sensor.entrance_motion_sensor_2
     - binary_sensor.entrance_motion_sensor_2_2
     - binary_sensor.entrance_motion_sensor_3
 

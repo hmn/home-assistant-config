@@ -70,9 +70,6 @@
       entity_id: binary_sensor.entrance_motion_sensor_1
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
-      to: 'on'
-    - platform: state
       entity_id: binary_sensor.entrance_motion_sensor_2_2
       to: 'on'
     - platform: state
@@ -99,11 +96,6 @@
       for:
         minutes: 2
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
-      to: 'off'
-      for:
-        minutes: 2
-    - platform: state
       entity_id: binary_sensor.entrance_motion_sensor_2_2
       to: 'off'
       for:
@@ -116,9 +108,6 @@
   condition:
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_1
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
       state: 'off'
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_2_2
@@ -157,9 +146,6 @@
   condition:
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_1
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
       state: 'off'
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_2_2
