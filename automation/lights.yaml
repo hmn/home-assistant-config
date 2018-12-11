@@ -109,9 +109,6 @@
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_1
       state: 'off'
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_2_2
-      state: 'off'
   action:
     service: light.turn_off
     data:
@@ -146,12 +143,6 @@
   condition:
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_1
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_2_2
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.entrance_motion_sensor_3
       state: 'off'
   action:
     service: light.turn_off
