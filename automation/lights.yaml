@@ -100,14 +100,12 @@
       to: 'off'
       for:
         minutes: 2
-    - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_3
-      to: 'off'
-      for:
-        minutes: 2
   condition:
     - condition: state
       entity_id: binary_sensor.entrance_motion_sensor_1
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
       state: 'off'
   action:
     service: light.turn_off
@@ -130,7 +128,7 @@
   action:
     service: light.turn_on
     data:
-      entity_id: light.entrance_closet_light_1
+      entity_id: light.light.entrance_light_2_room
       brightness: 255
 
 - alias: "Motion stopped in Entrance Closet"
@@ -147,4 +145,4 @@
   action:
     service: light.turn_off
     data:
-      entity_id: light.entrance_closet_light_1
+      entity_id: light.light.entrance_light_2_room

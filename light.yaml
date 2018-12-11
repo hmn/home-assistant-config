@@ -10,9 +10,10 @@
 - platform: group
   name: Entrance Lights
   entities:
-    - light.entrance
     - light.entrance_light_1
-    - light.entrance_closet_light_1
+    - light.entrance_light_2_room
+    - light.entrance
+    - light.entrance_2
 
 - platform: group
   name: Bedroom Lights
