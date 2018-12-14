@@ -40,7 +40,6 @@ settings:
   name: Settings
   view: yes
   entities:
-    - group.all_automations
     - group.all_scripts
     - group.all_switches
     - group.all_lights
