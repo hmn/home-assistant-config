@@ -46,6 +46,13 @@ settings:
     - input_boolean.power_stay_on
     - input_boolean.tv_stay_on
     - input_boolean.force_home_mode
+    - switch.arbejdsbord
+    - switch.bathroom_fan
+    - switch.bathroom_pump
+    - switch.computer
+    - switch.fibaro_system_fgwpef_wall_plug_switch
+    - switch.particle_relay1
+    - switch.server
   icon: mdi:settings
 
 tado:
