@@ -229,6 +229,7 @@ energy:
   name: Energy
   view: no
   entities:
+    - switch.fibaro_system_fgwpef_wall_plug_switch
     - sensor.fibaro_wall_plug_energy
     - sensor.fibaro_wall_plug_exporting
     - sensor.fibaro_wall_plug_power
