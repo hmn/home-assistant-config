@@ -16,6 +16,8 @@ homeassistant:
 # Show links to resources in log and frontend
 #introduction:
 
+api:
+
 # Enables the frontend
 frontend:
 
