@@ -25,7 +25,7 @@ config:
 
 http:
   # Uncomment this to add a password (recommended!)
-  #api_password: !secret password
+  api_password: !secret password
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   # Uncomment this if you are using SSL or running in Docker etc
