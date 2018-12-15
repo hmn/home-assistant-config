@@ -34,6 +34,7 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 10.254.2.10
+    - 172.16.2.1
     - 127.0.0.1
   cors_allowed_origins:
     - https://google.com
