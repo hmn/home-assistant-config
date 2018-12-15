@@ -31,7 +31,7 @@ http:
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
   base_url: !secret base_url
-  #use_x_forwarded_for: True
+  use_x_forwarded_for: True
   #cors_allowed_origins:
   #  - https://google.com
   #  - https://home-assistant.io
