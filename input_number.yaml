@@ -7,5 +7,7 @@
 henrik_weight:
   name: Henrik weight
   initial: 0
+  min: 70
+  max: 100
   unit_of_measurement: "kg"
   icon: "mdi:scale-bathroom"
