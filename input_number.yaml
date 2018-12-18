@@ -6,7 +6,7 @@
 
 henrik_weight:
   name: Henrik weight
-  initial: 0
+  initial: 78
   min: 70
   max: 100
   unit_of_measurement: "kg"
