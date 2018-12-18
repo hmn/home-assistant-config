@@ -1,0 +1,11 @@
+############################################################
+#
+# Home Assistant Input Numbers
+#
+############################################################
+
+henrik_weight:
+  name: Henrik weight
+  initial: 0
+  unit_of_measurement: "kg"
+  icon: "mdi:scale-bathroom"
