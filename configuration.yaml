@@ -285,6 +285,7 @@ binary_sensor: !include binary_sensors.yaml
 camera: !include cameras.yaml
 device_tracker: !include device_trackers.yaml
 input_boolean: !include input_boolean.yaml
+input_number: !include input_number.yaml
 media_player: !include media_players.yaml
 notify: !include notify.yaml
 image_processing: !include image_processing.yaml
