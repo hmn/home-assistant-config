@@ -1,0 +1,5 @@
+mode_bodyscale:
+  alias: Withings Body Scale measurement
+  sequence:
+    - service: script.turn_on
+      entity_id: script.mode_wakeup
