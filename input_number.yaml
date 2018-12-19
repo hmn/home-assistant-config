@@ -9,5 +9,7 @@ henrik_weight:
   initial: 78
   min: 70
   max: 100
+  step: 0.1
+  mode: box
   unit_of_measurement: "kg"
   icon: "mdi:scale-bathroom"
