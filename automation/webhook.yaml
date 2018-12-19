@@ -1,0 +1,7 @@
+- alias: "IFTTT webhook bodyscale"
+  trigger:
+    platform: webhook
+    webhook_id: ifttt_webhook_bodyscale
+  action:
+    service: script.turn_on
+    entity_id: script.mode_bodyscale
