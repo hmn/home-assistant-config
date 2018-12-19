@@ -8,3 +8,4 @@
     service_template: '{{ trigger.event.data.service }}'
     data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
+      value: ''{{ trigger.event.data.value }}''
