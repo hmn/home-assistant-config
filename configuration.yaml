@@ -246,6 +246,10 @@ nest:
 #tradfri:
 #  host: 10.254.2.102
 
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+
 rest_command:
   particle_relay1_on:
     url: !secret particle_relay_post_url
