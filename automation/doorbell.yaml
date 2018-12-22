@@ -3,5 +3,6 @@
     platform: webhook
     webhook_id: asdf234fvsd89fh23f98g7sda87fq74o8rgasd87fgwqe87rg8as7gdf
   action:
-    service: '{{ trigger.event.data.value }}'
-    entity_id: '{{ trigger.event.data.entity_id }}'
+    service_template:: '{{ trigger.event.data.value }}'
+    data_template:
+      entity_id: '{{ trigger.event.data.entity_id }}'
