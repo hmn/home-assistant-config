@@ -3,6 +3,5 @@
     platform: webhook
     webhook_id: asdf234fvsd89fh23f98g7sda87fq74o8rgasd87fgwqe87rg8as7gdf
   action:
-    service:: script.turn_on
-    data_template:
-      entity_id: '{{ trigger.data.entity_id }}'
+    service: script.turn_on
+    entity_id: script.doorbell
