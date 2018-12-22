@@ -1,7 +1,7 @@
 - alias: "AWS IOT doorbell"
   trigger:
     platform: webhook
-    webhook_id: asdf234fvsd89fh23f98g7sda87fq74o8rgasd87fgwqe87rg8as7gdf
+    webhook_id: !secret webhook_aws_iot_doorbell
   action:
     service: script.turn_on
     entity_id: script.doorbell
