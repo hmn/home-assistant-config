@@ -1,0 +1,50 @@
+- platform: mqtt
+  name: totalPower
+  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+  unit_of_measurement: "W"
+  icon: "mdi:power-plug"
+  value_template: "{{ value_json.totalPower }}"
+  json_attributes:
+    - totalReactivePower
+    - totalExportEnergy
+    - totalImportEnergy
+    - monitorStatus
+    - utcTimeStamp
+
+# - platform: mqtt
+#   name: totalPower
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   value_template: "{{ value_json.totalPower }}"
+#   json_attributes:
+#     - totalReactivePower
+#     - totalExportEnergy
+#     - totalImportEnergy
+#     - monitorStatus
+#     - utcTimeStamp
+#
+#
+# servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated {"intervalDatas":[{"utcEndtime":1545659400000,"averageRMSVoltage":2284,"alwaysOn":310102,"channelIntervalDatas":[{"averageRMSCurrent":1099,"averageImportRMSActivePower":222712,"averageExportRMSActivePower":0,"averageRMSApparentPower":251522,"averageRMSReactivePower":116814,"averagePowerfactor":87,"ctInput":0},{"averageRMSCurrent":2030,"averageImportRMSActivePower":424142,"averageExportRMSActivePower":0,"averageRMSApparentPower":464309,"averageRMSReactivePower":188905,"averagePowerfactor":90,"ctInput":1},{"averageRMSCurrent":106,"averageImportRMSActivePower":19551,"averageExportRMSActivePower":0,"averageRMSApparentPower":24460,"averageRMSReactivePower":14681,"averagePowerfactor":77,"ctInput":2}],"version":1}]}
+#
+#
+# servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch
+# {
+#   "switchIntervalDatas":
+#     [
+#     {
+#       "utcEndtime":1545659400000,
+#       "activePower":188883,
+#       "reactivePower":0,
+#       "version":1,
+#       "sensorId":1
+#     },
+#     {
+#       "utcEndtime":1545659400000,
+#       "activePower":46056,
+#       "reactivePower":0,
+#       "version":1,
+#       "sensorId":2
+#     }
+#     ]
+# }
