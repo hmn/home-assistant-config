@@ -16,6 +16,14 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.1)) | float(2) }}"
+
+- platform: mqtt
+  name: alwaysOn
+  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
+  unit_of_measurement: "W"
+  icon: "mdi:power-plug"
+  value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | float(2) }}"
+
 #
 #
 # servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated
