@@ -10,14 +10,14 @@
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
   unit_of_measurement: "kWh"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.totalImportEnergy | multiply(0.0000001)) | float(2) }}"
+  value_template: "{{ (value_json.totalImportEnergy | multiply(0.0000001)) | round(2) }}"
 
 - platform: mqtt
   name: Smappee solar today
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
   unit_of_measurement: "kWh"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.totalExportEnergy | multiply(0.0000001)) | float(2) }}"
+  value_template: "{{ (value_json.totalExportEnergy | multiply(0.0000001)) | round(2) }}"
 
 - platform: mqtt
   name: Smappee reactive power
@@ -38,28 +38,28 @@
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | float(2) }}"
+  value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2) }}"
 
 - platform: mqtt
   name: Smappee average RMS Voltage
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
   unit_of_measurement: "V"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.intervalDatas[0].averageRMSVoltage | multiply(0.1)) | float(2) }}"
+  value_template: "{{ (value_json.intervalDatas[0].averageRMSVoltage | multiply(0.1)) | round(2) }}"
 
 - platform: mqtt
   name: Smappee server power
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.switchIntervalDatas[0].activePower | multiply(0.0001)) | float(2) }}"
+  value_template: "{{ (value_json.switchIntervalDatas[0].activePower | multiply(0.0001)) | round(2) }}"
 
 - platform: mqtt
   name: Smappee laptop power
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.0001)) | float(2) }}"
+  value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.0001)) | round(2) }}"
 
 #
 #
