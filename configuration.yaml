@@ -59,6 +59,14 @@ conversation:
 
 # Enables support for tracking state changes over time.
 history:
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+    entities:
+      - sensor.last_boot
+      - sensor.date
 
 #influxdb:
 #  host: 127.0.0.1
@@ -104,63 +112,46 @@ recorder:
   exclude:
     domains:
       - climate
-  #   entities:
-  #     - sun.sun
-  #     - sensor.date
-  #     - sensor.cinema_heating
-  #     - sensor.kitchen_heating
-  #     - sensor.bedroom_heating
-  #     - sensor.livingroom_heating
-  #     - sensor.entrance_heating
-  #     - sensor.cinema_temperature
-  #     - sensor.kitchen_temperature
-  #     - sensor.bedroom_temperature
-  #     - sensor.livingroom_temperature
-  #     - sensor.entrance_temperature
-  #     - sensor.cinema_humidity
-  #     - sensor.kitchen_humidity
-  #     - sensor.bedroom_humidity
-  #     - sensor.livingroom_humidity
-  #     - sensor.entrance_humidity
-  #     - sensor.bathroom_link
-  #     - sensor.cinema_link
-  #     - sensor.kitchen_link
-  #     - sensor.bedroom_link
-  #     - sensor.livingroom_link
-  #     - sensor.entrance_link
-  #     - sensor.bathroom_tado_mode
-  #     - sensor.cinema_tado_mode
-  #     - sensor.kitchen_tado_mode
-  #     - sensor.bedroom_tado_mode
-  #     - sensor.livingroom_tado_mode
-  #     - sensor.entrance_tado_mode
-  #     - sensor.ewaldsvej_tado_bridge_status
-  #     - sensor.bathroom_overlay
-  #     - sensor.bathroom_power
-  #     - sensor.cinema_overlay
-  #     - sensor.cinema_power
-  #     - sensor.kitchen_overlay
-  #     - sensor.kitchen_power
-  #     - sensor.bedroom_overlay
-  #     - sensor.bedroom_power
-  #     - sensor.livingroom_overlay
-  #     - sensor.livingroom_power
-  #     - sensor.entrance_overlay
-  #     - sensor.entrance_power
-  #     - sensor.entrance_tilt_x
-  #     - sensor.entrance_tilt_y
-  #     - sensor.entrance_tilt_z
-  #     - sensor.workshop_tilt_x
-  #     - sensor.workshop_tilt_y
-  #     - sensor.workshop_tilt_z
-  #     - binary_sensor.entrance_acceleration
-  #     - binary_sensor.entrance_contact
-  #     - binary_sensor.workshop_acceleration
-  #     - binary_sensor.workshop_contact
-  #     - binary_sensor.motion_sensor_bedroom
-  #     - binary_sensor.motion_sensor_cinema
-  #     - binary_sensor.motion_sensor_kitchen
-  #     - binary_sensor.motion_sensor_livingroom
+      - automation
+      - weblink
+      - updater
+    entities:
+      - sensor.bathroom_heating
+      - sensor.cinema_heating
+      - sensor.kitchen_heating
+      - sensor.bedroom_heating
+      - sensor.livingroom_heating
+      - sensor.entrance_heating
+      - sensor.aeotec_dsb05_multisensor_luminance_2
+      - sensor.aeotec_dsb05_multisensor_luminance
+      - sensor.kitchen_motion_sensor_1
+      - sensor.bedroom_motion_sensor_1_2
+      - sensor.entrance_motion_sensor_1
+      - sensor.bathroom_link
+      - sensor.cinema_link
+      - sensor.kitchen_link
+      - sensor.bedroom_link
+      - sensor.livingroom_link
+      - sensor.entrance_link
+      - sensor.bathroom_tado_mode
+      - sensor.cinema_tado_mode
+      - sensor.kitchen_tado_mode
+      - sensor.bedroom_tado_mode
+      - sensor.livingroom_tado_mode
+      - sensor.entrance_tado_mode
+      - sensor.ewaldsvej_tado_bridge_status
+      - sensor.bathroom_overlay
+      - sensor.bathroom_power
+      - sensor.cinema_overlay
+      - sensor.cinema_power
+      - sensor.kitchen_overlay
+      - sensor.kitchen_power
+      - sensor.bedroom_overlay
+      - sensor.bedroom_power
+      - sensor.livingroom_overlay
+      - sensor.livingroom_power
+      - sensor.entrance_overlay
+      - sensor.entrance_power
 
 # View all events in a logbook
 logbook:
