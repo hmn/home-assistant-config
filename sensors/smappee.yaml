@@ -15,7 +15,7 @@
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.alwaysOn | multiply(0.1)) | float(2) }}"
+  value_template: "{{ (value_json.intervalDatas.alwaysOn | multiply(0.1)) | float(2) }}"
 #
 #
 # servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated
