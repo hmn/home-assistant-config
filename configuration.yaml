@@ -215,6 +215,13 @@ mqtt:
     payload: 'offline'
 
 homekit:
+  auto_start: False
+  filter:
+    include_domains:
+      - script
+      - input_boolean
+      - light
+      - media_player
 
 alexa:
 
