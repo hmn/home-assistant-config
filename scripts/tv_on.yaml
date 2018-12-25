@@ -12,4 +12,4 @@ tv_on:
       entity_id: media_player.denon_avrx1300w
       #source: 'Media Player'
       source: 'TV Audio'
-      sound_mode: 'AUTO'
+      sound_mode: 'MOVIE'

@@ -53,7 +53,7 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Game'
         source: 'TV Audio'
-        sound_mode: 'AUTO'
+        sound_mode: 'GAME'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled
@@ -79,7 +79,7 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Media Player'
         source: 'TV Audio'
-        sound_mode: 'AUTO'
+        sound_mode: 'MOVIE'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled
@@ -129,7 +129,7 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Media Player'
         source: 'TV Audio'
-        sound_mode: 'AUTO'
+        sound_mode: 'MOVIE'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled
@@ -156,7 +156,7 @@
       data:
         entity_id: media_player.denon_avrx1300w
         source: 'TV Audio'
-        sound_mode: 'AUTO'
+        sound_mode: 'MOVIE'
 
 - alias: "Plex is playing"
   trigger:
@@ -169,7 +169,7 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Media Player'
         source: 'TV Audio'
-        sound_mode: 'AUTO'
+        sound_mode: 'MOVIE'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled

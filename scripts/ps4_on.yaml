@@ -10,6 +10,6 @@ ps4_on:
       entity_id: media_player.denon_avrx1300w
       #source: 'Game'
       source: 'TV Audio'
-      sound_mode: 'AUTO'
+      sound_mode: 'GAME'
   - service: switch.turn_on
     entity_id: switch.playstation_4
