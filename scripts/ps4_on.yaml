@@ -1,5 +1,5 @@
 ps4_on:
-  alias: PS4 ON 
+  alias: PS4 ON
   sequence:
   - service: media_player.turn_on
     entity_id: media_player.lg_oled
@@ -8,7 +8,8 @@ ps4_on:
   - service: media_player.select_source
     data:
       entity_id: media_player.denon_avrx1300w
-      source: 'Game'
+      #source: 'Game'
+      source: 'TV Audio'
+      sound_mode: 'AUTO'
   - service: switch.turn_on
     entity_id: switch.playstation_4
-

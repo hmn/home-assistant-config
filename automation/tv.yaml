@@ -51,11 +51,14 @@
     - service: media_player.select_source
       data:
         entity_id: media_player.denon_avrx1300w
-        source: 'Game'
+        #source: 'Game'
+        source: 'TV Audio'
+        sound_mode: 'AUTO'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled
-        source: 'HDMI2'
+        #source: 'HDMI2'
+        source: 'HDMI3'
 
 - alias: "PS4 turned off"
   trigger:
@@ -74,11 +77,14 @@
     - service: media_player.select_source
       data:
         entity_id: media_player.denon_avrx1300w
-        source: 'Media Player'
+        #source: 'Media Player'
+        source: 'TV Audio'
+        sound_mode: 'AUTO'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled
-        source: 'HDMI2'
+        #source: 'HDMI2'
+        source: 'HDMI4'
     - service: media_player.turn_on
       entity_id: media_player.apple_tv
 
@@ -121,11 +127,14 @@
     - service: media_player.select_source
       data:
         entity_id: media_player.denon_avrx1300w
-        source: 'Media Player'
+        #source: 'Media Player'
+        source: 'TV Audio'
+        sound_mode: 'AUTO'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled
-        source: 'HDMI2'
+        #source: 'HDMI2'
+        source: 'HDMI4'
     - service: media_player.turn_on
       entity_id: media_player.apple_tv
 
@@ -147,6 +156,7 @@
       data:
         entity_id: media_player.denon_avrx1300w
         source: 'TV Audio'
+        sound_mode: 'AUTO'
 
 - alias: "Plex is playing"
   trigger:
@@ -157,8 +167,11 @@
     - service: media_player.select_source
       data:
         entity_id: media_player.denon_avrx1300w
-        source: 'Media Player'
+        #source: 'Media Player'
+        source: 'TV Audio'
+        sound_mode: 'AUTO'
     - service: media_player.select_source
       data:
         entity_id: media_player.lg_oled
-        source: 'HDMI2'
+        #source: 'HDMI2'
+        source: 'HDMI4'

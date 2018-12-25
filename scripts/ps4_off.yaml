@@ -6,5 +6,6 @@ ps4_off:
   - service: media_player.select_source
     data:
       entity_id: media_player.denon_avrx1300w
-      source: 'Media Player'
-
+      #source: 'Media Player'
+      source: 'TV Audio'
+      sound_mode: 'AUTO'
