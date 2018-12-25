@@ -1,5 +1,5 @@
 - platform: mqtt
-  name: totalPower
+  name: Smappee power
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
@@ -11,18 +11,18 @@
     - monitorStatus
 
 - platform: mqtt
-  name: alwaysOn
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.1)) | float(2) }}"
-
-- platform: mqtt
-  name: alwaysOn
+  name: Smappee always on
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | float(2) }}"
+
+- platform: mqtt
+  name: Smappee average RMS Voltage
+  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
+  unit_of_measurement: "V"
+  icon: "mdi:power-plug"
+  value_template: "{{ (value_json.intervalDatas[0].averageRMSVoltage | multiply(0.1)) | float(2) }}"
 
 #
 #
