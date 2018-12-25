@@ -8,4 +8,7 @@ ps4_off:
       entity_id: media_player.denon_avrx1300w
       #source: 'Media Player'
       source: 'TV Audio'
+  - service: media_player.select_sound_mode
+    data:
+      entity_id: media_player.denon_avrx1300w
       sound_mode: 'MOVIE'

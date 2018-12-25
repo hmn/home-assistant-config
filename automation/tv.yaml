@@ -79,6 +79,9 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Media Player'
         source: 'TV Audio'
+    - service: media_player.select_sound_mode
+      data:
+        entity_id: media_player.denon_avrx1300w
         sound_mode: 'MOVIE'
     - service: media_player.select_source
       data:
@@ -129,6 +132,9 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Media Player'
         source: 'TV Audio'
+    - service: media_player.select_sound_mode
+      data:
+        entity_id: media_player.denon_avrx1300w
         sound_mode: 'MOVIE'
     - service: media_player.select_source
       data:
@@ -156,6 +162,9 @@
       data:
         entity_id: media_player.denon_avrx1300w
         source: 'TV Audio'
+    - service: media_player.select_sound_mode
+      data:
+        entity_id: media_player.denon_avrx1300w
         sound_mode: 'MOVIE'
 
 - alias: "Plex is playing"
@@ -169,6 +178,9 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Media Player'
         source: 'TV Audio'
+    - service: media_player.select_sound_mode
+      data:
+        entity_id: media_player.denon_avrx1300w
         sound_mode: 'MOVIE'
     - service: media_player.select_source
       data:
