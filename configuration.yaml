@@ -220,6 +220,7 @@ homekit:
     include_domains:
       - script
       - input_boolean
+      - switch
       - light
       - media_player
 
