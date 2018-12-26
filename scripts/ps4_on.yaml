@@ -16,3 +16,8 @@ ps4_on:
       sound_mode: 'GAME'
   - service: switch.turn_on
     entity_id: switch.playstation_4
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.lg_oled
+      #source: 'HDMI2'
+      source: 'HDMI3'
