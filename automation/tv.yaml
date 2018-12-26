@@ -53,6 +53,9 @@
         entity_id: media_player.denon_avrx1300w
         #source: 'Game'
         source: 'TV Audio'
+    - service: media_player.select_sound_mode
+      data:
+        entity_id: media_player.denon_avrx1300w
         sound_mode: 'GAME'
     - service: media_player.select_source
       data:
