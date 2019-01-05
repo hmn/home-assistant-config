@@ -1,16 +1,16 @@
-- alias: "Smoke detected in Kitchen"
-  trigger:
-    - platform: state
-      entity_id: sensor.kitchen_nest_protect_smoke_status
-      from: 'Ok'
-  action:
-    - service: notify.all
-      data:
-        message: "Smoke detected in the Kitchen!"
-    - service: light.turn_on
-      data:
-        entity_id: group.all_lights
-        brightness: 255
+# - alias: "Smoke detected in Kitchen"
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.kitchen_nest_protect_smoke_status
+#       from: 'Ok'
+#   action:
+#     - service: notify.all
+#       data:
+#         message: "Smoke detected in the Kitchen!"
+#     - service: light.turn_on
+#       data:
+#         entity_id: group.all_lights
+#         brightness: 255
 
 - alias: "Smoke detected by fibaro sensor"
   trigger:

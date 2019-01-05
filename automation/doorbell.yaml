@@ -1,0 +1,7 @@
+- alias: "AWS IOT doorbell"
+  trigger:
+    platform: webhook
+    webhook_id: !secret webhook_aws_iot_doorbell
+  action:
+    service: script.turn_on
+    entity_id: script.doorbell
