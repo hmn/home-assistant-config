@@ -200,7 +200,7 @@ tv:
     - media_player.apple_tv
     - media_player.apple_tv_2
     - media_player.plex_web_chrome
-    - media_player.denon_avrx1300w
+    - media_player.denon_avr_x1300w
     - media_player.lg_oled
     - media_player.playstation_4
     - switch.lg_oled_wol
