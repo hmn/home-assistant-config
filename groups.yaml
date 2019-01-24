@@ -50,7 +50,6 @@ settings:
     - switch.bathroom_fan
     - switch.bathroom_pump
     - switch.computer
-    - switch.fibaro_system_fgwpef_wall_plug_switch
     - switch.particle_relay1
     - switch.server
   icon: mdi:settings
@@ -105,9 +104,6 @@ temperature:
     - sensor.bedroom_temperature
     - sensor.livingroom_temperature
     - sensor.entrance_temperature
-    - sensor.fibaro_system_fgss101_smoke_sensor_temperature
-    - sensor.aeotec_dsb05_multisensor_temperature_2
-    - sensor.aeotec_dsb05_multisensor_temperature
     - sensor.kitchen_motion_sensor_1_2
     - sensor.entrance_motion_sensor_1_2
     - sensor.entrance_motion_sensor_2_2
@@ -123,11 +119,8 @@ humidity:
     - sensor.bedroom_humidity
     - sensor.livingroom_humidity
     - sensor.entrance_humidity
-    - sensor.aeotec_dsb05_multisensor_relative_humidity_2
-    - sensor.aeotec_dsb05_multisensor_relative_humidity
     - sensor.bathroom_humidity_statistics_mean
     - sensor.weather_humidity
-    - sensor.fibaro_wall_plug_relative_humidity
     - binary_sensor.bathroom_humidity_falling
     - binary_sensor.bathroom_humidity_rising
 
@@ -145,8 +138,6 @@ luminance:
   name: Luminance
   view: no
   entities:
-    - sensor.aeotec_dsb05_multisensor_luminance_2
-    - sensor.aeotec_dsb05_multisensor_luminance
     - sensor.kitchen_motion_sensor_1
     - sensor.bedroom_motion_sensor_1_2
     - sensor.entrance_motion_sensor_1
@@ -236,12 +227,6 @@ energy:
   name: Energy
   view: no
   entities:
-    - switch.fibaro_system_fgwpef_wall_plug_switch
-    - sensor.fibaro_wall_plug_energy
-    - sensor.fibaro_wall_plug_exporting
-    - sensor.fibaro_wall_plug_power
-    - sensor.fibaro_wall_plug_power_2
-    - sensor.fibaro_wall_plug_velocity
     - sensor.smappee_home_active_power
     - sensor.smappee_home_always_on_today
     - sensor.smappee_home_current
@@ -250,21 +235,11 @@ energy:
     - sensor.smappee_home_solar
     - sensor.smappee_home_solar_today
     - sensor.smappee_home_voltage
-    - sensor.fibaro_system_fgwpef_wall_plug_power
-    - sensor.fibaro_system_fgwpef_wall_plug_power_2
-    - sensor.fibaro_system_fgwpef_wall_plug_energy
-    - sensor.fibaro_system_fgwpef_wall_plug_rain_rate
-    - sensor.fibaro_system_fgwpef_wall_plug_exporting
 
 smoke:
   name: Smoke
   view: no
   entities:
-    - sensor.fibaro_system_fgss101_smoke_sensor_alarm_level
-    - sensor.fibaro_system_fgss101_smoke_sensor_alarm_type
-    - sensor.fibaro_system_fgss101_smoke_sensor_general
-    - sensor.fibaro_system_fgss101_smoke_sensor_heat
-    - sensor.fibaro_system_fgss101_smoke_sensor_smoke
     - sensor.kitchen_nest_protect_co_status
     - sensor.kitchen_nest_protect_color_status
     - sensor.kitchen_nest_protect_smoke_status
