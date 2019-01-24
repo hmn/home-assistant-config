@@ -25,7 +25,7 @@
   trigger:
     - platform: homeassistant
       event: start
-    - platform: time
+    - platform: time_pattern
       minutes: '/15'
       seconds: 00
     - platform: state
