@@ -10,10 +10,10 @@ ps4_off:
       source: 'HDMI4'
   - service: media_player.select_source
     data:
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
       #source: 'Media Player'
       source: 'TV Audio'
   - service: media_player.select_sound_mode
     data:
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
       sound_mode: 'MOVIE'

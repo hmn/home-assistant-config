@@ -7,7 +7,7 @@ tv_off:
     - service: media_player.turn_off
       entity_id: media_player.lg_oled
     - service: media_player.turn_off
-      entity_id: media_player.denon_avrx1300w
+      entity_id: media_player.denon_avr_x1300w
     - service: media_player.turn_off
       entity_id: media_player.apple_tv
     - service: media_player.turn_off
