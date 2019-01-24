@@ -269,26 +269,6 @@ smoke:
     - sensor.kitchen_nest_protect_color_status
     - sensor.kitchen_nest_protect_smoke_status
 
-battery:
-  name: Battery
-  view: no
-  entities:
-    - sensor.henrik__ipad_battery_level
-    - sensor.henrik__ipad_battery_state
-    - sensor.henriks_iphone_battery_level
-    - sensor.henriks_iphone_battery_state
-    - sensor.bedroom_motion_sensor_1_battery
-    - sensor.bedroom_motion_sensor_1_battery_2
-    - sensor.entrance_motion_sensor_1_battery
-    - sensor.entrance_motion_sensor_2_battery
-    - sensor.kitchen_motion_sensor_1_battery
-    - sensor.kitchen_motion_sensor_1_battery_2
-    - sensor.henrik_nicolaisen_battery
-    - sensor.henriks_ipad_battery
-    - sensor.henriks_iphone_battery_level_2
-    - sensor.henriks_iphone_battery_state_2
-    - sensor.kitchen_nest_protect_battery_health
-
 cameras:
   name: Cameras
   view: no
