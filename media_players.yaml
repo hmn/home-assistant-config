@@ -5,7 +5,6 @@
 ############################################################
 
 - platform: plex
-#- platform: cast
 - platform: denonavr
 - platform: webostv
   host: 10.254.2.118
