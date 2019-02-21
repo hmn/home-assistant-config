@@ -13,8 +13,7 @@ from homeassistant.components.media_player import (
     ENTITY_IMAGE_URL
 )
 from homeassistant.components.media_player.const import (
-    MEDIA_TYPE_CHANNEL,
-    SUPPORT_TURN_ON,
+    MEDIA_TYPE_CHANNEL, SUPPORT_TURN_ON,
     SUPPORT_TURN_OFF,
     SUPPORT_STOP,
     SUPPORT_SELECT_SOURCE
