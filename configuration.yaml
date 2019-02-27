@@ -18,6 +18,8 @@ homeassistant:
 
 api:
 
+system_health:
+
 # Enables the frontend
 frontend:
 
@@ -34,8 +36,8 @@ http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 10.254.2.10
-    - 172.16.2.1
-    - 127.0.0.1
+  #  - 172.16.2.1
+  #  - 127.0.0.1
   cors_allowed_origins:
     - https://google.com
     - https://home-assistant.io
@@ -43,8 +45,8 @@ http:
   trusted_networks:
     - 127.0.0.1
     - ::1
-  ip_ban_enabled: True
-  login_attempts_threshold: 5
+  #ip_ban_enabled: True
+  #login_attempts_threshold: 5
 
 # Checks for available updates
 updater:
@@ -55,7 +57,7 @@ discovery:
 #    - plex_mediaserver
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
+#conversation:
 
 # Enables support for tracking state changes over time.
 history:
@@ -166,10 +168,13 @@ logbook:
     domains:
       - climate
 
+cloud:
+zeroconf:
 ios:
+alexa:
 
 # Track the sun
-sun:
+#sun:
 
 # Text to speech
 #tts:
@@ -183,22 +188,6 @@ wake_on_lan:
 
 ifttt:
   key: !secret ifttt_key
-
-tado:
-  username: !secret tado_username
-  password: !secret tado_password
-
-smappee:
-  host: 10.254.2.116
-  client_id: !secret smappee_client_id
-  client_secret: !secret smappee_client_secret
-  username: !secret smappee_username
-  password: !secret smappee_password
-
-apple_tv:
-  host: 10.254.2.195
-  login_id: !secret apple_tv_login_id
-  credentials: !secret apple_tv_credentials
 
 mqtt:
   broker: core-mosquitto
@@ -224,9 +213,21 @@ homekit:
       - light
       - media_player
 
-alexa:
+tado:
+  username: !secret tado_username
+  password: !secret tado_password
 
-cloud:
+smappee:
+  host: 10.254.2.116
+  client_id: !secret smappee_client_id
+  client_secret: !secret smappee_client_secret
+  username: !secret smappee_username
+  password: !secret smappee_password
+
+apple_tv:
+  host: 10.254.2.195
+  login_id: !secret apple_tv_login_id
+  credentials: !secret apple_tv_credentials
 
 logi_circle:
   username: !secret logi_circle_username
@@ -236,11 +237,11 @@ nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
 
-#hue:
-#  bridges:
-#    - host: 10.254.2.105
-#      allow_unreachable: true
-#      allow_hue_groups: true
+# hue:
+#   bridges:
+#     - host: 10.254.2.105
+#       allow_unreachable: true
+#       allow_hue_groups: true
 
 #tradfri:
 #  host: 10.254.2.102
