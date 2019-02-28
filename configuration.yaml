@@ -282,6 +282,9 @@ logger:
     smappy: debug
     pyps4.connection: debug
   #  pylgtv.webos_client: critical
+    aiounifi: debug
+    homeassistant.components.unifi: debug
+    homeassistant.components.switch.unifi: debug
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation

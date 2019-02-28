@@ -37,9 +37,9 @@
 
 # - platform: bluetooth_tracker
 
-- platform: unifi
-  host: 10.254.2.104
-  username: !secret unifi_username
-  password: !secret unifi_password
-  verify_ssl: false
-  track_new_devices: false
+# - platform: unifi
+#   host: 10.254.2.104
+#   username: !secret unifi_username
+#   password: !secret unifi_password
+#   verify_ssl: false
+#   track_new_devices: false
