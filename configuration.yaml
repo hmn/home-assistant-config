@@ -239,6 +239,11 @@ nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
 
+nissan_leaf:
+  username: !secret nissan_leaf_username
+  password: !secret nissan_leaf_password
+  region: !secret nissan_leaf_region
+
 # hue:
 #   bridges:
 #     - host: 10.254.2.105
@@ -271,20 +276,24 @@ logger:
   #default: info
   default: warning
   logs:
-    custom_components.media_player.ps4: debug
+    #custom_components.media_player.ps4: debug
     homeassistant.components.smappee: error
     homeassistant.components.mqtt: error
     #homeassistant.deconz: debug
     #homeassistant.components.deconz: debug
     #pydeconz: debug
     py.warnings: error
-    pyps4: debug
-    smappy: debug
-    pyps4.connection: debug
-  #  pylgtv.webos_client: critical
+    #pyps4: debug
+    #smappy: debug
+    #pyps4.connection: debug
+    #pylgtv.webos_client: critical
     aiounifi: debug
     homeassistant.components.unifi: debug
     homeassistant.components.switch.unifi: debug
+    homeassistant.components.nissan_leaf: debug
+    homeassistant.components.device_tracker.nissan_leaf: debug
+    homeassistant.components.sensor.nissan_leaf: debug
+    homeassistant.components.switch.nissan_leaf: debug
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation
