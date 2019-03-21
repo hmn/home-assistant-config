@@ -29,6 +29,8 @@ spotify_default:
       data:
         entity_id: media_player.spotify
         source: hmnmbp
+    - service: media_player.media_pause
+      entity_id: media_player.spotify
     - service: media_player.clear_playlist
       entity_id: media_player.spotify
     - service: media_player.shuffle_set
@@ -38,6 +40,4 @@ spotify_default:
     - service: media_player.volume_set
       data:
         entity_id: media_player.spotify
-        volume_level: 0.5
-    - service: media_player.media_stop
-      entity_id: media_player.spotify
+        volume_level: 1
