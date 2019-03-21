@@ -20,8 +20,6 @@ spotify_chill:
         shuffle: true
     - service: media_player.media_next_track
       entity_id: media_player.spotify
-    - service: timer.start
-      entity_id: timer.sleep
 
 
 spotify_default:

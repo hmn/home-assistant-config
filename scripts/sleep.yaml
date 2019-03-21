@@ -12,3 +12,13 @@ mode_sleep:
         entity_id: group.all_lights
     - service: script.turn_on
       entity_id: script.computer_off
+    - service: script.turn_on
+      entity_id: script.spotify_chill
+    - service: timer.start
+      entity_id: timer.sleep
+
+sleep_timer_done:
+  alias: Sleep timer done
+  sequence:
+    - service: media_player.media_stop
+      entity_id: media_player.spotify

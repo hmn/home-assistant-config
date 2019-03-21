@@ -5,4 +5,4 @@
       event_data:
         entity_id: timer.sleep
   action:
-    - service: script.spotify_default
+    - service: script.sleep_timer_done

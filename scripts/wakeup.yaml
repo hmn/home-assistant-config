@@ -23,6 +23,9 @@ mode_wakeup:
     - service: script.turn_on
       data:
         entity_id: script.computer_on
+    - service: script.turn_on
+      data:
+        entity_id: script.spotify_default
 #    - service: light.hue_activate_scene
 #      data:
 #        group_name: "Soveværelse"
