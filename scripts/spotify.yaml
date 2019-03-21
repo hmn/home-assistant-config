@@ -5,6 +5,10 @@ spotify_chill:
       data:
         entity_id: media_player.spotify
         source: Henrik's Echo
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.spotify
+        volume_level: 0.1
     - service: media_player.play_media
       data:
         entity_id: media_player.spotify
@@ -14,6 +18,8 @@ spotify_chill:
       data:
         entity_id: media_player.spotify
         shuffle: true
+    - service: media_player.media_next_track
+      entity_id: media_player.spotify
     - service: timer.start
       entity_id: timer.sleep
 
@@ -25,10 +31,15 @@ spotify_default:
       data:
         entity_id: media_player.spotify
         source: hmnmbp
+    - service: media_player.clear_playlist
+      entity_id: media_player.spotify
     - service: media_player.shuffle_set
       data:
         entity_id: media_player.spotify
         shuffle: true
-    - service: media_player.media_stop
+    - service: media_player.volume_set
       data:
         entity_id: media_player.spotify
+        volume_level: 0.5
+    - service: media_player.media_stop
+      entity_id: media_player.spotify
