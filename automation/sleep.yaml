@@ -1,0 +1,8 @@
+- alias: "Sleep timer"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.sleep
+  action:
+    - service: script.spotify_default

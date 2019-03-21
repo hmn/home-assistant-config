@@ -271,6 +271,10 @@ rest_command:
     timeout: 5
     content_type: 'application/json'
 
+timer:
+  sleep:
+    duration: '00:30:00'
+
 logger:
   #default: debug
   #default: info

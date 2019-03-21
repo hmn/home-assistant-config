@@ -1,0 +1,34 @@
+spotify_chill:
+  alias: Shuffle Chill playlist on spotify
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify
+        source: Henrik's Echo
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.spotify
+        media_content_id: spotify:user:114076300:playlist:6AaPTfrI1iOgH56tFkLGPc
+        media_content_type: playlist
+    - service: media_player.shuffle_set
+      data:
+        entity_id: media_player.spotify
+        shuffle: true
+    - service: timer.start
+      entity_id: timer.sleep
+
+
+spotify_default:
+  alias: Switch spotify to default
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify
+        source: hmnmbp
+    - service: media_player.shuffle_set
+      data:
+        entity_id: media_player.spotify
+        shuffle: true
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.spotify
