@@ -12,6 +12,8 @@
   entities:
     - light.entrance_light_1
     - light.entrance_light_2_room
+    - light.entrance_light_3
+    - light.entrance_light_4
     - light.entrance
     - light.entrance_2
 
