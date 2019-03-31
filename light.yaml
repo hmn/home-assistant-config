@@ -2,7 +2,6 @@
   name: Kitchen Lights
   entities:
     - light.kitchen
-    - light.kitchen_light
     - light.kitchen_spot_1
     - light.kitchen_spot_2
     - light.kitchen_spot_3
