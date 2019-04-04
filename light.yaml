@@ -5,6 +5,9 @@
     - light.kitchen_spot_1
     - light.kitchen_spot_2
     - light.kitchen_spot_3
+    - light.kitchen_spot_4
+    - light.kitchen_spot_5
+    - light.kitchen_spot_6
 
 - platform: group
   name: Entrance Lights
@@ -21,6 +24,14 @@
   entities:
     - light.bedroom
     - light.bedroom_light
+
+- platform: group
+  name: Livingroom Lights
+  entities:
+    - light.livingroom
+    - light.gu10_spot1
+    - light.gu10_spot2
+    - light.gu10_spot3
 
 #- platform: flux_led
 #  devices:
