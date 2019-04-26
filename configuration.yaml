@@ -231,9 +231,11 @@ apple_tv:
   login_id: !secret apple_tv_login_id
   credentials: !secret apple_tv_credentials
 
-#logi_circle:
-#  username: !secret logi_circle_username
-#  password: !secret logi_circle_password
+logi_circle:
+  client_id: !secret logi_circle_client_id
+  client_secret: !secret logi_circle_client_secret
+  api_key: !secret logi_circle_api_key
+  redirect_uri: !secret logi_circle_redirect_url
 
 nest:
   client_id: !secret nest_client_id
