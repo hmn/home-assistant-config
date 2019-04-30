@@ -215,9 +215,9 @@ homekit:
       - light
       - media_player
 
-tado:
-  username: !secret tado_username
-  password: !secret tado_password
+#tado:
+#  username: !secret tado_username
+#  password: !secret tado_password
 
 smappee:
   host: 10.254.2.116
