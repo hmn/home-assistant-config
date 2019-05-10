@@ -3,7 +3,7 @@ climate_save_mode:
   sequence:
   - condition: numeric_state
     entity_id: sensor.weather_temperature
-    above: 10
+    above: 16
   - service: switch.turn_on
     data:
       entity_id: switch.particle_relay1
