@@ -20,7 +20,6 @@
   name: Bedroom Lights
   entities:
     - light.bedroom
-    - light.bedroom_light
 
 - platform: group
   name: Livingroom Lights
