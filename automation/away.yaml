@@ -1,4 +1,4 @@
-- alias: "Away Henrik ios"
+- alias: "Henrik is Away"
   trigger:
     - platform: state
       entity_id: person.henrik_nicolaisen
