@@ -128,7 +128,7 @@
   action:
     service: light.turn_on
     data:
-      entity_id: light.entrance_light_2_room
+      entity_id: light.entrance_lamp_room
       brightness: 255
 
 - alias: "Motion stopped in Entrance Closet"
@@ -145,4 +145,4 @@
   action:
     service: light.turn_off
     data:
-      entity_id: light.entrance_light_2_room
+      entity_id: light.entrance_lamp_room

@@ -7,7 +7,7 @@
         event: 1002
   condition:
     - condition: state
-      entity_id: light.entrance_light_1
+      entity_id: light.entrance_lights
       state: 'off'
   action:
     service: light.turn_on
@@ -24,7 +24,7 @@
         event: 1002
   condition:
     - condition: state
-      entity_id: light.entrance_light_1
+      entity_id: light.entrance_lights
       state: 'on'
   action:
     service: light.turn_off
