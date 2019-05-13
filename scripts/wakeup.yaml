@@ -15,9 +15,6 @@ mode_wakeup:
       data:
         entity_id: light.kitchen_lights
         brightness: 255
-    - service: light.turn_off
-      data:
-        entity_id: light.cinema
     - service: script.turn_on
       entity_id: script.climate_normal_mode
     - service: script.turn_on
