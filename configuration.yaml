@@ -42,9 +42,9 @@ http:
     - https://google.com
     - https://home-assistant.io
     - https://www.home-assistant.io
-  trusted_networks:
-    - 127.0.0.1
-    - ::1
+  # trusted_networks:
+  #   - 127.0.0.1
+  #   - ::1
   #ip_ban_enabled: True
   #login_attempts_threshold: 5
 
