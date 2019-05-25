@@ -20,6 +20,7 @@
   name: Bedroom Lights
   entities:
     - light.bedroom
+    - light.hue_ambiance_ceiling_1
 
 - platform: group
   name: Livingroom Lights
