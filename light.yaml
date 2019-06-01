@@ -2,12 +2,12 @@
   name: Kitchen Lights
   entities:
     - light.kitchen
-    - light.kitchen_spot_1
-    - light.kitchen_spot_2
-    - light.kitchen_spot_3
-    - light.kitchen_spot_4
-    - light.kitchen_spot_5
-    - light.kitchen_spot_6
+    - light.kitchen_spot_1r1
+    - light.kitchen_spot_2r1
+    - light.kitchen_spot_3r1
+    - light.kitchen_spot_1r2
+    - light.kitchen_spot_2r2
+    - light.kitchen_spot_3r2
 
 - platform: group
   name: Entrance Lights
@@ -26,11 +26,7 @@
   name: Livingroom Lights
   entities:
     - light.livingroom
-    - light.gu10_spot1
-    - light.gu10_spot2
-    - light.gu10_spot3
     - light.lamp_1
-    - light.lamp_2
     - light.binic
 
 #- platform: flux_led
