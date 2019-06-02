@@ -83,7 +83,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_switch
+        id: living_room_switch
         event: 1002
   action:
     service: light.turn_on
@@ -99,7 +99,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_switch
+        id: living_room_switch
         event: 4002
   action:
     service: light.turn_off
@@ -115,7 +115,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_switch
+        id: living_room_switch
         event: 2002
   action:
     service: light.turn_on
@@ -128,7 +128,7 @@
     - platform: event
       event_type: deconz_event
       event_data:
-        id: cinema_switch
+        id: living_room_switch
         event: 3002
   action:
     service: light.turn_off
