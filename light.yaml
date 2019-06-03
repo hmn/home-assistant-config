@@ -15,6 +15,9 @@
     - light.entrance_lamp_1
     - light.entrance_lamp_2
     - light.entrance_lamp_room
+    - light.entrance_spot_1
+    - light.entrance_spot_2
+    - light.entrance_spot_3
 
 - platform: group
   name: Bedroom Lights
