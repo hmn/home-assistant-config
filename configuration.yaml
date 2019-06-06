@@ -172,6 +172,7 @@ logbook:
 
 cloud:
 zeroconf:
+ssdp:
 ios:
 alexa:
 
