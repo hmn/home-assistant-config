@@ -1,7 +1,25 @@
-- alias: "AWS IOT doorbell"
+- alias: "Doorbell pressed while home"
   trigger:
     platform: webhook
     webhook_id: !secret webhook_aws_iot_doorbell
+  condition:
+    conditions:
+      - condition: state
+        entity_id: person.henrik_nicolaisen
+        state: 'home'
   action:
     service: script.turn_on
-    entity_id: script.doorbell
+    entity_id: script.doorbell_home
+
+- alias: "Doorbell pressed while away"
+  trigger:
+    platform: webhook
+    webhook_id: !secret webhook_aws_iot_doorbell
+  condition:
+    conditions:
+      - condition: state
+        entity_id: person.henrik_nicolaisen
+        state: 'away'
+  action:
+    service: script.turn_on
+    entity_id: script.doorbell_away

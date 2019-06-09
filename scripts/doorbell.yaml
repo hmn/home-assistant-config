@@ -1,5 +1,5 @@
-doorbell:
-  alias: Doorbell pressed
+doorbell_home:
+  alias: Doorbell pressed while home
   sequence:
     - service: notify.all
       data:
@@ -12,3 +12,10 @@ doorbell:
       entity_id: media_player.apple_tv
     - service: media_player.media_pause
       entity_id: media_player.apple_tv_2
+
+doorbell_away:
+  alias: Doorbell pressed while away
+  sequence:
+    - service: notify.all
+      data:
+        message: "Doorbell was pressed, you have guests."
