@@ -3,7 +3,7 @@
     platform: webhook
     webhook_id: !secret webhook_aws_iot_doorbell
   condition:
-    conditions:
+    condition:
       - condition: state
         entity_id: person.henrik_nicolaisen
         state: 'home'
@@ -16,7 +16,7 @@
     platform: webhook
     webhook_id: !secret webhook_aws_iot_doorbell
   condition:
-    conditions:
+    condition:
       - condition: state
         entity_id: person.henrik_nicolaisen
         state: 'away'
