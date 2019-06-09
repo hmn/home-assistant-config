@@ -17,6 +17,7 @@
       entity_id:
         - light.kitchen_lights
         - light.living_room_table
+        - light.office_artemide
 
 - alias: "Motion stopped in Kitchen"
   trigger:
