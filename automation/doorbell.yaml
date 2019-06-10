@@ -4,8 +4,8 @@
     webhook_id: !secret webhook_aws_iot_doorbell
   condition:
     - condition: state
-      entity_id: person.henrik_nicolaisen
-      state: 'home'
+      entity_id: input_boolean.home
+      state: 'on'
   action:
     service: script.turn_on
     entity_id: script.doorbell_home
@@ -16,8 +16,8 @@
     webhook_id: !secret webhook_aws_iot_doorbell
   condition:
     - condition: state
-      entity_id: person.henrik_nicolaisen
-      state: 'away'
+      entity_id: input_boolean.home
+      state: 'off'
   action:
     service: script.turn_on
     entity_id: script.doorbell_away
