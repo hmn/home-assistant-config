@@ -1,9 +1,12 @@
-doorbell_home:
-  alias: Doorbell pressed while home
+doorbell:
+  alias: Doorbell pressed
   sequence:
     - service: notify.all
       data:
         message: "Doorbell was pressed, you have guests."
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
     - service: light.turn_on
       data:
         entity_id: light.kitchen_lights
@@ -12,10 +15,3 @@ doorbell_home:
       entity_id: media_player.apple_tv
     - service: media_player.media_pause
       entity_id: media_player.apple_tv_2
-
-doorbell_away:
-  alias: Doorbell pressed while away
-  sequence:
-    - service: notify.all
-      data:
-        message: "Doorbell was pressed, you have guests."
