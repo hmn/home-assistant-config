@@ -129,13 +129,6 @@ recorder:
 # View all events in a logbook
 logbook:
   exclude:
-    entities:
-      - sensor.bathroom_temerature
-      - sensor.bathroom2_temerature
-      - sensor.bedroom_temerature
-      - sensor.cinema_temerature
-      - sensor.kitchen_temerature
-      - sensor.livingroom_temerature
     domains:
       - climate
 
@@ -293,7 +286,6 @@ switch: !include_dir_merge_list switches
 script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
-group: !include groups.yaml
 scene: !include scenes.yaml
 
 #zwave:
