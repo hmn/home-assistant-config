@@ -116,46 +116,15 @@ recorder:
   exclude:
     domains:
       - climate
+      - light
       - automation
       - weblink
       - updater
     entities:
-      - sensor.bathroom_heating
-      - sensor.cinema_heating
-      - sensor.kitchen_heating
-      - sensor.bedroom_heating
-      - sensor.livingroom_heating
-      - sensor.entrance_heating
-      - sensor.aeotec_dsb05_multisensor_luminance_2
-      - sensor.aeotec_dsb05_multisensor_luminance
-      - sensor.kitchen_motion_sensor_1
-      - sensor.bedroom_motion_sensor_1_2
-      - sensor.entrance_motion_sensor_1
-      - sensor.bathroom_link
-      - sensor.cinema_link
-      - sensor.kitchen_link
-      - sensor.bedroom_link
-      - sensor.livingroom_link
-      - sensor.entrance_link
-      - sensor.bathroom_tado_mode
-      - sensor.cinema_tado_mode
-      - sensor.kitchen_tado_mode
-      - sensor.bedroom_tado_mode
-      - sensor.livingroom_tado_mode
-      - sensor.entrance_tado_mode
-      - sensor.ewaldsvej_tado_bridge_status
-      - sensor.bathroom_overlay
-      - sensor.bathroom_power
-      - sensor.cinema_overlay
-      - sensor.cinema_power
-      - sensor.kitchen_overlay
-      - sensor.kitchen_power
-      - sensor.bedroom_overlay
-      - sensor.bedroom_power
-      - sensor.livingroom_overlay
-      - sensor.livingroom_power
-      - sensor.entrance_overlay
-      - sensor.entrance_power
+      - binary_sensor.bedroom_motion_sensor_1
+      - binary_sensor.entrance_motion_sensor_1
+      - binary_sensor.entrance_motion_sensor_2
+      - binary_sensor.kitchen_motion_sensor_1
 
 # View all events in a logbook
 logbook:
