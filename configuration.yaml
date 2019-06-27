@@ -257,7 +257,7 @@ logger:
   #default: debug
   #default: info
   default: warning
-  logs:
+  #logs:
     #custom_components.media_player.ps4: debug
     #homeassistant.components.smappee: error
     #homeassistant.components.mqtt: error
