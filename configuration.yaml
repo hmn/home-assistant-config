@@ -259,12 +259,12 @@ logger:
   default: warning
   logs:
     #custom_components.media_player.ps4: debug
-    homeassistant.components.smappee: error
-    homeassistant.components.mqtt: error
-    homeassistant.deconz: debug
-    homeassistant.components.deconz: debug
-    pydeconz: debug
-    py.warnings: error
+    #homeassistant.components.smappee: error
+    #homeassistant.components.mqtt: error
+    #homeassistant.deconz: debug
+    #homeassistant.components.deconz: debug
+    #pydeconz: debug
+    #py.warnings: error
     #pyps4: debug
     #smappy: debug
     #pyps4.connection: debug
