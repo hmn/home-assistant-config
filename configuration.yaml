@@ -245,12 +245,16 @@ rest_command:
 timer:
   sleep:
     duration: '00:30:00'
+    icon: mdi:sleep
   entrance_lights:
     duration: '00:05:00'
+    icon: mdi:lightbulb-on
   kitchen_lights:
     duration: '00:05:00'
+    icon: mdi:lightbulb-on
   bedroom_lights:
     duration: '00:05:00'
+    icon: mdi:lightbulb-on
 
 logger:
   #default: debug
