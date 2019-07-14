@@ -115,7 +115,9 @@
       state: 'on'
   action:
     - service: timer.start
-      entity_id: timer.entrance_lights
+      entity_id:
+        - timer.entrance_lights
+        - timer.kitchen_lights
     - service: light.turn_on
       data:
         brightness: 255
