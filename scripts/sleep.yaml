@@ -16,6 +16,11 @@ mode_sleep:
       entity_id: script.spotify_chill
     - service: timer.start
       entity_id: timer.sleep
+    - service: timer.cancel
+      entity_id:
+        - timer.kitchen_lights
+        - timer.entrance_lights
+        - timer.bedroom_lights
 
 sleep_timer_done:
   alias: Sleep timer done
