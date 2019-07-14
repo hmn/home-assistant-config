@@ -7,12 +7,18 @@ mode_home:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.sleep
+    - service: timer.start
+      entity_id: timer.entrance_lights
+    - service: light.turn_on
+      entity_id: light.entrance_lights
+    - service: timer.start
+      entity_id: timer.kitchen_lights
+    - service: light.turn_on
+      entity_id: light.kitchen_lights
     - service: script.turn_on
       entity_id: script.climate_normal_mode
     - service: script.turn_on
       entity_id: script.computer_on
-    - service: light.turn_on
-      entity_id: light.entrance_lights
     # - service: notify.all
     #   data:
     #     message: "Welcome home"

@@ -7,6 +7,8 @@ doorbell:
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
+    - service: timer.start
+      entity_id: timer.kitchen_lights
     - service: light.turn_on
       data:
         entity_id: light.kitchen_lights

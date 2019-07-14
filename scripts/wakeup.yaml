@@ -7,10 +7,14 @@ mode_wakeup:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.home
+    - service: timer.start
+      entity_id: timer.bedroom_lights
     - service: light.turn_on
       data:
         entity_id: light.bedroom_lights
         brightness: 255
+    - service: timer.start
+      entity_id: timer.kitchen_lights
     - service: light.turn_on
       data:
         entity_id: light.kitchen_lights

@@ -59,10 +59,12 @@
         id: cinema_switch
         event: 2002
   action:
-    service: light.turn_on
-    data:
-      entity_id: light.kitchen_lights
-      brightness: 255
+    - service: timer.start
+      entity_id: timer.kitchen_lights
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_lights
+        brightness: 255
 
 - alias: "Cinema remote control turn off lights"
   trigger:
@@ -86,13 +88,15 @@
         id: living_room_switch
         event: 1002
   action:
-    service: light.turn_on
-    data:
-      brightness: 255
-      entity_id:
-        - light.living_room_lights
-        - light.kitchen_lights
-        - light.cinema_lights
+    - service: timer.start
+      entity_id: timer.kitchen_lights
+    - service: light.turn_on
+      data:
+        brightness: 255
+        entity_id:
+          - light.living_room_lights
+          - light.kitchen_lights
+          - light.cinema_lights
 
 - alias: "Living room remote control off button"
   trigger:

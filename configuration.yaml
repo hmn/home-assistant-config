@@ -245,6 +245,12 @@ rest_command:
 timer:
   sleep:
     duration: '00:30:00'
+  entrance_lights:
+    duration: '00:05:00'
+  kitchen_lights:
+    duration: '00:05:00'
+  bedroom_lights:
+    duration: '00:05:00'
 
 logger:
   #default: debug
