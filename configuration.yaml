@@ -262,7 +262,7 @@ logger:
   #default: debug
   #default: info
   default: warning
-  logs:
+  #logs:
     # log level for the `aiohttp` Python package
     #aiohttp: debug
     #urllib3: debug
