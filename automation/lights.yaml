@@ -44,7 +44,7 @@
       for:
         minutes: 5
   action:
-    service: timer.cancel
+    service: timer.finish
     entity_id: timer.kitchen_lights
 
 
@@ -93,7 +93,7 @@
       for:
         minutes: 5
   action:
-    service: timer.cancel
+    service: timer.finish
     entity_id: timer.bedroom_lights
 
 
@@ -158,5 +158,5 @@
       for:
         minutes: 5
   action:
-    service: timer.cancel
+    service: timer.finish
     entity_id: timer.entrance_lights
