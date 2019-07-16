@@ -260,7 +260,11 @@ logger:
   #default: debug
   #default: info
   default: warning
-  #logs:
+  logs:
+    # log level for the `aiohttp` Python package
+    aiohttp: error
+    # http debug
+    homeassistant.components.http: debug
     #custom_components.media_player.ps4: debug
     #homeassistant.components.smappee: error
     #homeassistant.components.mqtt: error
