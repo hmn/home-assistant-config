@@ -27,26 +27,25 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.kitchen_lights
+  condition:
+    - condition: state
+      entity_id: binary_sensor.kitchen_motion_sensor_1
+      state: 'off'
   action:
     service: light.turn_off
     data:
       entity_id: light.kitchen_lights
 
-# - alias: "Motion stopped in Kitchen"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.kitchen_motion_sensor_1
-#       to: 'off'
-#       for:
-#         minutes: 2
-#   condition:
-#     - condition: state
-#       entity_id: binary_sensor.kitchen_motion_sensor_1
-#       state: 'off'
-#   action:
-#     service: light.turn_off
-#     data:
-#       entity_id: light.kitchen_lights
+- alias: "Motion stopped in Kitchen"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_motion_sensor_1
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    service: timer.cancel
+    entity_id: timer.kitchen_lights
 
 
 - alias: "Motion in Bedroom"
@@ -77,22 +76,25 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.bedroom_lights
+  condition:
+    - condition: state
+      entity_id: binary_sensor.bedroom_motion_sensor_1
+      state: 'off'
   action:
     service: light.turn_off
     data:
       entity_id: light.bedroom_lights
 
-# - alias: "Motion stopped in Bedroom"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.bedroom_motion_sensor_1
-#       to: 'off'
-#       for:
-#         minutes: 2
-#   action:
-#     service: light.turn_off
-#     data:
-#       entity_id: light.bedroom_lights
+- alias: "Motion stopped in Bedroom"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_motion_sensor_1
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    service: timer.cancel
+    entity_id: timer.bedroom_lights
 
 
 - alias: "Motion in Entrance"
@@ -131,31 +133,30 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.entrance_lights
+  condition:
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
+      state: 'off'
   action:
     service: light.turn_off
     data:
       entity_id: light.entrance_lights
 
-# - alias: "Motion stopped in Entrance"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.entrance_motion_sensor_1
-#       to: 'off'
-#       for:
-#         minutes: 2
-#     - platform: state
-#       entity_id: binary_sensor.entrance_motion_sensor_2_2
-#       to: 'off'
-#       for:
-#         minutes: 2
-#   condition:
-#     - condition: state
-#       entity_id: binary_sensor.entrance_motion_sensor_1
-#       state: 'off'
-#     - condition: state
-#       entity_id: binary_sensor.entrance_motion_sensor_2_2
-#       state: 'off'
-#   action:
-#     service: light.turn_off
-#     data:
-#       entity_id: light.entrance_lights
+- alias: "Motion stopped in Entrance"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      to: 'off'
+      for:
+        minutes: 5
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    service: timer.cancel
+    entity_id: timer.entrance_lights
