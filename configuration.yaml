@@ -264,7 +264,8 @@ logger:
   default: warning
   logs:
     # log level for the `aiohttp` Python package
-    aiohttp: error
+    aiohttp: debug
+    urllib3: debug
     # http debug
     homeassistant.components.http: debug
     #custom_components.media_player.ps4: debug
