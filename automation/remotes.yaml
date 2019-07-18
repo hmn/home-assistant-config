@@ -1,36 +1,3 @@
-# - alias: "IKEA remote control turn on lights"
-#   trigger:
-#     - platform: event
-#       event_type: deconz_event
-#       event_data:
-#         id: office_remote_control
-#         event: 1002
-#   condition:
-#     - condition: state
-#       entity_id: light.entrance_lights
-#       state: 'off'
-#   action:
-#     service: light.turn_on
-#     data:
-#       entity_id: group.all_lights
-#       brightness: 255
-#
-# - alias: "IKEA remote control turn off lights"
-#   trigger:
-#     - platform: event
-#       event_type: deconz_event
-#       event_data:
-#         id: office_remote_control
-#         event: 1002
-#   condition:
-#     - condition: state
-#       entity_id: light.entrance_lights
-#       state: 'on'
-#   action:
-#     service: light.turn_off
-#     data:
-#       entity_id: group.all_lights
-
 - alias: "Cinema remote control turn on TV"
   trigger:
     - platform: event
@@ -61,10 +28,6 @@
   action:
     - service: timer.start
       entity_id: timer.kitchen_lights
-    - service: light.turn_on
-      data:
-        entity_id: light.kitchen_lights
-        brightness: 255
 
 - alias: "Cinema remote control turn off lights"
   trigger:
@@ -74,11 +37,15 @@
         id: cinema_switch
         event: 3002
   action:
-    service: light.turn_off
-    data:
-      entity_id: group.all_lights
-      transition: 2 # time in seconds for the off transition here.
-
+    - service: light.turn_off
+      data:
+        entity_id: group.all_lights
+        transition: 2 # time in seconds for the off transition here.
+    - service: timer.cancel
+      entity_id:
+        - timer.entrance_lights
+        - timer.kitchen_lights
+        - timer.bedroom_lights
 
 - alias: "Living room remote control on button"
   trigger:
@@ -90,13 +57,6 @@
   action:
     - service: timer.start
       entity_id: timer.kitchen_lights
-    - service: light.turn_on
-      data:
-        brightness: 255
-        entity_id:
-          - light.living_room_lights
-          - light.kitchen_lights
-          - light.cinema_lights
 
 - alias: "Living room remote control off button"
   trigger:
@@ -106,13 +66,15 @@
         id: living_room_switch
         event: 4002
   action:
-    service: light.turn_off
-    data:
+    - service: timer.cancel
       entity_id:
-        - light.living_room_lights
-        - light.kitchen_lights
-        - light.cinema_lights
-      transition: 2 # time in seconds for the off transition here.
+        - timer.kitchen_lights
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.living_room_lights
+          - light.cinema_lights
+        transition: 2 # time in seconds for the off transition here.
 
 - alias: "Living room remote control light up button"
   trigger:

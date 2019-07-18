@@ -1,8 +1,9 @@
-- alias: "Motion in Kitchen"
+- alias: "Kitchen lights timer started"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_motion_sensor_1
-      to: 'on'
+    - platform: event
+      event_type: timer.started
+      event_data:
+        entity_id: timer.kitchen_lights
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -11,8 +12,6 @@
       entity_id: input_boolean.home
       state: 'on'
   action:
-    - service: timer.start
-      entity_id: timer.kitchen_lights
     - service: light.turn_on
       data:
         brightness: 255
@@ -36,6 +35,15 @@
     data:
       entity_id: light.kitchen_lights
 
+- alias: "Motion in Kitchen"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_motion_sensor_1
+      to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.kitchen_lights
+
 - alias: "Motion stopped in Kitchen"
   trigger:
     - platform: state
@@ -48,11 +56,12 @@
     entity_id: timer.kitchen_lights
 
 
-- alias: "Motion in Bedroom"
+- alias: "Bedroom lights timer started"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bedroom_motion_sensor_1
-      to: 'on'
+    - platform: event
+      event_type: timer.started
+      event_data:
+        entity_id: timer.bedroom_lights
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -61,14 +70,11 @@
       entity_id: input_boolean.home
       state: 'on'
   action:
-    - service: timer.start
-      entity_id: timer.bedroom_lights
     - service: light.turn_on
       data:
         brightness: 255
         entity_id:
           - light.bedroom_lights
-          - light.kitchen_lights
 
 - alias: "Bedroom lights timer done"
   trigger:
@@ -85,6 +91,15 @@
     data:
       entity_id: light.bedroom_lights
 
+- alias: "Motion in Bedroom"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bedroom_motion_sensor_1
+      to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.bedroom_lights
+
 - alias: "Motion stopped in Bedroom"
   trigger:
     - platform: state
@@ -97,17 +112,12 @@
     entity_id: timer.bedroom_lights
 
 
-- alias: "Motion in Entrance"
+- alias: "Entrance lights timer started"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_1
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2_2
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_3
-      to: 'on'
+    - platform: event
+      event_type: timer.started
+      event_data:
+        entity_id: timer.entrance_lights
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -116,10 +126,6 @@
       entity_id: input_boolean.home
       state: 'on'
   action:
-    - service: timer.start
-      entity_id:
-        - timer.entrance_lights
-        - timer.kitchen_lights
     - service: light.turn_on
       data:
         brightness: 255
@@ -144,6 +150,23 @@
     service: light.turn_off
     data:
       entity_id: light.entrance_lights
+
+- alias: "Motion in Entrance"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_1
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_2_2
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.entrance_motion_sensor_3
+      to: 'on'
+  action:
+    - service: timer.start
+      entity_id:
+        - timer.entrance_lights
+        - timer.kitchen_lights
 
 - alias: "Motion stopped in Entrance"
   trigger:

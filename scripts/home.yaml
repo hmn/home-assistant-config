@@ -8,13 +8,9 @@ mode_home:
       data:
         entity_id: input_boolean.sleep
     - service: timer.start
-      entity_id: timer.entrance_lights
-    - service: light.turn_on
-      entity_id: light.entrance_lights
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-    - service: light.turn_on
-      entity_id: light.kitchen_lights
+      entity_id:
+        - timer.entrance_lights
+        - timer.kitchen_lights
     - service: script.turn_on
       entity_id: script.climate_normal_mode
     - service: script.turn_on

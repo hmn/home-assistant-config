@@ -8,17 +8,9 @@ mode_wakeup:
       data:
         entity_id: input_boolean.home
     - service: timer.start
-      entity_id: timer.bedroom_lights
-    - service: light.turn_on
-      data:
-        entity_id: light.bedroom_lights
-        brightness: 255
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-    - service: light.turn_on
-      data:
-        entity_id: light.kitchen_lights
-        brightness: 255
+      entity_id:
+        - timer.bedroom_lights
+        - timer.kitchen_lights
     - service: script.turn_on
       entity_id: script.climate_normal_mode
     - service: script.turn_on
@@ -27,11 +19,3 @@ mode_wakeup:
     - service: script.turn_on
       data:
         entity_id: script.spotify_default
-#    - service: light.hue_activate_scene
-#      data:
-#        group_name: "Soveværelse"
-#        scene_name: "Dimmed"
-#    - service: light.hue_activate_scene
-#      data:
-#        group_name: "Køkken"
-#        scene_name: "Dimmed"

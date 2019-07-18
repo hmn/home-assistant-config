@@ -9,10 +9,10 @@ mode_away:
         entity_id: input_boolean.sleep
     - service: script.turn_on
       entity_id: script.climate_save_mode
+    - service: timer.cancel
+      entity_id: all
     - service: light.turn_off
       data:
         entity_id: group.all_lights
     - service: script.turn_on
       entity_id: script.computer_off
-    - service: timer.cancel
-      entity_id: all

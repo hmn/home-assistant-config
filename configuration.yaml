@@ -303,7 +303,6 @@ switch: !include_dir_merge_list switches
 script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
-scene: !include scenes.yaml
 
 #zwave:
 #  usb_path: /dev/ttyACM0

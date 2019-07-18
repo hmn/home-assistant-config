@@ -9,10 +9,6 @@ doorbell:
       state: 'on'
     - service: timer.start
       entity_id: timer.kitchen_lights
-    - service: light.turn_on
-      data:
-        entity_id: light.kitchen_lights
-        brightness: 255
     - service: media_player.media_pause
       entity_id: media_player.apple_tv
     - service: media_player.media_pause
