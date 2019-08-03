@@ -184,12 +184,12 @@ homekit:
 #  username: !secret tado_username
 #  password: !secret tado_password
 
-smappee:
-  host: 10.254.2.116
-  client_id: !secret smappee_client_id
-  client_secret: !secret smappee_client_secret
-  username: !secret smappee_username
-  password: !secret smappee_password
+# smappee:
+#   host: 10.254.2.116
+#   client_id: !secret smappee_client_id
+#   client_secret: !secret smappee_client_secret
+#   username: !secret smappee_username
+#   password: !secret smappee_password
 
 apple_tv:
   host: 10.254.2.195
