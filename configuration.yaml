@@ -79,11 +79,11 @@ history:
       - binary_sensor.entrance_motion_sensor_1
       - binary_sensor.entrance_motion_sensor_2
       - binary_sensor.kitchen_motion_sensor_1
-      - sensor.smappee_power
-      - sensor.smappee_usage_today
-      - sensor.smappee_fase_1_power
-      - sensor.smappee_fase_2_power
-      - sensor.smappee_fase_3_power
+      # - sensor.smappee_power
+      # - sensor.smappee_usage_today
+      # - sensor.smappee_fase_1_power
+      # - sensor.smappee_fase_2_power
+      # - sensor.smappee_fase_3_power
 
 history_graph:
   energy_today:
