@@ -74,6 +74,20 @@ history:
       - sensor.last_boot
       - sensor.date
 
+history_graph:
+  energy_today:
+    entities:
+      - sensor.smappee_power
+      - sensor.smappee_fase_1_power
+      - sensor.smappee_fase_2_power
+      - sensor.smappee_fase_3_power
+  temperature:
+    entities:
+      - sensor.bedroom_motion_sensor_1
+      - sensor.entrance_motion_sensor_1
+      - sensor.kitchen_motion_sensor_1_2
+
+
 #influxdb:
 #  host: 127.0.0.1
 #  database: home_assistant
