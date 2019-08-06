@@ -17,6 +17,12 @@
       symbol: AAPL
     - name: Tesla
       symbol: TSLA
+    - name: Berkshire Hathaway Inc.
+      symbol: BRK-B
+    - name: The Coca-Cola Company
+      symbol: KO
+    - name: Volkswagen AG
+      symbol: VOW.DEX
   foreign_exchange:
     - from: BTC
       to: USD
