@@ -8,3 +8,4 @@ script:
 before_install:
   - mv travis_secrets.yaml secrets.yaml
   - touch zones.yaml
+  - touch customize.yaml
