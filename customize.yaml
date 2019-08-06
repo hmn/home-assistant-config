@@ -1,21 +1,13 @@
-###########################################################
-#
-# Home Assistant Customisations
-#
-############################################################
-
-# switch.particle_relay1:
-#   icon: mdi:temperature-celsius
-# switch.particle_relay1_rest:
-#   icon: mdi:temperature-celsius
-# switch.particle_relay1_rest_switch:
-#   icon: mdi:temperature-celsius
+switch.particle_relay1:
+  icon: mdi:temperature-celsius
+switch.particle_relay1_rest:
+  icon: mdi:temperature-celsius
+switch.particle_relay1_rest_switch:
+  icon: mdi:temperature-celsius
 witch.lg_oled_wol:
   icon: mdi:television
 binary_sensor.nintendo_switch:
   icon: mdi:nintendo-switch
-
-
 zone.home:
   track_ios: true
 zone.work:
@@ -24,18 +16,10 @@ zone.parents:
   track_ios: true
 zone.crossfit:
   track_ios: true
-
-#image_processing.dlib_face_outside:
-#  friendly_name: Face detected outside
-#image_processing.dlib_face_outside_2:
-#  friendly_name: Known face identified
-
 sensor.smappee_home_solar:
   hidden: true
-
 binary_sensor.entrance_motion_sensor_3:
   device_class: motion
-
 light.bathroom:
   hidden: true
 light.bedroom:
@@ -54,13 +38,6 @@ light.outside:
   hidden: true
 light.workshop:
   hidden: true
-
-############################################################
-#
-# Groups
-#
-############################################################
-
 group.all_automations:
   hidden: false
 group.all_scripts:
@@ -73,3 +50,11 @@ group.all_devices:
   hidden: false
 group.all_lights:
   hidden: false
+switch.artemide_switch:
+  icon: mdi:desk-lamp
+light.table:
+  icon: mdi:ceiling-light
+switch.leaf1henr_climate_control:
+  icon: mdi:air-conditioner
+light.living_room_table:
+  icon: mdi:ceiling-light
