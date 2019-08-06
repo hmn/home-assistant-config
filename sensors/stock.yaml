@@ -1,35 +1,24 @@
 - platform: alpha_vantage
   api_key: !secret alpha_vantage_apikey
   symbols:
-    - name: Disney
-      symbol: DIS
-    - name: AMD
-      symbol: AMD
-    - name: Nvidia
-      symbol: NVDA
-    - name: Microsoft
-      symbol: MSFT
-    - name: Alphabet
-      symbol: GOOGL
-    - name: Amazon
-      symbol: AMZN
-    - name: Apple
-      symbol: AAPL
-    - name: Tesla
-      symbol: TSLA
-    - name: Berkshire Hathaway Inc.
-      symbol: BRK-B
-    - name: The Coca-Cola Company
-      symbol: KO
-    - name: Volkswagen AG
-      symbol: VOW.DEX
+    - symbol: DIS
+    - symbol: AMD
+    - symbol: NVDA
+    - symbol: MSFT
+    - symbol: GOOGL
+    - symbol: AMZN
+    - symbol: AAPL
+    - symbol: TSLA
+    - symbol: BRK-B
+    - symbol: KO
+    - symbol: VOW.DEX
   foreign_exchange:
-    - from: BTC
+    - name: Bitcoin
+      from: BTC
       to: USD
-      name: Bitcoin
-    - from: USD
+    - name: USD
+      from: USD
       to: DKK
-      name: USD
-    - from: EUR
+    - name: Euro
+      from: EUR
       to: DKK
-      name: Euro
