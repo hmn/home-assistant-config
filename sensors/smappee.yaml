@@ -75,7 +75,9 @@
       time_constant: 10
     - filter: time_simple_moving_average
       window_size: 00:05
-      precision: 2
+      precision: 0
+    - filter: throttle
+      window_size: 10
 
 - platform: filter
   name: "Smappee power (lowpass)"
@@ -86,7 +88,9 @@
       radius: 4.0
     - filter: lowpass
       time_constant: 10
-      precision: 2
+      precision: 0
+    - filter: throttle
+      window_size: 10
 
 
 - platform: mqtt
