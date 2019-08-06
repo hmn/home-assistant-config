@@ -58,11 +58,11 @@
 # remap realtime sensors for history use
 
 - platform: filter
-    name: "Smappee power (history)"
-    entity_id: sensor.smappee_power
-    filters:
-      - filter: throttle
-        window_size: 10
+  name: "Smappee power (history)"
+  entity_id: sensor.smappee_power
+  filters:
+    - filter: throttle
+      window_size: 10
 
 
 - platform: mqtt
