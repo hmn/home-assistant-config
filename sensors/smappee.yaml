@@ -58,14 +58,7 @@
 # remap realtime sensors for history use
 
 - platform: filter
-  name: "Smappee power (throttle)"
-  entity_id: sensor.smappee_power
-  filters:
-    - filter: time_throttle
-      window_size: 00:01
-
-- platform: filter
-  name: "Smappee power (time_simple_moving_average)"
+  name: "Smappee power (moving average)"
   entity_id: sensor.smappee_power
   filters:
     - filter: outlier
@@ -80,14 +73,46 @@
       window_size: 00:01
 
 - platform: filter
-  name: "Smappee power (lowpass)"
-  entity_id: sensor.smappee_power
+  name: "Smappee fase 1 power (moving average)"
+  entity_id: sensor.smappee_fase_1_power
   filters:
     - filter: outlier
       window_size: 4
-      radius: 4.0
+      radius: 2.0
     - filter: lowpass
       time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 0
+    - filter: time_throttle
+      window_size: 00:01
+
+- platform: filter
+  name: "Smappee fase 2 power (moving average)"
+  entity_id: sensor.smappee_fase_2_power
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 0
+    - filter: time_throttle
+      window_size: 00:01
+
+- platform: filter
+  name: "Smappee fase 3 power (moving average)"
+  entity_id: sensor.smappee_fase_3_power
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
       precision: 0
     - filter: time_throttle
       window_size: 00:01
