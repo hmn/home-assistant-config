@@ -11,10 +11,10 @@ mode_home:
       entity_id:
         - timer.entrance_lights
         - timer.kitchen_lights
-    - service: script.turn_on
-      entity_id: script.climate_normal_mode
-    - service: script.turn_on
-      entity_id: script.computer_on
+    # - service: script.turn_on
+    #   entity_id: script.climate_normal_mode
+    # - service: script.turn_on
+    #   entity_id: script.computer_on
     # - service: notify.all
     #   data:
     #     message: "Welcome home"

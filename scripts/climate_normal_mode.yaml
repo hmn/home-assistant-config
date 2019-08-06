@@ -1,9 +1,9 @@
-climate_normal_mode:
-  alias: Climate Normal Mode
-  sequence:
-  - condition: numeric_state
-    entity_id: sensor.weather_temperature
-    below: 20
-  - service: switch.turn_off
-    data:
-      entity_id: switch.particle_relay1
+# climate_normal_mode:
+#   alias: Climate Normal Mode
+#   sequence:
+#   - condition: numeric_state
+#     entity_id: sensor.weather_temperature
+#     below: 20
+#   - service: switch.turn_off
+#     data:
+#       entity_id: switch.particle_relay1

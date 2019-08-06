@@ -1,9 +1,9 @@
-climate_save_mode:
-  alias: Climate Save Mode
-  sequence:
-  - condition: numeric_state
-    entity_id: sensor.weather_temperature
-    above: 16
-  - service: switch.turn_on
-    data:
-      entity_id: switch.particle_relay1
+# climate_save_mode:
+#   alias: Climate Save Mode
+#   sequence:
+#   - condition: numeric_state
+#     entity_id: sensor.weather_temperature
+#     above: 16
+#   - service: switch.turn_on
+#     data:
+#       entity_id: switch.particle_relay1

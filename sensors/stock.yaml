@@ -1,27 +1,29 @@
-# - platform: alpha_vantage
-#   api_key: !secret alpha_vantage_apikey
-#   symbols:
-#     - name: Disney
-#       symbol: DIS
-#     - name: AMD
-#       symbol: AMD
-#     - name: Applied Materials
-#       symbol: AMAT
-#     - name: Alphabet
-#       symbol: GOOGL
-#     - name: Amazon
-#       symbol: AMZN
-#     - name: Apple
-#       symbol: AAPL
-#     - name: Tesla
-#       symbol: TSLA
-#   foreign_exchange:
-#     - from: BTC
-#       to: USD
-#       name: Bitcoin
-#     - from: USD
-#       to: DKK
-#       name: USD
-#     - from: EUR
-#       to: DKK
-#       name: Euro
+- platform: alpha_vantage
+  api_key: !secret alpha_vantage_apikey
+  symbols:
+    - name: Disney
+      symbol: DIS
+    - name: AMD
+      symbol: AMD
+    - name: Nvidia
+      symbol: NVDA
+    - name: Microsoft
+      symbol: MSFT
+    - name: Alphabet
+      symbol: GOOGL
+    - name: Amazon
+      symbol: AMZN
+    - name: Apple
+      symbol: AAPL
+    - name: Tesla
+      symbol: TSLA
+  foreign_exchange:
+    - from: BTC
+      to: USD
+      name: Bitcoin
+    - from: USD
+      to: DKK
+      name: USD
+    - from: EUR
+      to: DKK
+      name: Euro

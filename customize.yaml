@@ -4,12 +4,12 @@
 #
 ############################################################
 
-switch.particle_relay1:
-  icon: mdi:temperature-celsius
-switch.particle_relay1_rest:
-  icon: mdi:temperature-celsius
-switch.particle_relay1_rest_switch:
-  icon: mdi:temperature-celsius
+# switch.particle_relay1:
+#   icon: mdi:temperature-celsius
+# switch.particle_relay1_rest:
+#   icon: mdi:temperature-celsius
+# switch.particle_relay1_rest_switch:
+#   icon: mdi:temperature-celsius
 witch.lg_oled_wol:
   icon: mdi:television
 binary_sensor.nintendo_switch:
