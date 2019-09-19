@@ -281,6 +281,16 @@ withings:
   profiles:
     - !secret withings_profile1
 
+plex:
+  host: 10.254.2.52
+  port: 32400
+  token: !secret plex_token
+  ssl: true
+  verify_ssl: false
+  media_player:
+   use_episode_art: true
+   show_all_controls: true
+
 # hue:
 #   bridges:
 #     - host: 10.254.2.105
