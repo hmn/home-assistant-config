@@ -151,7 +151,7 @@ history:
 #     icon: mdi:chart-areaspline
 #     url: !secret influxdb_url
 
-prometheus:
+#prometheus:
 
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
