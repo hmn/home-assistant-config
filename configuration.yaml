@@ -336,7 +336,7 @@ logger:
   #default: debug
   #default: info
   default: warning
-  #logs:
+  logs:
     # log level for the `aiohttp` Python package
     #aiohttp: debug
     #urllib3: debug
@@ -360,6 +360,7 @@ logger:
     #homeassistant.components.device_tracker.nissan_leaf: debug
     #homeassistant.components.sensor.nissan_leaf: debug
     #homeassistant.components.switch.nissan_leaf: debug
+    homeassistant.components.shell_command: debug
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation
