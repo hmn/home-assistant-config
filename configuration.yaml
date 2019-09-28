@@ -383,7 +383,7 @@ zone: !include zones.yaml
 #python_script:
 
 shell_command:
-  livingroom_fan_speed: "echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x03\x0d\x0a' | nc -w 1 -u -v -n 10.254.2.248 4000"
+  livingroom_fan_speed: "echo -n -e '\\\x6d\\\x6f\\\x62\\\x69\\\x6c\\\x65\\\x04\\\x03\\\x0d\\\x0a' | nc -w 1 -u -v -n 10.254.2.248 4000"
 
 #zwave:
 #  usb_path: /dev/ttyACM0
