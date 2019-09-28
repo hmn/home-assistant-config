@@ -1,6 +1,6 @@
 # services.yaml
 fan_status:
-  description: FAN test
+  description: Get Siku RV fan status
   fields:
     entity_id:
       description: The light that will be turned on.

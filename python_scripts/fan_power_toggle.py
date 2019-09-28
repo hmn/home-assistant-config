@@ -1,10 +1,3 @@
-name = data.get('name', 'world')
-logger.info("Hello {}".format(name))
-hass.bus.fire(name, { "wow": "from a Python script!" })
-
-
-
-
 import socket
 import string
 import sys
@@ -31,6 +24,8 @@ try:
     print('waiting to receive')
     data, server = s.recvfrom(4096)
     print('received {!r}'.format(data))
+
+    logger.info("Hello {}".format(data))
 
 finally:
     print('closing socket')
