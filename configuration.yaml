@@ -385,6 +385,7 @@ zone: !include zones.yaml
 shell_command:
   livingroom_fan_speed: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x03\x0d\x0a' | nc -w 1 -u -n 10.254.2.248 4000
   livingroom_fan_speed2: python custom_scripts/fan_speed.py
+  livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x{{speed}}\x0d\x0a' | nc -w 1 -u -n 10.254.2.248 4000
 
 #zwave:
 #  usb_path: /dev/ttyACM0
