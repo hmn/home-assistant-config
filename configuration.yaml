@@ -275,11 +275,11 @@ vacuum:
     username: !secret roomba_username
     password: !secret roomba_password
 
-#withings:
-#  client_id: !secret withings_client_id
-#  client_secret: !secret withings_client_secret
-#  profiles:
-#    - !secret withings_profile1
+withings:
+  client_id: !secret withings_client_id
+  client_secret: !secret withings_client_secret
+  profiles:
+    - !secret withings_profile1
 
 plex:
   host: 10.254.2.52
