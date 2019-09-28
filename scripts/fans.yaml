@@ -1,0 +1,6 @@
+livingroom_fan_speed:
+  alias: Set Livingroom fan speed
+  sequence:
+  - service: shell_command.livingroom_fan_speed
+    data_template:
+      speed: '03'
