@@ -367,6 +367,7 @@ automation old: !include_dir_merge_list automation
 light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
 camera: !include cameras.yaml
+fan: !include fans.yaml
 device_tracker: !include device_trackers.yaml
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
