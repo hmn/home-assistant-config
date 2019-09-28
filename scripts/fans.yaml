@@ -3,4 +3,4 @@ livingroom_fan_speed:
   sequence:
   - service: shell_command.livingroom_fan_speed
     data_template:
-      speed: '03'
+      speed: '\x03'
