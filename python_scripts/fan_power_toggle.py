@@ -1,6 +1,6 @@
-import socket
-import string
-import sys
+#import socket
+#import string
+#import sys
 
 
 # addressing information of target
