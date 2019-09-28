@@ -379,6 +379,8 @@ script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 
+python_script:
+
 #zwave:
 #  usb_path: /dev/ttyACM0
 #  network_key: !secret zwave_network_key
