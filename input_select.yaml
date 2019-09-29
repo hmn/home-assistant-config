@@ -1,9 +1,9 @@
 # Keep track of the current speed
 livingroom_fan_speed:
   options:
-    - '00'
     - '01'
     - '02'
+    - '03'
 livingroom_fan_direction:
   options:
     - 'in'

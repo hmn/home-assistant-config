@@ -2,10 +2,13 @@
   fans:
     livingroom_fan:
       friendly_name: "Livingroom fan"
-      value_template: "{{ states('input_boolean.state') }}"
-      speed_template: "{{ states('input_select.bedroom_fan_speed') }}"
+      value_template: "{{ states('switch.livingroom_fan') }}"
+      #value_template: "{{ states('input_boolean.state') }}"
+      speed_template: "{{ states('sensor.livingroom_fan_speed') }}"
+      #speed_template: "{{ states('input_select.bedroom_fan_speed') }}"
       #oscillating_template: "{{ states('input_select.osc') }}"
-      direction_template: "{{ states('input_select.bedroom_fan_direction') }}"
+      #direction_template: "{{ states('input_select.bedroom_fan_direction') }}"
+      direction_template: "{{ states('sensor.livingroom_fan_direction') }}"
       turn_on:
         service: switch.turn_on
         entity_id: switch.livingroom_fan
@@ -25,6 +28,6 @@
         data_template:
           direction: "{{ direction }}"
       speeds:
-        - '00'
         - '01'
         - '02'
+        - '03'

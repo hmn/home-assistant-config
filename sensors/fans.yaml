@@ -1,0 +1,6 @@
+- platform: command_line
+  name: Livingroom fan speed
+  command: "python3 custom_scripts/fan_control.py --ip 10.254.2.248 --command status --print speed"
+- platform: command_line
+  name: Livingroom fan direction
+  command: "python3 custom_scripts/fan_control.py --ip 10.254.2.248 --command status --print direction"
