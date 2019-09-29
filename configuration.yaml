@@ -385,10 +385,10 @@ zone: !include zones.yaml
 
 shell_command:
   #livingroom_fan_speed: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x03\x0d\x0a' | nc -w 1 -u -n 10.254.2.248 4000
-  livingroom_fan_status: python custom_scripts/fan_speed.py --ip 10.254.2.248 --command status --print status
-  livingroom_fan_power: python custom_scripts/fan_speed.py --ip 10.254.2.248 --command power --print status
-  livingroom_fan_speed: python custom_scripts/fan_speed.py --ip 10.254.2.248 --command speed --speed {{speed}} --print all
-  livingroom_fan_direction: python custom_scripts/fan_speed.py --ip 10.254.2.248 --command direction --direction {{direction}} --print all
+  #livingroom_fan_status: python custom_scripts/fan_control.py --ip 10.254.2.248 --command status --print power
+  #livingroom_fan_power: python custom_scripts/fan_control.py --ip 10.254.2.248 --command power --print power
+  livingroom_fan_speed: python custom_scripts/fan_control.py --ip 10.254.2.248 --command speed --speed {{speed}} --print all
+  livingroom_fan_direction: python custom_scripts/fan_control.py --ip 10.254.2.248 --command direction --direction {{direction}} --print all
   #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 10.254.2.248 4000
 
 #zwave:

@@ -58,6 +58,7 @@ PACKETDATA = PACKETPREFIX + PACKETCOMMAND + PACKETPOSTFIX
 # initialize a socket, think of it as a cable
 # SOCK_DGRAM specifies that this is UDP
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
+s.settimeout(10)
 
 server_address = (IPADDR, PORTNUM)
 #print(server_address)
