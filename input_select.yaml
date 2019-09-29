@@ -1,10 +1,28 @@
 # Keep track of the current speed
 livingroom_fan_speed:
+  name: Livingroom fan speed
+  initial: '01'
   options:
     - '01'
     - '02'
     - '03'
 livingroom_fan_direction:
+  name: Livingroom fan direction
+  initial: 'alternating'
+  options:
+    - 'in'
+    - 'alternating'
+    - 'out'
+bedroom_fan_speed:
+  name: Bedroom fan speed
+  initial: '01'
+  options:
+    - '01'
+    - '02'
+    - '03'
+bedroom_fan_direction:
+  name: Bedroom fan direction
+  initial: 'alternating'
   options:
     - 'in'
     - 'alternating'

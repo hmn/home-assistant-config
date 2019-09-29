@@ -87,7 +87,10 @@ try:
     elif args.print == 'speed':
         print('{}'.format(speed_value))
     elif args.print == 'direction':
-        print('{}'.format(direction_value))
+        for key, value in directions.items():
+            if value == direction_value:
+                print('{}'.format(key))
+                continue
     else:
         print('power     : {}'.format(power_value))
         print('mode      : {}'.format(mode_value))
