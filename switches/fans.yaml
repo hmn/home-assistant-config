@@ -6,7 +6,7 @@
       #command_state: "echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x01\x0d\x0a' | nc -w 1 -u -n 10.254.2.249 4000 | xxd -ps -l 1 -seek 7"
       #value_template: '{{ value == "01" }}'
     livingroom_fan_power:
-      command_on: python custom_scripts/fan_control.py --ip 10.254.2.248 --command power --print power
-      command_off: python custom_scripts/fan_control.py --ip 10.254.2.248 --command power --print power
-      command_state: python custom_scripts/fan_control.py --ip 10.254.2.248 --command status --print status
+      command_on: "python custom_scripts/fan_control.py --ip 10.254.2.248 --command power --print power"
+      command_off: "python custom_scripts/fan_control.py --ip 10.254.2.248 --command power --print power"
+      command_state: "python custom_scripts/fan_control.py --ip 10.254.2.248 --command status --print status"
       value_template: '{{ value == "01" }}'
