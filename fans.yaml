@@ -7,9 +7,11 @@
       #oscillating_template: "{{ states('input_select.osc') }}"
       direction_template: "{{ states('input_select.bedroom_fan_direction') }}"
       turn_on:
-        service: switch.livingroom_fan_power
+        service: switch.turn_on
+        entity_id: switch.livingroom_fan
       turn_off:
-        service: switch.livingroom_fan_power
+        service: switch.turn_off
+        entity_id: switch.livingroom_fan
       set_speed:
         service: shell_command.livingroom_fan_speed
         data_template:
