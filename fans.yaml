@@ -1,28 +1,28 @@
 - platform: template
   fans:
-    bedroom_fan:
-      friendly_name: "Bedroom fan"
+    livingroom_fan:
+      friendly_name: "Livingroom fan"
       value_template: "{{ states('input_boolean.state') }}"
-      speed_template: "{{ states('input_select.speed') }}"
-      oscillating_template: "{{ states('input_select.osc') }}"
-      direction_template: "{{ states('input_select.direction') }}"
+      speed_template: "{{ states('input_select.bedroom_fan_speed') }}"
+      #oscillating_template: "{{ states('input_select.osc') }}"
+      direction_template: "{{ states('input_select.bedroom_fan_direction') }}"
       turn_on:
-        service: switch.bedroom_fan_power
+        service: script.livingroom_fan_power
       turn_off:
-        service: switch.bedroom_fan_power
+        service: script.livingroom_fan_power
       set_speed:
-        service: script.fan_speed
+        service: shell_command.livingroom_fan_speed
         data_template:
           speed: "{{ speed }}"
-      set_oscillating:
-        service: script.fan_oscillating
-        data_template:
-          oscillating: "{{ oscillating }}"
+      #set_oscillating:
+      #  service: script.fan_oscillating
+      #  data_template:
+      #    oscillating: "{{ oscillating }}"
       set_direction:
-        service: script.fan_direction
+        service: shell_command.livingroom_fan_direction
         data_template:
           direction: "{{ direction }}"
       speeds:
-        - '1'
-        - '2'
-        - '3'
+        - '00'
+        - '01'
+        - '02'
