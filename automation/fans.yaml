@@ -1,0 +1,49 @@
+- alias: Set Livingroom fan speed
+  trigger:
+    platform: state
+    entity_id: sensor.livingroom_fan_speed
+  action:
+    service: input_select.select_option
+    entity_id: input_select.livingroom_fan_speed
+    data_template:
+      option: "{{ trigger.to_state.state }}"
+
+- alias: Set Livingroom fan direction
+  trigger:
+    platform: state
+    entity_id: sensor.livingroom_fan_direction
+  action:
+    service: input_select.select_option
+    entity_id: input_select.livingroom_fan_direction
+    data_template:
+      option: "{{ trigger.to_state.state }}"
+
+- alias: Set Bedroom fan speed
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_fan_speed
+  action:
+    service: input_select.select_option
+    entity_id: input_select.bedroom_fan_speed
+    data_template:
+      option: "{{ trigger.to_state.state }}"
+
+- alias: Set Bedroom fan direction
+  trigger:
+    platform: state
+    entity_id: sensor.bedroom_fan_direction
+  action:
+    service: input_select.select_option
+    entity_id: input_select.bedroom_fan_direction
+    data_template:
+      option: "{{ trigger.to_state.state }}"
+
+
+- alias: Livingroom fan speed update
+  trigger:
+    platform: state
+    entity_id: input_select.livingroom_fan_speed
+  action:
+    service: shell_command.livingroom_fan_speed
+    data_template:
+      speed: "{{ trigger.to_state.state }}"
