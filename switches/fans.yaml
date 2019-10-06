@@ -1,4 +1,5 @@
 - platform: command_line
+  scan_interval: 120
   switches:
     bedroom_fan:
       command_on: "python3 custom_scripts/fan_control.py --ip 10.254.2.249 --command power --print power"
