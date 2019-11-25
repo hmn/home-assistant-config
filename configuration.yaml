@@ -81,6 +81,7 @@ history:
       - binary_sensor.entrance_motion_sensor_1
       - binary_sensor.entrance_motion_sensor_2
       - binary_sensor.kitchen_motion_sensor_1
+      - binary_sensor.office_motion_sensor_1
       - sensor.front_door_recording_mode
       - sensor.front_door_streaming_mode
       - sensor.front_door_wifi_signal_category
@@ -92,11 +93,6 @@ history:
       - sensor.smappee_fase_1_power
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
-      - binary_sensor.entrance_motion_sensor_1
-      - binary_sensor.entrance_motion_sensor_2
-      - binary_sensor.entrance_motion_sensor_3
-      - binary_sensor.kitchen_motion_sensor_1
-      - binary_sensor.bedroom_motion_sensor_1
 
 # history_graph:
 #   energy_today:

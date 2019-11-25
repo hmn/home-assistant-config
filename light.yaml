@@ -2,12 +2,12 @@
   name: Kitchen lights
   entities:
     - light.kitchen
-    - light.kitchen_spot_1r1
-    - light.kitchen_spot_2r1
-    - light.kitchen_spot_3r1
-    - light.kitchen_spot_1r2
-    - light.kitchen_spot_2r2
-    - light.kitchen_spot_3r2
+    - light.kitchen_spot_1_1
+    - light.kitchen_spot_2_1
+    - light.kitchen_spot_3_1
+    - light.kitchen_spot_1_2
+    - light.kitchen_spot_2_2
+    - light.kitchen_spot_3_2
 
 - platform: group
   name: Entrance lights
@@ -31,7 +31,7 @@
     - light.living_room
     - light.living_room_table
     - light.binic
-    - light.office_artemide
+    - light.artemide_lamp
 
 - platform: switch
   name: Office Artemide
