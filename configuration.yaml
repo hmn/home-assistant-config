@@ -93,6 +93,10 @@ history:
       - sensor.smappee_fase_1_power
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
+      - sensor.bedroom_temperature
+      - sensor.entrance_temperature_1
+      - sensor.kitchen_temperature
+      - sensor.office_temperature
 
 # history_graph:
 #   energy_today:
