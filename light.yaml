@@ -1,6 +1,7 @@
 - platform: group
   name: Kitchen lights
   entities:
+    - light.kitchen
     - light.kitchen_spot_1_1
     - light.kitchen_spot_2_1
     - light.kitchen_spot_3_1
@@ -11,6 +12,7 @@
 - platform: group
   name: Entrance lights
   entities:
+    - light.entrance
     - light.entrance_lamp_1
     - light.entrance_spot_1
     - light.entrance_spot_2
@@ -20,11 +22,14 @@
 - platform: group
   name: Bedroom Lights
   entities:
+    - light.bedroom
     - light.hue_ambiance_ceiling_1
 
 - platform: group
   name: Living room lights
   entities:
+    - light.living_area
+    - light.living_room
     - light.living_room_table
     - light.binic
     - light.artemide_lamp
