@@ -193,6 +193,7 @@ zeroconf:
 ssdp:
 ios:
 alexa:
+mobile_app:
 
 # Track the sun
 #sun:
