@@ -21,3 +21,6 @@ sleep:
 
 home:
   name: Home
+
+kitchen_motion:
+  name: Kitchen motion
