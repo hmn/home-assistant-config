@@ -24,3 +24,12 @@ home:
 
 kitchen_motion:
   name: Kitchen motion
+
+office_motion:
+  name: Office motion
+
+entrance_motion:
+  name: Entrance motion
+
+bedroom_motion:
+  name: Bedroom motion

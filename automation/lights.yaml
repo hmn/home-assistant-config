@@ -63,6 +63,9 @@
     - platform: state
       entity_id: binary_sensor.office_motion_sensor_1
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.office_motion
+      to: 'on'
   action:
     - service: timer.start
       entity_id: timer.kitchen_lights
@@ -118,6 +121,9 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.bedroom_motion_sensor_1
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.bedroom_motion
       to: 'on'
   action:
     - service: timer.start
@@ -183,7 +189,7 @@
       entity_id: binary_sensor.entrance_motion_sensor_2
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_3
+      entity_id: binary_sensor.entrance_motion
       to: 'on'
   action:
     - service: timer.start
