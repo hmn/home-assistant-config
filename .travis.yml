@@ -4,7 +4,7 @@ python:
 install:
   - sudo apt-get update
   - sudo apt-get install -y python-dev pkg-config
-  - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev ffmpeg libavcodec
+  - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev ffmpeg
   - mv travis_secrets.yaml secrets.yaml
   - ffmpeg -version
   - python3 -m pip install wheel
