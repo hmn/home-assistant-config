@@ -3,7 +3,7 @@ python:
   - "3.7"
 install:
   - sudo apt-get update
-  - sudo apt-get install -y python-dev pkg-config
+  - sudo apt-get install -y python3-dev pkg-config
   - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev ffmpeg
   - mv travis_secrets.yaml secrets.yaml
   - ffmpeg -version
