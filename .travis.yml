@@ -1,4 +1,5 @@
 language: python
+dist: bionic
 python:
   - "3.7"
 install:
@@ -7,6 +8,7 @@ install:
   - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev ffmpeg
   - mv travis_secrets.yaml secrets.yaml
   - ffmpeg -version
+  - ffmpeg
   - python3 -m pip install wheel
   - python3 -m pip install av
   - python3 -m pip install homeassistant
