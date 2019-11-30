@@ -7,8 +7,7 @@ install:
   - sudo apt-get install -y python3-dev pkg-config
   - sudo apt-get install -y libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev ffmpeg
   - mv travis_secrets.yaml secrets.yaml
-  - ffmpeg -version
-  - ffmpeg
+  - ffmpeg -h
   - python3 -m pip install wheel
   - python3 -m pip install av
   - python3 -m pip install homeassistant
