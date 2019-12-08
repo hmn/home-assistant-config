@@ -53,7 +53,7 @@
       entity_id: binary_sensor.kitchen_motion_sensor_1
       to: 'off'
       for:
-        minutes: 5
+        minutes: 30
   action:
     service: timer.finish
     entity_id: timer.kitchen_lights
@@ -76,7 +76,7 @@
       entity_id: binary_sensor.office_motion_sensor_1
       to: 'off'
       for:
-        minutes: 5
+        minutes: 30
   action:
     service: timer.finish
     entity_id: timer.kitchen_lights
@@ -135,7 +135,7 @@
       entity_id: binary_sensor.bedroom_motion_sensor_1
       to: 'off'
       for:
-        minutes: 5
+        minutes: 30
   action:
     service: timer.finish
     entity_id: timer.bedroom_lights
@@ -203,12 +203,12 @@
       entity_id: binary_sensor.entrance_motion_sensor_1
       to: 'off'
       for:
-        minutes: 5
+        minutes: 30
     - platform: state
       entity_id: binary_sensor.entrance_motion_sensor_2
       to: 'off'
       for:
-        minutes: 5
+        minutes: 30
   action:
     service: timer.finish
     entity_id: timer.entrance_lights
