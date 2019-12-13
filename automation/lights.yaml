@@ -54,6 +54,10 @@
       to: 'off'
       for:
         minutes: 30
+  condition:
+    - condition: state
+      entity_id: timer.kitchen_lights
+      state: 'idle'
   action:
     service: timer.finish
     entity_id: timer.kitchen_lights
@@ -77,6 +81,10 @@
       to: 'off'
       for:
         minutes: 30
+  condition:
+    - condition: state
+      entity_id: timer.kitchen_lights
+      state: 'idle'
   action:
     service: timer.finish
     entity_id: timer.kitchen_lights
@@ -136,6 +144,10 @@
       to: 'off'
       for:
         minutes: 30
+  condition:
+    - condition: state
+      entity_id: timer.bedroom_lights
+      state: 'idle'
   action:
     service: timer.finish
     entity_id: timer.bedroom_lights
@@ -209,6 +221,10 @@
       to: 'off'
       for:
         minutes: 30
+  condition:
+    - condition: state
+      entity_id: timer.entrance_lights
+      state: 'idle'
   action:
     service: timer.finish
     entity_id: timer.entrance_lights
