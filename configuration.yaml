@@ -194,6 +194,7 @@ ssdp:
 ios:
 alexa:
 mobile_app:
+prometheus:
 
 # Track the sun
 #sun:
