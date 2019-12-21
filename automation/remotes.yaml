@@ -1,103 +1,103 @@
-- alias: "Cinema remote control turn on TV"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cinema_switch
-        event: 1002
-  action:
-    - service: script.tv_on
-
-- alias: "Cinema remote control turn off TV"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cinema_switch
-        event: 4002
-  action:
-    - service: script.tv_off
-
-- alias: "Cinema remote control turn on lights"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cinema_switch
-        event: 2002
-  action:
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-
-- alias: "Cinema remote control turn off lights"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cinema_switch
-        event: 3002
-  action:
-    - service: light.turn_off
-      data:
-        entity_id: group.all_lights
-        transition: 2 # time in seconds for the off transition here.
-    - service: timer.cancel
-      entity_id:
-        - timer.entrance_lights
-        - timer.kitchen_lights
-        - timer.bedroom_lights
-
-- alias: "Living room remote control on button"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: living_room_switch
-        event: 1002
-  action:
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-
-- alias: "Living room remote control off button"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: living_room_switch
-        event: 4002
-  action:
-    - service: timer.cancel
-      entity_id:
-        - timer.kitchen_lights
-    - service: light.turn_off
-      data:
-        entity_id:
-          - light.living_room_lights
-          - light.cinema_lights
-        transition: 2 # time in seconds for the off transition here.
-
-- alias: "Living room remote control light up button"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: living_room_switch
-        event: 2002
-  action:
-    service: light.turn_on
-    data:
-      entity_id: light.living_room_lights
-      brightness: 255
-
-- alias: "Living room remote control light down button"
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: living_room_switch
-        event: 3002
-  action:
-    service: light.turn_off
-    data:
-      entity_id: light.living_room_lights
-      transition: 2 # time in seconds for the off transition here.
+# - alias: "Cinema remote control turn on TV"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: cinema_switch
+#         event: 1002
+#   action:
+#     - service: script.tv_on
+#
+# - alias: "Cinema remote control turn off TV"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: cinema_switch
+#         event: 4002
+#   action:
+#     - service: script.tv_off
+#
+# - alias: "Cinema remote control turn on lights"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: cinema_switch
+#         event: 2002
+#   action:
+#     - service: timer.start
+#       entity_id: timer.kitchen_lights
+#
+# - alias: "Cinema remote control turn off lights"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: cinema_switch
+#         event: 3002
+#   action:
+#     - service: light.turn_off
+#       data:
+#         entity_id: group.all_lights
+#         transition: 2 # time in seconds for the off transition here.
+#     - service: timer.cancel
+#       entity_id:
+#         - timer.entrance_lights
+#         - timer.kitchen_lights
+#         - timer.bedroom_lights
+#
+# - alias: "Living room remote control on button"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: living_room_switch
+#         event: 1002
+#   action:
+#     - service: timer.start
+#       entity_id: timer.kitchen_lights
+#
+# - alias: "Living room remote control off button"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: living_room_switch
+#         event: 4002
+#   action:
+#     - service: timer.cancel
+#       entity_id:
+#         - timer.kitchen_lights
+#     - service: light.turn_off
+#       data:
+#         entity_id:
+#           - light.living_room_lights
+#           - light.cinema_lights
+#         transition: 2 # time in seconds for the off transition here.
+#
+# - alias: "Living room remote control light up button"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: living_room_switch
+#         event: 2002
+#   action:
+#     service: light.turn_on
+#     data:
+#       entity_id: light.living_room_lights
+#       brightness: 255
+#
+# - alias: "Living room remote control light down button"
+#   trigger:
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: living_room_switch
+#         event: 3002
+#   action:
+#     service: light.turn_off
+#     data:
+#       entity_id: light.living_room_lights
+#       transition: 2 # time in seconds for the off transition here.
