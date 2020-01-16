@@ -6,24 +6,24 @@
 
 - platform: plex
 - platform: denonavr
-- platform: webostv
-  host: 10.254.2.118
-  name: LG OLED
-  timeout: 5
-  turn_on_action:
-    service: wake_on_lan.send_magic_packet
-    data:
-      mac: !secret lg_oled_mac
-  customize:
-    sources:
-    - HDMI2
-    - HDMI3
-    - HDMI4
-    - netflix
-    - youtube
-    - Plex
-#- platform: ps4
-#  host: 10.254.2.107
+# - platform: webostv
+#   host: 10.254.2.118
+#   name: LG OLED
+#   timeout: 5
+#   turn_on_action:
+#     service: wake_on_lan.send_magic_packet
+#     data:
+#       mac: !secret lg_oled_mac
+#   customize:
+#     sources:
+#     - HDMI2
+#     - HDMI3
+#     - HDMI4
+#     - netflix
+#     - youtube
+#     - Plex
+# #- platform: ps4
+# #  host: 10.254.2.107
 - platform: spotify
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret

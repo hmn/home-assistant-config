@@ -295,6 +295,22 @@ hue:
       allow_unreachable: true
       allow_hue_groups: true
 
+webostv:
+  host: 10.254.2.118
+  name: LG OLED
+  turn_on_action:
+    service: wake_on_lan.send_magic_packet
+    data:
+      mac: !secret lg_oled_mac
+  customize:
+    sources:
+    - HDMI2
+    - HDMI3
+    - HDMI4
+    - netflix
+    - youtube
+    - Plex
+
 #tradfri:
 #  host: 10.254.2.102
 
