@@ -37,6 +37,18 @@
     #- light.binic
     #- light.artemide_lamp
 
+- platform: group
+  name: All lights
+  entities:
+    - light.kitchen_lights
+    - light.entrance_lights
+    - light.bedroom_lights
+    - light.living_area_lights
+    - light.cinema
+    - light.bedroom
+    - light.entrance
+    - light.kitchen
+
 # - platform: switch
 #   name: Office Artemide
 #   entity_id: switch.artemide_switch
