@@ -247,7 +247,7 @@ homekit:
 #   username: !secret smappee_username
 #   password: !secret smappee_password
 
-#apple_tv:
+apple_tv:
 #  host: 10.254.2.195
 #  login_id: !secret apple_tv_login_id
 #  credentials: !secret apple_tv_credentials
