@@ -55,7 +55,7 @@
   action:
     service: shell_command.livingroom_fan_direction
     data_template:
-      speed: "{{ trigger.to_state.state }}"
+      direction: "{{ trigger.to_state.state }}"
 
 - alias: Bedroom fan speed update
   trigger:
@@ -73,4 +73,4 @@
   action:
     service: shell_command.bedroom_fan_direction
     data_template:
-      speed: "{{ trigger.to_state.state }}"
+      direction: "{{ trigger.to_state.state }}"
