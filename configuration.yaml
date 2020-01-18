@@ -280,7 +280,7 @@ withings:
     - !secret withings_profile1
 
 plex:
-  host: 10.254.2.52
+  host: !secret plex_host
   port: 32400
   token: !secret plex_token
   ssl: true
