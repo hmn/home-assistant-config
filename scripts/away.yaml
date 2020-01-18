@@ -11,6 +11,11 @@ mode_away:
       entity_id: script.climate_save_mode
     - service: timer.cancel
       entity_id: all
+    - service: timer.cancel
+      entity_id:
+        - timer.kitchen_lights
+        - timer.entrance_lights
+        - timer.bedroom_lights
     - service: light.turn_off
       data:
         entity_id: light.all_lights

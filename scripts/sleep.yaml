@@ -25,5 +25,5 @@ mode_sleep:
 sleep_timer_done:
   alias: Sleep timer done
   sequence:
-    - service: media_player.media_pause
+    - service: media_player.media_stop
       entity_id: media_player.spotify
