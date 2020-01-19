@@ -4,6 +4,10 @@
       event_type: timer.started
       event_data:
         entity_id: timer.kitchen_lights
+    - platform: event
+      event_type: timer.restarted
+      event_data:
+        entity_id: timer.kitchen_lights
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -96,6 +100,10 @@
       event_type: timer.started
       event_data:
         entity_id: timer.bedroom_lights
+    - platform: event
+      event_type: timer.restarted
+      event_data:
+        entity_id: timer.bedroom_lights
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -157,6 +165,10 @@
   trigger:
     - platform: event
       event_type: timer.started
+      event_data:
+        entity_id: timer.entrance_lights
+    - platform: event
+      event_type: timer.restarted
       event_data:
         entity_id: timer.entrance_lights
   condition:
