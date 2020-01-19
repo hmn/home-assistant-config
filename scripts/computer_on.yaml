@@ -1,5 +1,0 @@
-# computer_on:
-#   alias: Computer ON
-#   sequence:
-#     - service: ifttt.trigger
-#       data: {"event":"Switch_Computer_ON", "value1":""}

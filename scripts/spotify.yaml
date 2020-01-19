@@ -31,8 +31,8 @@ spotify_default:
         source: hmnmbp
     - service: media_player.media_pause
       entity_id: media_player.spotify
-    - service: media_player.clear_playlist
-      entity_id: media_player.spotify
+    #- service: media_player.clear_playlist
+    #  entity_id: media_player.spotify
     - service: media_player.shuffle_set
       data:
         entity_id: media_player.spotify

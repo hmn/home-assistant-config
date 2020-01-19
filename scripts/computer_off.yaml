@@ -1,8 +1,0 @@
-# computer_off:
-#   alias: Computer OFF
-#   sequence:
-#     - condition: state
-#       entity_id: input_boolean.power_stay_on
-#       state: 'off'
-#     - service: ifttt.trigger
-#       data: {"event":"Switch_Computer_OFF", "value1":""}

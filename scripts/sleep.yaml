@@ -15,20 +15,18 @@ mode_sleep:
     - service: light.turn_off
       data:
         entity_id: light.all_lights
-    - service: script.turn_on
-      entity_id: script.computer_off
-    - service: script.turn_on
-      entity_id: script.spotify_chill
     - service: timer.start
       entity_id: timer.sleep
     - service: input_select.select_option
       data:
         entity_id: input_select.bedroom_fan_direction
         option: out
+    - service: script.turn_on
+      entity_id: script.spotify_chill
       
 
 sleep_timer_done:
   alias: Sleep timer done
   sequence:
-    - service: media_player.media_stop
+    - service: media_player.media_pause
       entity_id: media_player.spotify
