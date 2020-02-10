@@ -298,7 +298,6 @@ hue:
 webostv:
   host: 10.254.2.118
   name: LG OLED
-  standby_connection: true
   turn_on_action:
     service: wake_on_lan.send_magic_packet
     data:
