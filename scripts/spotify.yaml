@@ -20,6 +20,11 @@ spotify_chill:
         shuffle: true
     - service: media_player.media_next_track
       entity_id: media_player.spotify
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.spotify
+        volume_level: 0.1
+
 
 
 spotify_default:
