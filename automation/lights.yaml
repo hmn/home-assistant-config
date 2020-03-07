@@ -15,6 +15,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.kitchen_motion_sensor_1_light_level
+      below: 300
   action:
     - service: light.turn_on
       data:
@@ -23,6 +26,10 @@
           - light.kitchen_lights
           - light.living_room_table
           - light.artemide_lamp
+    - service: hue.hue_activate_scene
+      data:
+        group_name: "Cinema"
+        scene_name: "Dimmed"
 
 - alias: "Kitchen lights timer done"
   trigger:
@@ -111,6 +118,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.bedroom_motion_sensor_1_light_level
+      below: 300
   action:
     - service: light.turn_on
       data:
