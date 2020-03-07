@@ -29,7 +29,7 @@
     - service: hue.hue_activate_scene
       data:
         group_name: "Cinema"
-        scene_name: "Dimmed"
+        scene_name: "Hass"
 
 - alias: "Kitchen lights timer done"
   trigger:
