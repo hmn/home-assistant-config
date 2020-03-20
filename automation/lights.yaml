@@ -17,7 +17,10 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.kitchen_motion_sensor_1_light_level
-      below: 300
+      below: 250
+    - condition: numeric_state
+      entity_id: sensor.office_motion_sensor_light_level
+      below: 250
   action:
     - service: light.turn_on
       data:
@@ -120,7 +123,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.bedroom_motion_sensor_1_light_level
-      below: 300
+      below: 250
   action:
     - service: light.turn_on
       data:
@@ -188,6 +191,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.entrance_motion_sensor_1_light_level
+      below: 250
   action:
     - service: light.turn_on
       data:
