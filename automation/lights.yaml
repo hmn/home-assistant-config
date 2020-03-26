@@ -27,12 +27,32 @@
         brightness: 255
         entity_id:
           - light.kitchen
-          - light.office
-          - light.living_room
-    - service: hue.hue_activate_scene
-      data:
-        group_name: "Cinema"
-        scene_name: "Hass"
+
+- alias: "Kitchen lights timer started (enought light detected)"
+  trigger:
+    - platform: event
+      event_type: timer.started
+      event_data:
+        entity_id: timer.kitchen_lights
+    - platform: event
+      event_type: timer.restarted
+      event_data:
+        entity_id: timer.kitchen_lights
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.kitchen_motion_sensor_light_level
+      above: 250
+  action:
+    service: light.turn_off
+    data:
+      entity_id:
+        - light.kitchen
 
 - alias: "Kitchen lights timer done"
   trigger:
@@ -60,6 +80,8 @@
   action:
     - service: timer.start
       entity_id: timer.kitchen_lights
+    - service: timer.start
+      entity_id: timer.office_lights
 
 # - alias: "Motion stopped in Kitchen"
 #   trigger:
@@ -82,11 +104,11 @@
     - platform: event
       event_type: timer.started
       event_data:
-        entity_id: timer.kitchen_lights
+        entity_id: timer.office_lights
     - platform: event
       event_type: timer.restarted
       event_data:
-        entity_id: timer.kitchen_lights
+        entity_id: timer.office_lights
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -105,7 +127,6 @@
       data:
         brightness: 255
         entity_id:
-          - light.kitchen
           - light.office
           - light.living_room
     - service: hue.hue_activate_scene
@@ -118,11 +139,11 @@
     - platform: event
       event_type: timer.started
       event_data:
-        entity_id: timer.kitchen_lights
+        entity_id: timer.office_lights
     - platform: event
       event_type: timer.restarted
       event_data:
-        entity_id: timer.kitchen_lights
+        entity_id: timer.office_lights
   condition:
     - condition: state
       entity_id: input_boolean.sleep
@@ -173,6 +194,8 @@
   action:
     - service: timer.start
       entity_id: timer.office_lights
+    - service: timer.start
+      entity_id: timer.kitchen_lights
 
 
 - alias: "Bedroom lights timer started"
@@ -273,8 +296,7 @@
       data:
         brightness: 255
         entity_id:
-          - light.entrance_lights
-          - light.kitchen_lights
+          - light.entrance
 
 - alias: "Entrance lights timer done"
   trigger:
@@ -292,7 +314,7 @@
   action:
     service: light.turn_off
     data:
-      entity_id: light.entrance_lights
+      entity_id: light.entrance
 
 - alias: "Motion in Entrance"
   trigger:
