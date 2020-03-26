@@ -60,8 +60,6 @@
   action:
     - service: timer.start
       entity_id: timer.kitchen_lights
-    - service: timer.start
-      entity_id: timer.office_lights
 
 # - alias: "Motion stopped in Kitchen"
 #   trigger:
@@ -173,8 +171,6 @@
       entity_id: input_boolean.office_motion
       to: 'on'
   action:
-    - service: timer.start
-      entity_id: timer.kitchen_lights
     - service: timer.start
       entity_id: timer.office_lights
 
