@@ -26,9 +26,9 @@
       data:
         brightness: 255
         entity_id:
-          - light.kitchen_lights
-          - light.living_room_table
-          - light.artemide_lamp
+          - light.kitchen
+          - light.office
+          - light.living_room
     - service: hue.hue_activate_scene
       data:
         group_name: "Cinema"
@@ -39,7 +39,7 @@
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.kitchen_lights
+        entity_id: timer.kitchen
   condition:
     - condition: state
       entity_id: binary_sensor.kitchen_motion_sensor_1
@@ -60,6 +60,8 @@
   action:
     - service: timer.start
       entity_id: timer.kitchen_lights
+    - service: timer.start
+      entity_id: timer.office_lights
 
 # - alias: "Motion stopped in Kitchen"
 #   trigger:
@@ -76,6 +78,64 @@
 #     service: timer.finish
 #     entity_id: timer.kitchen_lights
 
+
+- alias: "Office lights timer started"
+  trigger:
+    - platform: event
+      event_type: timer.started
+      event_data:
+        entity_id: timer.kitchen_lights
+    - platform: event
+      event_type: timer.restarted
+      event_data:
+        entity_id: timer.kitchen_lights
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.kitchen_motion_sensor_1_light_level
+      below: 250
+    - condition: numeric_state
+      entity_id: sensor.office_motion_sensor_light_level
+      below: 250
+  action:
+    - service: light.turn_on
+      data:
+        brightness: 255
+        entity_id:
+          - light.kitchen
+          - light.office
+          - light.living_room
+    - service: hue.hue_activate_scene
+      data:
+        group_name: "Cinema"
+        scene_name: "Hass"
+
+- alias: "Office lights timer done"
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.office_lights
+  condition:
+    - condition: state
+      entity_id: binary_sensor.office_motion_sensor_1
+      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.office_motion_sensor_light_level
+      above: 250
+  action:
+    service: light.turn_off
+    data:
+      entity_id:
+        - light.office
+        - light.cinema
+        - light.living_room
+
 - alias: "Motion in Office"
   trigger:
     - platform: state
@@ -87,21 +147,8 @@
   action:
     - service: timer.start
       entity_id: timer.kitchen_lights
-
-# - alias: "Motion stopped in Office"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.office_motion_sensor_1
-#       to: 'off'
-#       for:
-#         minutes: 30
-#   condition:
-#     - condition: state
-#       entity_id: timer.kitchen_lights
-#       state: 'idle'
-#   action:
-#     service: timer.finish
-#     entity_id: timer.kitchen_lights
+    - service: timer.start
+      entity_id: timer.office_lights
 
 
 - alias: "Bedroom lights timer started"
