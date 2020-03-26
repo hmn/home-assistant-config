@@ -115,6 +115,34 @@
         group_name: "Cinema"
         scene_name: "Hass"
 
+- alias: "Office lights timer started (enought light detected)"
+  trigger:
+    - platform: event
+      event_type: timer.started
+      event_data:
+        entity_id: timer.kitchen_lights
+    - platform: event
+      event_type: timer.restarted
+      event_data:
+        entity_id: timer.kitchen_lights
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.office_motion_sensor_light_level
+      above: 250
+  action:
+    service: light.turn_off
+    data:
+      entity_id:
+        - light.office
+        - light.cinema
+        - light.living_room
+
 - alias: "Office lights timer done"
   trigger:
     - platform: event
