@@ -39,15 +39,22 @@
       event_data:
         entity_id: timer.kitchen_lights
   condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.kitchen_motion_sensor_light_level
-      above: 250
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.sleep
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.home
+        state: 'on'
+      - condition: or
+        conditions:
+          - condition: numeric_state
+            entity_id: sensor.kitchen_motion_sensor_light_level
+            above: 250
+          - condition: numeric_state
+            entity_id: sensor.office_motion_sensor_light_level
+            above: 250
   action:
     service: light.turn_off
     data:
@@ -145,15 +152,22 @@
       event_data:
         entity_id: timer.office_lights
   condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.office_motion_sensor_light_level
-      above: 250
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.sleep
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.home
+        state: 'on'
+      - condition: or
+        conditions:
+          - condition: numeric_state
+            entity_id: sensor.kitchen_motion_sensor_light_level
+            above: 250
+          - condition: numeric_state
+            entity_id: sensor.office_motion_sensor_light_level
+            above: 250
   action:
     service: light.turn_off
     data:
