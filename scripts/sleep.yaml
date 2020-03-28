@@ -10,6 +10,7 @@ mode_sleep:
     - service: timer.cancel
       entity_id:
         - timer.kitchen_lights
+        - timer.office_lights
         - timer.entrance_lights
         - timer.bedroom_lights
     - service: light.turn_off
