@@ -67,14 +67,10 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.kitchen
-  condition:
-    - condition: state
-      entity_id: binary_sensor.kitchen_motion_sensor_1
-      state: 'off'
   action:
     service: light.turn_off
     data:
-      entity_id: light.kitchen_lights
+      entity_id: light.kitchen
 
 - alias: "Motion in Kitchen"
   trigger:
@@ -237,7 +233,7 @@
       data:
         brightness: 255
         entity_id:
-          - light.bedroom_lights
+          - light.bedroom
 
 - alias: "Bedroom lights timer done"
   trigger:
@@ -252,7 +248,7 @@
   action:
     service: light.turn_off
     data:
-      entity_id: light.bedroom_lights
+      entity_id: light.bedroom
 
 - alias: "Motion in Bedroom"
   trigger:
