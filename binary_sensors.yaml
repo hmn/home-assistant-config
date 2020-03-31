@@ -13,9 +13,9 @@
 #     User-Agent: Home Assistant
 #     Content-Type: application/json
 
-- platform: ping
-  host: 10.254.2.128
-  name: Nintendo Switch
+# - platform: ping
+#   host: 10.254.2.128
+#   name: Nintendo Switch
 
 - platform: trend
   sensors:
