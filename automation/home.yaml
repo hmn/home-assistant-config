@@ -7,15 +7,15 @@
     - platform: state
       entity_id: person.henrik_nicolaisen
       to: 'home'
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cinema_switch
-        event: 1002
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: office_remote_control
-        event: 1002
+    #- platform: event
+    #  event_type: deconz_event
+    #  event_data:
+    #    id: cinema_switch
+    #    event: 1002
+    #- platform: event
+    #  event_type: deconz_event
+    #  event_data:
+    #    id: office_remote_control
+    #    event: 1002
   action:
     - service: script.mode_home
