@@ -295,12 +295,6 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.entrance_motion_sensor_1_light_level
-      below: 250
-    - condition: numeric_state
-      entity_id: sensor.entrance_motion_sensor_2_light_level
-      below: 250
   action:
     - service: light.turn_on
       data:
