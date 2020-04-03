@@ -67,7 +67,7 @@
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.kitchen
+        entity_id: timer.kitchen_lights
   action:
     service: light.turn_off
     data:
