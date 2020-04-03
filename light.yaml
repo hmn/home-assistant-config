@@ -38,6 +38,26 @@
     #- light.artemide_lamp
 
 - platform: group
+  name: Office lights
+  entities:
+    - light.office
+    #- light.artemide_lamp
+
+- platform: group
+  name: Cinema lights
+  entities:
+    - light.cinema
+    #- light.living_room_table
+    #- light.binic
+    #- light.artemide_lamp
+
+- platform: group
+  name: Livin room lights
+  entities:
+    - light.living_room
+
+
+- platform: group
   name: All lights
   entities:
     - light.kitchen_lights
