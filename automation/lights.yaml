@@ -34,7 +34,8 @@
     - platform: numeric_state
       entity_id: sensor.kitchen_motion_sensor_1_light_level
       above: 250
-      for: 00:05:00
+      for: 
+        minutes: 5
   action:
     service: timer.cancel
     entity_id:
@@ -125,7 +126,8 @@
     - platform: numeric_state
       entity_id: sensor.office_motion_sensor_light_level
       above: 250
-      for: 00:05:00
+      for: 
+        minutes: 5
   action:
     service: timer.cancel
     entity_id:
@@ -141,7 +143,8 @@
     - condition: numeric_state
       entity_id: sensor.office_motion_sensor_light_level
       above: 250
-      for: 00:05:00
+      for: 
+        minutes: 5
   action:
     service: light.turn_off
     data:
