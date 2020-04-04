@@ -29,17 +29,17 @@
           - light.kitchen
           - light.kitchen_lights
 
-# - alias: "Kitchen enought light detected"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.daylight_kitchen
-#       to: 'on'
-#       for:
-#         minutes: 5
-#   action:
-#     service: timer.cancel
-#     entity_id:
-#       - timer.kitchen_lights
+- alias: "Kitchen enought light detected"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.daylight_kitchen
+      to: 'on'
+      for:
+        minutes: 5
+  action:
+    service: timer.cancel
+    entity_id:
+      - timer.kitchen_lights
 
 - alias: "Kitchen lights timer done"
   trigger:
@@ -67,21 +67,6 @@
       entity_id: timer.kitchen_lights
     - service: timer.start
       entity_id: timer.office_lights
-
-# - alias: "Motion stopped in Kitchen"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.kitchen_motion_sensor_1
-#       to: 'off'
-#       for:
-#         minutes: 30
-#   condition:
-#     - condition: state
-#       entity_id: timer.kitchen_lights
-#       state: 'idle'
-#   action:
-#     service: timer.finish
-#     entity_id: timer.kitchen_lights
 
 
 - alias: "Office lights timer started"
@@ -121,17 +106,17 @@
         group_name: "Cinema"
         scene_name: "Hass"
 
-# - alias: "Office enought light detected"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.daylight_office
-#       to: 'on'
-#       for:
-#         minutes: 5
-#   action:
-#     service: timer.cancel
-#     entity_id:
-#       - timer.office_lights
+- alias: "Office enought light detected"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.daylight_office
+      to: 'on'
+      for:
+        minutes: 5
+  action:
+    service: timer.cancel
+    entity_id:
+      - timer.office_lights
 
 - alias: "Office lights timer done"
   trigger:
@@ -140,7 +125,7 @@
       event_data:
         entity_id: timer.office_lights
   condition:
-    - platform: state
+    - condition: state
       entity_id: binary_sensor.daylight_office
       state: 'on'
       for:
@@ -188,9 +173,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: state
-      entity_id: binary_sensor.daylight_bedroom
-      state: 'off'
+    # - condition: state
+    #   entity_id: binary_sensor.daylight_bedroom
+    #   state: 'off'
   action:
     - service: light.turn_on
       data:
@@ -222,21 +207,6 @@
   action:
     - service: timer.start
       entity_id: timer.bedroom_lights
-
-# - alias: "Motion stopped in Bedroom"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.bedroom_motion_sensor_1
-#       to: 'off'
-#       for:
-#         minutes: 30
-#   condition:
-#     - condition: state
-#       entity_id: timer.bedroom_lights
-#       state: 'idle'
-#   action:
-#     service: timer.finish
-#     entity_id: timer.bedroom_lights
 
 
 - alias: "Entrance lights timer started"
@@ -294,22 +264,3 @@
         - timer.entrance_lights
         - timer.kitchen_lights
 
-# - alias: "Motion stopped in Entrance"
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.entrance_motion_sensor_1
-#       to: 'off'
-#       for:
-#         minutes: 30
-#     - platform: state
-#       entity_id: binary_sensor.entrance_motion_sensor_2
-#       to: 'off'
-#       for:
-#         minutes: 30
-#   condition:
-#     - condition: state
-#       entity_id: timer.entrance_lights
-#       state: 'idle'
-#   action:
-#     service: timer.finish
-#     entity_id: timer.entrance_lights
