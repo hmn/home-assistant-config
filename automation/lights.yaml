@@ -173,15 +173,16 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    # - condition: state
-    #   entity_id: binary_sensor.daylight_bedroom
-    #   state: 'off'
+    - condition: state
+      entity_id: binary_sensor.daylight_bedroom
+      state: 'off'
   action:
     - service: light.turn_on
       data:
         brightness: 255
         entity_id:
           - light.bedroom
+          - light.bedroom_lights
 
 - alias: "Bedroom lights timer done"
   trigger:
