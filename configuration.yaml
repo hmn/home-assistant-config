@@ -383,9 +383,6 @@ logger:
     #homeassistant.components.switch.nissan_leaf: debug
     homeassistant.components.shell_command: debug
 
-automation: !include automations.yaml
-automation old: !include_dir_merge_list automation
-
 light: !include light.yaml
 binary_sensor: !include binary_sensors.yaml
 camera: !include cameras.yaml
@@ -418,3 +415,6 @@ shell_command:
 #  usb_path: /dev/ttyACM0
 #  network_key: !secret zwave_network_key
 #  debug: True
+
+automation: !include automations.yaml
+automation old: !include_dir_merge_list automation
