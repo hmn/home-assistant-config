@@ -16,7 +16,7 @@
       entity_id: input_boolean.home
       state: 'on'
     - condition: state
-      entity_id: binary_sensor.kitchen_office
+      entity_id: binary_sensor.daylight_kitchen
       state: 'off'
     - condition: state
       entity_id: binary_sensor.daylight_office
