@@ -29,38 +29,16 @@
           - light.kitchen
           - light.kitchen_lights
 
-# - alias: "Kitchen lights timer started (enought light detected)"
-#   trigger:
-#     - platform: event
-#       event_type: timer.started
-#       event_data:
-#         entity_id: timer.kitchen_lights
-#     - platform: event
-#       event_type: timer.restarted
-#       event_data:
-#         entity_id: timer.kitchen_lights
-#   condition:
-#     condition: and
-#     conditions:
-#       - condition: state
-#         entity_id: input_boolean.sleep
-#         state: 'off'
-#       - condition: state
-#         entity_id: input_boolean.home
-#         state: 'on'
-#       - condition: or
-#         conditions:
-#           - condition: numeric_state
-#             entity_id: sensor.kitchen_motion_sensor_light_level
-#             above: 250
-#           - condition: numeric_state
-#             entity_id: sensor.office_motion_sensor_light_level
-#             above: 250
-#   action:
-#     service: light.turn_off
-#     data:
-#       entity_id:
-#         - light.kitchen
+- alias: "Kitchen enought light detected"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.kitchen_motion_sensor_1_light_level
+      above: 250
+      for: 00:05:00
+  action:
+    service: timer.cancel
+    entity_id:
+      - timer.kitchen_lights
 
 - alias: "Kitchen lights timer done"
   trigger:
@@ -142,40 +120,16 @@
         group_name: "Cinema"
         scene_name: "Hass"
 
-# - alias: "Office lights timer started (enought light detected)"
-#   trigger:
-#     - platform: event
-#       event_type: timer.started
-#       event_data:
-#         entity_id: timer.office_lights
-#     - platform: event
-#       event_type: timer.restarted
-#       event_data:
-#         entity_id: timer.office_lights
-#   condition:
-#     condition: and
-#     conditions:
-#       - condition: state
-#         entity_id: input_boolean.sleep
-#         state: 'off'
-#       - condition: state
-#         entity_id: input_boolean.home
-#         state: 'on'
-#       - condition: or
-#         conditions:
-#           - condition: numeric_state
-#             entity_id: sensor.kitchen_motion_sensor_light_level
-#             above: 250
-#           - condition: numeric_state
-#             entity_id: sensor.office_motion_sensor_light_level
-#             above: 250
-#   action:
-#     service: light.turn_off
-#     data:
-#       entity_id:
-#         - light.office
-#         - light.cinema
-#         - light.living_room
+- alias: "Office enought light detected"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.office_motion_sensor_light_level
+      above: 250
+      for: 00:05:00
+  action:
+    service: timer.cancel
+    entity_id:
+      - timer.office_lights
 
 - alias: "Office lights timer done"
   trigger:
@@ -187,6 +141,7 @@
     - condition: numeric_state
       entity_id: sensor.office_motion_sensor_light_level
       above: 250
+      for: 00:05:00
   action:
     service: light.turn_off
     data:
