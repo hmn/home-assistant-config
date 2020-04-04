@@ -29,17 +29,17 @@
           - light.kitchen
           - light.kitchen_lights
 
-- alias: "Kitchen enought light detected"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.daylight_kitchen
-      to: 'on'
-      for:
-        minutes: 5
-  action:
-    service: timer.cancel
-    entity_id:
-      - timer.kitchen_lights
+# - alias: "Kitchen enought light detected"
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.daylight_kitchen
+#       to: 'on'
+#       for:
+#         minutes: 5
+#   action:
+#     service: timer.cancel
+#     entity_id:
+#       - timer.kitchen_lights
 
 - alias: "Kitchen lights timer done"
   trigger:
@@ -121,17 +121,17 @@
         group_name: "Cinema"
         scene_name: "Hass"
 
-- alias: "Office enought light detected"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.daylight_office
-      to: 'on'
-      for:
-        minutes: 5
-  action:
-    service: timer.cancel
-    entity_id:
-      - timer.office_lights
+# - alias: "Office enought light detected"
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.daylight_office
+#       to: 'on'
+#       for:
+#         minutes: 5
+#   action:
+#     service: timer.cancel
+#     entity_id:
+#       - timer.office_lights
 
 - alias: "Office lights timer done"
   trigger:
