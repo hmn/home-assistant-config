@@ -33,7 +33,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.daylight_kitchen
-      state: 'on'
+      to: 'on'
       for:
         minutes: 5
   action:
@@ -125,7 +125,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.daylight_office
-      state: 'on'
+      to: 'on'
       for:
         minutes: 5
   action:
