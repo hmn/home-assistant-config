@@ -15,12 +15,12 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.kitchen_motion_sensor_1_light_level
-      below: 250
-    - condition: numeric_state
-      entity_id: sensor.office_motion_sensor_light_level
-      below: 250
+    - condition: state
+      entity_id: binary_sensor.kitchen_office
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.daylight_office
+      state: 'off'
   action:
     - service: light.turn_on
       data:
@@ -31,11 +31,11 @@
 
 - alias: "Kitchen enought light detected"
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.kitchen_motion_sensor_1_light_level
-      above: 250
-      for: 
-        00:05:00
+    - platform: state
+      entity_id: binary_sensor.daylight_kitchen
+      state: 'on'
+      for:
+        minutes: 5
   action:
     service: timer.cancel
     entity_id:
@@ -101,12 +101,12 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.kitchen_motion_sensor_1_light_level
-      below: 250
-    - condition: numeric_state
-      entity_id: sensor.office_motion_sensor_light_level
-      below: 250
+    - condition: state
+      entity_id: binary_sensor.daylight_kitchen
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.daylight_office
+      state: 'off'
   action:
     - service: light.turn_on
       data:
@@ -123,10 +123,11 @@
 
 - alias: "Office enought light detected"
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.office_motion_sensor_light_level
-      above: 250
-      for: 00:05:00
+    - platform: state
+      entity_id: binary_sensor.daylight_office
+      state: 'on'
+      for:
+        minutes: 5
   action:
     service: timer.cancel
     entity_id:
@@ -139,10 +140,11 @@
       event_data:
         entity_id: timer.office_lights
   condition:
-    - condition: numeric_state
-      entity_id: sensor.office_motion_sensor_light_level
-      above: 250
-      for: 00:05:00
+    - platform: state
+      entity_id: binary_sensor.daylight_office
+      state: 'on'
+      for:
+        minutes: 5
   action:
     service: light.turn_off
     data:
@@ -186,9 +188,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.bedroom_motion_sensor_1_light_level
-      below: 250
+    - condition: state
+      entity_id: binary_sensor.daylight_bedroom
+      state: 'off'
   action:
     - service: light.turn_on
       data:
