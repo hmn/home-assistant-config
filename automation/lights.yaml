@@ -68,6 +68,25 @@
     - service: timer.start
       entity_id: timer.office_lights
 
+- alias: "Motion in Kitchen (timer)"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.kitchen_motion_sensor_1
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.kitchen_motion
+        state: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.kitchen_lights
+    - service: timer.start
+      entity_id: timer.office_lights
+
 
 - alias: "Office lights timer started"
   trigger:
@@ -155,6 +174,25 @@
     - service: timer.start
       entity_id: timer.kitchen_lights
 
+- alias: "Motion in Office (timer)"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.office_motion_sensor_1
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.office_motion
+        state: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.kitchen_lights
+    - service: timer.start
+      entity_id: timer.office_lights
+
 
 - alias: "Bedroom lights timer started"
   trigger:
@@ -205,6 +243,23 @@
     - platform: state
       entity_id: input_boolean.bedroom_motion
       to: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.bedroom_lights
+
+- alias: "Motion in Bedroom (timer)"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.bedroom_motion_sensor_1
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.bedroom_motion
+        state: 'on'
   action:
     - service: timer.start
       entity_id: timer.bedroom_lights
@@ -261,7 +316,24 @@
       to: 'on'
   action:
     - service: timer.start
-      entity_id:
-        - timer.entrance_lights
-        - timer.kitchen_lights
+      entity_id: timer.entrance_lights
 
+- alias: "Motion in Entrance (timer)"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.entrance_motion_sensor_1
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.entrance_motion_sensor_2
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.entrance_motion
+        state: 'on'
+  action:
+    - service: timer.start
+      entity_id: timer.entrance_lights
