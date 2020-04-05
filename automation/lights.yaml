@@ -18,9 +18,6 @@
     - condition: state
       entity_id: binary_sensor.daylight_kitchen
       state: 'off'
-    - condition: state
-      entity_id: binary_sensor.daylight_office
-      state: 'off'
   action:
     - service: light.turn_on
       data:
@@ -105,9 +102,6 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: state
-      entity_id: binary_sensor.daylight_kitchen
-      state: 'off'
     - condition: state
       entity_id: binary_sensor.daylight_office
       state: 'off'
