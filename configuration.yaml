@@ -93,6 +93,7 @@ history:
       - sensor.smappee_fase_1_power
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
+      - binary_sensor.remote_ui
 
 # history_graph:
 #   energy_today:
@@ -181,6 +182,7 @@ recorder:
       - binary_sensor.entrance_motion_sensor_3
       - binary_sensor.kitchen_motion_sensor_1
       - binary_sensor.bedroom_motion_sensor_1
+      - binary_sensor.remote_ui
 
 # View all events in a logbook
 logbook:
