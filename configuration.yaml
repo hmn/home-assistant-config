@@ -286,8 +286,7 @@ plex:
   ssl: true
   verify_ssl: false
   media_player:
-   use_episode_art: true
-   show_all_controls: true
+    use_episode_art: true
 
 hue:
   bridges:
