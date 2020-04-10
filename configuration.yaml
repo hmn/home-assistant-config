@@ -151,7 +151,7 @@ history:
 
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
-#  db_url: !secret db_url
+  db_url: !secret db_url
   exclude:
     domains:
       - climate
