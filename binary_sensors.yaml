@@ -35,9 +35,9 @@
   sensors:
     daylight_office:
       friendly_name: Daylight in Office
-      entity_id: sensor.office_motion_sensor_light_level
+      entity_id: sensor.office_motion_sensor_1_light_level
       device_class: light
-      value_template: "{{ states('sensor.office_motion_sensor_light_level')|float > 250 }}"
+      value_template: "{{ states('sensor.office_motion_sensor_1_light_level')|float > 250 }}"
     daylight_kitchen:
       friendly_name: Daylight in Kitchen
       entity_id: sensor.kitchen_motion_sensor_1_light_level
