@@ -52,7 +52,7 @@
     #- light.artemide_lamp
 
 - platform: group
-  name: Livin room lights
+  name: Living room lights
   entities:
     - light.living_room
 
