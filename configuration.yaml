@@ -237,8 +237,7 @@ homekit:
       - script
       - input_boolean
       - switch
-      - light
-      - media_player
+      - timer
 
 #tado:
 #  username: !secret tado_username
