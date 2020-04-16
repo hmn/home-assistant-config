@@ -56,7 +56,7 @@ updater:
 # Discover some devices automatically
 discovery:
   ignore:
-    - hue
+    - philips_hue
   enable:
     - homekit
 
