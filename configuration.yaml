@@ -158,6 +158,7 @@ recorder:
   exclude:
     domains:
       - climate
+      - input_boolean
       - light
       - automation
       - weblink
@@ -170,10 +171,6 @@ recorder:
       - sensor.front_door_wifi_signal_strength
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
-      # - binary_sensor.bedroom_motion_sensor_1_motion
-      # - binary_sensor.entrance_motion_sensor_1_motion
-      # - binary_sensor.entrance_motion_sensor_2_motion
-      # - binary_sensor.kitchen_motion_sensor_1_motion
       - sensor.smappee_power
       - sensor.smappee_usage_today
       - sensor.smappee_fase_1_power
@@ -181,7 +178,6 @@ recorder:
       - sensor.smappee_fase_3_power
       - binary_sensor.entrance_motion_sensor_1_motion
       - binary_sensor.entrance_motion_sensor_2_motion
-      - binary_sensor.entrance_motion_sensor_3
       - binary_sensor.kitchen_motion_sensor_1_motion
       - binary_sensor.bedroom_motion_sensor_1_motion
       - binary_sensor.remote_ui
@@ -191,6 +187,29 @@ logbook:
   exclude:
     domains:
       - climate
+      - input_boolean
+      - light
+      - automation
+      - weblink
+      - updater
+      - timer
+    entities:
+      - sensor.front_door_recording_mode
+      - sensor.front_door_streaming_mode
+      - sensor.front_door_wifi_signal_category
+      - sensor.front_door_wifi_signal_strength
+      - sensor.henriks_iphone_battery_state
+      - sensor.henriks_ipad_battery_state
+      - sensor.smappee_power
+      - sensor.smappee_usage_today
+      - sensor.smappee_fase_1_power
+      - sensor.smappee_fase_2_power
+      - sensor.smappee_fase_3_power
+      - binary_sensor.entrance_motion_sensor_1_motion
+      - binary_sensor.entrance_motion_sensor_2_motion
+      - binary_sensor.kitchen_motion_sensor_1_motion
+      - binary_sensor.bedroom_motion_sensor_1_motion
+      - binary_sensor.remote_ui
 
 cloud:
 zeroconf:
