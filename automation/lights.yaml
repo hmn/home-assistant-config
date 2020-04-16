@@ -54,7 +54,7 @@
 - alias: "Motion in Kitchen"
   trigger:
     - platform: state
-      entity_id: binary_sensor.kitchen_motion_sensor_1
+      entity_id: binary_sensor.kitchen_motion_sensor_1_motion
       to: 'on'
     - platform: state
       entity_id: input_boolean.kitchen_motion
@@ -73,7 +73,7 @@
     condition: or
     conditions:
       - condition: state
-        entity_id: binary_sensor.kitchen_motion_sensor_1
+        entity_id: binary_sensor.kitchen_motion_sensor_1_motion
         state: 'on'
       - condition: state
         entity_id: input_boolean.kitchen_motion
@@ -157,7 +157,7 @@
 - alias: "Motion in Office"
   trigger:
     - platform: state
-      entity_id: binary_sensor.office_motion_sensor_1
+      entity_id: binary_sensor.office_motion_sensor_1_motion
       to: 'on'
     - platform: state
       entity_id: input_boolean.office_motion
@@ -176,7 +176,7 @@
     condition: or
     conditions:
       - condition: state
-        entity_id: binary_sensor.office_motion_sensor_1
+        entity_id: binary_sensor.office_motion_sensor_1_motion
         state: 'on'
       - condition: state
         entity_id: input_boolean.office_motion
@@ -232,7 +232,7 @@
 - alias: "Motion in Bedroom"
   trigger:
     - platform: state
-      entity_id: binary_sensor.bedroom_motion_sensor_1
+      entity_id: binary_sensor.bedroom_motion_sensor_1_motion
       to: 'on'
     - platform: state
       entity_id: input_boolean.bedroom_motion
@@ -249,7 +249,7 @@
     condition: or
     conditions:
       - condition: state
-        entity_id: binary_sensor.bedroom_motion_sensor_1
+        entity_id: binary_sensor.bedroom_motion_sensor_1_motion
         state: 'on'
       - condition: state
         entity_id: input_boolean.bedroom_motion
@@ -300,10 +300,10 @@
 - alias: "Motion in Entrance"
   trigger:
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_1
+      entity_id: binary_sensor.entrance_motion_sensor_1_motion
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2
+      entity_id: binary_sensor.entrance_motion_sensor_2_motion
       to: 'on'
     - platform: state
       entity_id: input_boolean.entrance_motion
@@ -320,10 +320,10 @@
     condition: or
     conditions:
       - condition: state
-        entity_id: binary_sensor.entrance_motion_sensor_1
+        entity_id: binary_sensor.entrance_motion_sensor_1_motion
         state: 'on'
       - condition: state
-        entity_id: binary_sensor.entrance_motion_sensor_2
+        entity_id: binary_sensor.entrance_motion_sensor_2_motion
         state: 'on'
       - condition: state
         entity_id: input_boolean.entrance_motion
