@@ -55,8 +55,10 @@ updater:
 
 # Discover some devices automatically
 discovery:
-#  ignore:
-#    - plex_mediaserver
+  ignore:
+    - hue
+  enable:
+    - homekit
 
 person:
 
@@ -293,7 +295,6 @@ plex:
 hue:
   bridges:
     - host: 192.168.7.105
-      allow_unreachable: true
       allow_hue_groups: true
 
 webostv:
