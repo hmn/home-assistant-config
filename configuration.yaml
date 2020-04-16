@@ -325,6 +325,7 @@ weather:
     api_key: !secret darksky_api_key
 
 cast:
+stream:
 
 # rest_command:
 #   particle_relay1_on:
