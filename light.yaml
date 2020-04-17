@@ -26,18 +26,6 @@
     #- light.hue_ambiance_ceiling_bedroom
 
 - platform: group
-  name: Living area lights
-  entities:
-    - light.living_area
-    - light.living_room
-    - light.office
-    - light.kitchen
-    - light.cinema
-    #- light.living_room_table
-    #- light.binic
-    #- light.artemide_lamp
-
-- platform: group
   name: Office lights
   entities:
     - light.office
@@ -60,10 +48,8 @@
 - platform: group
   name: All lights
   entities:
-    - light.kitchen_lights
-    - light.entrance_lights
-    - light.bedroom_lights
-    - light.living_area_lights
+    - light.living_room
+    - light.office
     - light.cinema
     - light.bedroom
     - light.entrance

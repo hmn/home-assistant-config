@@ -23,7 +23,6 @@
       data:
         brightness: 255
         entity_id:
-          - light.kitchen
           - light.kitchen_lights
 
 - alias: "Kitchen enought light detected"
@@ -48,7 +47,6 @@
     service: light.turn_off
     data:
       entity_id:
-        - light.kitchen
         - light.kitchen_lights
 
 - alias: "Motion in Kitchen"
@@ -110,8 +108,6 @@
       data:
         brightness: 255
         entity_id:
-          - light.office
-          - light.living_room
           - light.office_lights
           - light.living_room_lights
     - service: hue.hue_activate_scene
@@ -147,9 +143,6 @@
     service: light.turn_off
     data:
       entity_id:
-        - light.office
-        - light.cinema
-        - light.living_room
         - light.office_lights
         - light.cinema_lights
         - light.living_room_lights
@@ -213,7 +206,6 @@
       data:
         brightness: 255
         entity_id:
-          - light.bedroom
           - light.bedroom_lights
 
 - alias: "Bedroom lights timer done"
@@ -226,7 +218,6 @@
     service: light.turn_off
     data:
       entity_id:
-        - light.bedroom
         - light.bedroom_lights
 
 - alias: "Motion in Bedroom"
@@ -281,7 +272,6 @@
       data:
         brightness: 255
         entity_id:
-          - light.entrance
           - light.entrance_lights
 
 - alias: "Entrance lights timer done"
@@ -294,7 +284,6 @@
     service: light.turn_off
     data:
       entity_id:
-        - light.entrance
         - light.entrance_lights
 
 - alias: "Motion in Entrance"
