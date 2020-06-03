@@ -32,7 +32,8 @@ http:
   ssl_key: !secret ssl_key
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
-  base_url: !secret base_url
+  # depricated
+  # base_url: !secret base_url
   use_x_forwarded_for: true
   trusted_proxies:
     - 192.168.7.10
