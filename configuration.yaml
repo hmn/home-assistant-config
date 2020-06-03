@@ -295,6 +295,9 @@ roomba:
     username: !secret roomba_username
     password: !secret roomba_password
 
+upnp:
+  local_ip: 192.168.7.11
+
 withings:
   client_id: !secret withings_client_id
   client_secret: !secret withings_client_secret
