@@ -12,6 +12,7 @@ homeassistant:
   time_zone: Europe/Copenhagen
   customize: !include customize.yaml
   packages: !include_dir_named packages
+  external_url: !secret external_url
 
 # Show links to resources in log and frontend
 #introduction:
@@ -301,8 +302,9 @@ upnp:
 withings:
   client_id: !secret withings_client_id
   client_secret: !secret withings_client_secret
-  profiles:
-    - !secret withings_profile1
+  use_webhook: true
+  #profiles:
+  #  - !secret withings_profile1
 
 plex:
   host: !secret plex_host
