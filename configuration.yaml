@@ -56,11 +56,11 @@ http:
 updater:
 
 # Discover some devices automatically
-discovery:
-  ignore:
-    - philips_hue
-  enable:
-    - homekit
+#discovery:
+#  ignore:
+#    - philips_hue
+#  enable:
+#    - homekit
 
 person:
 
@@ -315,10 +315,10 @@ plex:
   media_player:
     use_episode_art: true
 
-hue:
-  bridges:
-    - host: 192.168.7.105
-      allow_hue_groups: true
+#hue:
+#  bridges:
+#    - host: 192.168.7.105
+#      allow_hue_groups: true
 
 webostv:
   host: 192.168.7.12

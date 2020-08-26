@@ -5,7 +5,7 @@
 ############################################################
 
 #- platform: plex
-- platform: denonavr
+#- platform: denonavr
 # - platform: webostv
 #   host: 10.254.2.118
 #   name: LG OLED
