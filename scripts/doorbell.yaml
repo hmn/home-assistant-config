@@ -5,6 +5,8 @@ doorbell:
       data:
         title: "Doorbell pressed"
         message: "Doorbell was pressed, you have guests."
+        data:
+          importance: high
     - service: notify.all
       data:
         message: "Doorbell was pressed, you have guests."
