@@ -1,6 +1,10 @@
 doorbell:
   alias: Doorbell pressed
   sequence:
+    - service: notify.ALL_DEVICES
+      data:
+        title: "Doorbell pressed"
+        message: "Doorbell was pressed, you have guests."
     - service: notify.all
       data:
         message: "Doorbell was pressed, you have guests."

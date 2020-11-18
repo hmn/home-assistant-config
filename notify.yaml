@@ -21,9 +21,12 @@
   host: 192.168.7.12
   name: tv
 
-- platform: ios
-  name: app
-  target: !secret notify_ios_target
+- platform: group
+  name: ALL_DEVICES
+  services:
+    - service: mobile_app_henriks_iphone
+    - service: mobile_app_henriks_ipad
+    - service: mobile_app_hmnmbp
 
 - platform: group
   name: all
