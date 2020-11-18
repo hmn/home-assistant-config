@@ -1,8 +1,0 @@
-- platform: yr
-  name: Weather
-  monitored_conditions:
-    - temperature
-    - precipitation
-    - windSpeed
-    - humidity
-    - dewpointTemperature
