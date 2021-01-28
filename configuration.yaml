@@ -222,7 +222,7 @@ mobile_app:
 prometheus:
 
 # Track the sun
-#sun:
+sun:
 
 # Text to speech
 #tts:

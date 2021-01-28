@@ -44,6 +44,10 @@
   entities:
     - light.living_room
 
+- platform: group
+  name: Outside lights
+  entities:
+    - light.outside
 
 - platform: group
   name: All lights
