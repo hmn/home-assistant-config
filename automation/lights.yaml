@@ -341,14 +341,17 @@
 
 - alias: "Outside light turn off when home"
   trigger:
-    - platform: state
-      entity_id: input_boolean.home
-      to: 'on'
-      for: "00:15:00"
+    - platform: time_pattern
+      minutes: "/1"
   condition:
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
+      for:
+        minutes: 15
   action:
     - service: light.turn_off
       entity_id: light.outside_lights
