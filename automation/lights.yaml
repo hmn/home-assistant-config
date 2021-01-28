@@ -337,7 +337,7 @@
       state: 'off'
   action:
     - service: light.turn_on
-      entity_id: group.outside_lights
+      entity_id: light.outside_lights
 
 - alias: "Outside light turn off"
   trigger:
@@ -355,4 +355,4 @@
       state: 'off'
   action:
     - service: light.turn_off
-      entity_id: group.outside_lights
+      entity_id: light.outside_lights
