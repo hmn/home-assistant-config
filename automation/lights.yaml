@@ -332,9 +332,6 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.outside_lights
@@ -346,12 +343,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
       state: 'on'
-      for:
-        minutes: 15
   action:
     - service: light.turn_off
       entity_id: light.outside_lights
