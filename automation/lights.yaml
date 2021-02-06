@@ -321,7 +321,7 @@
     - service: timer.start
       entity_id: timer.entrance_lights
 
-- alias: "Outside light turn on"
+- alias: "Outdoor light turn on"
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -337,9 +337,9 @@
       state: 'off'
   action:
     - service: light.turn_on
-      entity_id: light.outside_lights
+      entity_id: light.outdoor_lights
 
-- alias: "Outside light turn off when sleeping"
+- alias: "Outdoor light turn off when sleeping"
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -352,9 +352,9 @@
       after: '23:00:00'
   action:
     - service: light.turn_off
-      entity_id: light.outside_lights
+      entity_id: light.outdoor_lights
 
-- alias: "Outside light turn off"
+- alias: "Outdoor light turn off"
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -369,4 +369,4 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.outside_lights
+      entity_id: light.outdoor_lights

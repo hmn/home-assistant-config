@@ -45,9 +45,9 @@
     - light.living_room
 
 - platform: group
-  name: Outside lights
+  name: Outdoor lights
   entities:
-    - light.outside
+    - light.outdoor
 
 - platform: group
   name: All lights
