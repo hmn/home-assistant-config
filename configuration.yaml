@@ -283,9 +283,9 @@ apple_tv:
 #   api_key: !secret logi_circle_api_key
 #   redirect_uri: !secret logi_circle_redirect_url
 
-nest:
-  client_id: !secret nest_client_id
-  client_secret: !secret nest_client_secret
+#nest:
+#  client_id: !secret nest_client_id
+#  client_secret: !secret nest_client_secret
 
 nissan_leaf:
   username: !secret nissan_leaf_username
