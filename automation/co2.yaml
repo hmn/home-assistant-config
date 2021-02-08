@@ -1,0 +1,60 @@
+- alias: "Increase airflow via fans"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
+      above: 1400
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kokken_co2
+      above: 1400
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
+      above: 45
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_direction
+        option: out
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_direction
+        option: in
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: 02
+
+- alias: "Normalize fans"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
+      below: 1200
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kokken_co2
+      below: 1200
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
+      below: 40
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
+      below: 1200
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_direction
+        option: alternating
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_direction
+        option: alternating
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: 01
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: 01

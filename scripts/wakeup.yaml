@@ -15,6 +15,10 @@ mode_wakeup:
       data:
         entity_id: input_select.bedroom_fan_direction
         option: alternating
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_direction
+        option: alternating
     - service: script.turn_on
       data:
         entity_id: script.spotify_default
