@@ -22,3 +22,11 @@ mode_wakeup:
     - service: script.turn_on
       data:
         entity_id: script.spotify_default
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: '01'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_speed
+        option: '01'

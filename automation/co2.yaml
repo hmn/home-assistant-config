@@ -34,13 +34,15 @@
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       below: 40
+    - platform: time_pattern
+      minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
-      below: 1200
+      below: 1300
   action:
     - service: input_select.select_option
       data:
@@ -56,5 +58,5 @@
         option: '01'
     - service: input_select.select_option
       data:
-        entity_id: input_select.bedroom_fan_speed
+        entity_id: input_select.livingroom_fan_speed
         option: '01'
