@@ -2,10 +2,10 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
-      above: 1400
+      above: 1500
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kokken_co2
-      above: 1400
+      above: 1500
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       above: 45
@@ -27,10 +27,10 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
-      below: 1200
+      below: 1300
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kokken_co2
-      below: 1200
+      below: 1300
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       below: 40
