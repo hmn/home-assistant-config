@@ -13,15 +13,15 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.bedroom_fan_direction
-        option: out
+        option: 'out'
     - service: input_select.select_option
       data:
         entity_id: input_select.livingroom_fan_direction
-        option: in
+        option: 'in'
     - service: input_select.select_option
       data:
         entity_id: input_select.bedroom_fan_speed
-        option: 02
+        option: '02'
 
 - alias: "Normalize fans"
   trigger:
@@ -45,16 +45,16 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.bedroom_fan_direction
-        option: alternating
+        option: 'alternating'
     - service: input_select.select_option
       data:
         entity_id: input_select.livingroom_fan_direction
-        option: alternating
+        option: 'alternating'
     - service: input_select.select_option
       data:
         entity_id: input_select.bedroom_fan_speed
-        option: 01
+        option: '01'
     - service: input_select.select_option
       data:
         entity_id: input_select.bedroom_fan_speed
-        option: 01
+        option: '01'
