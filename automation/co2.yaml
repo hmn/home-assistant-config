@@ -38,7 +38,7 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
-    - platform: numeric_state
+    - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
       below: 1200
   action:
