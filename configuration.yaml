@@ -330,11 +330,11 @@ webostv:
       mac: !secret lg_oled_wifi_mac
   customize:
     sources:
-    - HDMI2
-    - HDMI3
+    - Apple TV
+    - PS5
     - HDMI4
-    - netflix
-    - youtube
+    - Netflix
+    - YouTube
     - Plex
 
 spotify:

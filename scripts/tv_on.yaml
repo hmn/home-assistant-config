@@ -11,7 +11,8 @@ tv_on:
     data:
       entity_id: media_player.lg_oled
       #source: 'HDMI2'
-      source: 'HDMI4'
+      #source: 'HDMI4'
+      source: 'Plex'
   - service: media_player.select_source
     data:
       entity_id: media_player.denon_avr_x1300w
@@ -20,4 +21,4 @@ tv_on:
   - service: media_player.select_sound_mode
     data:
       entity_id: media_player.denon_avr_x1300w
-      sound_mode: 'MOVIE'
+      sound_mode: 'DTS SURROUND'
