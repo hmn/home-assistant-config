@@ -18,22 +18,6 @@ mode_sleep:
         entity_id: light.all_lights
     - service: timer.start
       entity_id: timer.sleep
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.bedroom_fan_direction
-        option: out
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.livingroom_fan_direction
-        option: in
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.bedroom_fan_speed
-        option: '01'
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.livingroom_fan_speed
-        option: '01'
     - service: script.turn_on
       entity_id: script.spotify_chill
       
