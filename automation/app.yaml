@@ -1,0 +1,64 @@
+- alias: "app turn of lights"
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        # source may be one of:
+        # - appShortcut
+        # - preview
+        # - siriShortcut
+        # - urlHandler
+        # - watch
+        # - widget
+        actionID: 7E6C9C5E-B148-4638-8A06-C2C0895C6EB1
+        actionName: Sluk lyset
+        sourceDeviceID: henriks_iphone
+        sourceDeviceName: Henriks iPhone
+        sourceDevicePermanentID: 41DAEED2-152B-4753-B99E-4E527C4A159B
+        triggerSource: preview  
+  action:
+    service: light.turn_off
+    data:
+      entity_id:
+        - light.kitchen_lights
+        - light.bedroom_lights
+        - light.office_lights
+        - light.entrance_lights
+        - light.cinema_lights
+        - light.living_room_lights
+
+- alias: "app reset fans"
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        # source may be one of:
+        # - appShortcut
+        # - preview
+        # - siriShortcut
+        # - urlHandler
+        # - watch
+        # - widget
+        actionID: 19F7324E-A0E9-43C9-9806-C9E1428F5429
+        actionName: Reset fan
+        sourceDeviceID: henriks_iphone
+        sourceDeviceName: Henriks iPhone
+        sourceDevicePermanentID: 41DAEED2-152B-4753-B99E-4E527C4A159B
+        triggerSource: preview
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_direction
+        option: 'alternating'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_direction
+        option: 'alternating'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: '01'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_speed
+        option: '01'
