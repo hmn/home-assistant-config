@@ -15,7 +15,7 @@
         sourceDeviceID: henriks_iphone
         sourceDeviceName: Henriks iPhone
         sourceDevicePermanentID: 41DAEED2-152B-4753-B99E-4E527C4A159B
-        triggerSource: preview  
+        triggerSource: appShortcut
   action:
     service: light.turn_off
     data:
@@ -44,7 +44,7 @@
         sourceDeviceID: henriks_iphone
         sourceDeviceName: Henriks iPhone
         sourceDevicePermanentID: 41DAEED2-152B-4753-B99E-4E527C4A159B
-        triggerSource: preview
+        triggerSource: appShortcut
   action:
     - service: input_select.select_option
       data:
