@@ -17,19 +17,19 @@
 #   host: 10.254.2.128
 #   name: Nintendo Switch
 
-- platform: trend
-  sensors:
-    bathroom_humidity_falling:
-      entity_id: sensor.bathroom_humidity
-      friendly_name: Bathroom humidity falling
-      sample_duration: 7200
-      min_gradient: -0.00138
-    bathroom_humidity_rising:
-      entity_id: sensor.bathroom_humidity
-      friendly_name: Bathroom humidity rising
-      sample_duration: 7200
-      min_gradient: 0.005556
-      device_class: moisture
+# - platform: trend
+#   sensors:
+#     bathroom_humidity_falling:
+#       entity_id: sensor.bathroom_humidity
+#       friendly_name: Bathroom humidity falling
+#       sample_duration: 7200
+#       min_gradient: -0.00138
+#     bathroom_humidity_rising:
+#       entity_id: sensor.bathroom_humidity
+#       friendly_name: Bathroom humidity rising
+#       sample_duration: 7200
+#       min_gradient: 0.005556
+#       device_class: moisture
 
 - platform: template
   sensors:

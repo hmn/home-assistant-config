@@ -253,7 +253,7 @@ mqtt:
     payload: 'offline'
 
 homekit:
-  auto_start: True
+  #auto_start: True
   filter:
     include_domains:
       - script
