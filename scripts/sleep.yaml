@@ -20,7 +20,10 @@ mode_sleep:
       entity_id: timer.sleep
     - service: script.turn_on
       entity_id: script.spotify_chill
-      
+    - service: frontend.set_theme
+      data:
+        name: default
+        mode: dark
 
 sleep_timer_done:
   alias: Sleep timer done

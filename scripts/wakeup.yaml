@@ -14,3 +14,7 @@ mode_wakeup:
     - service: script.turn_on
       data:
         entity_id: script.spotify_default
+    - service: frontend.set_theme
+      data:
+        name: default
+        mode: light

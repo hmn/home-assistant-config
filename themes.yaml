@@ -1,0 +1,75 @@
+ThemeNighttime:
+  # App Styles
+  app-drawer-layout-content-transition: none
+  app-drawer-width: 265px
+  app-drawer-scrim-background: rgba(0, 0, 0, 0.5)
+  app-toolbar-font-size: 20px
+  # Primary Colors
+  primary-text-color: '#cccccc'                  # app-toolbar, badge letter
+  secondary-text-color: '#969696'
+  disabled-text-color: '#646465'
+  primary-background-color: '#1e1e1e'            # app-toolbar
+  secondary-background-color: '#252526'          # more info header
+  light-primary-color: '#252526'                 # badge background
+  accent-color: '#cccccc'
+  error-color: 'red'
+  primary-color: '#252526'                       # Header bar background
+  text-primary-color: '#cccccc'                  # Header bar falls back to white
+  dark-primary-color: '#646465'
+  # Dialogs
+  paper-dialog-color: '#cccccc'                  # Falls back to primary-text-color
+  paper-dialog-button-color: '#1e1e1e'           # Falls back to primary-color
+  paper-dialog-background-color: '#1e1e1e'       # Falls back to primary-background-color
+  # Sidebar
+  sidebar-text-color: '#adadad'
+  sidebar-icon-color: '#adadad'
+  sidebar-selected-text-color: '#ffffff'
+  sidebar-selected-icon-color: '#ffffff'
+  sidebar-background-color: '#252526'            # Falls back to primary-background-color
+  # Dividers
+  divider-color: '#616162'
+  # Items
+  paper-item-min-height: 48px
+  paper-item-selected-weight: bold
+  paper-item-disabled-color: '#646465'           # Falls back to disabled-text-color
+  paper-item-icon-active-color: '#ffe680'        # Falls back to #fdd835
+  paper-item-icon-width: 56px
+  paper-item-icon-color: '#5696d6'               # Falls back to #44739e
+  # Icons
+  paper-icon-button-ink-color: '#5696d6'         # Falls back to primary-text-color
+  paper-icon-button-disabled-text: '#646465'     # Falls back to disabled-text-color
+  paper-icon-button-active-color: 'fuchsia'      # Falls back to primary-color
+  paper-icon-button-inactive-color: 'fuchsia'    # Falls back to primary-text-color
+  # Toggles
+  paper-toggle-button-invalid-ink-color: '#5696d6' # Falls back to error-color
+  paper-toggle-button-invalid-button-color: 'fuchsia' # Falls back to error-color
+  paper-toggle-button-invalid-bar-color: 'fuchsia' # Falls back to error-color
+  paper-toggle-button-label-color: 'fuchsia'  # Falls back to primary-text-color
+  paper-toggle-button-checked-bar-color: '#7f9340' # Fall back to primary-color
+  paper-toggle-button-checked-button-color: '#ffe680' # Falls back to primary-color
+  paper-toggle-button-checked-ink-color: '#5696d6' # Falls back to primary-color
+  paper-toggle-button-unchecked-ink-color: '#5696d6'  # Falls back to primary-text-color
+  paper-toggle-button-unchecked-button-color: '#1e1e1e' # Falls back to paper-grey-50
+  paper-toggle-button-unchecked-bar-color: '#404040'  # Falls back to #000000
+  # Tabs
+  paper-tab-ink: '#5696d6'                       # Falls back to paper-yellow-a100 
+  paper-tabs-selection-bar-color: '#5696d6'      # Falls back to text-primary-color
+  # Listbox
+  paper-listbox-color: '#cccccc'                 # Falls back to primary-text-color
+  paper-listbox-background-color: '#252526'      # Falls back to primary-background-color
+  # Cards
+  paper-card-header-color: '#cccccc'             # Falls back to black
+  paper-card-background-color: '#252526'         # Falls back to white
+  # States
+  state-icon-unavailable-color: 'fuchsia'
+  # Toast
+  paper-toast-background-color: '#1e1e1e'        # Falls back to #323232
+  paper-toast-color: '#cccccc'                   # Falls back to #f1f1f1
+
+happy:
+  primary-color: pink
+  text-primary-color: purple
+  mdc-theme-primary: plum
+
+sad:
+  primary-color: blue
