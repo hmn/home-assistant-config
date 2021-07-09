@@ -36,14 +36,14 @@
     daylight_office:
       friendly_name: Daylight in Office
       device_class: light
-      value_template: "{{ states('sensor.office_motion_sensor_1_light_level')|float > 250 }}"
+      value_template: "{{ states('sensor.office_motion_sensor_1_light_level')|float > 240 }}"
     daylight_kitchen:
       friendly_name: Daylight in Kitchen
       device_class: light
-      value_template: "{{ states('sensor.kitchen_motion_sensor_1_light_level')|float > 250 }}"
+      value_template: "{{ states('sensor.kitchen_motion_sensor_1_light_level')|float > 240 }}"
     daylight_bedroom:
       friendly_name: Daylight in Bedroom
       device_class: light
-      value_template: "{{ states('sensor.bedroom_motion_sensor_1_light_level')|float > 250 }}"
+      value_template: "{{ states('sensor.bedroom_motion_sensor_1_light_level')|float > 240 }}"
 
 # - platform: flic
