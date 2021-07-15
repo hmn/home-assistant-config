@@ -383,6 +383,12 @@ timer:
   office_lights:
     duration: '00:05:00'
     icon: mdi:lightbulb-on
+  fan_direction_timer:
+    duration: '01:00:00'
+    icon: mdi:fan
+  fan_speed_timer:
+    duration: '01:00:00'
+    icon: mdi:fan
 
 logger:
   #default: debug
