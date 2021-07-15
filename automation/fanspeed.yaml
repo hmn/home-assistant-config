@@ -16,7 +16,7 @@
   condition:
     - condition: state
       entity_id: timer.fan_direction_timer
-      state: finished
+      state: idle
     - condition: or
       conditions:
         - condition: numeric_state
@@ -52,7 +52,7 @@
   condition:
     - condition: state
       entity_id: timer.fan_direction_timer
-      state: finished
+      state: idle
     - condition: or
       conditions:
         - condition: numeric_state
@@ -89,10 +89,10 @@
       conditions:
         - condition: state
           entity_id: timer.fan_speed_timer
-          state: finished
+          state: idle
         - condition: state
           entity_id: timer.sleep
-          state: finished
+          state: idle
   action:
     - service: timer.start
       entity_id: timer.fan_speed_timer
@@ -126,10 +126,10 @@
       conditions:
         - condition: state
           entity_id: timer.fan_speed_timer
-          state: finished
+          state: idle
         - condition: state
           entity_id: timer.sleep
-          state: finished
+          state: idle
   action:
     - service: timer.start
       entity_id: timer.fan_speed_timer
@@ -162,10 +162,10 @@
       conditions:
         - condition: state
           entity_id: timer.fan_speed_timer
-          state: finished
+          state: idle
         - condition: state
           entity_id: timer.sleep
-          state: finished
+          state: idle
   action:
     - service: timer.start
       entity_id: timer.fan_speed_timer
