@@ -156,7 +156,7 @@
       above: 55
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
-      above: 23
+      above: 24
   condition:
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
