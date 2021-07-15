@@ -114,11 +114,14 @@
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       above: 45
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      below: 24
   condition:
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 20
-      below: 23
+      below: 24
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
@@ -151,10 +154,13 @@
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       above: 55
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: 23
   condition:
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
-      above: 23
+      above: 24
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
