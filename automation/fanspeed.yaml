@@ -118,8 +118,9 @@
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 20
       below: 23
-    - condition: template
-      data_template: {{ sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature > sensor.netatmo_ewaldsvej_kokken_outdoor_temperature }}
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
     - condition: or
       conditions:
         - condition: state
@@ -153,8 +154,9 @@
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 23
-    - condition: template
-      data_template: {{ sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature > sensor.netatmo_ewaldsvej_kokken_outdoor_temperature }}
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
     - condition: or
       conditions:
         - condition: state
