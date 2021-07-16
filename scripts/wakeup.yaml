@@ -1,6 +1,10 @@
 mode_wakeup:
   alias: Wakeup
   sequence:
+    - service: timer.cancel
+      entity_id: timer.fan_direction_timer
+    - service: timer.cancel
+      entity_id: timer.fan_speed_timer
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.sleep

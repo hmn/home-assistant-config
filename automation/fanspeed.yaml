@@ -85,14 +85,12 @@
     - platform: time_pattern
       minutes: "/10"
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: timer.fan_speed_timer
-          state: idle
-        - condition: state
-          entity_id: timer.sleep
-          state: idle
+    - condition: state
+      entity_id: timer.fan_speed_timer
+      state: idle
+    - condition: state
+      entity_id: timer.sleep
+      state: idle
   action:
     - service: timer.start
       entity_id: timer.fan_speed_timer
