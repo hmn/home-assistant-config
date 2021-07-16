@@ -15,6 +15,9 @@
         entity_id: timer.fan_direction_timer
   condition:
     - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
+    - condition: state
       entity_id: timer.fan_direction_timer
       state: idle
     - condition: or
@@ -54,6 +57,9 @@
         entity_id: timer.fan_direction_timer
   condition:
     - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
+    - condition: state
       entity_id: timer.fan_direction_timer
       state: idle
     - condition: or
@@ -86,6 +92,9 @@
       minutes: "/10"
   condition:
     - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
+    - condition: state
       entity_id: timer.fan_speed_timer
       state: idle
     - condition: state
@@ -116,6 +125,9 @@
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       below: 24
   condition:
+    - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 20
@@ -156,6 +168,9 @@
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 24
   condition:
+    - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 24
@@ -192,6 +207,9 @@
       entity_id: binary_sensor.office_motion_sensor_1_motion
       to: 'on'
   condition:
+    - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
     - condition: state
       entity_id: input_boolean.sleep
       state: 'on'
