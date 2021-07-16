@@ -8,7 +8,7 @@
       above: 1500
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
-      above: 45
+      above: 75
     - platform: event
       event_type: timer.finished
       event_data:
@@ -23,11 +23,14 @@
           entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
           above: 20
         - condition: numeric_state
+          entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+          above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+        - condition: numeric_state
           entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
           above: 1500
         - condition: numeric_state
           entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
-          above: 45    
+          above: 75
   action:
     - service: timer.start
       entity_id: timer.fan_direction_timer
@@ -57,13 +60,10 @@
       conditions:
         - condition: numeric_state
           entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
-          above: 20
-        - condition: numeric_state
-          entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
-          above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+          below: 20
         - condition: numeric_state
           entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
-          below: 40
+          below: 75
   action:
     - service: timer.start
       entity_id: timer.fan_direction_timer
