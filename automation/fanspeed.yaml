@@ -96,6 +96,8 @@
     - condition: state
       entity_id: timer.sleep
       state: idle
+    - condition: template
+      value_template: "{{ not is_state('input_select.bedroom_fan_speed', '01') }}"
   action:
     - service: timer.start
       entity_id: timer.fan_speed_timer
@@ -131,6 +133,8 @@
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+    - condition: template
+      value_template: "{{ not is_state('input_select.bedroom_fan_speed', '02') }}"
     - condition: or
       conditions:
         - condition: state
@@ -173,6 +177,8 @@
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+    - condition: template
+      value_template: "{{ not is_state('input_select.bedroom_fan_speed', '03') }}"
     - condition: or
       conditions:
         - condition: state
@@ -209,6 +215,8 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'on'
+    - condition: template
+      value_template: "{{ not is_state('input_select.bedroom_fan_speed', '01') }}"
   action:
     - service: timer.start
       entity_id: timer.fan_speed_timer
