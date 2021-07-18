@@ -1,5 +1,7 @@
 - alias: "Fan direction controller out"
   trigger:
+    - platform: time_pattern
+      minutes: "/30"
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 20
@@ -9,10 +11,6 @@
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       above: 75
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.fan_direction_timer
   condition:
     - condition: state
       entity_id: switch.bedroom_fan
@@ -21,13 +19,13 @@
       entity_id: timer.fan_direction_timer
       state: idle
     - condition: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
-      above: 20
-    - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       below: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
     - condition: or
       conditions:
+        - condition: numeric_state
+          entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+          above: 20
         - condition: numeric_state
           entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
           above: 1300
@@ -50,7 +48,7 @@
 - alias: "Fan direction controller in"
   trigger:
     - platform: time_pattern
-      minutes: "/1"
+      minutes: "/30"
     - platform: event
       event_type: timer.finished
       event_data:
