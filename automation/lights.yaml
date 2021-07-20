@@ -15,9 +15,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: state
-      entity_id: binary_sensor.daylight_kitchen
-      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.kitchen_light_statistics
+      above: 90
   action:
     - service: light.turn_on
       data:
@@ -27,11 +27,9 @@
 
 - alias: "Kitchen enought light detected"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.daylight_kitchen
-      to: 'on'
-      for:
-        minutes: 5
+    - platform: numeric_state
+      entity_id: sensor.kitchen_light_statistics
+      below: 90
   action:
     service: timer.cancel
     entity_id:
@@ -100,9 +98,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: state
-      entity_id: binary_sensor.daylight_office
-      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.combined_light_levels
+      above: 150
   action:
     - service: light.turn_on
       data:
@@ -117,11 +115,9 @@
 
 - alias: "Office enought light detected"
   trigger:
-    - platform: state
-      entity_id: binary_sensor.daylight_office
-      to: 'on'
-      for:
-        minutes: 5
+    - platform: numeric_state
+      entity_id: sensor.combined_light_levels
+      below: 150
   action:
     service: timer.cancel
     entity_id:
@@ -134,11 +130,9 @@
       event_data:
         entity_id: timer.office_lights
   condition:
-    - condition: state
-      entity_id: binary_sensor.daylight_office
-      state: 'on'
-      for:
-        minutes: 5
+    - condition: numeric_state
+      entity_id: sensor.combined_light_levels
+      below: 150
   action:
     service: light.turn_off
     data:
@@ -198,9 +192,9 @@
     - condition: state
       entity_id: input_boolean.home
       state: 'on'
-    - condition: state
-      entity_id: binary_sensor.daylight_bedroom
-      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.bedroom_light_statistics
+      below: 100
   action:
     - service: light.turn_on
       data:
@@ -239,9 +233,9 @@
   condition:
     condition: or
     conditions:
-      - condition: state
-        entity_id: binary_sensor.bedroom_motion_sensor_1_motion
-        state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.bedroom_light_statistics
+        above: 100
       - condition: state
         entity_id: input_boolean.bedroom_motion
         state: 'on'
@@ -332,9 +326,9 @@
     - condition: state
       entity_id: input_boolean.sleep
       state: 'off'
-    - condition: state
-      entity_id: binary_sensor.daylight_kitchen
-      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.combined_light_levels
+      below: 40
   action:
     - service: light.turn_on
       entity_id: light.outdoor_lights
@@ -359,14 +353,12 @@
     - platform: time_pattern
       minutes: "/1"
   condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: sun.sun
-        state: 'above_horizon'
-      - condition: state
-        entity_id: binary_sensor.daylight_kitchen
-        state: 'on'
+    - condition: state
+      entity_id: sun.sun
+      state: 'above_horizon'
+    - condition: numeric_state
+      entity_id: sensor.combined_light_levels
+      above: 50
   action:
     - service: light.turn_off
       entity_id: light.outdoor_lights

@@ -31,19 +31,19 @@
 #       min_gradient: 0.005556
 #       device_class: moisture
 
-- platform: template
-  sensors:
-    daylight_office:
-      friendly_name: Daylight in Office
-      device_class: light
-      value_template: "{{ states('sensor.office_motion_sensor_1_light_level')|float > 200 }}"
-    daylight_kitchen:
-      friendly_name: Daylight in Kitchen
-      device_class: light
-      value_template: "{{ states('sensor.kitchen_motion_sensor_1_light_level')|float > 200 }}"
-    daylight_bedroom:
-      friendly_name: Daylight in Bedroom
-      device_class: light
-      value_template: "{{ states('sensor.bedroom_motion_sensor_1_light_level')|float > 200 }}"
+# - platform: template
+#   sensors:
+#     daylight_office:
+#       friendly_name: Daylight in Office
+#       device_class: light
+#       value_template: "{{ states('sensor.office_motion_sensor_1_light_level')|float > 200 }}"
+#     daylight_kitchen:
+#       friendly_name: Daylight in Kitchen
+#       device_class: light
+#       value_template: "{{ states('sensor.kitchen_motion_sensor_1_light_level')|float > 200 }}"
+#     daylight_bedroom:
+#       friendly_name: Daylight in Bedroom
+#       device_class: light
+#       value_template: "{{ states('sensor.bedroom_motion_sensor_1_light_level')|float > 200 }}"
 
 # - platform: flic
