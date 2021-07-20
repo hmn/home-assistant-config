@@ -17,7 +17,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.kitchen_light_statistics
-      above: 90
+      below: 90
   action:
     - service: light.turn_on
       data:
@@ -29,7 +29,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.kitchen_light_statistics
-      below: 90
+      above: 90
   action:
     service: timer.cancel
     entity_id:
@@ -100,7 +100,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.combined_light_levels
-      above: 150
+      below: 150
   action:
     - service: light.turn_on
       data:
@@ -117,7 +117,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.combined_light_levels
-      below: 150
+      above: 150
   action:
     service: timer.cancel
     entity_id:
@@ -132,7 +132,7 @@
   condition:
     - condition: numeric_state
       entity_id: sensor.combined_light_levels
-      below: 150
+      above: 150
   action:
     service: light.turn_off
     data:
