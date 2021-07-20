@@ -17,7 +17,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.kitchen_light_statistics
-      below: 90
+      below: 80
   action:
     - service: light.turn_on
       data:
@@ -77,7 +77,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.kitchen_light_statistics
-      above: 90
+      above: 80
   action:
     service: timer.cancel
     entity_id:
