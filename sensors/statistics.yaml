@@ -1,3 +1,0 @@
-# - platform: statistics
-#   entity_id: sensor.bathroom_humidity
-#   name: Bathroom humidity statistics

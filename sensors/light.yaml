@@ -1,0 +1,23 @@
+- platform: statistics
+  name: Office light statistics
+  entity_id: sensor.office_motion_sensor_1_light_level
+  max_age: 
+    minutes: 30
+- platform: statistics
+  name: Kitchen light statistics
+  entity_id: sensor.kitchen_motion_sensor_1_light_level
+  max_age: 
+    minutes: 30
+- platform: statistics
+  name: Bedroom light statistics
+  entity_id: sensor.bedroom_motion_sensor_1_light_level
+  max_age: 
+    minutes: 30
+
+- platform: min_max
+  name: Combined light levels
+  entity_ids:
+    - sensor.office_light_statistics
+    - sensor.kitchen_light_statistics
+    - sensor.bedroom_light_statistics
+  type: mean
