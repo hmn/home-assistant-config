@@ -71,27 +71,31 @@ person:
 
 # Enables support for tracking state changes over time.
 history:
+  use_include_order: true
+  include:
+    domains:
+      - device_tracker
+      - switch
+      - input_select
+      - weather
+    entities:
+      - sun.sun
   exclude:
     domains:
       - automation
       - script
       - weblink
       - updater
-      - climate
-      - light
-      - timer
     entities:
       - sensor.last_boot
       - sensor.date
-      - binary_sensor.bedroom_motion_sensor_1_motion
-      - binary_sensor.entrance_motion_sensor_1_motion
-      - binary_sensor.entrance_motion_sensor_2_motion
-      - binary_sensor.kitchen_motion_sensor_1_motion
-      - binary_sensor.office_motion_sensor_1_motion
-      - sensor.front_door_recording_mode
-      - sensor.front_door_streaming_mode
-      - sensor.front_door_wifi_signal_category
-      - sensor.front_door_wifi_signal_strength
+      - sensor.time
+      - sensor.time_utc
+      - sensor.time_date
+      - sensor.date_time
+      - sensor.date_time_iso
+      - sensor.date_time_utc
+      - sensor.internet_time
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
       - sensor.smappee_power
@@ -99,7 +103,6 @@ history:
       - sensor.smappee_fase_1_power
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
-      - binary_sensor.remote_ui
 
 # history_graph:
 #   energy_today:
@@ -161,47 +164,36 @@ recorder:
   db_url: !secret db_url
   exclude:
     domains:
-      - climate
-      - input_boolean
-      - light
       - automation
       - weblink
       - updater
-      - timer
     entities:
-      - sensor.front_door_recording_mode
-      - sensor.front_door_streaming_mode
-      - sensor.front_door_wifi_signal_category
-      - sensor.front_door_wifi_signal_strength
+      - sensor.date
+      - sensor.time
+      - sensor.time_utc
+      - sensor.time_date
+      - sensor.date_time
+      - sensor.date_time_iso
+      - sensor.date_time_utc
+      - sensor.internet_time
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
-      - sensor.smappee_power
-      - sensor.smappee_usage_today
-      - sensor.smappee_fase_1_power
-      - sensor.smappee_fase_2_power
-      - sensor.smappee_fase_3_power
-      - binary_sensor.entrance_motion_sensor_1_motion
-      - binary_sensor.entrance_motion_sensor_2_motion
-      - binary_sensor.kitchen_motion_sensor_1_motion
-      - binary_sensor.bedroom_motion_sensor_1_motion
-      - binary_sensor.remote_ui
 
 # View all events in a logbook
 logbook:
   exclude:
     domains:
-      - climate
-      - input_boolean
-      - light
-      - automation
       - weblink
       - updater
-      - timer
     entities:
-      - sensor.front_door_recording_mode
-      - sensor.front_door_streaming_mode
-      - sensor.front_door_wifi_signal_category
-      - sensor.front_door_wifi_signal_strength
+      - sensor.date
+      - sensor.time
+      - sensor.time_utc
+      - sensor.time_date
+      - sensor.date_time
+      - sensor.date_time_iso
+      - sensor.date_time_utc
+      - sensor.internet_time
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
       - sensor.smappee_power
@@ -209,11 +201,6 @@ logbook:
       - sensor.smappee_fase_1_power
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
-      - binary_sensor.entrance_motion_sensor_1_motion
-      - binary_sensor.entrance_motion_sensor_2_motion
-      - binary_sensor.kitchen_motion_sensor_1_motion
-      - binary_sensor.bedroom_motion_sensor_1_motion
-      - binary_sensor.remote_ui
 
 cloud:
 zeroconf:
