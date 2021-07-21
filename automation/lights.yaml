@@ -125,6 +125,9 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.office_lights
+    - platform: numeric_state
+      entity_id: sensor.office_light_statistics
+      above: 100
   action:
     - service: timer.cancel
       entity_id:
@@ -155,9 +158,9 @@
     - platform: time_pattern
       minutes: "/1"
   condition:
-    - condition: numeric_state
-      entity_id: sensor.office_light_statistics
-      above: 100
+    - condition: state
+      entity_id: timer.office_lights
+      state: idle
     - condition: or
       conditions:
         - condition: state
@@ -171,16 +174,6 @@
       entity_id: timer.kitchen_lights
     - service: timer.start
       entity_id: timer.office_lights
-
-- alias: "Office enought light detected"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.office_light_statistics
-      above: 100
-  action:
-    service: timer.cancel
-    entity_id:
-      - timer.office_lights
 
 
 - alias: "Bedroom lights timer started"
