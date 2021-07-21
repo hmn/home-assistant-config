@@ -72,14 +72,6 @@ person:
 # Enables support for tracking state changes over time.
 history:
   use_include_order: true
-  include:
-    domains:
-      - device_tracker
-      - switch
-      - input_select
-      - weather
-    entities:
-      - sun.sun
   exclude:
     domains:
       - automation
