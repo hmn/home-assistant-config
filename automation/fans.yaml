@@ -82,3 +82,131 @@
     - service: shell_command.bedroom_fan_direction
       data_template:
         direction: "{{ trigger.to_state.state }}"
+
+
+- alias: "Bedroom window closed"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: state
+      entity_id: input_boolean.bedroom_window
+      to: 'off'
+      for:
+        minutes: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+      for:
+        minutes: 1
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: switch.bedroom_fan
+          state: 'off'
+        - condition: state
+          entity_id: switch.livingroom_fan
+          state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bedroom_fan
+    - service: switch.turn_on
+      entity_id: switch.livingroom_fan
+
+- alias: "Bedroom window open"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: state
+      entity_id: input_boolean.bedroom_window
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'on'
+      for:
+        minutes: 1
+    - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bedroom_fan
+
+- alias: "Bedroom door open and window closed"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: state
+      entity_id: input_boolean.bedroom_door
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_door
+      state: 'on'
+      for:
+        minutes: 1
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+      for:
+        minutes: 1
+    - condition: state
+      entity_id: switch.livingroom_fan
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.livingroom_fan
+
+- alias: "Bedroom door open and window open"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: state
+      entity_id: input_boolean.bedroom_door
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_door
+      state: 'on'
+      for:
+        minutes: 1
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'on'
+      for:
+        minutes: 1
+    - condition: state
+      entity_id: switch.livingroom_fan
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.livingroom_fan
+
+- alias: "Bedroom door closed"
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+    - platform: state
+      entity_id: input_boolean.bedroom_door
+      to: 'off'
+      for:
+        minutes: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.bedroom_door
+      state: 'off'
+      for:
+        minutes: 1
+    - condition: state
+      entity_id: switch.livingroom_fan
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.livingroom_fan
