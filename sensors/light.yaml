@@ -18,3 +18,22 @@
     - sensor.kitchen_light_statistics
     - sensor.bedroom_light_statistics
   type: mean
+
+- platform: derivative
+  source: sensor.office_motion_sensor_1_light_level
+  name: Office light level change per hour
+  round: 1
+  unit_time: h # the resulting "unit_of_measurement" will be °C/h if the sensor.temperate has set °C as it's unit
+  time_window: "00:30:00"  # we look at the change over the last half hour
+- platform: derivative
+  source: sensor.kitchen_motion_sensor_1_light_level
+  name: Kitchen light level change per hour
+  round: 1
+  unit_time: h # the resulting "unit_of_measurement" will be °C/h if the sensor.temperate has set °C as it's unit
+  time_window: "00:30:00"  # we look at the change over the last half hour
+- platform: derivative
+  source: sensor.bedroom_motion_sensor_1_light_level
+  name: Bedroom light level change per hour
+  round: 1
+  unit_time: h # the resulting "unit_of_measurement" will be °C/h if the sensor.temperate has set °C as it's unit
+  time_window: "00:30:00"  # we look at the change over the last half hour
