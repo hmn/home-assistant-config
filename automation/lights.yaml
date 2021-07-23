@@ -131,7 +131,10 @@
   condition:
     - condition: state
       entity_id: sun.sun
-      state: 'below_horizon'
+      state: 'above_horizon'
+    - condition: numeric_state
+      entity_id: sensor.office_light_statistics
+      above: 90
   action:
     - service: timer.cancel
       entity_id:
