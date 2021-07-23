@@ -179,6 +179,7 @@ logbook:
       - updater
       - lights
       - homekit
+      - timer
     entities:
       - sensor.date
       - sensor.time
@@ -197,6 +198,10 @@ logbook:
       - sensor.smappee_fase_3_power
       - input_boolean.office_motion
       - input_boolean.bedroom_motion
+      - input_boolean.kitchen_motion
+      - binary_sensor.office_motion_sensor_1_motion
+      - binary_sensor.kitchen_motion_sensor_1_motion
+      - binary_sensor.bedroom_motion_sensor_1_motion
 
 
 cloud:
