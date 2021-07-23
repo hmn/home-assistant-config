@@ -199,6 +199,7 @@ logbook:
       - input_boolean.office_motion
       - input_boolean.bedroom_motion
       - input_boolean.kitchen_motion
+      - input_boolean.entrance_motion
       - binary_sensor.office_motion_sensor_1_motion
       - binary_sensor.kitchen_motion_sensor_1_motion
       - binary_sensor.bedroom_motion_sensor_1_motion
@@ -216,6 +217,8 @@ logbook:
       - automation.office_lights_timer_started
       - automation.kitchen_lights_timer_started
       - automation.kitchen_lights_timer_done
+      - automation.entrance_lights_timer_done
+      - automation.entrance_lights_timer_started
 
 
 cloud:
