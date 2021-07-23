@@ -177,7 +177,7 @@ logbook:
     domains:
       - weblink
       - updater
-      - lights
+      - light
       - homekit
       - timer
     entities:
@@ -202,6 +202,18 @@ logbook:
       - binary_sensor.office_motion_sensor_1_motion
       - binary_sensor.kitchen_motion_sensor_1_motion
       - binary_sensor.bedroom_motion_sensor_1_motion
+      - binary_sensor.entrance_motion_sensor_1_motion
+      - binary_sensor.entrance_motion_sensor_2_motion
+      - automation.motion_in_bedroom
+      - automation.motion_in_bedroom_timer
+      - automation.motion_in_entrance
+      - automation.motion_in_entrance_timer
+      - automation.motion_in_kitchen
+      - automation.motion_in_kitchen_timer
+      - automation.motion_in_office
+      - automation.motion_in_office_timer
+      - automation.office_lights_timer_done
+      - automation.office_lights_timer_started
 
 
 cloud:
