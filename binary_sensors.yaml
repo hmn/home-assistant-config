@@ -47,3 +47,19 @@
 #       value_template: "{{ states('sensor.bedroom_motion_sensor_1_light_level')|float > 200 }}"
 
 # - platform: flic
+
+- platform: threshold # will switch state not at 0°C/min but 0.1°C/min or -0.1°C/min depending on the current state of the sensor, respectively
+  entity_id: sensor.office_light_level_change_per_hour
+  upper: 0
+  hysteresis: 0.1 # sensor
+  name: Office light level rising
+- platform: threshold # will switch state not at 0°C/min but 0.1°C/min or -0.1°C/min depending on the current state of the sensor, respectively
+  entity_id: sensor.kitchen_light_level_change_per_hour
+  upper: 0
+  hysteresis: 0.1 # sensor
+  name: Kitchen light level rising
+- platform: threshold # will switch state not at 0°C/min but 0.1°C/min or -0.1°C/min depending on the current state of the sensor, respectively
+  entity_id: sensor.bedroom_light_level_change_per_hour
+  upper: 0
+  hysteresis: 0.1 # sensor
+  name: Bedroom light level rising
