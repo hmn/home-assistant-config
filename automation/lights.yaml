@@ -338,6 +338,9 @@
     - condition: numeric_state
       entity_id: sensor.office_light_statistics
       below: 35
+    - condition: state
+      entity_id: light.outdoor_lights
+      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.outdoor_lights
@@ -353,6 +356,9 @@
     - condition: time
       before: '05:00:00'
       after: '23:00:00'
+    - condition: state
+      entity_id: light.outdoor_lights
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.outdoor_lights
@@ -368,6 +374,9 @@
     - condition: numeric_state
       entity_id: sensor.office_light_statistics
       above: 15
+    - condition: state
+      entity_id: light.outdoor_lights
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.outdoor_lights
