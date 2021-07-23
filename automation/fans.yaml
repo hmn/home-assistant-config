@@ -87,7 +87,7 @@
 - alias: "Bedroom window closed"
   trigger:
     - platform: time_pattern
-      minutes: "/2"
+      minutes: "/15"
     - platform: state
       entity_id: input_boolean.bedroom_window
       to: 'off'
@@ -111,7 +111,7 @@
 - alias: "Bedroom window open"
   trigger:
     - platform: time_pattern
-      minutes: "/2"
+      minutes: "/15"
     - platform: state
       entity_id: input_boolean.bedroom_window
       to: 'on'
@@ -135,7 +135,7 @@
 - alias: "Bedroom door open and window closed"
   trigger:
     - platform: time_pattern
-      minutes: "/2"
+      minutes: "/15"
     - platform: state
       entity_id: input_boolean.bedroom_door
       to: 'on'
@@ -164,7 +164,7 @@
 - alias: "Bedroom door open and window open"
   trigger:
     - platform: time_pattern
-      minutes: "/2"
+      minutes: "/15"
     - platform: state
       entity_id: input_boolean.bedroom_door
       to: 'on'
@@ -193,7 +193,7 @@
 - alias: "Bedroom door closed"
   trigger:
     - platform: time_pattern
-      minutes: "/2"
+      minutes: "/15"
     - platform: state
       entity_id: input_boolean.bedroom_door
       to: 'off'
