@@ -214,6 +214,8 @@ logbook:
       - automation.motion_in_office_timer
       - automation.office_lights_timer_done
       - automation.office_lights_timer_started
+      - automation.kitchen_lights_timer_started
+      - automation.kitchen_lights_timer_done
 
 
 cloud:
