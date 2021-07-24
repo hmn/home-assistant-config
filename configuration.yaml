@@ -95,6 +95,7 @@ history:
       - sensor.smappee_fase_1_power
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
+      - sensor.henriks_iphone_bssid
 
 # history_graph:
 #   energy_today:
@@ -170,6 +171,7 @@ recorder:
       - sensor.internet_time
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
+      - sensor.henriks_iphone_bssid
 
 # View all events in a logbook
 logbook:
