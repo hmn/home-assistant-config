@@ -219,6 +219,7 @@ logbook:
       - automation.kitchen_lights_timer_done
       - automation.entrance_lights_timer_done
       - automation.entrance_lights_timer_started
+      - sensor.henriks_iphone_bssid
 
 
 cloud:
