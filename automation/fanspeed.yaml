@@ -127,6 +127,9 @@
       entity_id: switch.bedroom_fan
       state: 'on'
     - condition: numeric_state
+      entity_id: sensor.humidity_difference
+      above: 0
+    - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 20
       below: 24
@@ -171,6 +174,9 @@
     - condition: state
       entity_id: switch.bedroom_fan
       state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.humidity_difference
+      above: 0
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 24
