@@ -455,7 +455,6 @@ template:
         state: >
           {% set bedroom = states('sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity') | float %}
           {% set outdoor = states('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity') | float %}
-
           {{ (bedroom - outdoor) | round(1) }}
 
 #python_script:
