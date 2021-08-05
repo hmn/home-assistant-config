@@ -13,6 +13,8 @@
   unit_of_measurement: "kWh"
   icon: "mdi:power-plug"
   value_template: "{{ (value_json.totalImportEnergy | multiply(0.0000001)) | round(2) }}"
+  device_class: energy
+  state_class: measurement
 
 #- platform: mqtt
 #  name: Smappee solar today
@@ -42,6 +44,8 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ value_json.channelPowers[0].power }}"
+  device_class: power
+  state_class: measurement
 
 - platform: mqtt
   name: Smappee fase 2 power
@@ -49,6 +53,8 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ value_json.channelPowers[1].power }}"
+  device_class: power
+  state_class: measurement
 
 - platform: mqtt
   name: Smappee fase 3 power
@@ -56,6 +62,8 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ value_json.channelPowers[2].power }}"
+  device_class: power
+  state_class: measurement
 
 # remap realtime sensors for history use
 
@@ -126,6 +134,8 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2) }}"
+  device_class: power
+  state_class: measurement
 
 # - platform: mqtt
 #   name: Smappee average RMS Voltage
@@ -141,6 +151,8 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2) }}"
+  device_class: power
+  state_class: measurement
 
 - platform: mqtt
   name: Smappee cinema power
@@ -148,6 +160,8 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2) }}"
+  device_class: power
+  state_class: measurement
 
 
 
