@@ -4,11 +4,6 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ value_json.totalPower }}"
-  device:
-    identifiers: "1007001022"
-    manufacturer: "Smappee"
-    model: "Smappee Energy"
-    name: "Smappee Energy"
   device_class: power
   state_class: measurement
 
