@@ -480,5 +480,5 @@ shell_command:
 #  network_key: !secret zwave_network_key
 #  debug: True
 
-automation: !include automations.yaml
+#automation: !include automations.yaml
 automation old: !include_dir_merge_list automation
