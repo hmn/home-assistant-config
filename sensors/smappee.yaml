@@ -16,6 +16,12 @@
   device_class: energy
   state_class: measurement
 
+- platform: statistics
+  name: Smappee usage today (calulated)
+  entity_id: sensor.smappee_power
+  sample_size: 60 # This is assuming you are getting 1 sample a second.  Adjust otherwise.    
+
+
 #- platform: mqtt
 #  name: Smappee solar today
 #  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
