@@ -11,11 +11,11 @@
 #
 ############################################################
 
-# - alias: 'Update is available'
-#   trigger:
-#     platform: state
-#     entity_id: updater.updater
-#   action:
-#     service: notify.all
-#     data_template:
-#       message: "Home Assistant {{ states('updater.updater') }} is now available."
+- alias: 'Update is available'
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    service: notify.all
+    data_template:
+      message: "Home Assistant {{ states('updater.updater') }} is now available."
