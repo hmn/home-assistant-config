@@ -421,7 +421,7 @@ logger:
     #custom_components.media_player.ps4: debug
     #homeassistant.components.smappee: error
     #homeassistant.components.mqtt: error
-    homeassistant.components.mqtt: debug
+    #homeassistant.components.mqtt: debug
     #homeassistant.deconz: debug
     #homeassistant.components.deconz: debug
     #pydeconz: debug
