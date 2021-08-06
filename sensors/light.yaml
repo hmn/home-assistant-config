@@ -2,14 +2,20 @@
   name: Office light statistics
   entity_id: sensor.office_motion_sensor_1_light_level
   sampling_size: 10
+  device_class: illuminance
+  state_class: measurement
 - platform: statistics
   name: Kitchen light statistics
   entity_id: sensor.kitchen_motion_sensor_1_light_level
   sampling_size: 10
+  device_class: illuminance
+  state_class: measurement
 - platform: statistics
   name: Bedroom light statistics
   entity_id: sensor.bedroom_motion_sensor_1_light_level
   sampling_size: 10
+  device_class: illuminance
+  state_class: measurement
 
 - platform: min_max
   name: Combined light levels
@@ -18,6 +24,8 @@
     - sensor.kitchen_light_statistics
     - sensor.bedroom_light_statistics
   type: mean
+  device_class: illuminance
+  state_class: measurement
 
 - platform: derivative
   source: sensor.office_motion_sensor_1_light_level
