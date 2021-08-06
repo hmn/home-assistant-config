@@ -8,11 +8,20 @@
   state_class: measurement
 
 - platform: mqtt
+  name: Smappee usage today (raw)
+  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+  unit_of_measurement: "Wh"
+  icon: "mdi:power-plug"
+  value_template: "{{ value_json.totalImportEnergy }}"
+  device_class: energy
+  state_class: measurement
+
+- platform: mqtt
   name: Smappee usage today
   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
   unit_of_measurement: "kWh"
   icon: "mdi:power-plug"
-  value_template: "{{ (value_json.totalImportEnergy | multiply(0.0000001)) | round(2) }}"
+  value_template: "{{ ((value_json.totalImportEnergy / 1000) | float | round(2)) }}"
   device_class: energy
   state_class: measurement
 
