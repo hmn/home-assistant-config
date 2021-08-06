@@ -421,6 +421,7 @@ logger:
     #custom_components.media_player.ps4: debug
     #homeassistant.components.smappee: error
     #homeassistant.components.mqtt: error
+    homeassistant.components.mqtt: debug
     #homeassistant.deconz: debug
     #homeassistant.components.deconz: debug
     #pydeconz: debug
@@ -439,7 +440,7 @@ logger:
     homeassistant.components.shell_command: debug
 
 light: !include light.yaml
-binary_sensor: !include binary_sensors.yaml
+#binary_sensor: !include binary_sensors.yaml
 camera: !include cameras.yaml
 fan: !include fans.yaml
 device_tracker: !include device_trackers.yaml
