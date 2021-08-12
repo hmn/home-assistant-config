@@ -16,6 +16,9 @@
       entity_id: switch.bedroom_fan
       state: 'on'
     - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
       entity_id: timer.fan_direction_timer
       state: idle
     - condition: numeric_state
@@ -135,9 +138,9 @@
     - condition: state
       entity_id: switch.bedroom_fan
       state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.humidity_difference
-      above: 0
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 22
@@ -183,9 +186,9 @@
     - condition: state
       entity_id: switch.bedroom_fan
       state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.humidity_difference
-      above: 0
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
     - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
       above: 25
@@ -227,6 +230,9 @@
     - condition: state
       entity_id: switch.bedroom_fan
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
     - condition: state
       entity_id: input_boolean.sleep
       state: 'on'

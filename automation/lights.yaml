@@ -380,7 +380,7 @@
       state: 'above_horizon'
     - condition: numeric_state
       entity_id: sensor.office_light_statistics
-      above: 15
+      above: 10
     - condition: state
       entity_id: light.outdoor_lights
       state: 'on'
