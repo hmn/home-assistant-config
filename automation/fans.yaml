@@ -93,6 +93,9 @@
       to: 'off'
       for:
         minutes: 5
+    - platform: state
+      entity_id: climate.bedroom
+      to: 'off'
   condition:
     - condition: state
       entity_id: input_boolean.bedroom_window
@@ -101,6 +104,9 @@
         minutes: 2
     - condition: state
       entity_id: switch.bedroom_fan
+      state: 'off'
+    - condition: state
+      entity_id: climate.bedroom
       state: 'off'
   action:
     - service: timer.start
@@ -129,6 +135,21 @@
   action:
     - service: timer.start
       entity_id: timer.fan_power_timer
+    - service: switch.turn_off
+      entity_id: switch.bedroom_fan
+    - service: climate.turn_off
+      entity_id: climate.bedroom
+
+- alias: "Bedroom climate turned on"
+  trigger:
+    - platform: state
+      entity_id: climate.bedroom
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.bedroom_fan
+      state: 'on'
+  action:
     - service: switch.turn_off
       entity_id: switch.bedroom_fan
 
