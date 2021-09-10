@@ -38,10 +38,11 @@ http:
   # base_url: !secret base_url
   use_x_forwarded_for: true
   trusted_proxies:
-    - 192.168.7.10
-    - 192.168.7.1
-    - 192.168.7.2
+    - 192.168.7/24
+    - 192.168.8/24
+    - 192.168.9/24
     - 172.30.0.0/16
+    - 10.0.0.0/8
   #  - 172.16.2.1
   #  - 127.0.0.1
   cors_allowed_origins:
