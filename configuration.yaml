@@ -231,7 +231,6 @@ logbook:
 
 cloud:
 zeroconf:
-  default_interface: true
 ssdp:
 ios:
 alexa:
@@ -270,7 +269,7 @@ mqtt:
 
 homekit:
   #auto_start: True
-  advertise_ip: "192.168.7.51"
+  #advertise_ip: "192.168.7.51"
   filter:
     include_domains:
       - script
