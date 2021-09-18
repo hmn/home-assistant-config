@@ -334,7 +334,7 @@ plex:
 #      allow_hue_groups: true
 
 webostv:
-  host: 192.168.8.197
+  host: 192.168.17.197
   name: LG OLED
   turn_on_action:
     service: wake_on_lan.send_magic_packet
