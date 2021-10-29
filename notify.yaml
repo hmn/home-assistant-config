@@ -18,7 +18,7 @@
   vapid_email: !secret vapid_email
 
 - platform: webostv
-  host: 192.168.17.197
+  host: 192.168.8.197
   name: tv
 
 - platform: group

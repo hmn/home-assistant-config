@@ -1,19 +1,19 @@
 - platform: command_line
   name: Livingroom fan speed
-  command: "python3 custom_scripts/fan_control.py --ip 192.168.9.248 --command status --print speed"
+  command: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print speed"
   scan_interval: 300
 
 - platform: command_line
   name: Livingroom fan direction
-  command: "python3 custom_scripts/fan_control.py --ip 192.168.9.248 --command status --print direction"
+  command: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print direction"
   scan_interval: 300
 
 - platform: command_line
   name: Bedroom fan speed
-  command: "python3 custom_scripts/fan_control.py --ip 192.168.9.249 --command status --print speed"
+  command: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print speed"
   scan_interval: 300
 
 - platform: command_line
   name: Bedroom fan direction
-  command: "python3 custom_scripts/fan_control.py --ip 192.168.9.249 --command status --print direction"
+  command: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print direction"
   scan_interval: 300

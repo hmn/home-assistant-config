@@ -41,9 +41,8 @@ http:
     - 192.168.8.1
     - 192.168.8.2
     - 192.168.8.10
+    - 192.168.8.12
     - 192.168.8.51
-    - 192.168.9.11
-    - 192.168.9.1
     - 172.30.0.0/16
     - 10.0.0.0/8
   #  - 172.16.2.1
@@ -288,12 +287,12 @@ homekit:
 #   password: !secret smappee_password
 
 apple_tv:
-  host: 192.168.17.199
+  host: 192.168.8.199
 #  login_id: !secret apple_tv_login_id
 #  credentials: !secret apple_tv_credentials
 
 denonavr:
-  host: 192.168.17.198
+  host: 192.168.8.198
 
 # logi_circle:
 #   client_id: !secret logi_circle_client_id
@@ -337,7 +336,7 @@ plex:
 #      allow_hue_groups: true
 
 webostv:
-  host: 192.168.17.197
+  host: 192.168.8.197
   name: LG OLED
   turn_on_action:
     service: wake_on_lan.send_magic_packet
@@ -482,10 +481,10 @@ shell_command:
   #livingroom_fan_speed: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x03\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
   #livingroom_fan_status: python custom_scripts/fan_control.py --ip 192.168.9.248 --command status --print power
   #livingroom_fan_power: python custom_scripts/fan_control.py --ip 192.168.9.248 --command power --print power
-  bedroom_fan_speed: python3 custom_scripts/fan_control.py --ip 192.168.9.249 --command speed --speed {{speed}} --print speed
-  bedroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.9.249 --command direction --direction {{direction}} --print direction
-  livingroom_fan_speed: python3 custom_scripts/fan_control.py --ip 192.168.9.248 --command speed --speed {{speed}} --print speed
-  livingroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.9.248 --command direction --direction {{direction}} --print direction
+  bedroom_fan_speed: python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command speed --speed {{speed}} --print speed
+  bedroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command direction --direction {{direction}} --print direction
+  livingroom_fan_speed: python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command speed --speed {{speed}} --print speed
+  livingroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command direction --direction {{direction}} --print direction
   #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
 
 #zwave:
