@@ -302,3 +302,39 @@
       data:
         entity_id: input_select.fan_mode
         option: 'sleep cold'
+
+
+- alias: "Change fan mode to default if needed"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.humidity_difference
+      above: 25
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
+      above: 75
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
+      above: 1300
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
+      entity_id: timer.fan_direction_timer
+      state: idle
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_select.fan_mode
+          state: 'off'
+        - condition: state
+          entity_id: input_select.fan_mode
+          state: 'eco'    
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'default'
