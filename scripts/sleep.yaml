@@ -1,10 +1,12 @@
 mode_sleep:
   alias: Go to sleep
   sequence:
-    - service: timer.cancel
-      entity_id: timer.fan_direction_timer
-    - service: timer.cancel
-      entity_id: timer.fan_speed_timer
+    #- service: timer.cancel
+    #  entity_id: timer.fan_direction_timer
+    #- service: timer.cancel
+    #  entity_id: timer.fan_speed_timer
+    - service: script.turn_on
+      entity_id: script.spotify_chill
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.sleep
@@ -22,8 +24,10 @@ mode_sleep:
         entity_id: light.all_lights
     - service: timer.start
       entity_id: timer.sleep
-    - service: script.turn_on
-      entity_id: script.spotify_chill
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'sleep'
     - service: frontend.set_theme
       data:
         name: default

@@ -24,6 +24,8 @@ spotify_chill:
       data:
         entity_id: media_player.spotify
         volume_level: 0.1
+    - service: media_player.media_play
+      entity_id: media_player.spotify
 
 
 
@@ -33,7 +35,7 @@ spotify_default:
     - service: media_player.select_source
       data:
         entity_id: media_player.spotify
-        source: hmnmbp
+        source: Henbrik's MacBook Pro
     - service: media_player.media_pause
       entity_id: media_player.spotify
     #- service: media_player.clear_playlist
