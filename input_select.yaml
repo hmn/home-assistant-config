@@ -37,4 +37,5 @@ fan_mode:
     - 'eco'
     - 'sleep'
     - 'sleep warm'
+    - 'sleep cold'
     - 'off'

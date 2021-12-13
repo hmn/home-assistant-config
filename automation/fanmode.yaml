@@ -1,53 +1,140 @@
 - alias: Fan mode set default
   trigger:
-    platform: state
-    entity_id: sensor.fan_mode
-    to: 'default'
+    - platform: state
+      entity_id: input_select.fan_mode
+      to: 'default'
   action:
+    - service: timer.start
+      entity_id: timer.fan_power_timer
     - service: switch.turn_on
       entity_id: switch.bedroom_fan
     - service: switch.turn_on
       entity_id: switch.livingroom_fan
+    - service: timer.start
+      entity_id: timer.fan_direction_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_direction
+        option: 'out'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_direction
+        option: 'alternating'
+    - service: timer.start
+      entity_id: timer.fan_speed_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_speed
+        option: '01'
 
 - alias: Fan mode set eco
   trigger:
-    platform: state
-    entity_id: sensor.fan_mode
-    to: 'eco'
+    - platform: state
+      entity_id: input_select.fan_mode
+      to: 'eco'
   action:
+    - service: timer.start
+      entity_id: timer.fan_power_timer
     - service: switch.turn_off
       entity_id: switch.bedroom_fan
     - service: switch.turn_on
       entity_id: switch.livingroom_fan
+    - service: timer.start
+      entity_id: timer.fan_direction_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_direction
+        option: 'alternating'
+    - service: timer.start
+      entity_id: timer.fan_speed_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.livingroom_fan_speed
+        option: '01'
 
 - alias: Fan mode set sleep
   trigger:
-    platform: state
-    entity_id: sensor.fan_mode
-    to: 'sleep'
+    - platform: state
+      entity_id: input_select.fan_mode
+      to: 'sleep'
   action:
+    - service: timer.start
+      entity_id: timer.fan_power_timer
     - service: switch.turn_on
       entity_id: switch.bedroom_fan
-    - service: switch.turn_on
+    - service: switch.turn_off
       entity_id: switch.livingroom_fan
+    - service: timer.start
+      entity_id: timer.fan_direction_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_direction
+        option: 'alternating'
+    - service: timer.start
+      entity_id: timer.fan_speed_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: '01'
 
 - alias: Fan mode set sleep warm
   trigger:
-    platform: state
-    entity_id: sensor.fan_mode
-    to: 'sleep warm'
+    - platform: state
+      entity_id: input_select.fan_mode
+      to: 'sleep warm'
   action:
+    - service: timer.start
+      entity_id: timer.fan_power_timer
     - service: switch.turn_on
       entity_id: switch.bedroom_fan
-    - service: switch.turn_on
+    - service: switch.turn_off
       entity_id: switch.livingroom_fan
+    - service: timer.start
+      entity_id: timer.fan_direction_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_direction
+        option: 'in'
+    - service: timer.start
+      entity_id: timer.fan_speed_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: '01'
+
+- alias: Fan mode set sleep cold
+  trigger:
+    - platform: state
+      entity_id: input_select.fan_mode
+      to: 'sleep cold'
+  action:
+    - service: timer.start
+      entity_id: timer.fan_power_timer
+    - service: switch.turn_on
+      entity_id: switch.bedroom_fan
+    - service: switch.turn_off
+      entity_id: switch.livingroom_fan
+    - service: timer.start
+      entity_id: timer.fan_direction_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_direction
+        option: 'out'
+    - service: timer.start
+      entity_id: timer.fan_speed_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: '01'
 
 - alias: Fan mode set off
   trigger:
-    platform: state
-    entity_id: sensor.fan_mode
-    to: 'off'
+    - platform: state
+      entity_id: input_select.fan_mode
+      to: 'off'
   action:
+    - service: timer.start
+      entity_id: timer.fan_power_timer
     - service: switch.turn_off
       entity_id: switch.bedroom_fan
     - service: switch.turn_off

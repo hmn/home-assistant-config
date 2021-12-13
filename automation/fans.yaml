@@ -84,6 +84,31 @@
         direction: "{{ trigger.to_state.state }}"
 
 
+- alias: "Bedroom climate turned on"
+  trigger:
+    - platform: state
+      entity_id: climate.bedroom
+      to: 'on'
+  # condition:
+  #   - condition: state
+  #     entity_id: switch.bedroom_fan
+  #     state: 'on'
+  action:
+    # - service: switch.turn_off
+    #   entity_id: switch.bedroom_fan
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'off'
+
+
+
+
+
+
+
+
+
 - alias: "Bedroom window closed"
   trigger:
     - platform: time_pattern
@@ -139,19 +164,6 @@
       entity_id: switch.bedroom_fan
     - service: climate.turn_off
       entity_id: climate.bedroom
-
-- alias: "Bedroom climate turned on"
-  trigger:
-    - platform: state
-      entity_id: climate.bedroom
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: switch.bedroom_fan
-      state: 'on'
-  action:
-    - service: switch.turn_off
-      entity_id: switch.bedroom_fan
 
 - alias: "Bedroom door open and window closed"
   trigger:
