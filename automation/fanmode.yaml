@@ -15,13 +15,17 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.bedroom_fan_direction
-        option: 'out'
+        option: 'alternating'
     - service: input_select.select_option
       data:
         entity_id: input_select.livingroom_fan_direction
         option: 'alternating'
     - service: timer.start
       entity_id: timer.fan_speed_timer
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.bedroom_fan_speed
+        option: '01'
     - service: input_select.select_option
       data:
         entity_id: input_select.livingroom_fan_speed
