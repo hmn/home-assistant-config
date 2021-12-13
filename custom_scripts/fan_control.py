@@ -74,22 +74,29 @@ directions = {
 }
 
 # handle commands
+status_cmd = '01'
+expect_key = None
+expect_value = None
 if args.command == 'status':
     cmd = '01'
 elif args.command == 'power':
     cmd = '03'
 elif args.command == 'on':
     cmd = '03'
-    status_cmd = '01'
-    status_expect = '00'
+    expect_key = 7
+    expect_value = '01'
 elif args.command == 'off':
     cmd = '03'
-    status_cmd = '01'
-    status_expect = '01'
+    expect_key = 7
+    expect_value = '00'
 elif args.command == 'speed':
     cmd = '04' + args.speed
+    expect_key = 19
+    expect_value = str(args.speed)
 elif args.command == 'direction':
     cmd = '06' + directions[args.direction]
+    expect_key = 23
+    expect_value = directions[args.direction]
 elif args.command == 'sleep':
     cmd = '0901'
 elif args.command == 'party':
@@ -98,15 +105,14 @@ else:
     print('invalid command')
     exit(1)
 
-try:
-    if status_cmd:
-        hexlist = send_command(status_cmd)
-        if hexlist[7] == status_expect:
-            # fan already on/off no need to run command
-            print(hexlist[7])
-            exit(0)
+try:    
+    hexlist = send_command(status_cmd)
+    if expect_key and hexlist[expect_key] == expect_value:
+        # settings already set no need to rerun it
+        cmd = None
 
-    hexlist = send_command(cmd)
+    if cmd:    
+        hexlist = send_command(cmd)
 
     power_value = hexlist[7]
     mode_value = hexlist[9]
