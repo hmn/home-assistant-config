@@ -2,11 +2,13 @@
   scan_interval: 120
   switches:
     bedroom_fan:
+      friendly_name: Bedroom fan power
       command_on: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command power --print power"
       command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command power --print power"
       command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print power"
       value_template: '{{ value == "01" }}'
     livingroom_fan:
+      friendly_name: Livingroom fan power
       command_on: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command power --print power"
       command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command power --print power"
       command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print power"
