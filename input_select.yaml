@@ -28,3 +28,13 @@ bedroom_fan_direction:
     - 'in'
     - 'alternating'
     - 'out'
+
+fan_mode:
+  name: Fan mode
+  icon: mdi:dip-switch
+  options:
+    - 'default'
+    - 'eco'
+    - 'sleep'
+    - 'sleep warm'
+    - 'off'

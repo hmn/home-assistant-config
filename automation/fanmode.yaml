@@ -1,0 +1,56 @@
+- alias: Fan mode set default
+  trigger:
+    platform: state
+    entity_id: sensor.fan_mode
+    to: 'default'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bedroom_fan
+    - service: switch.turn_on
+      entity_id: switch.livingroom_fan
+
+- alias: Fan mode set eco
+  trigger:
+    platform: state
+    entity_id: sensor.fan_mode
+    to: 'eco'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bedroom_fan
+    - service: switch.turn_on
+      entity_id: switch.livingroom_fan
+
+- alias: Fan mode set sleep
+  trigger:
+    platform: state
+    entity_id: sensor.fan_mode
+    to: 'sleep'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bedroom_fan
+    - service: switch.turn_on
+      entity_id: switch.livingroom_fan
+
+- alias: Fan mode set sleep warm
+  trigger:
+    platform: state
+    entity_id: sensor.fan_mode
+    to: 'sleep warm'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bedroom_fan
+    - service: switch.turn_on
+      entity_id: switch.livingroom_fan
+
+- alias: Fan mode set off
+  trigger:
+    platform: state
+    entity_id: sensor.fan_mode
+    to: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bedroom_fan
+    - service: switch.turn_off
+      entity_id: switch.livingroom_fan
+    - service: climate.turn_off
+      entity_id: climate.bedroom
