@@ -470,9 +470,10 @@ template:
   - sensor:
       - name: "Humidity difference"
         unit_of_measurement: "%"
+        state_class: "total"
         state: >
-          {% set bedroom = states('sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity') | float %}
-          {% set outdoor = states('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity') | float %}
+          {% set bedroom = 0 if is_state('sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity', 'unknown') else states('sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity') | float %}
+          {% set outdoor = 0 if is_state('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity', 'unknown') else states('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity') | float %}
           {{ (bedroom - outdoor) | round(1, default=0) }}
 
 #python_script:
