@@ -143,5 +143,3 @@
       entity_id: switch.bedroom_fan
     - service: switch.turn_off
       entity_id: switch.livingroom_fan
-    - service: climate.turn_off
-      entity_id: climate.bedroom
