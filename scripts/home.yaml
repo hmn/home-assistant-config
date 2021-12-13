@@ -11,3 +11,7 @@ mode_home:
       entity_id:
         - timer.entrance_lights
         - timer.kitchen_lights
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'default'

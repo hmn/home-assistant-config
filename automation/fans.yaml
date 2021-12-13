@@ -219,3 +219,86 @@
 #       entity_id: timer.fan_power_timer
 #     - service: switch.turn_on
 #       entity_id: switch.livingroom_fan
+
+
+
+- alias: "Bedroom set default sleep mode"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: 18
+      below: 21
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
+      entity_id: timer.fan_direction_timer
+      state: idle
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: 18
+      below: 21
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'sleep'
+
+- alias: "Bedroom warm when sleeping"
+  trigger:
+    - platform: time_pattern
+      minutes: "/30"
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: 21
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
+      entity_id: timer.fan_direction_timer
+      state: idle
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: 21
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'sleep warm'
+
+- alias: "Bedroom cold when sleeping"
+  trigger:
+    - platform: time_pattern
+      minutes: "/30"
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      below: 18
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
+      entity_id: timer.fan_direction_timer
+      state: idle
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      below: 18
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'sleep cold'

@@ -18,3 +18,7 @@ mode_away:
     - service: light.turn_off
       data:
         entity_id: light.all_lights
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'eco'
