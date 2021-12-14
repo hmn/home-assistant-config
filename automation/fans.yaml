@@ -338,3 +338,73 @@
       data:
         entity_id: input_select.fan_mode
         option: 'default'
+
+
+- alias: "Change fan mode to eco when bedroom door is open"
+  trigger:
+    - platform: time_pattern
+      minutes: "/30"
+    - platform: state
+      entity_id: input_boolean.bedroom_door
+      to: 'on'
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.bedroom_door
+      state: 'on'
+      for:
+        minutes: 5
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
+      entity_id: timer.fan_direction_timer
+      state: idle
+    - condition: state
+      entity_id: input_select.fan_mode
+      state: 'default'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'eco'
+
+
+- alias: "Change fan mode to off if no fans needed"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
+      below: 50
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kokken_co2
+      below: 950
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
+      below: 950
+  condition:
+    - condition: state
+      entity_id: input_boolean.sleep
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.home
+      state: 'off'
+    - condition: state
+      entity_id: timer.fan_direction_timer
+      state: idle
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_select.fan_mode
+          state: 'off'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fan_mode
+        option: 'off'
