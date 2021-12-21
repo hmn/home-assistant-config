@@ -17,15 +17,22 @@
         sourceDevicePermanentID: 41DAEED2-152B-4753-B99E-4E527C4A159B
         #triggerSource: widget
   action:
-    service: light.turn_off
-    data:
-      entity_id:
-        - light.kitchen_lights
-        - light.bedroom_lights
-        - light.office_lights
-        - light.entrance_lights
-        - light.cinema_lights
-        - light.living_room_lights
+    - service: input_boolean.turn_off
+      data:
+        entity_id:
+          - input_boolean.entrance_motion
+          - input_boolean.kitchen_motion
+          - input_boolean.office_motion
+          - input_boolean.bedroom_motion
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.kitchen_lights
+          - light.bedroom_lights
+          - light.office_lights
+          - light.entrance_lights
+          - light.cinema_lights
+          - light.living_room_lights
 
 - alias: "app reset fans"
   trigger:
@@ -46,23 +53,7 @@
         sourceDevicePermanentID: 41DAEED2-152B-4753-B99E-4E527C4A159B
         #triggerSource: widget
   action:
-    - service: timer.start
-      entity_id: timer.fan_direction_timer
-    - service: timer.start
-      entity_id: timer.fan_speed_timer
     - service: input_select.select_option
       data:
-        entity_id: input_select.bedroom_fan_direction
-        option: 'in'
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.livingroom_fan_direction
-        option: 'out'
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.bedroom_fan_speed
-        option: '01'
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.livingroom_fan_speed
-        option: '01'
+        entity_id: input_select.fan_mode
+        option: 'default'
