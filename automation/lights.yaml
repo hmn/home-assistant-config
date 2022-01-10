@@ -73,16 +73,6 @@
     - service: timer.start
       entity_id: timer.office_lights
 
-- alias: "Kitchen enought light detected"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.kitchen_light_statistics
-      above: 90
-  action:
-    service: timer.cancel
-    entity_id:
-      - timer.kitchen_lights
-
 
 - alias: "Office lights timer started"
   trigger:
@@ -125,16 +115,6 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.office_lights
-    - platform: numeric_state
-      entity_id: sensor.office_light_statistics
-      above: 90
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'above_horizon'
-    - condition: numeric_state
-      entity_id: sensor.office_light_statistics
-      above: 90
   action:
     - service: timer.cancel
       entity_id:
@@ -165,9 +145,6 @@
     - platform: time_pattern
       minutes: "/1"
   condition:
-    - condition: state
-      entity_id: timer.office_lights
-      state: idle
     - condition: or
       conditions:
         - condition: state
@@ -249,15 +226,15 @@
     - service: timer.start
       entity_id: timer.bedroom_lights
 
-- alias: "Bedroom enought light detected"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.bedroom_light_statistics
-      above: 90
-  action:
-    service: timer.cancel
-    entity_id:
-      - timer.bedroom_lights
+# - alias: "Bedroom enought light detected"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.bedroom_light_statistics
+#       above: 90
+#   action:
+#     service: timer.cancel
+#     entity_id:
+#       - timer.bedroom_lights
 
 
 - alias: "Entrance lights timer started"
@@ -287,6 +264,10 @@
   trigger:
     - platform: event
       event_type: timer.finished
+      event_data:
+        entity_id: timer.entrance_lights
+    - platform: event
+      event_type: timer.canceled
       event_data:
         entity_id: timer.entrance_lights
   action:
