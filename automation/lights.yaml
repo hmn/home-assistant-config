@@ -115,6 +115,10 @@
       event_type: timer.finished
       event_data:
         entity_id: timer.office_lights
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.office_light_statistics
+      above: 100
   action:
     - service: timer.cancel
       entity_id:
