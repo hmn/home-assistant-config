@@ -398,16 +398,16 @@ timer:
     duration: '00:30:00'
     icon: mdi:sleep
   entrance_lights:
-    duration: '00:05:00'
+    duration: '00:10:00'
     icon: mdi:lightbulb-on
   kitchen_lights:
-    duration: '00:05:00'
+    duration: '00:10:00'
     icon: mdi:lightbulb-on
   bedroom_lights:
-    duration: '00:05:00'
+    duration: '00:10:00'
     icon: mdi:lightbulb-on
   office_lights:
-    duration: '00:05:00'
+    duration: '00:15:00'
     icon: mdi:lightbulb-on
   fan_direction_timer:
     duration: '01:00:00'
