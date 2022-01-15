@@ -100,10 +100,9 @@
         entity_id:
           - light.office_lights
           - light.living_room_lights
-    - service: hue.hue_activate_scene
-      data:
-        group_name: "Cinema"
-        scene_name: "Hass"
+    - service: scene.turn_on
+      target:
+        entity_id: scene.cinema_hass
 
 - alias: "Office lights timer done"
   trigger:
