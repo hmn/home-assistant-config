@@ -361,6 +361,16 @@ netatmo:
   client_id: !secret netatmo_client_id
   client_secret: !secret netatmo_client_secret
 
+utility_meter:
+  daily_energy:
+    source: sensor.smappee_usage_today
+    name: Daily energy
+    cycle: daily
+  monthly_energy:
+    source: sensor.smappee_usage_today
+    name: Monthly energy
+    cycle: monthly
+
 # rest_command:
 #   particle_relay1_on:
 #     url: !secret particle_relay_post_url
