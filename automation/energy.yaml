@@ -3,6 +3,9 @@
     - platform: numeric_state
       entity_id: sensor.smappee_usage_today
       below: 0
+    - platform: numeric_state
+      entity_id: sensor.smappee_usage_today_raw
+      above: 2000000000
     - platform: state
       entity_id: button.smappee_reboot
   action:
