@@ -38,15 +38,9 @@ http:
   # base_url: !secret base_url
   use_x_forwarded_for: true
   trusted_proxies:
-    - 192.168.8.1
-    - 192.168.8.2
-    - 192.168.8.10
-    - 192.168.8.12
-    - 192.168.8.51
+    - 192.168.8.0/24
     - 172.30.0.0/16
     - 10.0.0.0/8
-  #  - 172.16.2.1
-  #  - 127.0.0.1
   cors_allowed_origins:
     - https://google.com
     - https://home-assistant.io
@@ -314,12 +308,10 @@ roomba:
     blid: !secret roomba_username
     password: !secret roomba_password
 
-withings:
-  client_id: !secret withings_client_id
-  client_secret: !secret withings_client_secret
-  #use_webhook: true
-  #profiles:
-  #  - !secret withings_profile1
+# withings:
+#   client_id: !secret withings_client_id
+#   client_secret: !secret withings_client_secret
+#   use_webhook: true
 
 plex:
   host: !secret plex_host
@@ -368,16 +360,6 @@ stream:
 netatmo:
   client_id: !secret netatmo_client_id
   client_secret: !secret netatmo_client_secret
-
-utility_meter:
-  daily_energy:
-    source: sensor.smappee_usage_today
-    name: Daily energy
-    cycle: daily
-  monthly_energy:
-    source: sensor.smappee_usage_today
-    name: Monthly energy
-    cycle: monthly
 
 # rest_command:
 #   particle_relay1_on:
