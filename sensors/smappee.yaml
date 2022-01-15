@@ -13,7 +13,7 @@
   unit_of_measurement: "W"
   icon: "mdi:power-plug"
   value_template: "{{ value_json.totalImportEnergy }}"
-  device_class: energy
+  device_class: power
   state_class: measurement
 
 - platform: mqtt
