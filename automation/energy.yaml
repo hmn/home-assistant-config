@@ -1,0 +1,11 @@
+- alias: "Error in Smappee energy data"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.smappee_usage_today
+      below: 0
+  action:
+    - service: notify.ALL_DEVICES
+      data:
+        title: "Smappee energy data error"
+        message: "Error in data from Smappee, rebooting energy monitor."
+    - service: shell_command.smappee_reboot
