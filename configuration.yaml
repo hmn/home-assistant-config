@@ -411,11 +411,6 @@ timer:
     duration: '00:30:00'
     icon: mdi:fan
 
-button:
-  smappee_reboot:
-    name: Reboot Smappee
-    device_class: restart
-
 logger:
   #default: debug
   #default: info
