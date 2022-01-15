@@ -317,7 +317,7 @@ roomba:
 withings:
   client_id: !secret withings_client_id
   client_secret: !secret withings_client_secret
-  use_webhook: true
+  #use_webhook: true
   #profiles:
   #  - !secret withings_profile1
 
@@ -449,6 +449,11 @@ logger:
     #homeassistant.components.sensor.nissan_leaf: debug
     #homeassistant.components.switch.nissan_leaf: debug
     homeassistant.components.shell_command: debug
+    pyatv: debug
+    homeassistant.components.apple_tv: debug
+    homeassistant.components.nissan_leaf: debug
+    homeassistant.components.sensor.nissan_leaf: debug
+    homeassistant.components.switch.nissan_leaf: debug
 
 light: !include light.yaml
 #binary_sensor: !include binary_sensors.yaml
