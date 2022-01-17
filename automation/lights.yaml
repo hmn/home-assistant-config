@@ -218,12 +218,14 @@
     - platform: time_pattern
       minutes: "/1"
   condition:
-    - condition: state
-      entity_id: input_boolean.bedroom_motion
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.bedroom_motion_sensor_1_motion
-      state: 'on'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.bedroom_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.bedroom_motion_sensor_1_motion
+          state: 'on'
   action:
     - service: timer.start
       entity_id: timer.bedroom_lights
