@@ -17,7 +17,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.kitchen_light_statistics
-      below: 90
+      below: 50
   action:
     - service: light.turn_on
       data:
