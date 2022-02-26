@@ -443,12 +443,14 @@ logger:
     #homeassistant.components.sensor.nissan_leaf: debug
     #homeassistant.components.switch.nissan_leaf: debug
     homeassistant.components.shell_command: debug
-    pyatv: debug
-    homeassistant.components.apple_tv: debug
+    #pyatv: debug
+    #homeassistant.components.apple_tv: debug
     homeassistant.components.nissan_leaf: debug
     homeassistant.components.sensor.nissan_leaf: debug
     homeassistant.components.switch.nissan_leaf: debug
+    eloverblik: debug
     pyeloverblik.eloverblik: debug
+    custom_components.eloverblik: debug
     nordpool: debug
     custom_components.nordpool: debug
     custom_components.nordpool.sensor: debug
