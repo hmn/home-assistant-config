@@ -411,7 +411,6 @@ timer:
     duration: '00:30:00'
     icon: mdi:fan
 
-hacs:
 nordpool:
 #pfsense:
 #eloverblik:
