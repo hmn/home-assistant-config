@@ -412,6 +412,9 @@ timer:
     icon: mdi:fan
 
 nordpool:
+pfsense:
+eloverblik:
+wavinsentio:
 
 logger:
   #default: debug
