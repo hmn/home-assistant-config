@@ -411,12 +411,12 @@ timer:
     duration: '00:30:00'
     icon: mdi:fan
 
-nordpool:
-pfsense:
-eloverblik:
-wavinsentio:
-zaptec:
 hacs:
+nordpool:
+#pfsense:
+#eloverblik:
+#wavinsentio:
+#zaptec:
 
 logger:
   #default: debug
