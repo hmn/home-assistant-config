@@ -459,6 +459,7 @@ logger:
     custom_components.nordpool: debug
     custom_components.nordpool.sensor: debug
     custom_components.nordpool.aio_price: debug
+    custom_components: debug
 
 light: !include light.yaml
 #binary_sensor: !include binary_sensors.yaml
