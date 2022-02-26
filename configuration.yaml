@@ -415,6 +415,8 @@ nordpool:
 pfsense:
 eloverblik:
 wavinsentio:
+zaptec:
+hacs:
 
 logger:
   #default: debug
