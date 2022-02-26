@@ -411,6 +411,8 @@ timer:
     duration: '00:30:00'
     icon: mdi:fan
 
+nordpool:
+
 logger:
   #default: debug
   #default: info
@@ -446,6 +448,11 @@ logger:
     homeassistant.components.nissan_leaf: debug
     homeassistant.components.sensor.nissan_leaf: debug
     homeassistant.components.switch.nissan_leaf: debug
+    pyeloverblik.eloverblik: debug
+    nordpool: debug
+    custom_components.nordpool: debug
+    custom_components.nordpool.sensor: debug
+    custom_components.nordpool.aio_price: debug
 
 light: !include light.yaml
 #binary_sensor: !include binary_sensors.yaml
