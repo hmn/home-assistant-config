@@ -411,7 +411,7 @@ timer:
     duration: '00:30:00'
     icon: mdi:fan
 
-nordpool:
+#nordpool:
 #pfsense:
 #eloverblik:
 #wavinsentio:
