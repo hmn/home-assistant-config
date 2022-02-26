@@ -452,14 +452,14 @@ logger:
     homeassistant.components.nissan_leaf: debug
     homeassistant.components.sensor.nissan_leaf: debug
     homeassistant.components.switch.nissan_leaf: debug
-    eloverblik: debug
-    pyeloverblik.eloverblik: debug
-    custom_components.eloverblik: debug
-    nordpool: debug
-    custom_components.nordpool: debug
-    custom_components.nordpool.sensor: debug
-    custom_components.nordpool.aio_price: debug
-    custom_components: debug
+    # eloverblik: debug
+    # pyeloverblik.eloverblik: debug
+    # custom_components.eloverblik: debug
+    # nordpool: debug
+    # custom_components.nordpool: debug
+    # custom_components.nordpool.sensor: debug
+    # custom_components.nordpool.aio_price: debug
+    # custom_components: debug
 
 light: !include light.yaml
 #binary_sensor: !include binary_sensors.yaml
