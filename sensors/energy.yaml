@@ -7,7 +7,13 @@
   round: 2
 
 - platform: integration
-  source: sensor.smappee_cinema_power_aggregated
+  source: sensor.smappee_server_power
+  name: Server spent
+  unit_prefix: k
+  round: 2
+
+- platform: integration
+  source: sensor.smappee_cinema_power
   name: Cinema spent
   unit_prefix: k
   round: 2

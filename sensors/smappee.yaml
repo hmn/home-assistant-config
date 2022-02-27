@@ -173,18 +173,6 @@
   device_class: power
   state_class: measurement
 
-- platform: mqtt
-  name: Smappee cinema power aggregated
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ value_json.switchIntervalDatas[1].activePower }}"
-  device_class: power
-  state_class: measurement
-
-
-
-
 
 #
 #
