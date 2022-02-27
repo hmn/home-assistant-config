@@ -10,47 +10,47 @@
 - platform: template
   sensors:
     nordpool_today_hr_00_01:
-      friendly_name: NordPool today h 1
+      friendly_name: NordPool today h 01
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[0] }}'
     nordpool_today_hr_01_02:
-      friendly_name: NordPool today h 2
+      friendly_name: NordPool today h 02
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[1] }}'
     nordpool_today_hr_02_03:
-      friendly_name: NordPool today h 3
+      friendly_name: NordPool today h 03
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[2] }}'
     nordpool_today_hr_03_04:
-      friendly_name: NordPool today h 4
+      friendly_name: NordPool today h 04
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[3] }}'
     nordpool_today_hr_04_05:
-      friendly_name: NordPool today h 5
+      friendly_name: NordPool today h 05
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[4] }}'
     nordpool_today_hr_05_06:
-      friendly_name: NordPool today h 6
+      friendly_name: NordPool today h 06
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[5] }}'
     nordpool_today_hr_06_07:
-      friendly_name: NordPool today h 7
+      friendly_name: NordPool today h 07
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[6] }}'
     nordpool_today_hr_07_08:
-      friendly_name: NordPool today h 8
+      friendly_name: NordPool today h 08
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[7] }}'
     nordpool_today_hr_08_09:
-      friendly_name: NordPool today h 9
+      friendly_name: NordPool today h 09
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[8] }}'
@@ -130,47 +130,47 @@
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[23] }}'
     nordpool_tomorrow_hr_00_01:
-      friendly_name: NordPool tomorrow h 1
+      friendly_name: NordPool tomorrow h 01
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[0] }}'
     nordpool_tomorrow_hr_01_02:
-      friendly_name: NordPool tomorrow h 2
+      friendly_name: NordPool tomorrow h 02
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[1] }}'
     nordpool_tomorrow_hr_02_03:
-      friendly_name: NordPool tomorrow h 3
+      friendly_name: NordPool tomorrow h 03
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[2] }}'
     nordpool_tomorrow_hr_03_04:
-      friendly_name: NordPool tomorrow h 4
+      friendly_name: NordPool tomorrow h 04
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[3] }}'
     nordpool_tomorrow_hr_04_05:
-      friendly_name: NordPool tomorrow h 5
+      friendly_name: NordPool tomorrow h 05
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[4] }}'
     nordpool_tomorrow_hr_05_06:
-      friendly_name: NordPool tomorrow h 6
+      friendly_name: NordPool tomorrow h 06
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[5] }}'
     nordpool_tomorrow_hr_06_07:
-      friendly_name: NordPool tomorrow h 7
+      friendly_name: NordPool tomorrow h 07
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[6] }}'
     nordpool_tomorrow_hr_07_08:
-      friendly_name: NordPool tomorrow h 8
+      friendly_name: NordPool tomorrow h 08
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[7] }}'
     nordpool_tomorrow_hr_08_09:
-      friendly_name: NordPool tomorrow h 9
+      friendly_name: NordPool tomorrow h 09
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[8] }}'
