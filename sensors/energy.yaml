@@ -6,6 +6,12 @@
   unit_prefix: k
   round: 2
 
+- platform: integration
+  source: sensor.smappee_cinema_power_aggregated
+  name: Cinema spent
+  unit_prefix: k
+  round: 2
+
 # eloverblik
 - platform: statistics
   entity_id: sensor.eloverblik_energy_total
