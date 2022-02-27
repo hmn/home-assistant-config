@@ -228,6 +228,7 @@ ios:
 alexa:
 mobile_app:
 prometheus:
+energy:
 
 # Track the sun
 sun:
