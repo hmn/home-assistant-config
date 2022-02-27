@@ -5,3 +5,247 @@
   sampling_size: 50
   max_age:
       days: 30
+
+# nordpool
+- platform: template
+  sensors:
+    nordpool_today_hr_00_01:
+      friendly_name: NordPool today h 1
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[0] }}'
+    nordpool_today_hr_01_02:
+      friendly_name: NordPool today h 2
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[1] }}'
+    nordpool_today_hr_02_03:
+      friendly_name: NordPool today h 3
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[2] }}'
+    nordpool_today_hr_03_04:
+      friendly_name: NordPool today h 4
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[3] }}'
+    nordpool_today_hr_04_05:
+      friendly_name: NordPool today h 5
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[4] }}'
+    nordpool_today_hr_05_06:
+      friendly_name: NordPool today h 6
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[5] }}'
+    nordpool_today_hr_06_07:
+      friendly_name: NordPool today h 7
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[6] }}'
+    nordpool_today_hr_07_08:
+      friendly_name: NordPool today h 8
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[7] }}'
+    nordpool_today_hr_08_09:
+      friendly_name: NordPool today h 9
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[8] }}'
+    nordpool_today_hr_09_10:
+      friendly_name: NordPool today h 10
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[9] }}'
+    nordpool_today_hr_10_11:
+      friendly_name: NordPool today h 11
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[10] }}'
+    nordpool_today_hr_11_12:
+      friendly_name: NordPool today h 12
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[11] }}'
+    nordpool_today_hr_12_13:
+      friendly_name: NordPool today h 13
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[12] }}'
+    nordpool_today_hr_13_14:
+      friendly_name: NordPool today h 14
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[13] }}'
+    nordpool_today_hr_14_15:
+      friendly_name: NordPool today h 15
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[14] }}'
+    nordpool_today_hr_15_16:
+      friendly_name: NordPool today h 16
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[15] }}'
+    nordpool_today_hr_16_17:
+      friendly_name: NordPool today h 17
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[16] }}'
+    nordpool_today_hr_17_18:
+      friendly_name: NordPool today h 18
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[17] }}'
+    nordpool_today_hr_18_19:
+      friendly_name: NordPool today h 19
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[18] }}'
+    nordpool_today_hr_19_20:
+      friendly_name: NordPool today h 20
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[19] }}'
+    nordpool_today_hr_20_21:
+      friendly_name: NordPool today h 21
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[20] }}'
+    nordpool_today_hr_21_22:
+      friendly_name: NordPool today h 22
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[21] }}'
+    nordpool_today_hr_22_23:
+      friendly_name: NordPool today h 23
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[22] }}'
+    nordpool_today_hr_23_24:
+      friendly_name: NordPool today h 24
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "today")[23] }}'
+    nordpool_tomorrow_hr_00_01:
+      friendly_name: NordPool tomorrow h 1
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[0] }}'
+    nordpool_tomorrow_hr_01_02:
+      friendly_name: NordPool tomorrow h 2
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[1] }}'
+    nordpool_tomorrow_hr_02_03:
+      friendly_name: NordPool tomorrow h 3
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[2] }}'
+    nordpool_tomorrow_hr_03_04:
+      friendly_name: NordPool tomorrow h 4
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[3] }}'
+    nordpool_tomorrow_hr_04_05:
+      friendly_name: NordPool tomorrow h 5
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[4] }}'
+    nordpool_tomorrow_hr_05_06:
+      friendly_name: NordPool tomorrow h 6
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[5] }}'
+    nordpool_tomorrow_hr_06_07:
+      friendly_name: NordPool tomorrow h 7
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[6] }}'
+    nordpool_tomorrow_hr_07_08:
+      friendly_name: NordPool tomorrow h 8
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[7] }}'
+    nordpool_tomorrow_hr_08_09:
+      friendly_name: NordPool tomorrow h 9
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[8] }}'
+    nordpool_tomorrow_hr_09_10:
+      friendly_name: NordPool tomorrow h 10
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[9] }}'
+    nordpool_tomorrow_hr_10_11:
+      friendly_name: NordPool tomorrow h 11
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[10] }}'
+    nordpool_tomorrow_hr_11_12:
+      friendly_name: NordPool tomorrow h 12
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[11] }}'
+    nordpool_tomorrow_hr_12_13:
+      friendly_name: NordPool tomorrow h 13
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[12] }}'
+    nordpool_tomorrow_hr_13_14:
+      friendly_name: NordPool tomorrow h 14
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[13] }}'
+    nordpool_tomorrow_hr_14_15:
+      friendly_name: NordPool tomorrow h 15
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[14] }}'
+    nordpool_tomorrow_hr_15_16:
+      friendly_name: NordPool tomorrow h 16
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[15] }}'
+    nordpool_tomorrow_hr_16_17:
+      friendly_name: NordPool tomorrow h 17
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[16] }}'
+    nordpool_tomorrow_hr_17_18:
+      friendly_name: NordPool tomorrow h 18
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[17] }}'
+    nordpool_tomorrow_hr_18_19:
+      friendly_name: NordPool tomorrow h 19
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[18] }}'
+    nordpool_tomorrow_hr_19_20:
+      friendly_name: NordPool tomorrow h 20
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[19] }}'
+    nordpool_tomorrow_hr_20_21:
+      friendly_name: NordPool tomorrow h 21
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[20] }}'
+    nordpool_tomorrow_hr_21_22:
+      friendly_name: NordPool tomorrow h 22
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[21] }}'
+    nordpool_tomorrow_hr_22_23:
+      friendly_name: NordPool tomorrow h 23
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[22] }}'
+    nordpool_tomorrow_hr_23_24:
+      friendly_name: NordPool tomorrow h 24
+      icon_template: mdi:cash
+      unit_of_measurement: DKK
+      value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_10_025", "tomorrow")[23] }}'
