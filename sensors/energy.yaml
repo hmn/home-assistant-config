@@ -1,7 +1,6 @@
 # power conversion
 # https://www.home-assistant.io/integrations/integration/#energy
 - platform: integration
-  entity_id: sensor.energy_spent
   source: sensor.smappee_power
   name: Energy spent
   unit_prefix: k
