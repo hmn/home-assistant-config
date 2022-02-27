@@ -1,3 +1,11 @@
+# power conversion
+# https://www.home-assistant.io/integrations/integration/#energy
+- platform: integration
+  source: sensor.smappee_power
+  name: energy_spent
+  unit_prefix: k
+  round: 2
+
 # eloverblik
 - platform: statistics
   entity_id: sensor.eloverblik_energy_total
