@@ -250,18 +250,18 @@ ifttt:
   key: !secret ifttt_key
 
 mqtt:
-  broker: core-mosquitto
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-  client_id: homeassistant
-  discovery: true
-  discovery_prefix: homeassistant
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
+  #broker: core-mosquitto
+  #username: !secret mqtt_username
+  #password: !secret mqtt_password
+  #client_id: homeassistant
+  #discovery: true
+  #discovery_prefix: homeassistant
+  #birth_message:
+  #  topic: 'hass/status'
+  #  payload: 'online'
+  #will_message:
+  #  topic: 'hass/status'
+  #  payload: 'offline'
 
 homekit:
   #auto_start: True
