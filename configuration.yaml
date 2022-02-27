@@ -331,21 +331,21 @@ plex:
 #    - host: 192.168.7.105
 #      allow_hue_groups: true
 
-webostv:
-  host: 192.168.8.197
-  name: LG OLED
-  turn_on_action:
-    service: wake_on_lan.send_magic_packet
-    data:
-      mac: !secret lg_oled_wifi_mac
-  customize:
-    sources:
-    - Apple TV
-    - PS5
-    - HDMI4
-    - Netflix
-    - YouTube
-    - Plex
+# webostv:
+#   host: 192.168.8.197
+#   name: LG OLED
+#   turn_on_action:
+#     service: wake_on_lan.send_magic_packet
+#     data:
+#       mac: !secret lg_oled_wifi_mac
+#   customize:
+#     sources:
+#     - Apple TV
+#     - PS5
+#     - HDMI4
+#     - Netflix
+#     - YouTube
+#     - Plex
 
 spotify:
   client_id: !secret spotify_client_id
