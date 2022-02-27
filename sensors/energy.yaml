@@ -7,6 +7,38 @@
       days: 30
 
 # nordpool
+- platform: nordpool
+
+  # Should the prices include vat? Default True
+  VAT: True
+
+  # What currency the api fetches the prices in
+  # this is only need if you want a sensor in a non local currecy
+  currency: "DKK"
+
+  # Helper so you can set your "low" price
+  # low_price = hour_price < average * low_price_cutoff
+  low_price_cutoff: 0.95
+
+  # What power regions your are interested in.
+  # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
+  region: "DK1"
+
+  # How many decimals to use in the display of the price
+  precision: 3
+
+  # What the price should be displayed in default
+  # Possible values: MWh, kWh and Wh
+  # default: kWh
+  price_type: kWh
+
+  # This option allows the usage of a template to add a tariff.
+  # now() always refers start of the hour of that price.
+  # this way we can calculate the correct costs add that to graphs etc.
+  # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
+  # default {{0.0|float}}
+  #additional_costs: "{{0.0|float}}"
+
 - platform: template
   sensors:
     nordpool_today_hr_00_01:
