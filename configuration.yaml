@@ -24,7 +24,8 @@ system_health:
 # Enables the frontend
 frontend:
   themes: !include themes.yaml
-  
+
+default_config:
 config:
 
 http:
