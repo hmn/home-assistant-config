@@ -13,6 +13,7 @@
   sampling_size: 50
   max_age:
       days: 30
+  state_characteristic: mean
 
 # nordpool
 - platform: nordpool

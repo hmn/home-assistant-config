@@ -4,18 +4,21 @@
   sampling_size: 10
   #device_class: illuminance
   #state_class: measurement
+  state_characteristic: mean
 - platform: statistics
   name: Kitchen light statistics
   entity_id: sensor.kitchen_motion_sensor_1_light_level
   sampling_size: 10
   #device_class: illuminance
   #state_class: measurement
+  state_characteristic: mean
 - platform: statistics
   name: Bedroom light statistics
   entity_id: sensor.bedroom_motion_sensor_1_light_level
   sampling_size: 10
   #device_class: illuminance
   #state_class: measurement
+  state_characteristic: mean
 
 - platform: min_max
   name: Combined light levels
