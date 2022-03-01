@@ -365,17 +365,29 @@ netatmo:
   client_secret: !secret netatmo_client_secret
 
 utility_meter:
-  hourly_energy:
+  smappee_usage_hourly:
     source: sensor.smappee_usage_today
-    name: Hourly energy
+    name: Smappee hourly energy
     cycle: hourly
-  daily_energy:
+  smappee_usage_daily:
     source: sensor.smappee_usage_today
-    name: Daily energy
+    name: Smappee daily energy
     cycle: daily
-  monthly_energy:
+  smappee_usage_monthly:
     source: sensor.smappee_usage_today
-    name: Monthly energy
+    name: Smappee monthly energy
+    cycle: monthly
+  energy_spent_hourly:
+    source: sensor.energy_spent
+    name: Hourly energy spent
+    cycle: hourly
+  energy_spent_daily:
+    source: sensor.energy_spent
+    name: Daily energy spent
+    cycle: daily
+  energy_spent_monthly:
+    source: sensor.energy_spent
+    name: Monthly energy spent
     cycle: monthly
 
 # rest_command:
