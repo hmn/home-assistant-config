@@ -365,6 +365,11 @@ netatmo:
   client_secret: !secret netatmo_client_secret
 
 utility_meter:
+  smappee_power_hourly:
+    source: sensor.smappee_power
+    name: Smappee power hourly
+    cycle: hourly
+    delta_values: true
   daily_energy:
     source: sensor.smappee_usage_today
     name: Daily energy
