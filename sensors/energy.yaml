@@ -18,11 +18,11 @@
   unit_prefix: k
   round: 2
 
-- platform: min_max
-  round_digits: 0
-  name: Smappee power (min/max)
-  entity_ids:
-    - sensor.smappee_power
+# - platform: min_max
+#   round_digits: 0
+#   name: Smappee power (min/max)
+#   entity_ids:
+#     - sensor.smappee_power
 
 # usage
 # - platform: statistics
