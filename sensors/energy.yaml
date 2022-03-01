@@ -18,11 +18,18 @@
   unit_prefix: k
   round: 2
 
+# usage
+- platform: statistics
+  entity_id: sensor.smappee_power
+  name: Smappee power statistics
+  max_age:
+    days: 7
+  state_characteristic: mean
+
 # eloverblik
 - platform: statistics
   entity_id: sensor.eloverblik_energy_total
   name: Eloverblik Monthly Statistics
-  sampling_size: 50
   max_age:
       days: 30
   state_characteristic: mean
