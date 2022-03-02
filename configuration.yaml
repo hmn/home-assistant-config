@@ -509,11 +509,13 @@ template:
   - binary_sensor:
       - name: "Car charger firmware up2date"
         icon: mdi:update
-        state: '{{ is_state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date", "true") }}'
+        device_class: update
+        state: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") != true }}'
 
       - name: "Car charger warnings"
         icon: mdi:alert-circle-outline
-        state: '{{ is_state_attr("sensor.zaptec_charger_zap016548", "warnings", "0") }}'
+        device_class: problem
+        state: '{{ state_attr("sensor.zaptec_charger_zap016548", "warnings") }}'
 
 #python_script:
 
