@@ -14,3 +14,35 @@
         title: "Smappee energy data error"
         message: "Error in data from Smappee, rebooting energy monitor."
     - service: shell_command.smappee_reboot
+
+- alias: "Zaptec home charger firmware update available"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.zaptec_home_firmware_up2date
+      to: "off"
+  action:
+    - service: notify.ALL_DEVICES
+      data:
+        title: "Zaptec home charger firmware update available"
+        message: "Zaptec home charger firmware update available."
+        data:
+          importance: high
+    - service: notify.all
+      data:
+        message: "Zaptec home charger firmware update available."
+
+- alias: "Zaptec home charger warning"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.zaptec_home_warnings
+      to: "on"
+  action:
+    - service: notify.ALL_DEVICES
+      data:
+        title: "Zaptec home charger warning"
+        message: "Zaptec home charger warning"
+        data:
+          importance: high
+    - service: notify.all
+      data:
+        message: "Zaptec home charger warning"
