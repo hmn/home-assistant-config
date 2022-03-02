@@ -509,16 +509,11 @@ template:
   - binary_sensor:
       - name: "Zaptec home charger firmware up2date"
         icon: mdi:update
-        state: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") }}'
+        state: '{{ is_state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date", "true") }}'
 
       - name: "Zaptec home charger warnings"
         icon_template: mdi:alert-circle-outline
-        state: >-
-          {% if is_state_attr('sensor.zaptec_charger_zap016548', 'warnings', '0') %}
-            False
-          {% else %}
-            True
-          {% endif %}
+        state: '{{ is_state_attr("sensor.zaptec_charger_zap016548", "warnings", "0") }}'
 
 #python_script:
 
