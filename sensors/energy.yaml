@@ -315,3 +315,124 @@
       icon_template: mdi:cash
       unit_of_measurement: DKK
       value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] }}'
+
+# zaptec
+
+- platform: template
+  sensors:
+    zaptec_home_allocated:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger allocated current"
+      icon_template: mdi:waves
+      unit_of_measurement: "A"
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0) }}"
+
+    zaptec_home_current:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger current"
+      icon_template: mdi:current-ac
+      unit_of_measurement: "A"
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_phase1') | round(0) }}"
+
+    zaptec_home_energy:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger energy"
+      icon_template: mdi:counter
+      unit_of_measurement: "kWh"
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power_session') | round(0) }}"
+
+    zaptec_home_firmware:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger firmware version"
+      icon_template: mdi:label
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'smart_computer_software_application_version') }}"
+
+    zaptec_home_humidity:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger humidity"
+      icon_template: mdi:water-percent
+      unit_of_measurement: "%"
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'humidity') | round(0) }}"
+
+    zaptec_home_mode:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger mode"
+      icon_template: mdi:alpha-z-circle-outline
+      value_template: >-
+        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '1') %}
+          Disconnected
+        {% elif is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '2') %}
+          Waiting
+        {% elif is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '3') %}
+          Charging
+        {% elif is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '5') %}
+          Finished
+        {% else %}
+          Unknown
+        {% endif %}
+
+    zaptec_home_power:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger power"
+      icon_template: mdi:power-plug
+      unit_of_measurement: "W"
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power') | round(0) }}"
+
+    zaptec_home_signal:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger signal strength"
+      icon_template: >-
+        {% if state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -67 %}
+          mdi:wifi-strength-4
+        {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -72 %}
+          mdi:wifi-strength-3
+        {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -80 %}
+          mdi:wifi-strength-2
+        {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -90 %}
+          mdi:wifi-strength-1
+        {% else %}
+          mdi:wifi-strength-outline
+        {% endif %}
+      unit_of_measurement: "dBm"
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') }}"
+
+    zaptec_home_state:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger state"
+      icon_template: >-
+        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') %}
+          mdi:access-point-network
+        {% else %}
+          mdi:access-point-network-off
+        {% endif %}
+      value_template: >-
+        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') %}
+          Online
+        {% else %}
+          Offline
+        {% endif %}
+
+    zaptec_home_temperature:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger temperature"
+      icon_template: mdi:thermometer
+      unit_of_measurement: '°C'
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'temperature_internal5') | round(0) }}"
+
+    zaptec_home_voltage:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger voltage"
+      icon_template: mdi:flash
+      unit_of_measurement: "V"
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'voltage_phase1') | round(0) }}"
+
+    zaptec_home_warnings:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger warnings"
+      icon_template: mdi:alert-circle-outline
+      value_template: >-
+        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'warnings', '0') %}
+          No warnings
+        {% else %}
+          Failure
+        {% endif %}
