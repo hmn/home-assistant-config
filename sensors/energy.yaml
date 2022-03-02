@@ -326,27 +326,6 @@
 
 - platform: template
   sensors:
-    zaptec_home_allocated:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger allocated current"
-      icon_template: mdi:waves
-      unit_of_measurement: "A"
-      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0) }}"
-
-    zaptec_home_current:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger current"
-      icon_template: mdi:current-ac
-      unit_of_measurement: "A"
-      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_phase1') | round(0) }}"
-
-    zaptec_home_energy:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger energy"
-      icon_template: mdi:counter
-      unit_of_measurement: "kWh"
-      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power_session') | round(0) }}"
-
     zaptec_home_firmware:
       entity_id: sensor.zaptec_charger_zap016548
       friendly_name: "Car charger software app firmware"
@@ -364,13 +343,6 @@
       friendly_name: "Car charger available firmware"
       icon_template: mdi:label
       value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'available_firmware_version') }}"
-
-    zaptec_home_humidity:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger humidity"
-      icon_template: mdi:water-percent
-      unit_of_measurement: "%"
-      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'humidity') | round(0) }}"
 
     zaptec_home_mode:
       entity_id: sensor.zaptec_charger_zap016548

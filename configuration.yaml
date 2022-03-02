@@ -527,6 +527,41 @@ template:
         state_class: "measurement"
         state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'temperature_internal5') | round(0) }}"
 
+      - name: "Car charger humidity"
+        #icon: mdi:water-percent
+        device_class: "humidity"
+        unit_of_measurement: "%"
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'humidity') | round(0) }}"
+
+      - name: "Car charger energy session"
+        #icon: mdi:counter
+        device_class: "energy"
+        unit_of_measurement: "kWh"
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power_session') | round(0) }}"
+
+      - name: "Car charger energy total"
+        #icon: mdi:counter
+        device_class: "energy"
+        unit_of_measurement: "kWh"
+        state_class: "total"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'signed_meter_value_kwh') }}"
+
+      - name: "Car charger current"
+        #icon: mdi:current-ac
+        device_class: "current"
+        unit_of_measurement: "A"
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_phase1') | round(0) }}"
+
+      - name: "Car charger allocated current"
+        #icon: mdi:waves
+        device_class: "current"
+        unit_of_measurement: "A"
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0) }}"
+
   - binary_sensor:
       - name: "Car charger firmware"
         icon: mdi:update
