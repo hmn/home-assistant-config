@@ -612,291 +612,289 @@ template:
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[0] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[0] }}'
 
       - name: NordPool today hr 01:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[1] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[1] }}'
 
       - name: NordPool today hr 02:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[2] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[2] }}'
 
       - name: NordPool today hr 03:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[3] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[3] }}'
 
       - name: NordPool today hr 04:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[4] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[4] }}'
 
       - name: NordPool today hr 05:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[5] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[5] }}'
 
       - name: NordPool today hr 06:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[6] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[6] }}'
 
       - name: NordPool today hr 07:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[7] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[7] }}'
 
       - name: NordPool today hr 08:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[8] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[8] }}'
 
       - name: NordPool today hr 09:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[9] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[9] }}'
 
       - name: NordPool today hr 10:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[10] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[10] }}'
       
       - name: NordPool today hr 11:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[11] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[11] }}'
 
       - name: NordPool today hr 12:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[12] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[12] }}'
 
       - name: NordPool today hr 13:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[13] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[13] }}'
 
       - name: NordPool today hr 14:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[14] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[14] }}'
 
       - name: NordPool today hr 15:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[15] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[15] }}'
 
       - name: NordPool today hr 16:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[16] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[16] }}'
 
       - name: NordPool today hr 17:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[17] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[17] }}'
 
       - name: NordPool today hr 18:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[18] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[18] }}'
 
       - name: NordPool today hr 19:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[19] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[19] }}'
 
       - name: NordPool today hr 20:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[20] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[20] }}'
 
       - name: NordPool today hr 21:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[21] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[21] }}'
 
       - name: NordPool today hr 22:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[22] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[22] }}'
 
       - name: NordPool today hr 23:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[23] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[23] }}'
 
       - name: NordPool tomorrow hr 00:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[0] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[0] }}'
 
       - name: NordPool tomorrow hr 01:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[1] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[1] }}'
 
       - name: NordPool tomorrow hr 02:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[2] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[2] }}'
 
       - name: NordPool tomorrow hr 03:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[3] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[3] }}'
 
       - name: NordPool tomorrow hr 04:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[4] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[4] }}'
 
       - name: NordPool tomorrow hr 05:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[5] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[5] }}'
 
       - name: NordPool tomorrow hr 06:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[6] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[6] }}'
 
       - name: NordPool tomorrow hr 07:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[7] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[7] }}'
 
       - name: NordPool tomorrow hr 08:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[8] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[8] }}'
 
       - name: NordPool tomorrow hr 09:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[9] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[9] }}'
 
       - name: NordPool tomorrow hr 10:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[10] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[10] }}'
       
       - name: NordPool tomorrow hr 11:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[11] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[11] }}'
 
       - name: NordPool tomorrow hr 12:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[12] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[12] }}'
 
       - name: NordPool tomorrow hr 13:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[13] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[13] }}'
 
       - name: NordPool tomorrow hr 14:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[14] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[14] }}'
 
       - name: NordPool tomorrow hr 15:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[15] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[15] }}'
 
       - name: NordPool tomorrow hr 16:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[16] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[16] }}'
 
       - name: NordPool tomorrow hr 17:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[17] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[17] }}'
 
       - name: NordPool tomorrow hr 18:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[18] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[18] }}'
 
       - name: NordPool tomorrow hr 19:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[19] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[19] }}'
 
       - name: NordPool tomorrow hr 20:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[20] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[20] }}'
 
       - name: NordPool tomorrow hr 21:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[21] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[21] }}'
 
       - name: NordPool tomorrow hr 22:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[22] }}'
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[22] }}'
 
       - name: NordPool tomorrow hr 23:00
         device_class: "monetary"
         unit_of_measurement: DKK
         state_class: "measurement"
-        value_template: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] }}'
-
-
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] }}'
 
   - binary_sensor:
       - name: "Car charger firmware"
@@ -909,7 +907,7 @@ template:
         device_class: problem
         state: '{{ state_attr("sensor.zaptec_charger_zap016548", "warnings") }}'
 
-      - home: "Car charger state"
+      - name: "Car charger state"
         device_class: connectivity
         icon: >-
           {% if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') %}
