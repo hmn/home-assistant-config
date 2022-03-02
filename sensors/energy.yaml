@@ -319,23 +319,6 @@
 # zaptec
 
 - platform: template
-  binary_sensor:
-    zaptec_home_firmware_up2date:
-      friendly_name: Zaptec home firmware up2date
-      icon: mdi:update
-      value_template: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") }}'
-
-    zaptec_home_warnings:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger warnings"
-      icon_template: mdi:alert-circle-outline
-      value_template: >-
-        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'warnings', '0') %}
-          False
-        {% else %}
-          True
-        {% endif %}
-
   sensors:
     zaptec_home_allocated:
       entity_id: sensor.zaptec_charger_zap016548
