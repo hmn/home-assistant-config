@@ -319,6 +319,23 @@
 # zaptec
 
 - platform: template
+  binary_sensor:
+    zaptec_home_firmware_up2date:
+      friendly_name: Zaptec home firmware up2date
+      icon: mdi:update
+      value_template: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") }}'
+
+    zaptec_home_warnings:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger warnings"
+      icon_template: mdi:alert-circle-outline
+      value_template: >-
+        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'warnings', '0') %}
+          False
+        {% else %}
+          True
+        {% endif %}
+
   sensors:
     zaptec_home_allocated:
       entity_id: sensor.zaptec_charger_zap016548
@@ -346,6 +363,18 @@
       friendly_name: "Car charger firmware version"
       icon_template: mdi:label
       value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'smart_computer_software_application_version') }}"
+
+    zaptec_home_firmware_current:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger Current firmware version"
+      icon_template: mdi:label
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_firmware_version') }}"
+
+    zaptec_home_firmware_available:
+      entity_id: sensor.zaptec_charger_zap016548
+      friendly_name: "Car charger available firmware version"
+      icon_template: mdi:label
+      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'available_firmware_version') }}"
 
     zaptec_home_humidity:
       entity_id: sensor.zaptec_charger_zap016548
@@ -425,14 +454,3 @@
       icon_template: mdi:flash
       unit_of_measurement: "V"
       value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'voltage_phase1') | round(0) }}"
-
-    zaptec_home_warnings:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger warnings"
-      icon_template: mdi:alert-circle-outline
-      value_template: >-
-        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'warnings', '0') %}
-          No warnings
-        {% else %}
-          Failure
-        {% endif %}
