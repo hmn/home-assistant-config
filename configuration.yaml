@@ -507,11 +507,11 @@ template:
           {{ (bedroom - outdoor) | round(1, default=0) }}
 
   - binary_sensor:
-      - name: "Zaptec home firmware up2date"
+      - name: "Zaptec home charger firmware up2date"
         icon: mdi:update
         state: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") }}'
 
-      - name: "Car charger warnings"
+      - name: "Zaptec home charger warnings"
         icon_template: mdi:alert-circle-outline
         state: >-
           {% if is_state_attr('sensor.zaptec_charger_zap016548', 'warnings', '0') %}
