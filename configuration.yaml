@@ -499,6 +499,7 @@ zone: !include zones.yaml
 template:
   - sensor:
       - name: "Humidity difference"
+        device_class: "humidity"
         unit_of_measurement: "%"
         state_class: "total"
         state: >
@@ -545,7 +546,7 @@ template:
         #icon: mdi:counter
         device_class: "energy"
         unit_of_measurement: "kWh"
-        state_class: "total"
+        state_class: "total_increasing"
         state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'signed_meter_value_kwh') }}"
 
       - name: "Car charger current"
@@ -562,16 +563,45 @@ template:
         state_class: "measurement"
         state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0) }}"
 
+      - name: "Car charger signal strength"
+        icon: >-
+          {% if state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -67 %}
+            mdi:wifi-strength-4
+          {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -72 %}
+            mdi:wifi-strength-3
+          {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -80 %}
+            mdi:wifi-strength-2
+          {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -90 %}
+            mdi:wifi-strength-1
+          {% else %}
+            mdi:wifi-strength-outline
+          {% endif %}
+        device_class: "signal_strength"
+        unit_of_measurement: "dBm"
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') }}"
+
   - binary_sensor:
       - name: "Car charger firmware"
-        icon: mdi:update
+        #icon: mdi:update
         device_class: update
         state: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") != true }}'
 
       - name: "Car charger warnings"
-        icon: mdi:alert-circle-outline
+        #icon: mdi:alert-circle-outline
         device_class: problem
         state: '{{ state_attr("sensor.zaptec_charger_zap016548", "warnings") }}'
+
+      - home: "Car charger state"
+        device_class: connectivity
+        icon: >-
+          {% if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') %}
+            mdi:access-point-network
+          {% else %}
+            mdi:access-point-network-off
+          {% endif %}
+        state: "{{ if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') }}"
+
 
 #python_script:
 

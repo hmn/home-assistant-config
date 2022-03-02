@@ -360,38 +360,3 @@
         {% else %}
           Unknown
         {% endif %}
-
-    zaptec_home_signal:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger signal strength"
-      icon_template: >-
-        {% if state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -67 %}
-          mdi:wifi-strength-4
-        {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -72 %}
-          mdi:wifi-strength-3
-        {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -80 %}
-          mdi:wifi-strength-2
-        {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -90 %}
-          mdi:wifi-strength-1
-        {% else %}
-          mdi:wifi-strength-outline
-        {% endif %}
-      unit_of_measurement: "dBm"
-      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') }}"
-
-    zaptec_home_state:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger state"
-      icon_template: >-
-        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') %}
-          mdi:access-point-network
-        {% else %}
-          mdi:access-point-network-off
-        {% endif %}
-      value_template: >-
-        {% if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') %}
-          Online
-        {% else %}
-          Offline
-        {% endif %}
-
