@@ -343,19 +343,19 @@
 
     zaptec_home_firmware:
       entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger software app firmware version"
+      friendly_name: "Car charger software app firmware"
       icon_template: mdi:label
       value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'smart_computer_software_application_version') }}"
 
     zaptec_home_firmware_current:
       entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger current firmware version"
+      friendly_name: "Car charger current firmware"
       icon_template: mdi:label
       value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_firmware_version') }}"
 
     zaptec_home_firmware_available:
       entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger available firmware version"
+      friendly_name: "Car charger available firmware"
       icon_template: mdi:label
       value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'available_firmware_version') }}"
 
