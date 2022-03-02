@@ -18,8 +18,8 @@
 - alias: "Zaptec home charger firmware update available"
   trigger:
     - platform: state
-      entity_id: binary_sensor.zaptec_home_firmware_up2date
-      to: "off"
+      entity_id: binary_sensor.car_charger_firmware
+      from: "Up-to-date"
   action:
     - service: notify.ALL_DEVICES
       data:
@@ -34,8 +34,8 @@
 - alias: "Zaptec home charger warning"
   trigger:
     - platform: state
-      entity_id: binary_sensor.zaptec_home_warnings
-      to: "on"
+      entity_id: binary_sensor.car_charger_warnings
+      from: "OK"
   action:
     - service: notify.ALL_DEVICES
       data:

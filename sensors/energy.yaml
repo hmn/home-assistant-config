@@ -18,6 +18,12 @@
   unit_prefix: k
   round: 2
 
+- platform: integration
+  source: sensor.car_charger_power
+  name: Car charger spent
+  unit_prefix: k
+  round: 2
+
 # - platform: min_max
 #   round_digits: 0
 #   name: Smappee power (min/max)
@@ -383,13 +389,6 @@
           Unknown
         {% endif %}
 
-    zaptec_home_power:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger power"
-      icon_template: mdi:power-plug
-      unit_of_measurement: "W"
-      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power') | round(0) }}"
-
     zaptec_home_signal:
       entity_id: sensor.zaptec_charger_zap016548
       friendly_name: "Car charger signal strength"
@@ -430,10 +429,3 @@
       icon_template: mdi:thermometer
       unit_of_measurement: '°C'
       value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'temperature_internal5') | round(0) }}"
-
-    zaptec_home_voltage:
-      entity_id: sensor.zaptec_charger_zap016548
-      friendly_name: "Car charger voltage"
-      icon_template: mdi:flash
-      unit_of_measurement: "V"
-      value_template: "{{ state_attr('sensor.zaptec_charger_zap016548', 'voltage_phase1') | round(0) }}"

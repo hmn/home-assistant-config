@@ -506,8 +506,29 @@ template:
           {% set outdoor = 0 if is_state('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity', 'unknown') else states('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity') | float %}
           {{ (bedroom - outdoor) | round(1, default=0) }}
 
+      - name: "Car charger power"
+        #icon: mdi:power-plug
+        device_class: "power"
+        unit_of_measurement: "W"
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power') | round(0) }}"
+
+      - name: "Car charger voltage"
+        #icon: mdi:flash
+        device_class: "voltage"
+        unit_of_measurement: "V"
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'voltage_phase1') | round(0) }}"
+
+      - name: "Car charger temperature"
+        #icon: mdi:thermometer
+        device_class: "temperature"
+        unit_of_measurement: '°C'
+        state_class: "measurement"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'temperature_internal5') | round(0) }}"
+
   - binary_sensor:
-      - name: "Car charger firmware up2date"
+      - name: "Car charger firmware"
         icon: mdi:update
         device_class: update
         state: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") != true }}'
