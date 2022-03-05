@@ -389,6 +389,18 @@ utility_meter:
     source: sensor.energy_spent
     name: Monthly energy spent
     cycle: monthly
+  car_charger_spent_hourly:
+    source: sensor.car_charger_spent
+    name: Hourly car charger spent
+    cycle: hourly
+  car_charger_spent_daily:
+    source: sensor.car_charger_spent
+    name: Daily car charger spent
+    cycle: daily
+  car_charger_spent_monthly:
+    source: sensor.car_charger_spent
+    name: Monthly car charger spent
+    cycle: monthly
 
 # rest_command:
 #   particle_relay1_on:
