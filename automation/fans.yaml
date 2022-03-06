@@ -307,9 +307,6 @@
 - alias: "Change fan mode to default if needed"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.humidity_difference
-      above: 25
-    - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       above: 75
     - platform: numeric_state

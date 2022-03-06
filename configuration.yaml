@@ -53,9 +53,6 @@ http:
   #ip_ban_enabled: True
   #login_attempts_threshold: 5
 
-# Checks for available updates
-updater:
-
 # Discover some devices automatically
 #discovery:
 #  ignore:
@@ -75,7 +72,6 @@ history:
     domains:
       - script
       - weblink
-      - updater
       - homekit
     entities:
       - sensor.last_boot
@@ -157,7 +153,6 @@ recorder:
   exclude:
     domains:
       - weblink
-      - updater
       - homekit
     entities:
       - sensor.date
@@ -177,7 +172,6 @@ logbook:
   exclude:
     domains:
       - weblink
-      - updater
       - light
       - homekit
       - timer
@@ -510,15 +504,6 @@ zone: !include zones.yaml
 
 template:
   - sensor:
-      - name: "Humidity difference"
-        device_class: "humidity"
-        unit_of_measurement: "%"
-        state_class: "total"
-        state: >
-          {% set bedroom = 0 if is_state('sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity', 'unknown') else states('sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity') | float %}
-          {% set outdoor = 0 if is_state('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity', 'unknown') else states('sensor.netatmo_ewaldsvej_kokken_outdoor_humidity') | float %}
-          {{ (bedroom - outdoor) | round(1, default=0) }}
-
       - name: "Car charger power"
         #icon: mdi:power-plug
         device_class: "power"
@@ -909,8 +894,9 @@ template:
         state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] }}'
 
       - name: Eloverblik Energy
+        device_class: "energy"
         unit_of_measurement: "kWh"
-        friendly_name: Eloverblik Energy
+        state_class: "measurement"
         entity_id: group.eloverblik_energy
         value_template: >-
           {% set hour = now().hour %}
