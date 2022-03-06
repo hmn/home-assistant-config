@@ -908,6 +908,26 @@ template:
         state_class: "measurement"
         state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] }}'
 
+      - name: Eloverblik Energy
+        unit_of_measurement: "kWh"
+        friendly_name: Eloverblik Energy
+        entity_id: group.eloverblik_energy
+        value_template: >-
+          {% set hour = now().hour %}
+          {% set sensor = ['sensor.eloverblik_energy', hour, hour+1] | join('_') %}
+          {{ states(sensor) }}
+        attribute_templates:
+          metering_start: >-
+            {% set hour = now().hour %}
+            {% set sensor = ['sensor.eloverblik_energy', hour, hour+1] | join('_') %}
+            {% set datetimestr = [state_attr(sensor, 'Metering date'),'T', hour] | join('') %}
+            {{ strptime(datetimestr, '%Y-%m-%dT%H') }}
+          metering_end: >-
+            {% set hour = now().hour %}
+            {% set sensor = ['sensor.eloverblik_energy', hour, hour+1] | join('_') %}
+            {% set datetimestr = [state_attr(sensor, 'Metering date'),'T', hour, ':59', ':59'] | join('') %}
+            {{ strptime(datetimestr, '%Y-%m-%dT%H:%M:%S') }}
+
   - binary_sensor:
       - name: "Car charger firmware"
         #icon: mdi:update
@@ -928,6 +948,44 @@ template:
             mdi:access-point-network-off
           {% endif %}
         state: "{{ is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') }}"
+
+group:
+  eloverblik_energy:
+    entities:
+      - sensor.eloverblik_energy_0_1
+      - sensor.eloverblik_energy_1_2
+      - sensor.eloverblik_energy_2_3
+      - sensor.eloverblik_energy_3_4
+      - sensor.eloverblik_energy_4_5
+      - sensor.eloverblik_energy_5_6
+      - sensor.eloverblik_energy_6_7
+      - sensor.eloverblik_energy_7_8
+      - sensor.eloverblik_energy_8_9
+      - sensor.eloverblik_energy_9_10
+      - sensor.eloverblik_energy_10_11
+      - sensor.eloverblik_energy_11_12
+      - sensor.eloverblik_energy_12_13
+      - sensor.eloverblik_energy_13_14
+      - sensor.eloverblik_energy_14_15
+      - sensor.eloverblik_energy_15_16
+      - sensor.eloverblik_energy_16_17
+      - sensor.eloverblik_energy_17_18
+      - sensor.eloverblik_energy_18_19
+      - sensor.eloverblik_energy_19_20
+      - sensor.eloverblik_energy_20_21
+      - sensor.eloverblik_energy_21_22
+      - sensor.eloverblik_energy_22_23
+      - sensor.eloverblik_energy_23_24
+
+automation:
+  - alias: "Opdater Eloverblik sensor"
+    id: update_eloverblik_sensor
+    trigger:
+      - platform: time_pattern
+        minutes: '/60'
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.eloverblik_energy
 
 
 #python_script:
