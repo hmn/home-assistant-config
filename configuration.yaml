@@ -561,18 +561,7 @@ template:
         state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0, default=0) }}"
 
       - name: "Car charger signal strength"
-        icon: >-
-          {% if state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -67 %}
-            mdi:wifi-strength-4
-          {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -72 %}
-            mdi:wifi-strength-3
-          {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -80 %}
-            mdi:wifi-strength-2
-          {% elif state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') | float >= -90 %}
-            mdi:wifi-strength-1
-          {% else %}
-            mdi:wifi-strength-outline
-          {% endif %}
+        icon: mdi:wifi-strength-outline
         device_class: "signal_strength"
         unit_of_measurement: "dBm"
         state_class: "measurement"
