@@ -509,35 +509,35 @@ template:
         device_class: "power"
         unit_of_measurement: "W"
         state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power') | round(0) }}"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power') | round(0, default=0) }}"
 
       - name: "Car charger voltage"
         #icon: mdi:flash
         device_class: "voltage"
         unit_of_measurement: "V"
         state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'voltage_phase1') | round(0) }}"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'voltage_phase1') | round(0, default=0) }}"
 
       - name: "Car charger temperature"
         #icon: mdi:thermometer
         device_class: "temperature"
         unit_of_measurement: '°C'
         state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'temperature_internal5') | round(0) }}"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'temperature_internal5') | round(2, default=0) }}"
 
       - name: "Car charger humidity"
         #icon: mdi:water-percent
         device_class: "humidity"
         unit_of_measurement: "%"
         state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'humidity') | round(0) }}"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'humidity') | round(0, default=0) }}"
 
       - name: "Car charger energy session"
         #icon: mdi:counter
         device_class: "energy"
         unit_of_measurement: "kWh"
         state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power_session') | round(0) }}"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power_session') | round(2, default=0) }}"
 
       - name: "Car charger energy total"
         #icon: mdi:counter
@@ -551,14 +551,14 @@ template:
         device_class: "current"
         unit_of_measurement: "A"
         state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_phase1') | round(0) }}"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_phase1') | round(0, default=0) }}"
 
       - name: "Car charger allocated current"
         #icon: mdi:waves
         device_class: "current"
         unit_of_measurement: "A"
         state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0) }}"
+        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0, default=0) }}"
 
       - name: "Car charger signal strength"
         icon: >-
