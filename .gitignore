@@ -2,10 +2,17 @@
 __pycache__
 *.pyc
 
-# addons
-custom_components/
-
 # home assistant
+custom_components/
+appdaemon/
+blueprints/
+deps
+tts/
+www/
+.storage/
+.HA_VERSION
+
+# misc
 *.uuid
 *.conf
 *.db
@@ -17,11 +24,7 @@ custom_components/
 *.sqlite
 *.xml
 *.backup
-.HA_VERSION
-home-assistant.env
 home-assistant.*
-deps
-tts
 known_devices.yaml
 secrets.yaml
 secrets_bak.yaml
