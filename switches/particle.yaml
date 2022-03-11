@@ -1,9 +1,0 @@
-# - platform: template
-#   switches:
-#     particle_relay1:
-#       friendly_name: 'Particle relay reduced heating'
-#       value_template: "{{ is_state('binary_sensor.particle_relay_reduced_heating', 'on') }}"
-#       turn_on:
-#         service: rest_command.particle_relay1_on
-#       turn_off:
-#         service: rest_command.particle_relay1_off

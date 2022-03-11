@@ -15,15 +15,12 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-api:
-system_health:
-
-# Enables the frontend
-frontend:
-  themes: !include themes.yaml
-
 default_config:
 config:
+api:
+system_health:
+frontend:
+person:
 
 http:
   # Uncomment this to add a password (recommended!)
@@ -49,14 +46,6 @@ http:
   #ip_ban_enabled: True
   #login_attempts_threshold: 5
 
-# Discover some devices automatically
-#discovery:
-#  ignore:
-#    - philips_hue
-#  enable:
-#    - homekit
-
-person:
 
 # Enables support for tracking state changes over time.
 history:
@@ -218,18 +207,7 @@ alexa:
 mobile_app:
 prometheus:
 energy:
-
-# Track the sun
 sun:
-
-# Text to speech
-#tts:
-#  #- platform: google
-#  - platform: amazon_polly
-#    aws_access_key_id: !secret aws_access_key_id
-#    aws_secret_access_key: !secret aws_secret_access_key
-#    region_name: !secret aws_region_name
-
 wake_on_lan:
 
 ifttt:
@@ -250,18 +228,12 @@ mqtt:
   #  payload: 'offline'
 
 homekit:
-  #auto_start: True
-  #advertise_ip: "192.168.7.51"
   filter:
     include_domains:
       - script
       - input_boolean
       - switch
       - timer
-
-#tado:
-#  username: !secret tado_username
-#  password: !secret tado_password
 
 # smappee:
 #   host: 192.168.7.116
@@ -336,9 +308,6 @@ plex:
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
-
-#tradfri:
-#  host: 192.168.7.102
 
 weather:
   - platform: darksky
@@ -435,64 +404,22 @@ timer:
 #wavinsentio:
 #zaptec:
 
-logger:
-  #default: debug
-  #default: info
-  default: warning
-  logs:
-    # log level for the `aiohttp` Python package
-    #aiohttp: debug
-    #urllib3: debug
-    # http debug
-    #homeassistant.components.http: debug
-    #custom_components.media_player.ps4: debug
-    #homeassistant.components.smappee: error
-    #homeassistant.components.mqtt: error
-    #homeassistant.components.mqtt: debug
-    #homeassistant.deconz: debug
-    #homeassistant.components.deconz: debug
-    #pydeconz: debug
-    #py.warnings: error
-    #pyps4: debug
-    #smappy: debug
-    #pyps4.connection: debug
-    #pylgtv.webos_client: critical
-    #aiounifi: debug
-    #homeassistant.components.unifi: debug
-    #homeassistant.components.switch.unifi: debug
-    #homeassistant.components.nissan_leaf: debug
-    #homeassistant.components.device_tracker.nissan_leaf: debug
-    #homeassistant.components.sensor.nissan_leaf: debug
-    #homeassistant.components.switch.nissan_leaf: debug
-    homeassistant.components.shell_command: debug
-    #pyatv: debug
-    #homeassistant.components.apple_tv: debug
-    homeassistant.components.nissan_leaf: debug
-    homeassistant.components.sensor.nissan_leaf: debug
-    homeassistant.components.switch.nissan_leaf: debug
-    # eloverblik: debug
-    # pyeloverblik.eloverblik: debug
-    # custom_components.eloverblik: debug
-    # nordpool: debug
-    # custom_components.nordpool: debug
-    # custom_components.nordpool.sensor: debug
-    # custom_components.nordpool.aio_price: debug
-    # custom_components: debug
-
-light: !include light.yaml
-#binary_sensor: !include binary_sensors.yaml
-camera: !include cameras.yaml
-fan: !include fans.yaml
-device_tracker: !include device_trackers.yaml
-input_boolean: !include input_boolean.yaml
-input_number: !include input_number.yaml
-input_select: !include input_select.yaml
-media_player: !include media_players.yaml
-notify: !include notify.yaml
-switch: !include_dir_merge_list switches
-script: !include_dir_merge_named scripts
-sensor: !include_dir_merge_list sensors
-zone: !include zones.yaml
+switch:
+  - platform: command_line
+    scan_interval: 120
+    switches:
+      bedroom_fan:
+        friendly_name: Bedroom fan power
+        command_on: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command on --print power"
+        command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command off --print power"
+        command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print power"
+        value_template: '{{ value == "01" }}'
+      livingroom_fan:
+        friendly_name: Livingroom fan power
+        command_on: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command on --print power"
+        command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command off --print power"
+        command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print power"
+        value_template: '{{ value == "01" }}'
 
 template:
   - sensor:
@@ -909,5 +836,58 @@ shell_command:
   #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
   smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
 
-#automation: !include automations.yaml
-automation old: !include_dir_merge_list automation
+light: !include light.yaml
+input_boolean: !include input_boolean.yaml
+input_number: !include input_number.yaml
+input_select: !include input_select.yaml
+notify: !include notify.yaml
+script: !include_dir_merge_named scripts
+sensor: !include_dir_merge_list sensors
+zone: !include zones.yaml
+
+automation: !include automations.yaml
+automation old: !include_dir_merge_list automation  
+
+logger:
+  #default: debug
+  #default: info
+  default: warning
+  logs:
+    # log level for the `aiohttp` Python package
+    #aiohttp: debug
+    #urllib3: debug
+    # http debug
+    #homeassistant.components.http: debug
+    #custom_components.media_player.ps4: debug
+    #homeassistant.components.smappee: error
+    #homeassistant.components.mqtt: error
+    #homeassistant.components.mqtt: debug
+    #homeassistant.deconz: debug
+    #homeassistant.components.deconz: debug
+    #pydeconz: debug
+    #py.warnings: error
+    #pyps4: debug
+    #smappy: debug
+    #pyps4.connection: debug
+    #pylgtv.webos_client: critical
+    #aiounifi: debug
+    #homeassistant.components.unifi: debug
+    #homeassistant.components.switch.unifi: debug
+    #homeassistant.components.nissan_leaf: debug
+    #homeassistant.components.device_tracker.nissan_leaf: debug
+    #homeassistant.components.sensor.nissan_leaf: debug
+    #homeassistant.components.switch.nissan_leaf: debug
+    homeassistant.components.shell_command: debug
+    #pyatv: debug
+    #homeassistant.components.apple_tv: debug
+    homeassistant.components.nissan_leaf: debug
+    homeassistant.components.sensor.nissan_leaf: debug
+    homeassistant.components.switch.nissan_leaf: debug
+    # eloverblik: debug
+    # pyeloverblik.eloverblik: debug
+    # custom_components.eloverblik: debug
+    # nordpool: debug
+    # custom_components.nordpool: debug
+    # custom_components.nordpool.sensor: debug
+    # custom_components.nordpool.aio_price: debug
+    # custom_components: debug
