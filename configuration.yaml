@@ -841,9 +841,11 @@ input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
 input_select: !include input_select.yaml
 notify: !include notify.yaml
-script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
+
+script: !include scripts.yaml
+script old: !include_dir_merge_named scripts
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation  

@@ -32,3 +32,4 @@ zones.yaml
 ip_bans.yaml
 customize.yaml
 automations.yaml
+scripts.yaml
