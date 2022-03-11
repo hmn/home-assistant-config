@@ -15,11 +15,7 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-# Show links to resources in log and frontend
-#introduction:
-
 api:
-
 system_health:
 
 # Enables the frontend
@@ -61,9 +57,6 @@ http:
 #    - homekit
 
 person:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-#conversation:
 
 # Enables support for tracking state changes over time.
 history:
@@ -496,7 +489,6 @@ input_number: !include input_number.yaml
 input_select: !include input_select.yaml
 media_player: !include media_players.yaml
 notify: !include notify.yaml
-image_processing: !include image_processing.yaml
 switch: !include_dir_merge_list switches
 script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensors
@@ -916,11 +908,6 @@ shell_command:
   livingroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command direction --direction {{direction}} --print direction  
   #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
   smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
-
-#zwave:
-#  usb_path: /dev/ttyACM0
-#  network_key: !secret zwave_network_key
-#  debug: True
 
 #automation: !include automations.yaml
 automation old: !include_dir_merge_list automation

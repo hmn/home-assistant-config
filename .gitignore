@@ -2,7 +2,10 @@
 __pycache__
 *.pyc
 
-# Other
+# addons
+custom_components/
+
+# home assistant
 *.uuid
 *.conf
 *.db
@@ -19,8 +22,6 @@ home-assistant.env
 home-assistant.*
 deps
 tts
-.ps4-wake.credentials.json
-ps4-games.json
 known_devices.yaml
 secrets.yaml
 secrets_bak.yaml
