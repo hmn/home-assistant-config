@@ -46,34 +46,6 @@ http:
   #ip_ban_enabled: True
   #login_attempts_threshold: 5
 
-
-# Enables support for tracking state changes over time.
-history:
-  use_include_order: true
-  exclude:
-    domains:
-      - script
-      - weblink
-      - homekit
-    entities:
-      - sensor.last_boot
-      - sensor.date
-      - sensor.time
-      - sensor.time_utc
-      - sensor.time_date
-      - sensor.date_time
-      - sensor.date_time_iso
-      - sensor.date_time_utc
-      - sensor.internet_time
-      - sensor.henriks_iphone_battery_state
-      - sensor.henriks_ipad_battery_state
-      - sensor.smappee_power
-      - sensor.smappee_usage_today
-      - sensor.smappee_fase_1_power
-      - sensor.smappee_fase_2_power
-      - sensor.smappee_fase_3_power
-      - sensor.henriks_iphone_bssid
-
 # history_graph:
 #   energy_today:
 #     entities:
@@ -129,13 +101,69 @@ history:
 
 #prometheus:
 
+# Enables support for tracking state changes over time.
+history:
+  use_include_order: true
+  exclude:
+    domains:
+      - script
+      - weblink
+      - homekit
+      - updater
+      - light
+    entity_globs:
+      - binary_sensor.hmnmbp*
+      - sensor.clock*
+      - sensor.date*
+      - sensor.glances*
+      - sensor.load_*m
+      - sensor.time*
+      - sensor.uptime*
+      - input_boolean.*_motion
+      - binary_sensor.*_motion_sensor_*
+      - automation.motion*
+      - automation.*lights_timer*
+    entities:
+      - sensor.last_boot
+      - sensor.date
+      - sensor.time
+      - sensor.time_utc
+      - sensor.time_date
+      - sensor.date_time
+      - sensor.date_time_iso
+      - sensor.date_time_utc
+      - sensor.internet_time
+      - sensor.henriks_iphone_battery_state
+      - sensor.henriks_ipad_battery_state
+      - sensor.smappee_power
+      - sensor.smappee_usage_today
+      - sensor.smappee_fase_1_power
+      - sensor.smappee_fase_2_power
+      - sensor.smappee_fase_3_power
+      - sensor.henriks_iphone_bssid
+
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
-  db_url: !secret db_url
+  db_url: !secret db_url  
   exclude:
     domains:
       - weblink
       - homekit
+      - uptime
+      - updater
+      - light
+    entity_globs:
+      - binary_sensor.hmnmbp*
+      - sensor.clock*
+      - sensor.date*
+      - sensor.glances*
+      - sensor.load_*m
+      - sensor.time*
+      - sensor.uptime*
+      - input_boolean.*_motion
+      - binary_sensor.*_motion_sensor_*
+      - automation.motion*
+      - automation.*lights_timer*
     entities:
       - sensor.date
       - sensor.time
@@ -148,6 +176,8 @@ recorder:
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
       - sensor.henriks_iphone_bssid
+    #event_types:
+    #  - 
 
 # View all events in a logbook
 logbook:
@@ -157,6 +187,20 @@ logbook:
       - light
       - homekit
       - timer
+      - uptime
+      - updater
+    entity_globs:
+      - binary_sensor.hmnmbp*
+      - sensor.clock*
+      - sensor.date*
+      - sensor.glances*
+      - sensor.load_*m
+      - sensor.time*
+      - sensor.uptime*
+      - input_boolean.*_motion
+      - binary_sensor.*_motion_sensor_*
+      - automation.motion*
+      - automation.*lights_timer*
     entities:
       - sensor.date
       - sensor.time
@@ -173,29 +217,6 @@ logbook:
       - sensor.smappee_fase_1_power
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
-      - input_boolean.office_motion
-      - input_boolean.bedroom_motion
-      - input_boolean.kitchen_motion
-      - input_boolean.entrance_motion
-      - binary_sensor.office_motion_sensor_1_motion
-      - binary_sensor.kitchen_motion_sensor_1_motion
-      - binary_sensor.bedroom_motion_sensor_1_motion
-      - binary_sensor.entrance_motion_sensor_1_motion
-      - binary_sensor.entrance_motion_sensor_2_motion
-      - automation.motion_in_bedroom
-      - automation.motion_in_bedroom_timer
-      - automation.motion_in_entrance
-      - automation.motion_in_entrance_timer
-      - automation.motion_in_kitchen
-      - automation.motion_in_kitchen_timer
-      - automation.motion_in_office
-      - automation.motion_in_office_timer
-      - automation.office_lights_timer_done
-      - automation.office_lights_timer_started
-      - automation.kitchen_lights_timer_started
-      - automation.kitchen_lights_timer_done
-      - automation.entrance_lights_timer_done
-      - automation.entrance_lights_timer_started
       - sensor.henriks_iphone_bssid
 
 
