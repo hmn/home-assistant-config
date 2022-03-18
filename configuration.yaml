@@ -867,8 +867,7 @@ input_select: !include input_select.yaml
 notify: !include notify.yaml
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
-
-script: !include scenes.yaml
+scene: !include scenes.yaml
 
 script: !include scripts.yaml
 script old: !include_dir_merge_named scripts
