@@ -1,89 +1,3 @@
-- alias: Set Livingroom fan speed
-  trigger:
-    platform: state
-    entity_id: sensor.livingroom_fan_speed
-  action:
-    service: input_select.select_option
-    entity_id: input_select.livingroom_fan_speed
-    data_template:
-      option: "{{ trigger.to_state.state }}"
-
-- alias: Set Livingroom fan direction
-  trigger:
-    platform: state
-    entity_id: sensor.livingroom_fan_direction
-  action:
-    service: input_select.select_option
-    entity_id: input_select.livingroom_fan_direction
-    data_template:
-      option: "{{ trigger.to_state.state }}"
-
-- alias: Set Bedroom fan speed
-  trigger:
-    platform: state
-    entity_id: sensor.bedroom_fan_speed
-  action:
-    service: input_select.select_option
-    entity_id: input_select.bedroom_fan_speed
-    data_template:
-      option: "{{ trigger.to_state.state }}"
-
-- alias: Set Bedroom fan direction
-  trigger:
-    platform: state
-    entity_id: sensor.bedroom_fan_direction
-  action:
-    service: input_select.select_option
-    entity_id: input_select.bedroom_fan_direction
-    data_template:
-      option: "{{ trigger.to_state.state }}"
-
-
-- alias: Livingroom fan speed update
-  trigger:
-    platform: state
-    entity_id: input_select.livingroom_fan_speed
-  action:
-    - service: timer.start
-      entity_id: timer.fan_speed_timer
-    - service: shell_command.livingroom_fan_speed
-      data_template:
-        speed: "{{ trigger.to_state.state }}"
-
-- alias: Livingroom fan direction update
-  trigger:
-    platform: state
-    entity_id: input_select.livingroom_fan_direction
-  action:
-    - service: timer.start
-      entity_id: timer.fan_direction_timer
-    - service: shell_command.livingroom_fan_direction
-      data_template:
-        direction: "{{ trigger.to_state.state }}"
-
-- alias: Bedroom fan speed update
-  trigger:
-    platform: state
-    entity_id: input_select.bedroom_fan_speed
-  action:
-    - service: timer.start
-      entity_id: timer.fan_speed_timer
-    - service: shell_command.bedroom_fan_speed
-      data_template:
-        speed: "{{ trigger.to_state.state }}"
-
-- alias: Bedroom fan direction update
-  trigger:
-    platform: state
-    entity_id: input_select.bedroom_fan_direction
-  action:
-    - service: timer.start
-      entity_id: timer.fan_direction_timer
-    - service: shell_command.bedroom_fan_direction
-      data_template:
-        direction: "{{ trigger.to_state.state }}"
-
-
 - alias: "Bedroom climate turned on"
   trigger:
     - platform: state
@@ -94,6 +8,10 @@
       data:
         entity_id: input_select.fan_mode
         option: 'off'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.climate_mode
+        option: 'cool'
 
 - alias: "Bedroom window open"
   trigger:
@@ -119,6 +37,10 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.fan_mode
+        option: 'off'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.climate_mode
         option: 'off'
 
 - alias: "Bedroom door open and window open"
@@ -404,4 +326,47 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.fan_mode
+        option: 'off'
+
+
+- alias: "Change climate mode based on outside temperature low"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.bedroom_window
+      to: 'off'
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      below: 18
+    - platform: state
+      entity_id: climate.bedroom
+      to: 'off'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      below: 18
+    - condition: state
+      entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
+      entity_id: climate.bedroom
+      state: 'off'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.climate_mode
+        option: 'heat'
+
+- alias: "Change climate mode based on outside temperature high"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      above: 18
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      above: 18
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.climate_mode
         option: 'off'

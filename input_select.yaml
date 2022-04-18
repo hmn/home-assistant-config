@@ -39,3 +39,11 @@ fan_mode:
     - 'sleep warm'
     - 'sleep cold'
     - 'off'
+
+climate_mode:
+  name: Climate mode
+  icon: mdi:dip-switch
+  options:
+    - 'cool'
+    - 'heat'
+    - 'off'
