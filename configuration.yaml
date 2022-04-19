@@ -125,7 +125,6 @@ history:
       - automation.motion*
       - automation.*lights_timer*
     entities:
-      - sensor.last_boot
       - sensor.date
       - sensor.time
       - sensor.time_utc
