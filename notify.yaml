@@ -34,5 +34,5 @@
     - service: syslog
     - service: smtp
     - service: html5
-    - service: tv
+    #- service: tv
     #- service: app
