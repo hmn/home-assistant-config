@@ -32,7 +32,7 @@
   name: all
   services:
     - service: syslog
-    - service: smtp
+    - service: email
     - service: html5
     #- service: tv
     #- service: app
