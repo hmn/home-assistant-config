@@ -150,7 +150,7 @@
 - alias: "TV app started"
   trigger:
     - platform: state
-      entity_id: media_player.apple_tv_2
+      entity_id: media_player.cinema
       to: 'playing'
   condition:
     - condition: state
@@ -176,7 +176,7 @@
 - alias: "Plex is playing"
   trigger:
     - platform: state
-      entity_id: media_player.apple_tv_2
+      entity_id: media_player.cinema
       to: 'playing'
   action:
     - service: media_player.select_source
