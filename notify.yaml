@@ -1,15 +1,15 @@
 - platform: syslog
   name: syslog
 
-#- platform: smtp
-#  name: email
-#  server: smtp.gmail.com
-#  port: 587
-#  username: !secret smtp_username
-#  password: !secret smtp_password
-#  starttls: true
-#  sender: !secret notify_email_sender
-#  recipient: !secret notify_email_recipient
+- platform: smtp
+  name: email
+  server: email-smtp.eu-west-1.amazonaws.com
+  port: 465
+  username: !secret smtp_username
+  password: !secret smtp_password
+  starttls: true
+  sender: !secret notify_email_sender
+  recipient: !secret notify_email_recipient
 
 - platform: html5
   name: HTML5
@@ -35,3 +35,4 @@
     - service: html5
     - service: tv
     - service: app
+    - service: smtp
