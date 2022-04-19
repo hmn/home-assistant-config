@@ -27,7 +27,7 @@
 - alias: "Kitchen lights timer done"
   trigger:
     - platform: event
-      event_type: timer.canceled
+      event_type: timer.cancelled
       event_data:
         entity_id: timer.kitchen_lights
     - platform: event
@@ -107,7 +107,7 @@
 - alias: "Office lights timer done"
   trigger:
     - platform: event
-      event_type: timer.canceled
+      event_type: timer.cancelled
       event_data:
         entity_id: timer.office_lights
     - platform: event
@@ -192,7 +192,7 @@
       event_data:
         entity_id: timer.bedroom_lights
     - platform: event
-      event_type: timer.canceled
+      event_type: timer.cancelled
       event_data:
         entity_id: timer.bedroom_lights
   action:
@@ -271,7 +271,7 @@
       event_data:
         entity_id: timer.entrance_lights
     - platform: event
-      event_type: timer.canceled
+      event_type: timer.cancelled
       event_data:
         entity_id: timer.entrance_lights
   action:
