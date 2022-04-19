@@ -344,6 +344,16 @@ netatmo:
   client_id: !secret netatmo_client_id
   client_secret: !secret netatmo_client_secret
 
+aws:
+  credentials:
+    - name: hass
+      aws_access_key_id: !secret aws_access_key_id
+      aws_secret_access_key: !secret aws_secret_access_key
+  notify:
+    - service: sns
+      name: awssns
+      region_name: !secret aws_region_name
+
 utility_meter:
   smappee_usage_hourly:
     source: sensor.smappee_usage_today
