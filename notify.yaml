@@ -4,7 +4,7 @@
 - platform: smtp
   name: email
   server: email-smtp.eu-west-1.amazonaws.com
-  port: 465
+  port: 587
   username: !secret smtp_username
   password: !secret smtp_password
   starttls: true
