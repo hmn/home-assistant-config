@@ -34,5 +34,5 @@
     - service: syslog
     - service: email
     - service: html5
-    #- service: tv
+    - service: lg_oled
     #- service: app
