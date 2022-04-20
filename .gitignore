@@ -11,6 +11,7 @@ tts/
 www/
 .storage/
 .HA_VERSION
+themes/
 
 # misc
 *.uuid
@@ -33,3 +34,4 @@ ip_bans.yaml
 customize.yaml
 automations.yaml
 scripts.yaml
+scenes.yaml
