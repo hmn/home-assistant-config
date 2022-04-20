@@ -1,4 +1,5 @@
 - alias: "Kitchen lights timer started"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.started
@@ -25,6 +26,7 @@
           - light.kitchen_lights
 
 - alias: "Kitchen lights timer done"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.cancelled
@@ -41,6 +43,7 @@
         - light.kitchen_lights
 
 - alias: "Motion in Kitchen"
+  mode: parallel
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_motion_sensor_1_motion
@@ -55,6 +58,7 @@
       entity_id: timer.office_lights
 
 - alias: "Motion in Kitchen (timer)"
+  mode: parallel
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -75,6 +79,7 @@
 
 
 - alias: "Office lights timer started"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.started
@@ -105,6 +110,7 @@
         entity_id: scene.cinema_hass
 
 - alias: "Office lights timer done"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.cancelled
@@ -115,9 +121,6 @@
       event_data:
         entity_id: timer.office_lights
   action:
-    - service: timer.cancel
-      entity_id:
-        - timer.office_lights
     - service: light.turn_off
       data:
         entity_id:
@@ -126,6 +129,7 @@
           - light.living_room_lights
 
 - alias: "Motion in Office"
+  mode: parallel
   trigger:
     - platform: state
       entity_id: binary_sensor.office_motion_sensor_1_motion
@@ -140,6 +144,7 @@
       entity_id: timer.kitchen_lights
 
 - alias: "Motion in Office (timer)"
+  mode: parallel
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -160,6 +165,7 @@
 
 
 - alias: "Bedroom lights timer started"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.started
@@ -186,6 +192,7 @@
           - light.bedroom_lights
 
 - alias: "Bedroom lights timer done"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.finished
@@ -202,6 +209,7 @@
         - light.bedroom_lights
 
 - alias: "Motion in Bedroom"
+  mode: parallel
   trigger:
     - platform: state
       entity_id: binary_sensor.bedroom_motion_sensor_1_motion
@@ -214,6 +222,7 @@
       entity_id: timer.bedroom_lights
 
 - alias: "Motion in Bedroom (timer)"
+  mode: parallel
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -242,6 +251,7 @@
 
 
 - alias: "Entrance lights timer started"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.started
@@ -265,6 +275,7 @@
           - light.entrance_lights
 
 - alias: "Entrance lights timer done"
+  mode: parallel
   trigger:
     - platform: event
       event_type: timer.finished
@@ -281,6 +292,7 @@
         - light.entrance_lights
 
 - alias: "Motion in Entrance"
+  mode: parallel
   trigger:
     - platform: state
       entity_id: binary_sensor.entrance_motion_sensor_1_motion
@@ -296,6 +308,7 @@
       entity_id: timer.entrance_lights
 
 - alias: "Motion in Entrance (timer)"
+  mode: parallel
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -317,6 +330,7 @@
 
 
 - alias: "Outdoor light turn on"
+  mode: parallel
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -338,6 +352,7 @@
       entity_id: light.outdoor_lights
 
 - alias: "Outdoor light turn off when sleeping"
+  mode: parallel
   trigger:
     - platform: time_pattern
       minutes: "/1"
@@ -356,6 +371,7 @@
       entity_id: light.outdoor_lights
 
 - alias: "Outdoor light turn off"
+  mode: parallel
   trigger:
     - platform: time_pattern
       minutes: "/1"
