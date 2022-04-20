@@ -10,15 +10,19 @@ tv_on:
   - service: media_player.select_source
     data:
       entity_id: media_player.lg_oled
-      #source: 'HDMI2'
+      source: 'Denon'
       #source: 'HDMI4'
-      source: 'Plex'
+      #source: 'Plex'
   - service: media_player.select_source
     data:
       entity_id: media_player.denon_avr_x1300w
       #source: 'Media Player'
-      source: 'TV Audio'
+      source: 'APPLE TV'
   - service: media_player.select_sound_mode
     data:
       entity_id: media_player.denon_avr_x1300w
-      sound_mode: 'DTS SURROUND'
+      sound_mode: 'DOLBY DIGITAL'
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.cinema
+      sound_mode: 'YouTube'
