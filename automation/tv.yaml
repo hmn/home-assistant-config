@@ -147,49 +147,49 @@
 #     - service: media_player.turn_on
 #       entity_id: media_player.apple_tv
 
-- alias: "TV app started"
-  trigger:
-    - platform: state
-      entity_id: media_player.cinema
-      to: 'playing'
-  condition:
-    - condition: state
-      entity_id: media_player.lg_oled
-      state: 'playing'
-    - condition: state
-      entity_id: media_player.denon_avr_x1300w
-      state: 'on'
-    - condition: state
-      entity_id: media_player.lg_oled
-      attribute: source
-      state: 'HDMI2'
-  action:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.denon_avr_x1300w
-        source: 'TV Audio'
-    - service: media_player.select_sound_mode
-      data:
-        entity_id: media_player.denon_avr_x1300w
-        sound_mode: 'DTS SURROUND'
+# - alias: "Apple TV playing"
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.cinema
+#       to: 'playing'
+#   condition:
+#     - condition: state
+#       entity_id: media_player.lg_oled
+#       state: 'playing'
+#     - condition: state
+#       entity_id: media_player.denon_avr_x1300w
+#       state: 'on'
+#     - condition: state
+#       entity_id: media_player.lg_oled
+#       attribute: source
+#       state: 'HDMI2'
+#   action:
+#     - service: media_player.select_source
+#       data:
+#         entity_id: media_player.denon_avr_x1300w
+#         source: 'Apple TV'
+#     - service: media_player.select_sound_mode
+#       data:
+#         entity_id: media_player.denon_avr_x1300w
+#         sound_mode: 'AUTO'
 
-- alias: "Plex is playing"
-  trigger:
-    - platform: state
-      entity_id: media_player.cinema
-      to: 'playing'
-  action:
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.denon_avr_x1300w
-        #source: 'Media Player'
-        source: 'TV Audio'
-    - service: media_player.select_sound_mode
-      data:
-        entity_id: media_player.denon_avr_x1300w
-        sound_mode: 'DTS SURROUND'
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.lg_oled
-        #source: 'HDMI2'
-        source: 'Apple TV'
+# - alias: "Apple TV is playing"
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.cinema
+#       to: 'playing'
+#   action:
+#     - service: media_player.select_source
+#       data:
+#         entity_id: media_player.denon_avr_x1300w
+#         #source: 'Media Player'
+#         source: 'TV Audio'
+#     - service: media_player.select_sound_mode
+#       data:
+#         entity_id: media_player.denon_avr_x1300w
+#         sound_mode: 'AUTO'
+#     - service: media_player.select_source
+#       data:
+#         entity_id: media_player.lg_oled
+#         #source: 'HDMI2'
+#         source: 'Apple TV'
