@@ -33,6 +33,11 @@
         - condition: state
           entity_id: input_select.fan_mode
           state: 'off'
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_select.climate_mode
+          state: 'off'
   action:
     - service: input_select.select_option
       data:
@@ -359,10 +364,6 @@
 - alias: "Change climate mode based on outside temperature high"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
-      above: 18
-  condition:
-    - condition: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
       above: 18
   action:
