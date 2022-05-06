@@ -28,10 +28,10 @@ mode_sleep:
       data:
         entity_id: input_select.fan_mode
         option: 'sleep'
-    - service: frontend.set_theme
-      data:
-        name: default
-        mode: dark
+    # - service: frontend.set_theme
+    #   data:
+    #     name: default
+    #     mode: dark
 
 sleep_timer_done:
   alias: Sleep timer done
