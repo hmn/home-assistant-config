@@ -20,6 +20,7 @@ config:
 api:
 system_health:
 frontend:
+  themes: !include_dir_merge_named themes
 person:
 
 http:
