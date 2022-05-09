@@ -234,10 +234,10 @@
 - alias: "Change fan mode to default if needed"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
+      entity_id: sensor.netatmo_bedroom_humidity
       above: 75
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
+      entity_id: sensor.netatmo_bedroom_co2
       above: 1300
   condition:
     - condition: state
@@ -304,13 +304,13 @@
 - alias: "Change fan mode to off if no fans needed"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
+      entity_id: sensor.netatmo_bedroom_humidity
       below: 50
     - platform: numeric_state
       entity_id: sensor.netatmo_kokken_co2
       below: 950
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
+      entity_id: sensor.netatmo_bedroom_co2
       below: 950
   condition:
     - condition: state
