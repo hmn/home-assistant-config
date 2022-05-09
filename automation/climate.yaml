@@ -152,7 +152,7 @@
 - alias: "Bedroom set default sleep mode"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      entity_id: sensor.netatmo_bedroom_temperature
       above: 18
       below: 21
   condition:
@@ -166,7 +166,7 @@
       entity_id: timer.fan_direction_timer
       state: idle
     - condition: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      entity_id: sensor.netatmo_bedroom_temperature
       above: 18
       below: 21
   action:
@@ -180,7 +180,7 @@
     - platform: time_pattern
       minutes: "/30"
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      entity_id: sensor.netatmo_bedroom_temperature
       above: 21
   condition:
     - condition: state
@@ -193,11 +193,11 @@
       entity_id: timer.fan_direction_timer
       state: idle
     - condition: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      entity_id: sensor.netatmo_bedroom_temperature
       above: 21
     - condition: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
-      above: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      entity_id: sensor.netatmo_bedroom_temperature
+      above: sensor.netatmo_outdoor_temperature
   action:
     - service: input_select.select_option
       data:
@@ -209,7 +209,7 @@
     - platform: time_pattern
       minutes: "/30"
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      entity_id: sensor.netatmo_bedroom_temperature
       below: 18
   condition:
     - condition: state
@@ -222,7 +222,7 @@
       entity_id: timer.fan_direction_timer
       state: idle
     - condition: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_temperature
+      entity_id: sensor.netatmo_bedroom_temperature
       below: 18
   action:
     - service: input_select.select_option
@@ -307,7 +307,7 @@
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_humidity
       below: 50
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kokken_co2
+      entity_id: sensor.netatmo_kokken_co2
       below: 950
     - platform: numeric_state
       entity_id: sensor.netatmo_ewaldsvej_kitchen_bedroom_co2
@@ -340,14 +340,14 @@
       entity_id: input_boolean.bedroom_window
       to: 'off'
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      entity_id: sensor.netatmo_outdoor_temperature
       below: 18
     - platform: state
       entity_id: climate.bedroom
       to: 'off'
   condition:
     - condition: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      entity_id: sensor.netatmo_outdoor_temperature
       below: 18
     - condition: state
       entity_id: input_boolean.bedroom_window
@@ -364,7 +364,7 @@
 - alias: "Change climate mode based on outside temperature high"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.netatmo_ewaldsvej_kokken_outdoor_temperature
+      entity_id: sensor.netatmo_outdoor_temperature
       above: 18
   action:
     - service: input_select.select_option
