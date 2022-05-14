@@ -848,6 +848,38 @@ template:
 
           {{ (total - (server + cinema + car)) | round(1, default=0) }}
 
+      - name: "Kitchen Temperature"
+        device_class: "temperature"
+        unit_of_measurement: '°C'
+        state_class: "measurement"
+        state: >
+          {% set netatmo = states('sensor.netatmo_kitchen_temperature') | float %}
+          {% set motion1 = states('sensor.kitchen_motion_sensor_1_temperature') | float %}
+
+          {{ ((netatmo + motion1) / 2) | round(1, default=0) }}
+
+      - name: "Entrance Temperature"
+        device_class: "temperature"
+        unit_of_measurement: '°C'
+        state_class: "measurement"
+        state: >
+          {% set netatmo = states('sensor.netatmo_entrance_temperature') | float %}
+          {% set door = states('sensor.entrance_motion_sensor_1_temperature') | float %}
+          {% set wall = states('sensor.entrance_motion_sensor_2_temperature') | float %}
+
+          {{ ((netatmo + door + wall) / 3) | round(1, default=0) }}
+
+      - name: "Bedroom Temperature"
+        device_class: "temperature"
+        unit_of_measurement: '°C'
+        state_class: "measurement"
+        state: >
+          {% set netatmo = states('sensor.netatmo_bedroom_temperature') | float %}
+          {% set motion1 = states('sensor.bedroom_motion_sensor_1_temperature') | float %}
+          {% set ac = states('sensor.bedroom_room_temperature') | float %}
+
+          {{ ((netatmo + motion1 + ac) / 3) | round(1, default=0) }}
+
   - binary_sensor:
       - name: "Car charger firmware"
         #icon: mdi:update
