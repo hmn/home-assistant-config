@@ -836,6 +836,17 @@ template:
         state_class: "measurement"
         state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] }}'
 
+      - name: "Other power"
+        device_class: "power"
+        unit_of_measurement: "W"
+        state_class: "measurement"
+        state: >
+          {% set server = states('sensor.smappee_server_power') | float %}
+          {% set cinema = states('sensor.smappee_cinema_power') | float %}
+          {% set car = states('sensor.car_charger_power') | float %}
+
+          {{ (server + cinema + car) | round(1, default=0) }}
+
   - binary_sensor:
       - name: "Car charger firmware"
         #icon: mdi:update
