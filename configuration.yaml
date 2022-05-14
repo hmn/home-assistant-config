@@ -841,11 +841,12 @@ template:
         unit_of_measurement: "W"
         state_class: "measurement"
         state: >
+          {% set total = states('sensor.smappee_power') | float %}
           {% set server = states('sensor.smappee_server_power') | float %}
           {% set cinema = states('sensor.smappee_cinema_power') | float %}
           {% set car = states('sensor.car_charger_power') | float %}
 
-          {{ (server + cinema + car) | round(1, default=0) }}
+          {{ (total - (server + cinema + car)) | round(1, default=0) }}
 
   - binary_sensor:
       - name: "Car charger firmware"
