@@ -307,7 +307,7 @@
       entity_id: sensor.netatmo_bedroom_humidity
       below: 50
     - platform: numeric_state
-      entity_id: sensor.netatmo_kokken_co2
+      entity_id: sensor.netatmo_kitchen_co2
       below: 950
     - platform: numeric_state
       entity_id: sensor.netatmo_bedroom_co2
