@@ -239,18 +239,91 @@ ifttt:
   key: !secret ifttt_key
 
 mqtt:
-  #broker: core-mosquitto
-  #username: !secret mqtt_username
-  #password: !secret mqtt_password
-  #client_id: homeassistant
-  #discovery: true
-  #discovery_prefix: homeassistant
-  #birth_message:
-  #  topic: 'hass/status'
-  #  payload: 'online'
-  #will_message:
-  #  topic: 'hass/status'
-  #  payload: 'offline'
+  sensor:
+    - name: Smappee power
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      value_template: "{{ value_json.totalPower }}"
+      device_class: power
+      state_class: measurement
+
+    - name: Smappee usage today (raw)
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      value_template: "{{ value_json.totalImportEnergy }}"
+      device_class: power
+      state_class: measurement
+
+    - name: Smappee usage today
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+      unit_of_measurement: "kWh"
+      icon: "mdi:power-plug"
+      value_template: "{{ ((value_json.totalImportEnergy / 3600000) | float | round(2, default=0)) }}"
+      device_class: energy
+      state_class: measurement
+
+    - name: Smappee fase 1 power
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      value_template: "{{ value_json.channelPowers[0].power }}"
+      device_class: power
+      state_class: measurement
+
+    - name: Smappee fase 2 power
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      value_template: "{{ value_json.channelPowers[1].power }}"
+      device_class: power
+      state_class: measurement
+
+    - name: Smappee fase 3 power
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      value_template: "{{ value_json.channelPowers[2].power }}"
+      device_class: power
+      state_class: measurement
+
+    - name: Smappee always on
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2, default=0) }}"
+      device_class: power
+      state_class: measurement
+
+    - name: Smappee server power
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      # value_template: "{{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}"
+      value_template: >-
+        {% if value_json.switchIntervalDatas %}
+          {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
+        {% else %}
+          0
+        {% endif %}
+      device_class: power
+      state_class: measurement
+
+    - name: Smappee cinema power
+      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
+      unit_of_measurement: "W"
+      icon: "mdi:power-plug"
+      # value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2, default=0) }}"
+      value_template: >-
+        {% if value_json.switchIntervalDatas %}
+          {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
+        {% else %}
+          0
+        {% endif %}
+      device_class: power
+      state_class: measurement
+
 
 homekit:
   filter:
@@ -330,9 +403,9 @@ plex:
 #     - YouTube
 #     - Plex
 
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
+#spotify:
+#  client_id: !secret spotify_client_id
+#  client_secret: !secret spotify_client_secret
 
 weather:
   - platform: darksky
@@ -341,9 +414,9 @@ weather:
 #cast:
 stream:
 
-netatmo:
-  client_id: !secret netatmo_client_id
-  client_secret: !secret netatmo_client_secret
+#netatmo:
+#  client_id: !secret netatmo_client_id
+#  client_secret: !secret netatmo_client_secret
 
 aws:
   credentials:

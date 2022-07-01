@@ -1,80 +1,3 @@
-- platform: mqtt
-  name: Smappee power
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ value_json.totalPower }}"
-  device_class: power
-  state_class: measurement
-
-- platform: mqtt
-  name: Smappee usage today (raw)
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ value_json.totalImportEnergy }}"
-  device_class: power
-  state_class: measurement
-
-- platform: mqtt
-  name: Smappee usage today
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-  unit_of_measurement: "kWh"
-  icon: "mdi:power-plug"
-  value_template: "{{ ((value_json.totalImportEnergy / 3600000) | float | round(2, default=0)) }}"
-  device_class: energy
-  state_class: measurement
-
-
-#- platform: mqtt
-#  name: Smappee solar today
-#  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#  unit_of_measurement: "kWh"
-#  icon: "mdi:power-plug"
-#  value_template: "{{ (value_json.totalExportEnergy | multiply(0.0000001)) | round(2, default=0) }}"
-
-# - platform: mqtt
-#   name: Smappee reactive power
-#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#   unit_of_measurement: "W"
-#   icon: "mdi:power-plug"
-#   value_template: "{{ value_json.totalReactivePower }}"
-#
-# - platform: mqtt
-#   name: Smappee voltage
-#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#   unit_of_measurement: "V"
-#   icon: "mdi:power-plug"
-#   value_template: "{{ value_json.voltages[0].voltage }}"
-
-
-- platform: mqtt
-  name: Smappee fase 1 power
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ value_json.channelPowers[0].power }}"
-  device_class: power
-  state_class: measurement
-
-- platform: mqtt
-  name: Smappee fase 2 power
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ value_json.channelPowers[1].power }}"
-  device_class: power
-  state_class: measurement
-
-- platform: mqtt
-  name: Smappee fase 3 power
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ value_json.channelPowers[2].power }}"
-  device_class: power
-  state_class: measurement
-
 # remap realtime sensors for history use
 
 - platform: filter
@@ -138,158 +61,237 @@
       window_size: 00:01
 
 
-- platform: mqtt
-  name: Smappee always on
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2, default=0) }}"
-  device_class: power
-  state_class: measurement
+# - platform: mqtt
+#   name: Smappee power
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   value_template: "{{ value_json.totalPower }}"
+#   device_class: power
+#   state_class: measurement
 
 # - platform: mqtt
-#   name: Smappee average RMS Voltage
-#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
-#   unit_of_measurement: "V"
+#   name: Smappee usage today (raw)
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#   unit_of_measurement: "W"
 #   icon: "mdi:power-plug"
-#   value_template: "{{ (value_json.intervalDatas[0].averageRMSVoltage | multiply(0.1)) | round(2, default=0) }}"
+#   value_template: "{{ value_json.totalImportEnergy }}"
+#   device_class: power
+#   state_class: measurement
+
+# - platform: mqtt
+#   name: Smappee usage today
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#   unit_of_measurement: "kWh"
+#   icon: "mdi:power-plug"
+#   value_template: "{{ ((value_json.totalImportEnergy / 3600000) | float | round(2, default=0)) }}"
+#   device_class: energy
+#   state_class: measurement
 
 
-- platform: mqtt
-  name: Smappee server power
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  # value_template: "{{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}"
-  value_template: >-
-    {% if value_json.switchIntervalDatas %}
-      {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
-    {% else %}
-      0
-    {% endif %}
-  device_class: power
-  state_class: measurement
+# #- platform: mqtt
+# #  name: Smappee solar today
+# #  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+# #  unit_of_measurement: "kWh"
+# #  icon: "mdi:power-plug"
+# #  value_template: "{{ (value_json.totalExportEnergy | multiply(0.0000001)) | round(2, default=0) }}"
 
-- platform: mqtt
-  name: Smappee cinema power
-  state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
-  unit_of_measurement: "W"
-  icon: "mdi:power-plug"
-  # value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2, default=0) }}"
-  value_template: >-
-    {% if value_json.switchIntervalDatas %}
-      {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
-    {% else %}
-      0
-    {% endif %}
-  device_class: power
-  state_class: measurement
+# # - platform: mqtt
+# #   name: Smappee reactive power
+# #   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+# #   unit_of_measurement: "W"
+# #   icon: "mdi:power-plug"
+# #   value_template: "{{ value_json.totalReactivePower }}"
+# #
+# # - platform: mqtt
+# #   name: Smappee voltage
+# #   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+# #   unit_of_measurement: "V"
+# #   icon: "mdi:power-plug"
+# #   value_template: "{{ value_json.voltages[0].voltage }}"
 
 
-#
-#
-# servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated
-#
-# {
-#   "intervalDatas": [
-#     {
-#       "utcEndtime": 1564818600000,
-#       "averageRMSVoltage": 2284,
-#       "alwaysOn": 280057,
-#       "channelIntervalDatas": [
-#         {
-#           "averageRMSCurrent": 383,
-#           "averageImportRMSActivePower": 82347,
-#           "averageExportRMSActivePower": 0,
-#           "averageRMSApparentPower": 87916,
-#           "averageRMSReactivePower": 30790,
-#           "averagePowerfactor": 92,
-#           "ctInput": 0
-#         },
-#         {
-#           "averageRMSCurrent": 1447,
-#           "averageImportRMSActivePower": 315770,
-#           "averageExportRMSActivePower": 0,
-#           "averageRMSApparentPower": 331114,
-#           "averageRMSReactivePower": 99602,
-#           "averagePowerfactor": 94,
-#           "ctInput": 1
-#         },
-#         {
-#           "averageRMSCurrent": 2926,
-#           "averageImportRMSActivePower": 444272,
-#           "averageExportRMSActivePower": 0,
-#           "averageRMSApparentPower": 669583,
-#           "averageRMSReactivePower": 495811,
-#           "averagePowerfactor": 69,
-#           "ctInput": 2
-#         }
-#       ],
-#       "version": 1
-#     }
-#   ]
-# }
-#
-# servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch
-# {
-#   "switchIntervalDatas":
-#     [
-#     {
-#       "utcEndtime":1545659400000,
-#       "activePower":188883,
-#       "reactivePower":0,
-#       "version":1,
-#       "sensorId":1
-#     },
-#     {
-#       "utcEndtime":1545659400000,
-#       "activePower":46056,
-#       "reactivePower":0,
-#       "version":1,
-#       "sensorId":2
-#     }
-#     ]
-# }
+# - platform: mqtt
+#   name: Smappee fase 1 power
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   value_template: "{{ value_json.channelPowers[0].power }}"
+#   device_class: power
+#   state_class: measurement
+
+# - platform: mqtt
+#   name: Smappee fase 2 power
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   value_template: "{{ value_json.channelPowers[1].power }}"
+#   device_class: power
+#   state_class: measurement
+
+# - platform: mqtt
+#   name: Smappee fase 3 power
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   value_template: "{{ value_json.channelPowers[2].power }}"
+#   device_class: power
+#   state_class: measurement
 
 
 
-# {
-#   "totalPower": 1060,
-#   "totalReactivePower": 1171,
-#   "totalExportEnergy": 5080,
-#   "totalImportEnergy": 2250962,
-#   "monitorStatus": 0,
-#   "utcTimeStamp": 1564818307442,
-#   "channelPowers": [
-#     {
-#       "ctInput": 0,
-#       "power": 82,
-#       "exportEnergy": 270,
-#       "importEnergy": 214632,
-#       "phaseId": 0,
-#       "current": 4
-#     },
-#     {
-#       "ctInput": 1,
-#       "power": 315,
-#       "exportEnergy": 5248,
-#       "importEnergy": 837036,
-#       "phaseId": 2,
-#       "current": 14
-#     },
-#     {
-#       "ctInput": 2,
-#       "power": 663,
-#       "exportEnergy": 892,
-#       "importEnergy": 1200578,
-#       "phaseId": 1,
-#       "current": 54
-#     }
-#   ],
-#   "voltages": [
-#     {
-#       "voltage": 229,
-#       "phaseId": 0
-#     }
-#   ]
-# }
+# - platform: mqtt
+#   name: Smappee always on
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2, default=0) }}"
+#   device_class: power
+#   state_class: measurement
+
+# # - platform: mqtt
+# #   name: Smappee average RMS Voltage
+# #   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
+# #   unit_of_measurement: "V"
+# #   icon: "mdi:power-plug"
+# #   value_template: "{{ (value_json.intervalDatas[0].averageRMSVoltage | multiply(0.1)) | round(2, default=0) }}"
+
+
+# - platform: mqtt
+#   name: Smappee server power
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   # value_template: "{{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}"
+#   value_template: >-
+#     {% if value_json.switchIntervalDatas %}
+#       {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
+#     {% else %}
+#       0
+#     {% endif %}
+#   device_class: power
+#   state_class: measurement
+
+# - platform: mqtt
+#   name: Smappee cinema power
+#   state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
+#   unit_of_measurement: "W"
+#   icon: "mdi:power-plug"
+#   # value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2, default=0) }}"
+#   value_template: >-
+#     {% if value_json.switchIntervalDatas %}
+#       {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
+#     {% else %}
+#       0
+#     {% endif %}
+#   device_class: power
+#   state_class: measurement
+
+
+# #
+# #
+# # servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated
+# #
+# # {
+# #   "intervalDatas": [
+# #     {
+# #       "utcEndtime": 1564818600000,
+# #       "averageRMSVoltage": 2284,
+# #       "alwaysOn": 280057,
+# #       "channelIntervalDatas": [
+# #         {
+# #           "averageRMSCurrent": 383,
+# #           "averageImportRMSActivePower": 82347,
+# #           "averageExportRMSActivePower": 0,
+# #           "averageRMSApparentPower": 87916,
+# #           "averageRMSReactivePower": 30790,
+# #           "averagePowerfactor": 92,
+# #           "ctInput": 0
+# #         },
+# #         {
+# #           "averageRMSCurrent": 1447,
+# #           "averageImportRMSActivePower": 315770,
+# #           "averageExportRMSActivePower": 0,
+# #           "averageRMSApparentPower": 331114,
+# #           "averageRMSReactivePower": 99602,
+# #           "averagePowerfactor": 94,
+# #           "ctInput": 1
+# #         },
+# #         {
+# #           "averageRMSCurrent": 2926,
+# #           "averageImportRMSActivePower": 444272,
+# #           "averageExportRMSActivePower": 0,
+# #           "averageRMSApparentPower": 669583,
+# #           "averageRMSReactivePower": 495811,
+# #           "averagePowerfactor": 69,
+# #           "ctInput": 2
+# #         }
+# #       ],
+# #       "version": 1
+# #     }
+# #   ]
+# # }
+# #
+# # servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch
+# # {
+# #   "switchIntervalDatas":
+# #     [
+# #     {
+# #       "utcEndtime":1545659400000,
+# #       "activePower":188883,
+# #       "reactivePower":0,
+# #       "version":1,
+# #       "sensorId":1
+# #     },
+# #     {
+# #       "utcEndtime":1545659400000,
+# #       "activePower":46056,
+# #       "reactivePower":0,
+# #       "version":1,
+# #       "sensorId":2
+# #     }
+# #     ]
+# # }
+
+
+
+# # {
+# #   "totalPower": 1060,
+# #   "totalReactivePower": 1171,
+# #   "totalExportEnergy": 5080,
+# #   "totalImportEnergy": 2250962,
+# #   "monitorStatus": 0,
+# #   "utcTimeStamp": 1564818307442,
+# #   "channelPowers": [
+# #     {
+# #       "ctInput": 0,
+# #       "power": 82,
+# #       "exportEnergy": 270,
+# #       "importEnergy": 214632,
+# #       "phaseId": 0,
+# #       "current": 4
+# #     },
+# #     {
+# #       "ctInput": 1,
+# #       "power": 315,
+# #       "exportEnergy": 5248,
+# #       "importEnergy": 837036,
+# #       "phaseId": 2,
+# #       "current": 14
+# #     },
+# #     {
+# #       "ctInput": 2,
+# #       "power": 663,
+# #       "exportEnergy": 892,
+# #       "importEnergy": 1200578,
+# #       "phaseId": 1,
+# #       "current": 54
+# #     }
+# #   ],
+# #   "voltages": [
+# #     {
+# #       "voltage": 229,
+# #       "phaseId": 0
+# #     }
+# #   ]
+# # }
