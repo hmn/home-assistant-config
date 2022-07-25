@@ -317,7 +317,7 @@ mqtt:
       # value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2, default=0) }}"
       value_template: >-
         {% if value_json.switchIntervalDatas %}
-          {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
+          {{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2, default=0) }}
         {% else %}
           0
         {% endif %}
