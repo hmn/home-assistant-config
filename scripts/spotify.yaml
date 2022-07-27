@@ -8,7 +8,7 @@ spotify_chill:
     - service: media_player.volume_set
       data:
         entity_id: media_player.spotify
-        volume_level: 0.1
+        volume_level: 0.3
     - service: media_player.play_media
       data:
         entity_id: media_player.spotify
