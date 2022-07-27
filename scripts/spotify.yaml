@@ -2,17 +2,17 @@ spotify_chill:
   alias: Shuffle Chill playlist on spotify
   sequence:
     - service: media_player.select_source
+      entity_id: media_player.spotify
       data:
-        entity_id: media_player.spotify
-        source: Henrik's Echo
+        source: "Henrik's Echo"
     - service: media_player.volume_set
+      entity_id: media_player.spotify
       data:
-        entity_id: media_player.spotify
         volume_level: 0.3
     - service: media_player.play_media
+      entity_id: media_player.spotify
       data:
-        entity_id: media_player.spotify
-        media_content_id: spotify:user:114076300:playlist:6AaPTfrI1iOgH56tFkLGPc
+        media_content_id: "https://open.spotify.com/playlist/6AaPTfrI1iOgH56tFkLGPc?si=0b0e3dbd22984979"
         media_content_type: playlist
     - service: media_player.shuffle_set
       data:
@@ -21,8 +21,8 @@ spotify_chill:
     - service: media_player.media_next_track
       entity_id: media_player.spotify
     - service: media_player.volume_set
+      entity_id: media_player.spotify
       data:
-        entity_id: media_player.spotify
         volume_level: 0.1
     - service: media_player.media_play
       entity_id: media_player.spotify
@@ -33,18 +33,25 @@ spotify_default:
   alias: Switch spotify to default
   sequence:
     - service: media_player.select_source
+      entity_id: media_player.spotify
       data:
-        entity_id: media_player.spotify
-        source: Henbrik's MacBook Pro
+        source: "hmnmbp"
     - service: media_player.media_pause
       entity_id: media_player.spotify
     #- service: media_player.clear_playlist
     #  entity_id: media_player.spotify
-    - service: media_player.shuffle_set
+    - service: media_player.play_media
+      entity_id: media_player.spotify
       data:
-        entity_id: media_player.spotify
+        media_content_id: "https://open.spotify.com/playlist/3jKe3vWeY6QPSMer5SlCSs?si=83eaff64014342c7"
+        media_content_type: playlist
+    - service: media_player.shuffle_set
+      entity_id: media_player.spotify
+      data:
         shuffle: true
     - service: media_player.volume_set
+      entity_id: media_player.spotify
       data:
-        entity_id: media_player.spotify
         volume_level: 1
+    - service: media_player.media_pause
+      entity_id: media_player.spotify
