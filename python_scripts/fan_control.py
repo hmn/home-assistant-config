@@ -1,0 +1,15 @@
+
+logger.debug('Siku RV fan controller.')
+ip = data.get('ip')
+port = data.get('port', 4000)
+command = data.get('command', 'status')
+speed = data.get('speed', '01')
+direction = data.get('direction', 'alternating')
+print_option = data.get('print', 'all')
+
+logger.debug('ip: %s', ip)
+logger.debug('port: %s', port)
+logger.debug('command: %s', command)
+logger.debug('speed: %s', speed)
+logger.debug('direction: %s', direction)
+logger.debug('print_option: %s', print_option)

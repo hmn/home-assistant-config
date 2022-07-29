@@ -529,6 +529,22 @@ switch:
         command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command off --print power"
         command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print power"
         value_template: '{{ value == "01" }}'
+  - platform: template
+    swtiches:
+      bedroom_fan:
+        friendly_name: Bedroom fan power
+        turn_on:
+          service: python_script.bedroom_fan
+          data:
+            ip: 192.168.8.249
+            command: on
+            print: power
+        turn_off:
+          service: python_script.bedroom_fan
+          data:
+            ip: 192.168.8.249
+            command: off
+            print: power
 
 template:
   - sensor:
