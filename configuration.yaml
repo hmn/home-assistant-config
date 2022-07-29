@@ -547,7 +547,7 @@ switch:
             print: power
   - platform: wake_on_lan
     name: LG OLED
-    host: 192.168.8.106
+    host: 192.168.8.197
     mac: !secret lg_oled_wifi_mac
     turn_off:
       service: media_player.turn_off
