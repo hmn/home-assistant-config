@@ -1,0 +1,7 @@
+hello_world:
+  name: Hello World
+  description: Example python script
+  fields:
+    name:
+      description: Name to say Hello to
+      example: World

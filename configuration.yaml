@@ -511,6 +511,7 @@ timer:
 #eloverblik:
 #wavinsentio:
 #zaptec:
+python_script:
 
 switch:
   - platform: command_line
