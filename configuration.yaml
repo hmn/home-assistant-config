@@ -545,6 +545,16 @@ switch:
             ip: 192.168.8.249
             command: off
             print: power
+  - platform: wake_on_lan
+    switches:
+      lg_oled_wifi:
+        name: LG OLED
+        host: 192.168.8.106
+        mac: !secret lg_oled_wired_mac
+      synology:
+        name: Synology
+        host: 192.168.8.10
+        mac: 00:11:32:c6:cd:7b
 
 template:
   - sensor:
