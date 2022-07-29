@@ -1070,3 +1070,18 @@ logger:
     # custom_components.nordpool.sensor: debug
     # custom_components.nordpool.aio_price: debug
     # custom_components: debug
+    # log level for HA core
+    homeassistant.core: fatal
+    # log level for MQTT integration
+    homeassistant.components.mqtt: warning
+    # log level for all python scripts
+    homeassistant.components.python_script: info
+    # individual log level for this python script
+    homeassistant.components.python_script.fan_control.py: debug
+    # log level for a custom component
+    # custom_components.my_integration: debug
+    # log level for the `aiohttp` Python package
+    aiohttp: error
+    # log level for both 'glances_api' and 'glances' integration
+    homeassistant.components.glances: fatal
+    glances_api: fatal
