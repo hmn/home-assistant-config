@@ -557,6 +557,10 @@ switch:
     name: Synology
     host: 192.168.8.10
     mac: 00:11:32:c6:cd:7b
+    turn_off:
+      service: button.press
+      data:
+        entity_id: button.alladin_shutdown
 
 template:
   - sensor:
