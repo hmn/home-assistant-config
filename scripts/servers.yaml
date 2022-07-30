@@ -3,7 +3,6 @@ servers_on:
   sequence:
     - service: switch.turn_on
       entity_id: switch.synology
-    - delay: "00:02:30"
     - wait_for_trigger:
       - platform: state
         entity_id: switch.synology
@@ -11,6 +10,7 @@ servers_on:
         to: 'on'
       timeout: '00:05:00'
       continue_on_timeout: false
+    - delay: "00:02:30"
     - service: switch.turn_on
       entity_id: switch.genie_deployments
 
