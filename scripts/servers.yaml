@@ -1,0 +1,18 @@
+servers_on:
+  alias: Servers ON
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.genie_deployments
+    - service: switch.turn_off
+      entity_id: switch.synology
+
+servers_off:
+  alias: Servers OFF
+  sequence:
+    - condition: state
+      entity_id: input_boolean.servers_stay_on
+      state: 'off'
+    - service: switch.turn_off
+      entity_id: switch.genie_deployments
+    - service: switch.turn_off
+      entity_id: switch.synology
