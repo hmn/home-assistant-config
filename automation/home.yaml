@@ -19,3 +19,4 @@
     #    event: 1002
   action:
     - service: script.mode_home
+    - service: script.servers_on

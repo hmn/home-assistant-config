@@ -9,3 +9,4 @@
       state: 'off'
   action:
     - service: script.mode_away
+    - service: script.servers_off

@@ -26,3 +26,5 @@ mode_wakeup:
       data:
         entity_id: input_select.fan_mode
         option: 'default'
+    - service: script.turn_on
+      entity_id: script.servers_on

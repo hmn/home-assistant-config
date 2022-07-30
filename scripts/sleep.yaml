@@ -32,6 +32,8 @@ mode_sleep:
     #   data:
     #     name: default
     #     mode: dark
+    - service: script.turn_on
+      entity_id: script.servers_off
 
 sleep_timer_done:
   alias: Sleep timer done
