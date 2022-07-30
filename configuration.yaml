@@ -1105,3 +1105,5 @@ logger:
     # log level for both 'glances_api' and 'glances' integration
     homeassistant.components.glances: fatal
     glances_api: fatal
+    homeassistant.components.switch: debug
+    homeassistant.components.command_line: debug
