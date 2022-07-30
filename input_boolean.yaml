@@ -16,8 +16,9 @@ force_home_mode:
   name: Force Home mode on
   icon: mdi:home-alert
 
-# show_tado_groups:
-#   name: Show Tado Groups
+servers_stay_on:
+  name: Servers stay on
+  icon: mdi:power-standby
 
 sleep:
   name: Sleep
