@@ -533,7 +533,7 @@ switch:
         friendly_name: Genie Kube deployments
         command_on: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-start.sh'"
         command_off: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-stop.sh'"
-        command_state: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-state.sh'"
+        command_state: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-status.sh'"
   - platform: template
     switches:
       bedroom_fan:
