@@ -1,10 +1,18 @@
 servers_on:
   alias: Servers ON
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.genie_deployments
-    - service: switch.turn_off
+    - service: switch.turn_on
       entity_id: switch.synology
+    - delay: "00:02:30"
+    - wait_for_trigger:
+      - platform: state
+        entity_id: switch.synology
+        from: 'off'
+        to: 'on'
+      timeout: '00:05:00'
+      continue_on_timeout: false
+    - service: switch.turn_on
+      entity_id: switch.genie_deployments
 
 servers_off:
   alias: Servers OFF
