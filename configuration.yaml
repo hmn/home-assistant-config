@@ -550,6 +550,12 @@ switch:
             ip: 192.168.8.249
             command: off
             print: power
+      servers:
+        friendly_name: Servers
+        turn_on:
+          service: script.servers_on
+        turn_off:
+          service: script.servers_off        
   - platform: wake_on_lan
     name: LG OLED
     host: 192.168.8.197
