@@ -20,3 +20,4 @@ mode_away:
       data:
         entity_id: input_select.fan_mode
         option: 'off'
+    - service: script.servers_off

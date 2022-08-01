@@ -3,10 +3,16 @@
     - platform: state
       entity_id: person.henrik_nicolaisen
       from: 'home'
+      for:
+        minutes: 2
+    - platform: state
+      entity_id: person.henrik_nicolaisen
+      to: 'work'
+      for:
+        minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.force_home_mode
       state: 'off'
   action:
     - service: script.mode_away
-    - service: script.servers_off

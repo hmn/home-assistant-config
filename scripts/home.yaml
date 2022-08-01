@@ -15,3 +15,4 @@ mode_home:
       data:
         entity_id: input_select.fan_mode
         option: 'default'
+    - service: script.servers_on
