@@ -3,10 +3,6 @@
     - platform: state
       entity_id: input_select.fan_mode
       to: 'on'
-    - platform: state
-      entity_id: input_select.fan_mode
-      from: 'off'
-      to: 'auto'
   action:
     - service: script.turn_on
       entity_id: script.servers_on
@@ -16,10 +12,6 @@
     - platform: state
       entity_id: input_select.fan_mode
       to: 'off'
-    - platform: state
-      entity_id: input_select.fan_mode
-      from: 'on'
-      to: 'auto'
   action:
     - service: script.turn_on
       entity_id: script.servers_off
