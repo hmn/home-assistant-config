@@ -47,3 +47,12 @@ climate_mode:
     - 'cool'
     - 'heat'
     - 'off'
+
+
+server_mode:
+  name: Server mode
+  icon: mdi:dip-switch
+  options:
+    - 'auto'
+    - 'on'
+    - 'off'

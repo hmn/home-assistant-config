@@ -1,6 +1,11 @@
 servers_on:
   alias: Servers ON
   sequence:
+    - condition: state
+      entity_id: input_select.server_mode
+      state:
+        - 'auto'
+        - 'on'
     - service: switch.turn_on
       entity_id: switch.synology
     - delay: "00:02:30"
@@ -13,8 +18,10 @@ servers_off:
   alias: Servers OFF
   sequence:
     - condition: state
-      entity_id: input_boolean.servers_stay_on
-      state: 'off'
+      entity_id: input_select.server_mode
+      state:
+        - 'auto'
+        - 'off'
     - service: switch.turn_off
       entity_id: switch.genie_deployments
     - service: switch.turn_off
