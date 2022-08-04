@@ -536,7 +536,7 @@ switch:
         command_state: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-status.sh'"
   - platform: template
     switches:
-      bedroom_fan:
+      bedroom_fan_python_script:
         friendly_name: Bedroom fan power
         turn_on:
           service: python_script.bedroom_fan
