@@ -16,3 +16,4 @@ mode_home:
         entity_id: input_select.fan_mode
         option: 'default'
     - service: script.servers_on
+    - service: script.office_on

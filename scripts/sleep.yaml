@@ -5,8 +5,7 @@ mode_sleep:
     #  entity_id: timer.fan_direction_timer
     #- service: timer.cancel
     #  entity_id: timer.fan_speed_timer
-    - service: script.turn_on
-      entity_id: script.spotify_chill
+    - service: script.spotify_chill
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.sleep
@@ -32,8 +31,8 @@ mode_sleep:
     #   data:
     #     name: default
     #     mode: dark
-    - service: script.turn_on
-      entity_id: script.servers_off
+    - service: script.servers_off
+    - service: script.office_off
 
 sleep_timer_done:
   alias: Sleep timer done

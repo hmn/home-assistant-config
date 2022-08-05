@@ -15,9 +15,7 @@ mode_wakeup:
       entity_id:
         - timer.bedroom_lights
         - timer.kitchen_lights
-    - service: script.turn_on
-      data:
-        entity_id: script.spotify_default
+    - service: script.spotify_default
     #- service: frontend.set_theme
     #  data:
     #    name: default
@@ -26,5 +24,5 @@ mode_wakeup:
       data:
         entity_id: input_select.fan_mode
         option: 'default'
-    - service: script.turn_on
-      entity_id: script.servers_on
+    - service: script.servers_on
+    - service: script.office_on

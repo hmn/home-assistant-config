@@ -21,3 +21,4 @@ mode_away:
         entity_id: input_select.fan_mode
         option: 'off'
     - service: script.servers_off
+    - service: script.office_off

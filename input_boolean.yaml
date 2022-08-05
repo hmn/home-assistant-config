@@ -12,6 +12,10 @@ tv_stay_on:
   name: TV stay on
   icon: mdi:television
 
+office_stay_on:
+  name: Office stay on
+  icon: mdi:power-standby
+
 force_home_mode:
   name: Force Home mode on
   icon: mdi:home-alert
