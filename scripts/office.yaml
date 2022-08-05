@@ -2,7 +2,7 @@ office_on:
   alias: Office ON
   sequence:
     - service: switch.turn_on
-      entity_id: switch.office_wall_plug
+      entity_id: switch.office_plug
 
 office_off:
   alias: Office OFF
@@ -11,4 +11,4 @@ office_off:
       entity_id: input_boolean.office_stay_on
       state: 'off'
     - service: switch.turn_off
-      entity_id: switch.office_wall_plug
+      entity_id: switch.office_plug
