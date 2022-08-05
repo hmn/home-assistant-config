@@ -962,7 +962,7 @@ template:
           {% set total = states('sensor.smappee_power') | float(default=0.0) %}
           {% set server = states('sensor.smappee_server_power') | float(default=0.0) %}
           {% set cinema = states('sensor.smappee_cinema_power') | float(default=0.0) %}
-          {% set office = states('sensor.office_wall_plug_power') | float(default=0.0) %}
+          {% set office = states('sensor.office_plug_power') | float(default=0.0) %}
           {% set ev = states('sensor.car_charger_power') | float(default=0.0) %}
           {{ (total - (server + cinema + ev + office)) | round(1, default=0) }}
 
