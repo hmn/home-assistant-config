@@ -11,8 +11,11 @@ servers_on:
     - delay: "00:02:30"
     - wait_template: "{{ is_state('switch.synology', 'on') }}"
       timeout: '00:05:00'
+    #- service: switch.turn_on
+    #  entity_id: switch.genie_deployments
     - service: switch.turn_on
-      entity_id: switch.genie_deployments
+      entity_id: switch.genie
+
 
 servers_off:
   alias: Servers OFF
@@ -22,7 +25,11 @@ servers_off:
       state:
         - 'auto'
         - 'off'
+    #- service: switch.turn_off
+    #  entity_id: switch.genie_deployments
+    #- service: shell_command.genie_shutdown
     - service: switch.turn_off
-      entity_id: switch.genie_deployments
+      entity_id: switch.genie
+    - delay: "00:01:00"
     - service: switch.turn_off
       entity_id: switch.synology

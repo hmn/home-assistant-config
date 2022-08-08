@@ -538,11 +538,11 @@ switch:
         command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command off --print power"
         command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print power"
         value_template: '{{ value == "01" }}'
-      genie_deployments:
-        friendly_name: Genie App deployments
-        command_on: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-start.sh'"
-        command_off: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-stop.sh'"
-        command_state: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-status.sh'"
+      #genie_deployments:
+      #  friendly_name: Genie App deployments
+      #  command_on: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-start.sh'"
+      #  command_off: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-stop.sh'"
+      #  command_state: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-status.sh'"
   - platform: template
     switches:
       bedroom_fan_python_script:
@@ -565,7 +565,7 @@ switch:
         turn_on:
           service: script.servers_on
         turn_off:
-          service: script.servers_off        
+          service: script.servers_off
   - platform: wake_on_lan
     name: LG OLED
     host: 192.168.8.197
@@ -582,6 +582,12 @@ switch:
       service: button.press
       data:
         entity_id: button.alladin_shutdown
+  - platform: wake_on_lan
+    name: genie power state
+    host: 192.168.8.2
+    mac: 6c:2b:59:95:82:94
+    turn_off:
+      service: shell_command.genie_shutdown
 
 template:
   - sensor:
@@ -1049,6 +1055,7 @@ shell_command:
   livingroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command direction --direction {{direction}} --print direction  
   #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
   smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
+  genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'shutdown -h now'"
 
 light: !include light.yaml
 input_boolean: !include input_boolean.yaml
@@ -1119,7 +1126,7 @@ logger:
     # log level for a custom component
     # custom_components.my_integration: debug
     # log level for the `aiohttp` Python package
-    aiohttp: debug
+    aiohttp: error
     # log level for both 'glances_api' and 'glances' integration
     homeassistant.components.glances: fatal
     glances_api: fatal
