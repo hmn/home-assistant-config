@@ -576,8 +576,14 @@ switch:
         value_template: "{{ is_state('binary_sensor.genie', 'on') }}"
         turn_on:
           service: shell_command.genie_poweron
+          data:
+            username: !secret genie_idrac_username
+            password: !secret genie_idrac_password
         turn_off:
           service: shell_command.genie_poweroff
+          data:
+            username: !secret genie_idrac_username
+            password: !secret genie_idrac_password
   - platform: wake_on_lan
     name: LG OLED
     host: 192.168.8.197
@@ -1072,8 +1078,8 @@ shell_command:
   #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
   smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
   genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'sudo shutdown -h now homeassistant-shutdown'"
-  genie_poweroff: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u !secret genie_idrac_username -p !secret genie_idrac_password --set GracefulShutdown
-  genie_poweron: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u !secret genie_idrac_username -p !secret genie_idrac_password --set On
+  genie_poweroff: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set GracefulShutdown
+  genie_poweron: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set On
 
 light: !include light.yaml
 input_boolean: !include input_boolean.yaml
