@@ -1055,7 +1055,7 @@ shell_command:
   livingroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command direction --direction {{direction}} --print direction  
   #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
   smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
-  genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'sudo shutdown -h +1 homeassistant-shutdown'"
+  genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'sudo shutdown -h now homeassistant-shutdown'"
 
 light: !include light.yaml
 input_boolean: !include input_boolean.yaml
