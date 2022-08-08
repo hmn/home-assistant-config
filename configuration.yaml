@@ -1055,10 +1055,9 @@ template:
         state: "{{ is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') }}"
 
 binary_sensor:
-  genie:
-    - platform: ping
-      host: 192.168.8.2
-      name: "genie"
+  - platform: ping
+    host: 192.168.8.2
+    name: "genie"
 
 #python_script:
 
