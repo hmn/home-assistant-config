@@ -1064,6 +1064,8 @@ binary_sensor:
   - platform: ping
     host: 192.168.8.2
     name: "genie"
+    count: 2
+    scan_interval: 30
 
 #python_script:
 
