@@ -32,7 +32,7 @@
     - sensor.office_light_statistics
     - sensor.kitchen_light_statistics
     - sensor.bedroom_light_statistics
-  type: average_linear
+  type: mean
   #device_class: illuminance
   #state_class: measurement
 
