@@ -1101,8 +1101,8 @@ automation old: !include_dir_merge_list automation
 
 logger:
   #default: debug
-  #default: info
-  default: warning
+  default: info
+  #default: warning
   logs:
     # log level for the `aiohttp` Python package
     #aiohttp: debug
@@ -1159,3 +1159,7 @@ logger:
     glances_api: fatal
     homeassistant.components.switch: debug
     homeassistant.components.command_line: debug
+    nordpool: debug
+    custom_components.nordpool: debug
+    custom_components.nordpool.sensor: debug
+    custom_components.nordpool.aio_price: debug
