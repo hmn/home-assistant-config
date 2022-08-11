@@ -1094,9 +1094,7 @@ notify: !include notify.yaml
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 scene: !include scenes.yaml
-
 script: !include scripts.yaml
-script old: !include_dir_merge_named scripts
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation  
