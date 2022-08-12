@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: climate.bedroom
-      to: 'on'
+      to: 'cool'
   action:
     - service: input_select.select_option
       data:
@@ -88,6 +88,9 @@
     - condition: state
       entity_id: input_select.fan_mode
       state: 'off'
+    - condition: state
+      entity_id: climate.bedroom
+      state: 'off'
   action:
     - service: input_select.select_option
       data:
@@ -114,6 +117,9 @@
       entity_id: sensor.netatmo_bedroom_temperature
       above: 18
       below: 21
+    - condition: state
+      entity_id: climate.bedroom
+      state: 'off'
   action:
     - service: input_select.select_option
       data:
@@ -143,6 +149,9 @@
     - condition: numeric_state
       entity_id: sensor.netatmo_bedroom_temperature
       above: sensor.netatmo_outdoor_temperature
+    - condition: state
+      entity_id: climate.bedroom
+      state: 'off'
   action:
     - service: input_select.select_option
       data:
@@ -169,6 +178,9 @@
     - condition: numeric_state
       entity_id: sensor.netatmo_bedroom_temperature
       below: 18
+    - condition: state
+      entity_id: climate.bedroom
+      state: 'off'
   action:
     - service: input_select.select_option
       data:
@@ -202,6 +214,9 @@
         - condition: state
           entity_id: input_select.fan_mode
           state: 'eco'    
+    - condition: state
+      entity_id: climate.bedroom
+      state: 'off'
   action:
     - service: input_select.select_option
       data:
@@ -239,6 +254,9 @@
     - condition: state
       entity_id: input_select.fan_mode
       state: 'default'
+    - condition: state
+      entity_id: climate.bedroom
+      state: 'off'
   action:
     - service: input_select.select_option
       data:
@@ -296,6 +314,9 @@
       below: 18
     - condition: state
       entity_id: input_boolean.bedroom_window
+      state: 'off'
+    - condition: state
+      entity_id: climate.bedroom
       state: 'off'
     - condition: state
       entity_id: climate.bedroom
