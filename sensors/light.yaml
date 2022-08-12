@@ -25,6 +25,15 @@
   #device_class: illuminance
   #state_class: measurement
   state_characteristic: average_linear
+- platform: statistics
+  name: Entrance light statistics
+  entity_id: sensor.entrance_motion_sensor_2_light_level
+  #max_age:
+  #  minutes: 30
+  sampling_size: 10
+  #device_class: illuminance
+  #state_class: measurement
+  state_characteristic: average_linear
 
 - platform: min_max
   name: Combined light levels
