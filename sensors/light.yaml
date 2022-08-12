@@ -7,6 +7,7 @@
   #device_class: illuminance
   #state_class: measurement
   state_characteristic: average_linear
+  icon: mdi:brightness-5
 - platform: statistics
   name: Kitchen light statistics
   entity_id: sensor.kitchen_motion_sensor_1_light_level
@@ -16,6 +17,7 @@
   #device_class: illuminance
   #state_class: measurement
   state_characteristic: average_linear
+  icon: mdi:brightness-5
 - platform: statistics
   name: Bedroom light statistics
   entity_id: sensor.bedroom_motion_sensor_1_light_level
@@ -25,6 +27,7 @@
   #device_class: illuminance
   #state_class: measurement
   state_characteristic: average_linear
+  icon: mdi:brightness-5
 - platform: statistics
   name: Entrance light statistics
   entity_id: sensor.entrance_motion_sensor_2_light_level
@@ -34,6 +37,7 @@
   #device_class: illuminance
   #state_class: measurement
   state_characteristic: average_linear
+  icon: mdi:brightness-5
 
 - platform: min_max
   name: Combined light levels
@@ -42,6 +46,7 @@
     - sensor.kitchen_light_statistics
     - sensor.bedroom_light_statistics
   type: mean
+  icon: mdi:brightness-7
   #device_class: illuminance
   #state_class: measurement
 
