@@ -7,8 +7,8 @@
   round: 2
 
 - platform: integration
-  source: sensor.smappee_server_power
-  name: Server spent
+  source: sensor.smappee_ac_power
+  name: AC spent
   unit_prefix: k
   round: 2
 
