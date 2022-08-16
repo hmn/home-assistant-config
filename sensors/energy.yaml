@@ -13,8 +13,8 @@
   round: 2
 
 - platform: integration
-  source: sensor.smappee_bathroom_fan_power
-  name: Bathroom fan spent
+  source: sensor.smappee_controller_power
+  name: Smappee controller spent
   unit_prefix: k
   round: 2
 

@@ -312,7 +312,7 @@ mqtt:
       device_class: power
       state_class: measurement
 
-    - name: Smappee bathroom fan power
+    - name: Smappee controller power
       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
       unit_of_measurement: "W"
       icon: "mdi:power-plug"
@@ -996,14 +996,15 @@ template:
         state: >
           {% set total = states('sensor.smappee_power') | float(default=0.0) %}
           {% set ac = states('sensor.smappee_ac_power') | float(default=0.0) %}
-          {% set bathroon_fan = states('sensor.smappee_bathroom_fan_power') | float(default=0.0) %}
+          {% set smappee = states('sensor.smappee_controller_power') | float(default=0.0) %}
           {% set office = states('sensor.office_plug_power') | float(default=0.0) %}
           {% set server = states('sensor.server_plug_power') | float(default=0.0) %}
           {% set cinema = states('sensor.cinema_plug_power') | float(default=0.0) %}
+          {% set bathroom_fan = states('sensor.bathroom_fan_power') | float(default=0.0) %}
           {% set entrance = states('sensor.entrance_plug_power') | float(default=0.0) %}
           {% set bedroom = states('sensor.bedroom_plug_power') | float(default=0.0) %}
           {% set ev = states('sensor.car_charger_power') | float(default=0.0) %}
-          {{ (total - (ac + bathroom_fan + server + cinema + ev + office + entrance + bedroom)) | round(1, default=0) }}
+          {{ (total - (ac + bathroom_fan + smappee + server + cinema + ev + office + entrance + bedroom)) | round(1, default=0) }}
 
       - name: "Kitchen Temperature"
         device_class: "temperature"
