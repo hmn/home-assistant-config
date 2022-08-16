@@ -1046,6 +1046,12 @@ template:
           {% set count = count + 1 if is_number(ac) and netatmo > 0.0 else count %}
           {{ ((netatmo + motion1 + ac) / count) | round(1, default=0) }}
 
+      - name: Bathroom humidity
+        device_class: "humidity"
+        unit_of_measurement: percent
+        state_class: "measurement"
+        state: '{{ state_attr("climate.badevaerelse", "current_humidity") }}'
+
   - binary_sensor:
       - name: "Car charger firmware"
         #icon: mdi:update
