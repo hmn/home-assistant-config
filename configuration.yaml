@@ -1052,6 +1052,12 @@ template:
         state_class: "measurement"
         state: '{{ state_attr("climate.badevaerelse", "current_humidity") }}'
 
+      - name: Bathroom temperature
+        device_class: "temperature"
+        unit_of_measurement: '°C'
+        state_class: "measurement"
+        state: '{{ state_attr("climate.badevaerelse", "current_temperature_air") }}'
+
   - binary_sensor:
       - name: "Car charger firmware"
         #icon: mdi:update
