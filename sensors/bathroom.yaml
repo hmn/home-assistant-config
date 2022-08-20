@@ -1,0 +1,6 @@
+- platform: statistics
+  name: "Bathroom humidity mean over last 24 hours"
+  entity_id: sensor.4_in_1_multisensor_humidity
+  state_characteristic: mean
+  max_age:
+    hours: 24
