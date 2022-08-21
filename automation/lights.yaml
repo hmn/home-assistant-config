@@ -1,393 +1,245 @@
-- alias: "Kitchen lights timer started"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.started
-      event_data:
-        entity_id: timer.kitchen_lights
-    - platform: event
-      event_type: timer.restarted
-      event_data:
-        entity_id: timer.kitchen_lights
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.kitchen_light_statistics
-      below: 80
-  action:
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.kitchen_lights
-
-- alias: "Kitchen lights timer done"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.cancelled
-      event_data:
-        entity_id: timer.kitchen_lights
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.kitchen_lights
-  action:
-    service: light.turn_off
-    data:
-      entity_id:
-        - light.kitchen_lights
-
-- alias: "Motion in Kitchen"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_motion_sensor_1_motion
-      to: 'on'
-    - platform: state
-      entity_id: input_boolean.kitchen_motion
-      to: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-    - service: timer.start
-      entity_id: timer.office_lights
-
-- alias: "Motion in Kitchen (timer)"
-  mode: queued
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.kitchen_motion_sensor_1_motion
-        state: 'on'
-      - condition: state
-        entity_id: input_boolean.kitchen_motion
-        state: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-    - service: timer.start
-      entity_id: timer.office_lights
-
-
-- alias: "Office lights timer started"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.started
-      event_data:
-        entity_id: timer.office_lights
-    - platform: event
-      event_type: timer.restarted
-      event_data:
-        entity_id: timer.office_lights
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.office_light_statistics
-      below: 80
-  action:
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.office_lights
-          - light.living_room_lights
-    - service: scene.turn_on
-      target:
-        entity_id: scene.cinema_hass
-
-- alias: "Office lights timer done"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.cancelled
-      event_data:
-        entity_id: timer.office_lights
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.office_lights
-  action:
-    - service: light.turn_off
-      data:
-        entity_id:
-          - light.office_lights
-          - light.cinema_lights
-          - light.living_room_lights
-
-- alias: "Motion in Office"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.office_motion_sensor_1_motion
-      to: 'on'
-    - platform: state
-      entity_id: input_boolean.office_motion
-      to: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.office_lights
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-
-- alias: "Motion in Office (timer)"
-  mode: queued
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: binary_sensor.office_motion_sensor_1_motion
-          state: 'on'
-        - condition: state
-          entity_id: input_boolean.office_motion
-          state: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.kitchen_lights
-    - service: timer.start
-      entity_id: timer.office_lights
-
-
-- alias: "Bedroom lights timer started"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.started
-      event_data:
-        entity_id: timer.bedroom_lights
-    - platform: event
-      event_type: timer.restarted
-      event_data:
-        entity_id: timer.bedroom_lights
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.bedroom_light_statistics
-      below: 75
-  action:
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.bedroom_lights
-
-- alias: "Bedroom lights timer done"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.bedroom_lights
-    - platform: event
-      event_type: timer.cancelled
-      event_data:
-        entity_id: timer.bedroom_lights
-  action:
-    service: light.turn_off
-    data:
-      entity_id:
-        - light.bedroom_lights
-
-- alias: "Motion in Bedroom"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.bedroom_motion_sensor_1_motion
-      to: 'on'
-    - platform: state
-      entity_id: input_boolean.bedroom_motion
-      to: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.bedroom_lights
-
-- alias: "Motion in Bedroom (timer)"
-  mode: queued
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: input_boolean.bedroom_motion
-          state: 'on'
-        - condition: state
-          entity_id: binary_sensor.bedroom_motion_sensor_1_motion
-          state: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.bedroom_lights
-
-# - alias: "Bedroom enought light detected"
+# - alias: "Kitchen lights timer started"
+#   mode: queued
 #   trigger:
-#     - platform: numeric_state
-#       entity_id: sensor.bedroom_light_statistics
-#       above: 90
+#     - platform: event
+#       event_type: timer.started
+#       event_data:
+#         entity_id: timer.kitchen_lights
+#     - platform: event
+#       event_type: timer.restarted
+#       event_data:
+#         entity_id: timer.kitchen_lights
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.home
+#       state: 'on'
+#     - condition: numeric_state
+#       entity_id: sensor.kitchen_light_statistics
+#       below: 80
 #   action:
-#     service: timer.cancel
-#     entity_id:
-#       - timer.bedroom_lights
+#     - service: light.turn_on
+#       data:
+#         entity_id:
+#           - light.kitchen_lights
+
+# - alias: "Kitchen lights timer done"
+#   mode: queued
+#   trigger:
+#     - platform: event
+#       event_type: timer.cancelled
+#       event_data:
+#         entity_id: timer.kitchen_lights
+#     - platform: event
+#       event_type: timer.finished
+#       event_data:
+#         entity_id: timer.kitchen_lights
+#   action:
+#     service: light.turn_off
+#     data:
+#       entity_id:
+#         - light.kitchen_lights
 
 
-- alias: "Entrance lights timer started"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.started
-      event_data:
-        entity_id: timer.entrance_lights
-    - platform: event
-      event_type: timer.restarted
-      event_data:
-        entity_id: timer.entrance_lights
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.entrance_light_statistics
-      below: 80
-  action:
-    - service: light.turn_on
-      data:
-        entity_id:
-          - light.entrance_lights
+# - alias: "Office lights timer started"
+#   mode: queued
+#   trigger:
+#     - platform: event
+#       event_type: timer.started
+#       event_data:
+#         entity_id: timer.office_lights
+#     - platform: event
+#       event_type: timer.restarted
+#       event_data:
+#         entity_id: timer.office_lights
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.home
+#       state: 'on'
+#     - condition: numeric_state
+#       entity_id: sensor.office_light_statistics
+#       below: 80
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id:
+#           - light.office_lights
+#           - light.living_room_lights
+#     - service: scene.turn_on
+#       target:
+#         entity_id: scene.cinema_hass
 
-- alias: "Entrance lights timer done"
-  mode: queued
-  trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.entrance_lights
-    - platform: event
-      event_type: timer.cancelled
-      event_data:
-        entity_id: timer.entrance_lights
-  action:
-    service: light.turn_off
-    data:
-      entity_id:
-        - light.entrance_lights
-
-- alias: "Motion in Entrance"
-  mode: queued
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_1_motion
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.entrance_motion_sensor_2_motion
-      to: 'on'
-    - platform: state
-      entity_id: input_boolean.entrance_motion
-      to: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.entrance_lights
-
-- alias: "Motion in Entrance (timer)"
-  mode: queued
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.entrance_motion_sensor_1_motion
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.entrance_motion_sensor_2_motion
-        state: 'on'
-      - condition: state
-        entity_id: input_boolean.entrance_motion
-        state: 'on'
-  action:
-    - service: timer.start
-      entity_id: timer.entrance_lights
+# - alias: "Office lights timer done"
+#   mode: queued
+#   trigger:
+#     - platform: event
+#       event_type: timer.cancelled
+#       event_data:
+#         entity_id: timer.office_lights
+#     - platform: event
+#       event_type: timer.finished
+#       event_data:
+#         entity_id: timer.office_lights
+#   action:
+#     - service: light.turn_off
+#       data:
+#         entity_id:
+#           - light.office_lights
+#           - light.cinema_lights
+#           - light.living_room_lights
 
 
-- alias: "Outdoor light turn on"
-  mode: queued
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: numeric_state
-      entity_id: sensor.office_light_statistics
-      below: 35
-    - condition: state
-      entity_id: light.outdoor_lights
-      state: 'off'
-  action:
-    - service: light.turn_on
-      entity_id: light.outdoor_lights
+# - alias: "Bedroom lights timer started"
+#   mode: queued
+#   trigger:
+#     - platform: event
+#       event_type: timer.started
+#       event_data:
+#         entity_id: timer.bedroom_lights
+#     - platform: event
+#       event_type: timer.restarted
+#       event_data:
+#         entity_id: timer.bedroom_lights
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.home
+#       state: 'on'
+#     - condition: numeric_state
+#       entity_id: sensor.bedroom_light_statistics
+#       below: 75
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id:
+#           - light.bedroom_lights
 
-- alias: "Outdoor light turn off when sleeping"
-  mode: queued
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'on'
-    - condition: time
-      before: '05:00:00'
-      after: '23:00:00'
-    - condition: state
-      entity_id: light.outdoor_lights
-      state: 'on'
-  action:
-    - service: light.turn_off
-      entity_id: light.outdoor_lights
+# - alias: "Bedroom lights timer done"
+#   mode: queued
+#   trigger:
+#     - platform: event
+#       event_type: timer.finished
+#       event_data:
+#         entity_id: timer.bedroom_lights
+#     - platform: event
+#       event_type: timer.cancelled
+#       event_data:
+#         entity_id: timer.bedroom_lights
+#   action:
+#     service: light.turn_off
+#     data:
+#       entity_id:
+#         - light.bedroom_lights
 
-- alias: "Outdoor light turn off"
-  mode: queued
-  trigger:
-    - platform: time_pattern
-      minutes: "/1"
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'above_horizon'
-    - condition: numeric_state
-      entity_id: sensor.office_light_statistics
-      above: 8
-    - condition: state
-      entity_id: light.outdoor_lights
-      state: 'on'
-  action:
-    - service: light.turn_off
-      entity_id: light.outdoor_lights
+
+# - alias: "Entrance lights timer started"
+#   mode: queued
+#   trigger:
+#     - platform: event
+#       event_type: timer.started
+#       event_data:
+#         entity_id: timer.entrance_lights
+#     - platform: event
+#       event_type: timer.restarted
+#       event_data:
+#         entity_id: timer.entrance_lights
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.home
+#       state: 'on'
+#     - condition: numeric_state
+#       entity_id: sensor.entrance_light_statistics
+#       below: 80
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id:
+#           - light.entrance_lights
+
+# - alias: "Entrance lights timer done"
+#   mode: queued
+#   trigger:
+#     - platform: event
+#       event_type: timer.finished
+#       event_data:
+#         entity_id: timer.entrance_lights
+#     - platform: event
+#       event_type: timer.cancelled
+#       event_data:
+#         entity_id: timer.entrance_lights
+#   action:
+#     service: light.turn_off
+#     data:
+#       entity_id:
+#         - light.entrance_lights
+
+
+# - alias: "Outdoor light turn on"
+#   mode: queued
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/1"
+#   condition:
+#     - condition: state
+#       entity_id: sun.sun
+#       state: 'below_horizon'
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: numeric_state
+#       entity_id: sensor.office_light_statistics
+#       below: 35
+#     - condition: state
+#       entity_id: light.outdoor_lights
+#       state: 'off'
+#   action:
+#     - service: light.turn_on
+#       entity_id: light.outdoor_lights
+
+# - alias: "Outdoor light turn off when sleeping"
+#   mode: queued
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/1"
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'on'
+#     - condition: time
+#       before: '05:00:00'
+#       after: '23:00:00'
+#     - condition: state
+#       entity_id: light.outdoor_lights
+#       state: 'on'
+#   action:
+#     - service: light.turn_off
+#       entity_id: light.outdoor_lights
+
+# - alias: "Outdoor light turn off"
+#   mode: queued
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/1"
+#   condition:
+#     - condition: state
+#       entity_id: sun.sun
+#       state: 'above_horizon'
+#     - condition: numeric_state
+#       entity_id: sensor.office_light_statistics
+#       above: 8
+#     - condition: state
+#       entity_id: light.outdoor_lights
+#       state: 'on'
+#   action:
+#     - service: light.turn_off
+#       entity_id: light.outdoor_lights
