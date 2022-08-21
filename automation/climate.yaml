@@ -1,339 +1,351 @@
-- alias: "Bedroom climate turned on"
-  trigger:
-    - platform: state
-      entity_id: climate.bedroom
-      to: 'cool'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'off'
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.climate_mode
-        option: 'cool'
+# - id: '1651430399302'
+#   alias: "Bedroom climate turned on"
+#   trigger:
+#     - platform: state
+#       entity_id: climate.bedroom
+#       to: 'cool'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'off'
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.climate_mode
+#         option: 'cool'
 
-- alias: "Bedroom window open"
-  trigger:
-    - platform: time_pattern
-      minutes: "/15"
-    - platform: state
-      entity_id: input_boolean.bedroom_window
-      to: 'on'
-      for:
-        minutes: 5
-  condition:
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'on'
-      for:
-        minutes: 2
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.fan_mode
-          state: 'off'
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.climate_mode
-          state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'off'
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.climate_mode
-        option: 'off'
+# - id: '1651430399303'
+#   alias: "Bedroom window open"
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/15"
+#     - platform: state
+#       entity_id: input_boolean.bedroom_window
+#       to: 'on'
+#       for:
+#         minutes: 5
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'on'
+#       for:
+#         minutes: 2
+#     - condition: not
+#       conditions:
+#         - condition: state
+#           entity_id: input_select.fan_mode
+#           state: 'off'
+#     - condition: not
+#       conditions:
+#         - condition: state
+#           entity_id: input_select.climate_mode
+#           state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'off'
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.climate_mode
+#         option: 'off'
 
-- alias: "Bedroom door open and window open"
-  trigger:
-    - platform: time_pattern
-      minutes: "/15"
-    - platform: state
-      entity_id: input_boolean.bedroom_door
-      to: 'on'
-      for:
-        minutes: 5
-  condition:
-    - condition: state
-      entity_id: input_boolean.bedroom_door
-      state: 'on'
-      for:
-        minutes: 2
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'on'
-      for:
-        minutes: 2
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.fan_mode
-          state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'off'
+# - id: '1651430399304'
+#   alias: "Bedroom door open and window open"
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/15"
+#     - platform: state
+#       entity_id: input_boolean.bedroom_door
+#       to: 'on'
+#       for:
+#         minutes: 5
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.bedroom_door
+#       state: 'on'
+#       for:
+#         minutes: 2
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'on'
+#       for:
+#         minutes: 2
+#     - condition: not
+#       conditions:
+#         - condition: state
+#           entity_id: input_select.fan_mode
+#           state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'off'
 
-- alias: "Bedroom window closed"
-  trigger:
-    - platform: state
-      entity_id: input_boolean.bedroom_window
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: input_select.fan_mode
-      state: 'off'
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'default'
+# - id: '1651430399305'
+#   alias: "Bedroom window closed"
+#   trigger:
+#     - platform: state
+#       entity_id: input_boolean.bedroom_window
+#       to: 'off'
+#   condition:
+#     - condition: state
+#       entity_id: input_select.fan_mode
+#       state: 'off'
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'default'
 
-- alias: "Bedroom set default sleep mode"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.netatmo_bedroom_temperature
-      above: 18
-      below: 21
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'off'
-    - condition: state
-      entity_id: timer.fan_direction_timer
-      state: idle
-    - condition: numeric_state
-      entity_id: sensor.netatmo_bedroom_temperature
-      above: 18
-      below: 21
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'sleep'
+# - id: '1651430399306'
+#   alias: "Bedroom set default sleep mode"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_bedroom_temperature
+#       above: 18
+#       below: 21
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'on'
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'off'
+#     - condition: state
+#       entity_id: timer.fan_direction_timer
+#       state: idle
+#     - condition: numeric_state
+#       entity_id: sensor.netatmo_bedroom_temperature
+#       above: 18
+#       below: 21
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'sleep'
 
-- alias: "Bedroom warm when sleeping"
-  trigger:
-    - platform: time_pattern
-      minutes: "/30"
-    - platform: numeric_state
-      entity_id: sensor.netatmo_bedroom_temperature
-      above: 21
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'off'
-    - condition: state
-      entity_id: timer.fan_direction_timer
-      state: idle
-    - condition: numeric_state
-      entity_id: sensor.netatmo_bedroom_temperature
-      above: 21
-    - condition: numeric_state
-      entity_id: sensor.netatmo_bedroom_temperature
-      above: sensor.netatmo_outdoor_temperature
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'sleep warm'
+# - id: '1651430399307'
+#   alias: "Bedroom warm when sleeping"
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/30"
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_bedroom_temperature
+#       above: 21
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'on'
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'off'
+#     - condition: state
+#       entity_id: timer.fan_direction_timer
+#       state: idle
+#     - condition: numeric_state
+#       entity_id: sensor.netatmo_bedroom_temperature
+#       above: 21
+#     - condition: numeric_state
+#       entity_id: sensor.netatmo_bedroom_temperature
+#       above: sensor.netatmo_outdoor_temperature
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'sleep warm'
 
-- alias: "Bedroom cold when sleeping"
-  trigger:
-    - platform: time_pattern
-      minutes: "/30"
-    - platform: numeric_state
-      entity_id: sensor.netatmo_bedroom_temperature
-      below: 18
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'off'
-    - condition: state
-      entity_id: timer.fan_direction_timer
-      state: idle
-    - condition: numeric_state
-      entity_id: sensor.netatmo_bedroom_temperature
-      below: 18
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'sleep cold'
-
-
-- alias: "Change fan mode to default if needed"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.netatmo_bedroom_humidity
-      above: 75
-    - platform: numeric_state
-      entity_id: sensor.netatmo_bedroom_co2
-      above: 1300
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'off'
-    - condition: state
-      entity_id: timer.fan_direction_timer
-      state: idle
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: input_select.fan_mode
-          state: 'off'
-        - condition: state
-          entity_id: input_select.fan_mode
-          state: 'eco'    
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'default'
+# - id: '1651430399308'
+#   alias: "Bedroom cold when sleeping"
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/30"
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_bedroom_temperature
+#       below: 18
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'on'
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'off'
+#     - condition: state
+#       entity_id: timer.fan_direction_timer
+#       state: idle
+#     - condition: numeric_state
+#       entity_id: sensor.netatmo_bedroom_temperature
+#       below: 18
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'sleep cold'
 
 
-- alias: "Change fan mode to eco when bedroom door is open"
-  trigger:
-    - platform: time_pattern
-      minutes: "/30"
-    - platform: state
-      entity_id: input_boolean.bedroom_door
-      to: 'on'
-      for:
-        minutes: 5
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.bedroom_door
-      state: 'on'
-      for:
-        minutes: 5
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'off'
-    - condition: state
-      entity_id: timer.fan_direction_timer
-      state: idle
-    - condition: state
-      entity_id: input_select.fan_mode
-      state: 'default'
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'eco'
+# - id: '1651430399309'
+#   alias: "Change fan mode to default if needed"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_bedroom_humidity
+#       above: 75
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_bedroom_co2
+#       above: 1300
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'off'
+#     - condition: state
+#       entity_id: timer.fan_direction_timer
+#       state: idle
+#     - condition: or
+#       conditions:
+#         - condition: state
+#           entity_id: input_select.fan_mode
+#           state: 'off'
+#         - condition: state
+#           entity_id: input_select.fan_mode
+#           state: 'eco'    
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'default'
 
 
-- alias: "Change fan mode to off if no fans needed"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.netatmo_bedroom_humidity
-      below: 50
-    - platform: numeric_state
-      entity_id: sensor.netatmo_kitchen_co2
-      below: 950
-    - platform: numeric_state
-      entity_id: sensor.netatmo_bedroom_co2
-      below: 950
-  condition:
-    - condition: state
-      entity_id: input_boolean.sleep
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.home
-      state: 'off'
-    - condition: state
-      entity_id: timer.fan_direction_timer
-      state: idle
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.fan_mode
-          state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.fan_mode
-        option: 'off'
+# - id: '1651430399310'
+#   alias: "Change fan mode to eco when bedroom door is open"
+#   trigger:
+#     - platform: time_pattern
+#       minutes: "/30"
+#     - platform: state
+#       entity_id: input_boolean.bedroom_door
+#       to: 'on'
+#       for:
+#         minutes: 5
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.home
+#       state: 'on'
+#     - condition: state
+#       entity_id: input_boolean.bedroom_door
+#       state: 'on'
+#       for:
+#         minutes: 5
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'off'
+#     - condition: state
+#       entity_id: timer.fan_direction_timer
+#       state: idle
+#     - condition: state
+#       entity_id: input_select.fan_mode
+#       state: 'default'
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'eco'
 
 
-- alias: "Change climate mode based on outside temperature low"
-  trigger:
-    - platform: state
-      entity_id: input_boolean.bedroom_window
-      to: 'off'
-    - platform: numeric_state
-      entity_id: sensor.netatmo_outdoor_temperature
-      below: 18
-    - platform: state
-      entity_id: climate.bedroom
-      to: 'off'
-  condition:
-    - condition: numeric_state
-      entity_id: sensor.netatmo_outdoor_temperature
-      below: 18
-    - condition: state
-      entity_id: input_boolean.bedroom_window
-      state: 'off'
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-    - condition: state
-      entity_id: climate.bedroom
-      state: 'off'
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.climate_mode
-        option: 'heat'
+# - id: '1651430399311'
+#   alias: "Change fan mode to off if no fans needed"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_bedroom_humidity
+#       below: 50
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_kitchen_co2
+#       below: 950
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_bedroom_co2
+#       below: 950
+#   condition:
+#     - condition: state
+#       entity_id: input_boolean.sleep
+#       state: 'off'
+#     - condition: state
+#       entity_id: input_boolean.home
+#       state: 'off'
+#     - condition: state
+#       entity_id: timer.fan_direction_timer
+#       state: idle
+#     - condition: not
+#       conditions:
+#         - condition: state
+#           entity_id: input_select.fan_mode
+#           state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.fan_mode
+#         option: 'off'
 
-- alias: "Change climate mode based on outside temperature high"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.netatmo_outdoor_temperature
-      above: 18
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.climate_mode
-        option: 'off'
+
+# - id: '1651430399312'
+#   alias: "Change climate mode based on outside temperature low"
+#   trigger:
+#     - platform: state
+#       entity_id: input_boolean.bedroom_window
+#       to: 'off'
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_outdoor_temperature
+#       below: 18
+#     - platform: state
+#       entity_id: climate.bedroom
+#       to: 'off'
+#   condition:
+#     - condition: numeric_state
+#       entity_id: sensor.netatmo_outdoor_temperature
+#       below: 18
+#     - condition: state
+#       entity_id: input_boolean.bedroom_window
+#       state: 'off'
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#     - condition: state
+#       entity_id: climate.bedroom
+#       state: 'off'
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.climate_mode
+#         option: 'heat'
+
+# - id: '1651430399313'
+#   alias: "Change climate mode based on outside temperature high"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.netatmo_outdoor_temperature
+#       above: 18
+#   action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.climate_mode
+#         option: 'off'

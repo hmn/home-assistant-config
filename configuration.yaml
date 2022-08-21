@@ -1125,7 +1125,7 @@ scene: !include scenes.yaml
 script: !include scripts.yaml
 
 automation: !include automations.yaml
-automation old: !include_dir_merge_list automation  
+#automation old: !include_dir_merge_list automation  
 
 logger:
   #default: debug
