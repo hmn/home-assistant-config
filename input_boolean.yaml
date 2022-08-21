@@ -28,21 +28,21 @@ home:
   name: Home
   icon: mdi:home
 
-kitchen_motion:
-  name: Kitchen motion
-  icon: mdi:motion-sensor
+# kitchen_motion:
+#   name: Kitchen motion
+#   icon: mdi:motion-sensor
 
-office_motion:
-  name: Office motion
-  icon: mdi:motion-sensor
+# office_motion:
+#   name: Office motion
+#   icon: mdi:motion-sensor
 
-entrance_motion:
-  name: Entrance motion
-  icon: mdi:motion-sensor
+# entrance_motion:
+#   name: Entrance motion
+#   icon: mdi:motion-sensor
 
-bedroom_motion:
-  name: Bedroom motion
-  icon: mdi:motion-sensor
+# bedroom_motion:
+#   name: Bedroom motion
+#   icon: mdi:motion-sensor
 
 bedroom_window:
   name: Bedroom window
