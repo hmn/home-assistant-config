@@ -1114,12 +1114,445 @@ shell_command:
   genie_poweroff: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set GracefulShutdown
   genie_poweron: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set On
 
-light: !include light.yaml
-input_boolean: !include input_boolean.yaml
-input_number: !include input_number.yaml
-input_select: !include input_select.yaml
-notify: !include notify.yaml
-sensor: !include_dir_merge_list sensors
+sensor:
+  # bathroom
+  - platform: statistics
+    name: "Bathroom humidity mean over last 24 hours"
+    entity_id: sensor.4_in_1_multisensor_humidity
+    state_characteristic: mean
+    max_age:
+      hours: 24
+    sampling_size: 50
+    precision: 1
+
+  - platform: statistics
+    name: "Bathroom humidity change over 1 hour"
+    entity_id: sensor.4_in_1_multisensor_humidity
+    state_characteristic: change
+    max_age:
+      minutes: 60
+    sampling_size: 50
+    precision: 1
+
+  - platform: statistics
+    name: "Bathroom humidity median over last 24 hours"
+    entity_id: sensor.4_in_1_multisensor_humidity
+    state_characteristic: median
+    max_age:
+      hours: 24
+    sampling_size: 50
+    precision: 1
+
+  - platform: statistics
+    name: "Bathroom humidity over last 24 hours"
+    entity_id: sensor.4_in_1_multisensor_humidity
+    state_characteristic: average_linear
+    max_age:
+      hours: 24
+    sampling_size: 50
+    precision: 1
+
+
+  - platform: statistics
+    name: "Netatmo Bathroom humidity mean over last 24 hours"
+    entity_id: sensor.netatmo_bathroom_humidity
+    state_characteristic: mean
+    max_age:
+      hours: 24
+    sampling_size: 50
+    precision: 1
+
+  - platform: statistics
+    name: "Netatmo Bathroom humidity change over 1 hour"
+    entity_id: sensor.netatmo_bathroom_humidity
+    state_characteristic: change
+    max_age:
+      minutes: 60
+    sampling_size: 50
+    precision: 1
+
+  - platform: statistics
+    name: "Netatmo Bathroom humidity median over last 24 hours"
+    entity_id: sensor.netatmo_bathroom_humidity
+    state_characteristic: median
+    max_age:
+      hours: 24
+    sampling_size: 50
+    precision: 1
+
+  - platform: statistics
+    name: "Netatmo Bathroom humidity over last 24 hours"
+    entity_id: sensor.netatmo_bathroom_humidity
+    state_characteristic: average_linear
+    max_age:
+      hours: 24
+    sampling_size: 50
+    precision: 1
+
+  # energy
+  # power conversion
+  # https://www.home-assistant.io/integrations/integration/#energy
+  - platform: integration
+    source: sensor.smappee_power
+    name: Energy spent
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.smappee_ac_power
+    name: AC spent
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.smappee_controller_power
+    name: Smappee controller spent
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.car_charger_power
+    name: Car charger spent
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.bedroom_plug_power
+    name: Bedroom plug spent
+    unit_prefix: k
+    round: 2
+
+  # eloverblik
+  - platform: statistics
+    entity_id: sensor.eloverblik_energy_total
+    name: Eloverblik Monthly Statistics
+    max_age:
+        days: 30
+    state_characteristic: mean
+
+  # fans
+  - platform: command_line
+    name: Livingroom fan speed
+    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print speed"
+    scan_interval: 300
+
+  - platform: command_line
+    name: Livingroom fan direction
+    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print direction"
+    scan_interval: 300
+
+  - platform: command_line
+    name: Bedroom fan speed
+    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print speed"
+    scan_interval: 300
+
+  - platform: command_line
+    name: Bedroom fan direction
+    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print direction"
+    scan_interval: 300
+
+  # light
+  - platform: statistics
+    name: Office light statistics
+    entity_id: sensor.office_motion_sensor_1_light_level
+    #max_age:
+    #  minutes: 30
+    sampling_size: 10
+    #device_class: illuminance
+    #state_class: measurement
+    state_characteristic: average_linear
+  - platform: statistics
+    name: Kitchen light statistics
+    entity_id: sensor.kitchen_motion_sensor_1_light_level
+    #max_age:
+    #  minutes: 30
+    sampling_size: 10
+    #device_class: illuminance
+    #state_class: measurement
+    state_characteristic: average_linear
+  - platform: statistics
+    name: Bedroom light statistics
+    entity_id: sensor.bedroom_motion_sensor_1_light_level
+    #max_age:
+    #  minutes: 30
+    sampling_size: 10
+    #device_class: illuminance
+    #state_class: measurement
+    state_characteristic: average_linear
+  - platform: statistics
+    name: Entrance light statistics
+    entity_id: sensor.entrance_motion_sensor_2_light_level
+    #max_age:
+    #  minutes: 30
+    sampling_size: 10
+    #device_class: illuminance
+    #state_class: measurement
+    state_characteristic: average_linear
+
+  - platform: min_max
+    name: Combined light levels
+    entity_ids:
+      - sensor.office_light_statistics
+      - sensor.kitchen_light_statistics
+      - sensor.bedroom_light_statistics
+    type: mean
+    #device_class: illuminance
+    #state_class: measurement
+
+  # simple
+  - platform: season
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_utc'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+
+  # smappee
+  # remap realtime sensors for history use
+
+  - platform: filter
+    name: "Smappee power (moving average)"
+    entity_id: sensor.smappee_power
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 10
+      - filter: time_simple_moving_average
+        window_size: 00:05
+        precision: 0
+      - filter: time_throttle
+        window_size: 00:01
+
+  - platform: filter
+    name: "Smappee fase 1 power (moving average)"
+    entity_id: sensor.smappee_fase_1_power
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 10
+      - filter: time_simple_moving_average
+        window_size: 00:05
+        precision: 0
+      - filter: time_throttle
+        window_size: 00:01
+
+  - platform: filter
+    name: "Smappee fase 2 power (moving average)"
+    entity_id: sensor.smappee_fase_2_power
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 10
+      - filter: time_simple_moving_average
+        window_size: 00:05
+        precision: 0
+      - filter: time_throttle
+        window_size: 00:01
+
+  - platform: filter
+    name: "Smappee fase 3 power (moving average)"
+    entity_id: sensor.smappee_fase_3_power
+    filters:
+      - filter: outlier
+        window_size: 4
+        radius: 2.0
+      - filter: lowpass
+        time_constant: 10
+      - filter: time_simple_moving_average
+        window_size: 00:05
+        precision: 0
+      - filter: time_throttle
+        window_size: 00:01
+
+
+light:
+  - platform: group
+    name: Kitchen lights
+    entities:
+      - light.kitchen
+
+  - platform: group
+    name: Entrance lights
+    entities:
+      - light.entrance
+
+  - platform: group
+    name: Bedroom Lights
+    entities:
+      - light.bedroom
+
+  - platform: group
+    name: Office lights
+    entities:
+      - light.office
+
+  - platform: group
+    name: Cinema lights
+    entities:
+      - light.cinema
+
+  - platform: group
+    name: Living room lights
+    entities:
+      - light.living_room
+
+  - platform: group
+    name: Outdoor lights
+    entities:
+      - light.outdoor
+
+  - platform: group
+    name: All lights
+    entities:
+      - light.living_room
+      - light.office
+      - light.cinema
+      - light.bedroom
+      - light.entrance
+      - light.kitchen
+
+
+input_boolean:
+  power_stay_on:
+    name: Power stay on
+    icon: mdi:power-standby
+
+  tv_stay_on:
+    name: TV stay on
+    icon: mdi:television
+
+  office_stay_on:
+    name: Office stay on
+    icon: mdi:power-standby
+
+  force_home_mode:
+    name: Force Home mode on
+    icon: mdi:home-alert
+
+  sleep:
+    name: Sleep
+    icon: mdi:sleep
+
+  home:
+    name: Home
+    icon: mdi:home
+
+  bedroom_window:
+    name: Bedroom window
+    icon: mdi:window-closed-variant
+
+  bedroom_door:
+    name: Bedroom door
+    icon: mdi:door
+
+input_select:
+  # Keep track of the current speed
+  livingroom_fan_speed:
+    name: Livingroom fan speed
+    icon: mdi:speedometer
+    options:
+      - '01'
+      - '02'
+      - '03'
+  livingroom_fan_direction:
+    name: Livingroom fan direction
+    icon: mdi:dip-switch
+    options:
+      - 'in'
+      - 'alternating'
+      - 'out'
+
+  bedroom_fan_speed:
+    name: Bedroom fan speed
+    icon: mdi:speedometer
+    options:
+      - '01'
+      - '02'
+      - '03'
+  bedroom_fan_direction:
+    name: Bedroom fan direction
+    icon: mdi:dip-switch
+    options:
+      - 'in'
+      - 'alternating'
+      - 'out'
+
+  fan_mode:
+    name: Fan mode
+    icon: mdi:dip-switch
+    options:
+      - 'default'
+      - 'eco'
+      - 'sleep'
+      - 'sleep warm'
+      - 'sleep cold'
+      - 'off'
+
+  climate_mode:
+    name: Climate mode
+    icon: mdi:dip-switch
+    options:
+      - 'cool'
+      - 'heat'
+      - 'off'
+
+
+  server_mode:
+    name: Server mode
+    icon: mdi:dip-switch
+    options:
+      - 'auto'
+      - 'on'
+      - 'off'
+
+
+notify:
+  - platform: syslog
+    name: syslog
+
+  - platform: smtp
+    name: email
+    server: email-smtp.eu-west-1.amazonaws.com
+    port: 587
+    username: !secret smtp_username
+    password: !secret smtp_password
+    starttls: true
+    sender: !secret notify_email_sender
+    recipient: !secret notify_email_recipient
+
+  - platform: html5
+    name: HTML5
+    vapid_pub_key: !secret vapid_pub_key
+    vapid_prv_key: !secret vapid_prv_key
+    vapid_email: !secret vapid_email
+
+  - platform: group
+    name: ALL_DEVICES
+    services:
+      - service: mobile_app_henriks_iphone
+      - service: mobile_app_henriks_ipad
+      - service: mobile_app_hmnmbp
+
+  - platform: group
+    name: all
+    services:
+      - service: syslog
+      - service: email
+      - service: html5
+      - service: lg_oled
+
+
 zone: !include zones.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
