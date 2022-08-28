@@ -610,7 +610,10 @@ switch:
   #     service: shell_command.genie_shutdown
 
 template:
-  - sensor:
+  - trigger:
+      - platform: time_pattern
+        seconds: "/30"
+    sensor:
       - name: "Car charger power"
         #icon: mdi:power-plug
         device_class: "power"
@@ -701,6 +704,7 @@ template:
             Unknown
           {% endif %}
 
+  - sensor:
       - name: NordPool today hr 00:00
         device_class: "monetary"
         unit_of_measurement: DKK
@@ -1071,7 +1075,10 @@ template:
         state_class: "measurement"
         state: '{{ state_attr("climate.stue", "current_temperature_air") }}'
 
-  - binary_sensor:
+  - trigger:
+      - platform: time_pattern
+        seconds: "/30"
+    binary_sensor:
       - name: "Car charger firmware"
         #icon: mdi:update
         device_class: update
