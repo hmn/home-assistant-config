@@ -1198,30 +1198,35 @@ sensor:
     name: Energy spent
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.smappee_ac_power
     name: AC spent
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.smappee_controller_power
     name: Smappee controller spent
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.car_charger_power
     name: Car charger spent
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.bedroom_plug_power
     name: Bedroom plug spent
     unit_prefix: k
     round: 2
+    method: left
 
   # eloverblik
   - platform: statistics
