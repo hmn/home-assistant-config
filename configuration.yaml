@@ -598,10 +598,12 @@ switch:
     name: Synology power state
     host: 192.168.8.10
     mac: 00:11:32:c6:cd:7b
+    # turn_off:
+    #   service: button.press
+    #   data:
+    #     entity_id: button.alladin_shutdown
     turn_off:
-      service: button.press
-      data:
-        entity_id: button.alladin_shutdown
+      service: shell_command.alladin_shutdown
   # - platform: wake_on_lan
   #   name: genie power state
   #   host: 192.168.8.2
@@ -1121,6 +1123,7 @@ shell_command:
   genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'sudo shutdown -h now homeassistant-shutdown'"
   genie_poweroff: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set GracefulShutdown
   genie_poweron: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set On
+  alladin_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo shutdown -h now homeassistant-shutdown'"
 
 sensor:
   # bathroom
