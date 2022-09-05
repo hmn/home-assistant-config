@@ -568,7 +568,7 @@ switch:
             print: power
       servers:
         friendly_name: Servers
-        value_template: "{{ is_state('switch.synology_power_state', 'on') and is_state('switch.genie_power_state', 'on') }}"
+        value_template: "{{ is_state('switch.synology_power_state', 'on') or is_state('switch.genie_power_state', 'on') }}"
         turn_on:
           service: script.servers_on
         turn_off:
