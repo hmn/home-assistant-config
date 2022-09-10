@@ -1014,7 +1014,10 @@ template:
           {% set fridge = states('sensor.fridge_and_microwave_power') | float(default=0.0) %}
           {% set kitchen = states('sensor.kitchen_group_power') | float(default=0.0) %}
           {% set ev = states('sensor.car_charger_power') | float(default=0.0) %}
-          {{ (total - (ac + bathroom_fan + smappee + server + cinema + internet + cinema_chargers + ev + office + entrance + bedroom + fridge + kitchen)) | round(1, default=0) }}
+          {% set entrance_phase1 = states('sensor.entrance_phase_1_power') | float(default=0.0) %}
+          {% set entrance_phase2 = states('sensor.entrance_phase_2_power') | float(default=0.0) %}
+          {% set entrance_phase3 = states('sensor.entrance_phase_3_power') | float(default=0.0) %}
+          {{ (total - (ac + bathroom_fan + smappee + server + cinema + internet + cinema_chargers + ev + office + entrance + bedroom + fridge + kitchen + entrance_phase1 + entrance_phase2 + entrance_phase3)) | round(1, default=0) }}
 
       - name: "Kitchen Temperature"
         device_class: "temperature"
