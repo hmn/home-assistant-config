@@ -995,6 +995,36 @@ template:
         state_class: "measurement"
         state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] }}'
 
+      - name: NordPool current price
+        device_class: "monetary"
+        unit_of_measurement: DKK
+        state_class: "measurement"
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "current_price") }}'
+
+      - name: NordPool min price
+        device_class: "monetary"
+        unit_of_measurement: DKK
+        state_class: "measurement"
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "min") }}'
+
+      - name: NordPool max price
+        device_class: "monetary"
+        unit_of_measurement: DKK
+        state_class: "measurement"
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "max") }}'
+
+      - name: NordPool off peak 1
+        device_class: "monetary"
+        unit_of_measurement: DKK
+        state_class: "measurement"
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "off_peak_1") }}'
+
+      - name: NordPool off peak 2
+        device_class: "monetary"
+        unit_of_measurement: DKK
+        state_class: "measurement"
+        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "off_peak_2") }}'
+
       - name: "Other power"
         device_class: "power"
         unit_of_measurement: "W"
