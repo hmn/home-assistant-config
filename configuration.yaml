@@ -1408,6 +1408,21 @@ sensor:
           "balancetarif": 0.0023,
           "ok": 0.1057
       } -%}
+      {% set s2023 = {
+          "afgift": 0.7310,
+          "winter_low": 0.1747,
+          "winter_high": 0.5240,
+          "winter_peak": 1.5720,
+          "summer_low": 0.1747,
+          "summer_high": 0.2620,
+          "summer_peak": 0.6812,
+          "energinet": 0.1430,
+          "transmissionsnettarif": 0.0760,
+          "systemtarif": 0.0670,
+          "balancetarif": 0.0000,
+          "ok": 0.1057
+      }
+      %}
       {%- if now().month >= 5 and now().month <11 %}
           {%- if now().hour >=17 and now().hour <21 %}
               {{- s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
