@@ -1396,13 +1396,13 @@ sensor:
     # https://www.nordpoolgroup.com/Market-data1/Elspot/Area-Prices/Denmark/DK1/hourly/?view=table
     additional_costs: >
       {%- set s = {
-          "afgift": 0.763,          
-          "winter_low": 0.2585,
-          "winter_high": 0.2585,
-          "winter_peak": 0.6755,
-          "summer_low": 0.2103,
-          "summer_high": 0.2103,
-          "summer_peak": 0.5739,
+          "afgift": 0.763,
+          "winter_low": 0.2068,
+          "winter_high": 0.2068,
+          "winter_peak": 0.5404,
+          "summer_low": 0.1682,
+          "summer_high": 0.1682,
+          "summer_peak": 0.4591,
           "transmissionsnettarif": 0.049,
           "systemtarif": 0.061,
           "balancetarif": 0.0023,
@@ -1410,12 +1410,12 @@ sensor:
       } -%}
       {% set s2023 = {
           "afgift": 0.7310,
-          "winter_low": 0.1747,
-          "winter_high": 0.5240,
-          "winter_peak": 1.5720,
-          "summer_low": 0.1747,
-          "summer_high": 0.2620,
-          "summer_peak": 0.6812,
+          "winter_low": 0.1397,
+          "winter_high": 0.4192,
+          "winter_peak": 1.2576,
+          "summer_low": 0.1397,
+          "summer_high": 0.2096,
+          "summer_peak": 0.5450,
           "energinet": 0.1430,
           "transmissionsnettarif": 0.0760,
           "systemtarif": 0.0670,
@@ -1454,41 +1454,7 @@ sensor:
 
     # Helper so you can set your "low" price
     # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.25
-
-    # What power regions your are interested in.
-    # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
-    region: "DK1"
-
-    # How many decimals to use in the display of the price
-    precision: 3
-
-    # What the price should be displayed in default
-    # Possible values: MWh, kWh and Wh
-    # default: kWh
-    price_type: kWh
-
-    # This option allows the usage of a template to add a tariff.
-    # now() always refers start of the hour of that price.
-    # this way we can calculate the correct costs add that to graphs etc.
-    # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
-    # default {{0.0|float}}
-    additional_costs: "{{0.0|float}}"
-
-  - platform: nordpool
-    # Should the prices include vat? Default True
-    VAT: True
-
-    # What currency the api fetches the prices in
-    # this is only need if you want a sensor in a non local currency
-    currency: "DKK"
-    
-    # Option to show prices in cents (or the equivalent in local currency)
-    price_in_cents: false
-
-    # Helper so you can set your "low" price
-    # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.75
+    low_price_cutoff: 0.95
 
     # What power regions your are interested in.
     # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
@@ -1509,18 +1475,33 @@ sensor:
     # default {{0.0|float}}
     additional_costs: >
       {%- set s = {
-          "afgift": 0.763,          
-          "winter_low": 0.2585,
-          "winter_high": 0.2585,
-          "winter_peak": 0.6755,
-          "summer_low": 0.2103,
-          "summer_high": 0.2103,
-          "summer_peak": 0.5739,
+          "afgift": 0.763,
+          "winter_low": 0.2068,
+          "winter_high": 0.2068,
+          "winter_peak": 0.5404,
+          "summer_low": 0.1682,
+          "summer_high": 0.1682,
+          "summer_peak": 0.4591,
           "transmissionsnettarif": 0.049,
           "systemtarif": 0.061,
           "balancetarif": 0.0023,
           "ok": 0.1057
       } -%}
+      {% set s2023 = {
+          "afgift": 0.7310,
+          "winter_low": 0.1397,
+          "winter_high": 0.4192,
+          "winter_peak": 1.2576,
+          "summer_low": 0.1397,
+          "summer_high": 0.2096,
+          "summer_peak": 0.5450,
+          "energinet": 0.1430,
+          "transmissionsnettarif": 0.0760,
+          "systemtarif": 0.0670,
+          "balancetarif": 0.0000,
+          "ok": 0.1057
+      }
+      %}
       {%- if now().month >= 5 and now().month <11 %}
           {%- if now().hour >=17 and now().hour <21 %}
               {{- s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
@@ -1572,7 +1553,7 @@ sensor:
     # this way we can calculate the correct costs add that to graphs etc.
     # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
     # default {{0.0|float}}
-    additional_costs: "{{0.5|float}}"
+    # additional_costs: "{{0.0|float}}"
 
   - platform: nordpool
 
@@ -1607,7 +1588,7 @@ sensor:
     # this way we can calculate the correct costs add that to graphs etc.
     # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
     # default {{0.0|float}}
-    additional_costs: "{{0.5|float}}"
+    # additional_costs: "{{0.5|float}}"
 
 
 light:
