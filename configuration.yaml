@@ -1392,33 +1392,37 @@ sensor:
     # this way we can calculate the correct costs add that to graphs etc.
     # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
     # default {{0.0|float}}
+    # https://energinet.dk/Om-nyheder/Nyheder/2022/09/06/Energinet-justerer-tarif
+    # https://www.nordpoolgroup.com/Market-data1/Elspot/Area-Prices/Denmark/DK1/hourly/?view=table
     additional_costs: >
-      {% set s = {
-          "hourly_fixed_cost": 0.763,
+      {%- set s = {
+          "afgift": 0.763,          
           "winter_low": 0.2585,
           "winter_high": 0.2585,
           "winter_peak": 0.6755,
           "summer_low": 0.2103,
           "summer_high": 0.2103,
           "summer_peak": 0.5739,
-          "energinet": 0.1123
-      }
-      %}
+          "transmissionsnettarif": 0.049,
+          "systemtarif": 0.061,
+          "balancetarif": 0.0023,
+          "ok": 0.1057
+      } -%}
       {%- if now().month >= 5 and now().month <11 %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.summer_peak+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.summer_low+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- else %}
-            {{- s.summer_high+s.hourly_fixed_cost+s.energinet|float}}
+            {{- s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- endif %}
       {%- else %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.winter_peak+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.winter_low+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- else %}
-              {{- s.winter_high+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- endif %}
       {%- endif %}
 
@@ -1490,31 +1494,33 @@ sensor:
     # default {{0.0|float}}
     additional_costs: >
       {%- set s = {
-          "hourly_fixed_cost": 0.763,
+          "afgift": 0.763,          
           "winter_low": 0.2585,
           "winter_high": 0.2585,
           "winter_peak": 0.6755,
           "summer_low": 0.2103,
           "summer_high": 0.2103,
           "summer_peak": 0.5739,
-          "energinet": 0.1123
-      }
-      -%}
+          "transmissionsnettarif": 0.049,
+          "systemtarif": 0.061,
+          "balancetarif": 0.0023,
+          "ok": 0.1057
+      } -%}
       {%- if now().month >= 5 and now().month <11 %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.summer_peak+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.summer_low+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- else %}
-            {{- s.summer_high+s.hourly_fixed_cost+s.energinet|float}}
+            {{- s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- endif %}
       {%- else %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.winter_peak+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.winter_low+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- else %}
-              {{- s.winter_high+s.hourly_fixed_cost+s.energinet|float}}
+              {{- s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
           {%- endif %}
       {%- endif %}
 
