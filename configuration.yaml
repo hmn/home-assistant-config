@@ -1423,8 +1423,6 @@ sensor:
       {%- endif %}
 
   - platform: nordpool
-    name: "Nordpool raw price"
-
     # Should the prices include vat? Default True
     VAT: False
 
@@ -1437,7 +1435,7 @@ sensor:
 
     # Helper so you can set your "low" price
     # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.50
+    low_price_cutoff: 0.25
 
     # What power regions your are interested in.
     # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
@@ -1459,7 +1457,6 @@ sensor:
     additional_costs: "{{0.0|float}}"
 
   - platform: nordpool
-    name: "Nordpool total including vat"
     # Should the prices include vat? Default True
     VAT: True
 
@@ -1522,7 +1519,6 @@ sensor:
       {%- endif %}
 
   - platform: nordpool
-    name: "Nordpool test"
 
     # Should the prices include vat? Default True
     VAT: False
@@ -1536,7 +1532,7 @@ sensor:
 
     # Helper so you can set your "low" price
     # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.50
+    low_price_cutoff: 0.00
 
     # What power regions your are interested in.
     # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
@@ -1558,7 +1554,6 @@ sensor:
     additional_costs: "{{0.5|float}}"
 
   - platform: nordpool
-    name: "Nordpool test vat"
 
     # Should the prices include vat? Default True
     VAT: True
@@ -1572,7 +1567,7 @@ sensor:
 
     # Helper so you can set your "low" price
     # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.50
+    low_price_cutoff: 0.00
 
     # What power regions your are interested in.
     # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
