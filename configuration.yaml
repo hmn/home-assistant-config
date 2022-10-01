@@ -1406,7 +1406,8 @@ sensor:
           "transmissionsnettarif": 0.049,
           "systemtarif": 0.061,
           "balancetarif": 0.0023,
-          "ok": 0.1057
+          "ok": 0.1057,
+          "vat": 1.25
       } -%}
       {% set s2023 = {
           "afgift": 0.7310,
@@ -1416,28 +1417,28 @@ sensor:
           "summer_low": 0.1397,
           "summer_high": 0.2096,
           "summer_peak": 0.5450,
-          "energinet": 0.1430,
           "transmissionsnettarif": 0.0760,
           "systemtarif": 0.0670,
           "balancetarif": 0.0000,
-          "ok": 0.1057
+          "ok": 0.1057,
+          "vat": 1.25
       }
       %}
-      {%- if now().month >= 5 and now().month <11 %}
+      {%- if now().month >= 4 and now().month <=9 %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- else %}
-            {{- s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+            {{- (s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- endif %}
       {%- else %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- else %}
-              {{- s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- endif %}
       {%- endif %}
 
@@ -1485,7 +1486,8 @@ sensor:
           "transmissionsnettarif": 0.049,
           "systemtarif": 0.061,
           "balancetarif": 0.0023,
-          "ok": 0.1057
+          "ok": 0.1057,
+          "vat": 1.00
       } -%}
       {% set s2023 = {
           "afgift": 0.7310,
@@ -1495,28 +1497,28 @@ sensor:
           "summer_low": 0.1397,
           "summer_high": 0.2096,
           "summer_peak": 0.5450,
-          "energinet": 0.1430,
           "transmissionsnettarif": 0.0760,
           "systemtarif": 0.0670,
           "balancetarif": 0.0000,
-          "ok": 0.1057
+          "ok": 0.1057,
+          "vat": 1.00
       }
       %}
-      {%- if now().month >= 5 and now().month <11 %}
+      {%- if now().month >= 4 and now().month <=9 %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- else %}
-            {{- s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+            {{- (s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- endif %}
       {%- else %}
           {%- if now().hour >=17 and now().hour <21 %}
-              {{- s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- elif now().hour >=0 and now().hour <6 %}
-              {{- s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- else %}
-              {{- s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok|float}}
+              {{- (s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
           {%- endif %}
       {%- endif %}
 
