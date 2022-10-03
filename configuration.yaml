@@ -312,7 +312,7 @@ mqtt:
       device_class: power
       state_class: measurement
 
-    - name: Smappee controller power
+    - name: Internet power
       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
       unit_of_measurement: "W"
       icon: "mdi:power-plug"
@@ -1032,9 +1032,9 @@ template:
         state: >
           {% set total = states('sensor.smappee_power') | float(default=0.0) %}
           {% set ac = states('sensor.smappee_ac_power') | float(default=0.0) %}
-          {% set smappee = states('sensor.smappee_controller_power') | float(default=0.0) %}
-          {% set office = states('sensor.office_plug_power') | float(default=0.0) %}
           {% set internet = states('sensor.internet_power') | float(default=0.0) %}
+          {% set office = states('sensor.office_plug_power') | float(default=0.0) %}
+          {% set ps5 = states('sensor.ps5_power') | float(default=0.0) %}
           {% set server = states('sensor.server_plug_power') | float(default=0.0) %}
           {% set cinema = states('sensor.cinema_plug_power') | float(default=0.0) %}
           {% set cinema_chargers = states('sensor.cinema_chargers_power') | float(default=0.0) %}
@@ -1047,7 +1047,7 @@ template:
           {% set entrance_phase1 = states('sensor.entrance_phase_1_power') | float(default=0.0) %}
           {% set entrance_phase2 = states('sensor.entrance_phase_2_power') | float(default=0.0) %}
           {% set entrance_phase3 = states('sensor.entrance_phase_3_power') | float(default=0.0) %}
-          {{ (total - (ac + bathroom_fan + smappee + server + cinema + internet + cinema_chargers + ev + office + entrance + bedroom + fridge + kitchen + entrance_phase1 + entrance_phase2 + entrance_phase3)) | round(1, default=0) }}
+          {{ (total - (ac + bathroom_fan + internet + server + cinema + ps5 + cinema_chargers + ev + office + entrance + bedroom + fridge + kitchen + entrance_phase1 + entrance_phase2 + entrance_phase3)) | round(1, default=0) }}
 
       - name: "Kitchen Temperature"
         device_class: "temperature"
@@ -1187,8 +1187,8 @@ sensor:
     method: left
 
   - platform: integration
-    source: sensor.smappee_controller_power
-    name: Smappee controller spent
+    source: sensor.internet_power
+    name: Internet spent
     unit_prefix: k
     round: 2
     method: left
