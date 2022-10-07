@@ -1285,7 +1285,6 @@ sensor:
     #state_class: measurement
 
   # simple
-  - platform: season
   - platform: time_date
     display_options:
       - 'time'
