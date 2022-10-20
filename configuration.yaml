@@ -1249,7 +1249,7 @@ sensor:
   # light
   - platform: statistics
     name: Office light statistics
-    entity_id: sensor.office_motion_sensor_1_light_level
+    entity_id: sensor.office_motion_sensor_1_illuminance
     #max_age:
     #  minutes: 30
     sampling_size: 10
@@ -1258,7 +1258,7 @@ sensor:
     state_characteristic: average_linear
   - platform: statistics
     name: Kitchen light statistics
-    entity_id: sensor.kitchen_motion_sensor_1_light_level
+    entity_id: sensor.kitchen_motion_sensor_1_illuminance
     #max_age:
     #  minutes: 30
     sampling_size: 10
@@ -1267,7 +1267,7 @@ sensor:
     state_characteristic: average_linear
   - platform: statistics
     name: Bedroom light statistics
-    entity_id: sensor.bedroom_motion_sensor_1_light_level
+    entity_id: sensor.bedroom_motion_sensor_1_illuminance
     #max_age:
     #  minutes: 30
     sampling_size: 10
@@ -1276,7 +1276,7 @@ sensor:
     state_characteristic: average_linear
   - platform: statistics
     name: Entrance light statistics
-    entity_id: sensor.entrance_motion_sensor_2_light_level
+    entity_id: sensor.kitchen_motion_sensor_1_illuminance
     #max_age:
     #  minutes: 30
     sampling_size: 10
@@ -1602,51 +1602,51 @@ sensor:
     # additional_costs: "{{0.5|float}}"
 
 
-light:
-  - platform: group
-    name: Kitchen lights
-    entities:
-      - light.kitchen
+# light:
+#   - platform: group
+#     name: Kitchen lights
+#     entities:
+#       - light.kitchen
 
-  - platform: group
-    name: Entrance lights
-    entities:
-      - light.entrance
+#   - platform: group
+#     name: Entrance lights
+#     entities:
+#       - light.entrance
 
-  - platform: group
-    name: Bedroom Lights
-    entities:
-      - light.bedroom
+#   - platform: group
+#     name: Bedroom Lights
+#     entities:
+#       - light.bedroom
 
-  - platform: group
-    name: Office lights
-    entities:
-      - light.office
+#   - platform: group
+#     name: Office lights
+#     entities:
+#       - light.office
 
-  - platform: group
-    name: Cinema lights
-    entities:
-      - light.cinema
+#   - platform: group
+#     name: Cinema lights
+#     entities:
+#       - light.cinema
 
-  - platform: group
-    name: Living room lights
-    entities:
-      - light.living_room
+#   - platform: group
+#     name: Living room lights
+#     entities:
+#       - light.living_room
 
-  - platform: group
-    name: Outdoor lights
-    entities:
-      - light.outdoor
+#   - platform: group
+#     name: Outdoor lights
+#     entities:
+#       - light.outdoor
 
-  - platform: group
-    name: All lights
-    entities:
-      - light.living_room
-      - light.office
-      - light.cinema
-      - light.bedroom
-      - light.entrance
-      - light.kitchen
+#   - platform: group
+#     name: All lights
+#     entities:
+#       - light.living_room
+#       - light.office
+#       - light.cinema
+#       - light.bedroom
+#       - light.entrance
+#       - light.kitchen
 
 
 input_boolean:
