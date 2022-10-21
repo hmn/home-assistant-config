@@ -1720,6 +1720,7 @@ input_select:
     options:
       - 'default'
       - 'eco'
+      - 'bathroom'
       - 'sleep'
       - 'sleep warm'
       - 'sleep cold'
