@@ -5,7 +5,8 @@ __pycache__
 # home assistant
 custom_components/
 appdaemon/
-blueprints/
+blueprints/automation/*/
+blueprints/script/*/
 !blueprints/automation/hmn/
 !blueprints/script/hmn/
 deps

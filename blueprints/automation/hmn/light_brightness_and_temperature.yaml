@@ -1,0 +1,144 @@
+blueprint:
+  name: Light brightness and temperature
+  description: Set brightness and temperature on lights based on light level sensor.
+  domain: automation
+  source_url: https://github.com/hmn/home-assistant-config/blob/master/blueprints/automation/hmn/light_brightness_and_temperature.yaml
+  input:
+    target_lights:
+      name: Light
+      description:  The lights to be controlled
+      selector:
+        entity:
+          domain: light
+          multiple: true
+    brightness_entity:
+      name: Lux/Brightness Sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+    min_color_temp:
+      name: Minimum Color Temperature
+      description:  The coolest color your bulbs will be set to
+      default: 250
+      selector:
+        color_temp:
+          #min_mireds: 153
+          #max_mireds: 500
+    max_color_temp:
+      name: Maximum Color Temperature
+      description:  The warmest color your bulbs will be set to
+      default: 454
+      selector:
+        color_temp:
+          #min_mireds: 153
+          #max_mireds: 500
+    # min_brightness:
+    #   name: Minimum Brightness
+    #   description: Minimum brightness of the light(s)
+    #   default: 1
+    #   selector:
+    #     number:
+    #       min: 0.0
+    #       max: 100.0
+    #       mode: slider
+    #       step: 1.0
+    #       unit_of_measurement: "%"
+    max_brightness:
+      name: Maximum Brightness
+      description: Maximum brightness of the light(s)
+      default: 100
+      selector:
+        number:
+          min: 0.0
+          max: 100.0
+          mode: slider
+          step: 1.0
+          unit_of_measurement: "%"
+    transition:
+      name: Transition
+      description: Transition time (s)
+      default: 5
+      selector:
+        number:
+          min: 0.0
+          max: 30.0
+          mode: slider
+          step: 1.0
+          unit_of_measurement: "s"
+
+mode: queued
+
+variables:
+  #light_list: !input target_lights
+  #on_lights: >
+  #  {{ expand(light_list) | selectattr('state', 'eq', 'on') | map(attribute='entity_id')  | list }}
+  #target_on_lights: >-
+  #  {{states.light 
+  #  | selectattr('state','eq','on') 
+  #  | map(attribute='entity_id') | select("in",target_lights) | list }}
+  min_color_temp: !input min_color_temp
+  max_color_temp: !input max_color_temp
+  #min_brightness: !input "min_brightness"
+  max_brightness: !input "max_brightness"
+  color_temp: >-
+    {{ [([((1000000/(4791.67 - 3290.66/(1 + 0.222 * ([([0,state_attr('sun.sun','elevation')]|max),90]|min**0.81))))|int),min_color_temp]|max),max_color_temp]|min}}
+  brightness_entity: !input brightness_entity
+  # brightness_pct: >-
+  #  {%- set livingroombrightness = ((20 * states(brightness_entity) | float) + 308.6 )| round(0) | int %}
+  #  {%- if livingroombrightness > 100 %}
+  #  {%- set livingroombrightness = 100 %}
+  #  {%- endif %}
+  #  {{ livingroombrightness }}
+  # pct: >
+  #   {% if (states('sun.sun') == 'below_horizon') %}
+  #     {% set sunset = as_timestamp(states.sun.sun.attributes.next_setting)|float - 86400 %}
+  #     {% set sunrise = as_timestamp(states.sun.sun.attributes.next_rising)|float %}
+  #   {% else %}
+  #     {% set sunset = as_timestamp(states.sun.sun.attributes.next_setting)|float %}
+  #     {% set sunrise = as_timestamp(states.sun.sun.attributes.next_rising)|float %}
+  #   {% endif %}
+  #   {% set midpoint = (sunset |float + sunrise |float) / 2 + (midnight_offset|float * 60) | float %}
+  #   {{ sin(((as_timestamp(now())|float - midpoint)/86400)*pi) |abs }}
+  # brightness_percent: "{{ (min_brightness|int+(max_brightness|int-min_brightness|int) * pct) | int }}"
+  brightness: >-
+    {%- set lux = states(brightness_entity) | int -%}
+    {%- set perc = (14000 - lux) / (14000 / 100) | int -%}
+    {%- set bri = ((max_brightness * perc) / 100) | int -%}
+    {{ bri }}
+
+trigger:
+  - platform: state
+    entity_id: !input target_lights
+    to: "on"
+    id: "light_on"
+
+condition:
+  - condition: trigger
+    id: "light_on"
+
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: "light_on"
+          #- condition: template
+          #  value_template: "{{ light_on_adjust }}"
+        sequence:
+          - service: light.turn_on
+            data:
+              color_temp: "{{ color_temp }}"
+            target:
+              entity_id: "{{ trigger.entity_id }}"
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 0
+              milliseconds: 500
+          - service: light.turn_on
+            data:
+              brightness_pct: "{{ brightness|int }}"
+              #brightness_pct: 50
+              transition: !input transition
+            target:
+              entity_id: "{{ trigger.entity_id }}"
