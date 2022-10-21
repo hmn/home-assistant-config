@@ -6,6 +6,8 @@ __pycache__
 custom_components/
 appdaemon/
 blueprints/
+!blueprints/automation/hmn/
+!blueprints/script/hmn/
 deps
 tts/
 www/
