@@ -155,9 +155,6 @@ trigger:
       entity_id: !input timer_entity
 
 condition:
-  - condition: trigger
-    id: "light_on"
-
   - condition: state
     entity_id: !input sleep_helper
     state: "off"
