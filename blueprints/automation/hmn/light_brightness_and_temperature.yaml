@@ -1,5 +1,5 @@
 blueprint:
-  name: Light brightness and temperature
+  name: Timer based light handling
   description: Set brightness and temperature on lights based on light level sensor.
   domain: automation
   source_url: https://github.com/hmn/home-assistant-config/blob/master/blueprints/automation/hmn/light_brightness_and_temperature.yaml
