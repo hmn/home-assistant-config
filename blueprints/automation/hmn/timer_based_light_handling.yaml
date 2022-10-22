@@ -95,7 +95,7 @@ blueprint:
     transition:
       name: Transition
       description: Transition time (s)
-      default: 5
+      default: 1
       selector:
         number:
           min: 0.0
