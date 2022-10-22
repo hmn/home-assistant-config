@@ -4,19 +4,56 @@ blueprint:
   domain: automation
   source_url: https://github.com/hmn/home-assistant-config/blob/master/blueprints/automation/hmn/light_brightness_and_temperature.yaml
   input:
-    target_lights:
-      name: Light
-      description:  The lights to be controlled
+    timer_entity:
+      name: Timer
+      description: Timer entity to use for the automation.
       selector:
         entity:
-          domain: light
-          multiple: true
-    brightness_entity:
+          domain: timer
+    target_lights:
+      name: Light
+      description: The lights to be controlled
+      selector:
+        target:
+          entity:
+            domain: light
+    illuminance_sensor:
       name: Lux/Brightness Sensor
+      description: The sensor that measures the light level
       selector:
         entity:
           domain: sensor
           device_class: illuminance
+    illuminance_cutoff:
+      name: Illuminance threshold
+      description: The threshold to compare to the current illumination (lux above this value will NOT turn on the light).
+      default: 75
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: lx
+    light_statistics:
+      name: Light statistics sensor
+      description: The light statistics sensor used for illuminance cutoff.
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+    home_helper:
+      name: Home helper
+      description: Used to help define when to turn on lights
+      default: input_boolean.home
+      selector:
+        entity:
+          domain: input_boolean
+    sleep_helper:
+      name: Sleep helper
+      description: Used to help define when not to turn on lights
+      default: input_boolean.sleep
+      selector:
+        entity:
+          domain: input_boolean
     min_color_temp:
       name: Minimum Color Temperature
       description:  The coolest color your bulbs will be set to
@@ -83,7 +120,7 @@ variables:
   max_brightness: !input "max_brightness"
   color_temp: >-
     {{ [([((1000000/(4791.67 - 3290.66/(1 + 0.222 * ([([0,state_attr('sun.sun','elevation')]|max),90]|min**0.81))))|int),min_color_temp]|max),max_color_temp]|min}}
-  brightness_entity: !input brightness_entity
+  brightness_entity: !input illuminance_sensor
   # brightness_pct: >-
   #  {%- set livingroombrightness = ((20 * states(brightness_entity) | float) + 308.6 )| round(0) | int %}
   #  {%- if livingroombrightness > 100 %}
@@ -108,37 +145,43 @@ variables:
     {{ bri }}
 
 trigger:
-  - platform: state
-    entity_id: !input target_lights
-    to: "on"
-    id: "light_on"
+  - platform: event
+    event_type: timer.started
+    event_data:
+      entity_id: !input timer_entity
+  - platform: event
+    event_type: timer.restarted
+    event_data:
+      entity_id: !input timer_entity
 
 condition:
   - condition: trigger
     id: "light_on"
 
+  - condition: state
+    entity_id: !input sleep_helper
+    state: "off"
+  - condition: state
+    entity_id: !input home_helper
+    state: "on"
+  - condition: numeric_state
+    entity_id: !input light_statistics
+    below: !input illuminance_cutoff
+
 action:
-  - choose:
-      - conditions:
-          - condition: trigger
-            id: "light_on"
-          #- condition: template
-          #  value_template: "{{ light_on_adjust }}"
-        sequence:
-          - service: light.turn_on
-            data:
-              color_temp: "{{ color_temp }}"
-            target:
-              entity_id: "{{ trigger.entity_id }}"
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 0
-              milliseconds: 500
-          - service: light.turn_on
-            data:
-              brightness_pct: "{{ brightness|int }}"
-              #brightness_pct: 50
-              transition: !input transition
-            target:
-              entity_id: "{{ trigger.entity_id }}"
+  - service: light.turn_on
+    data:
+      color_temp: "{{ color_temp }}"
+      brightness_pct: "{{ brightness|int }}"
+      transition: !input transition
+    target: !input target_lights
+  # - delay:
+  #     hours: 0
+  #     minutes: 0
+  #     seconds: 0
+  #     milliseconds: 500
+  # - service: light.turn_on
+  #   data:
+  #     brightness_pct: "{{ brightness|int }}"
+  #     transition: !input transition
+  #   target: !input target_lights
