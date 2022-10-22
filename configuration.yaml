@@ -1049,7 +1049,6 @@ template:
           {% set cinema = states('sensor.cinema_plug_power') | float(default=0.0) %}
           {% set cinema_chargers = states('sensor.cinema_chargers_power') | float(default=0.0) %}
           {% set bathroom_fan = states('sensor.bathroom_fan_power') | float(default=0.0) %}
-          {% set entrance = states('sensor.entrance_plug_power') | float(default=0.0) %}
           {% set bedroom = states('sensor.bedroom_plug_power') | float(default=0.0) %}
           {% set fridge = states('sensor.fridge_and_microwave_power') | float(default=0.0) %}
           {% set kitchen = states('sensor.kitchen_group_power') | float(default=0.0) %}
@@ -1057,7 +1056,8 @@ template:
           {% set entrance_phase1 = states('sensor.entrance_phase_1_power') | float(default=0.0) %}
           {% set entrance_phase2 = states('sensor.entrance_phase_2_power') | float(default=0.0) %}
           {% set entrance_phase3 = states('sensor.entrance_phase_3_power') | float(default=0.0) %}
-          {{ (total - (ac + bathroom_fan + internet + server + cinema + ps5 + cinema_chargers + ev + office + entrance + bedroom + fridge + kitchen + entrance_phase1 + entrance_phase2 + entrance_phase3)) | round(1, default=0) }}
+          {% set outdoor_light = states('sensor.outdoor_light_power') | float(default=0.0) %}
+          {{ (total - (ac + bathroom_fan + internet + server + cinema + ps5 + cinema_chargers + ev + office + outdoor_light + bedroom + fridge + kitchen + entrance_phase1 + entrance_phase2 + entrance_phase3)) | round(1, default=0) }}
 
       - name: "Kitchen Temperature"
         device_class: "temperature"
