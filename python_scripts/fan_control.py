@@ -77,11 +77,11 @@ if command == 'status':
     cmd = '01'
 elif command == 'power':
     cmd = '03'
-elif command == 'on':
+elif command == 'power_on':
     cmd = '03'
     expect_key = 7
     expect_value = '01'
-elif command == 'off':
+elif command == 'power_off':
     cmd = '03'
     expect_key = 7
     expect_value = '00'

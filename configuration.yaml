@@ -569,13 +569,13 @@ switch:
           service: python_script.fan_control
           data:
             ip: 192.168.8.249
-            command: "on"
+            command: power_on
             return_value: "power"
         turn_off:
           service: python_script.fan_control
           data:
             ip: 192.168.8.249
-            command: "off"
+            command: power_off
             return_value: "power"
       servers:
         friendly_name: Servers

@@ -16,7 +16,7 @@ fan_control:
       description: Fan UDP port
       example: 4000
     command:
-      description: Fan command ['status', 'power', 'speed', 'direction', 'sleep', 'party', 'on', 'off']
+      description: Fan command ['status', 'power', 'speed', 'direction', 'sleep', 'party', 'power_on', 'power_off']
       example: status
     speed:
       description: Fan speed ['01', '02', '03']
