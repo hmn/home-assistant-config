@@ -563,19 +563,20 @@ switch:
   - platform: template
     switches:
       bedroom_fan_python_script:
-        friendly_name: Bedroom fan power
+        friendly_name: Bedroom fan power (python script)
+        value_template: '{{ value == "01" }}'
         turn_on:
           service: python_script.bedroom_fan
           data:
             ip: 192.168.8.249
             command: on
-            print: power
+            return: power
         turn_off:
           service: python_script.bedroom_fan
           data:
             ip: 192.168.8.249
             command: off
-            print: power
+            return: power
       servers:
         friendly_name: Servers
         value_template: "{{ is_state('switch.synology_power_state', 'on') or is_state('switch.genie_power_state', 'on') }}"

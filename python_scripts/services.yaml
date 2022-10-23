@@ -24,7 +24,7 @@ fan_control:
     direction:
       description: airflow direction ['out', 'alternating', 'in']
       example: alternating
-    print:
-      description: Print the response from the fan controller ['all', 'power', 'speed', 'direction']
+    return_value:
+      description: Return the response from the fan controller ['all', 'power', 'speed', 'direction']
       example: all
   
