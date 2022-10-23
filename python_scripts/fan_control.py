@@ -12,9 +12,6 @@ data:
   print: all
 ```
 """
-import socket
-import argparse
-
 PACKETPREFIX = bytes.fromhex('6d6f62696c65')
 PACKETPOSTFIX = bytes.fromhex('0d0a')
 
