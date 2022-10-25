@@ -299,34 +299,6 @@ mqtt:
       device_class: power
       state_class: measurement
 
-    - name: Smappee ac power
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      # value_template: "{{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}"
-      value_template: >-
-        {% if value_json.switchIntervalDatas %}
-          {{ (value_json.switchIntervalDatas[0].activePower | multiply(0.001)) | round(2, default=0) }}
-        {% else %}
-          0
-        {% endif %}
-      device_class: power
-      state_class: measurement
-
-    - name: Internet router power
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregatedSwitch"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      # value_template: "{{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2, default=0) }}"
-      value_template: >-
-        {% if value_json.switchIntervalDatas %}
-          {{ (value_json.switchIntervalDatas[1].activePower | multiply(0.001)) | round(2, default=0) }}
-        {% else %}
-          0
-        {% endif %}
-      device_class: power
-      state_class: measurement
-
 
 homekit:
   filter:
@@ -1185,20 +1157,6 @@ sensor:
   - platform: integration
     source: sensor.smappee_power
     name: Energy spent
-    unit_prefix: k
-    round: 2
-    method: left
-
-  - platform: integration
-    source: sensor.smappee_ac_power
-    name: AC spent
-    unit_prefix: k
-    round: 2
-    method: left
-
-  - platform: integration
-    source: sensor.internet_router_power
-    name: Internet spent
     unit_prefix: k
     round: 2
     method: left
