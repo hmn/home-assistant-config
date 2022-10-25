@@ -1014,7 +1014,6 @@ template:
         state_class: "measurement"
         state: >
           {% set total = states('sensor.smappee_power') | float(default=0.0) %}
-          {% set ac = states('sensor.smappee_ac_power') | float(default=0.0) %}
           {% set internet = states('sensor.internet_plug_power') | float(default=0.0) %}
           {% set office = states('sensor.office_plug_power') | float(default=0.0) %}
           {% set ps5 = states('sensor.ps5_power') | float(default=0.0) %}
@@ -1030,7 +1029,9 @@ template:
           {% set entrance_phase2 = states('sensor.entrance_phase_2_power') | float(default=0.0) %}
           {% set entrance_phase3 = states('sensor.entrance_phase_3_power') | float(default=0.0) %}
           {% set outdoor_light = states('sensor.outdoor_light_plug_power') | float(default=0.0) %}
-          {{ (total - (ac + bathroom_fan + internet + server + cinema + ps5 + cinema_chargers + ev + office + bedroom + fridge + kitchen + entrance_phase1 + entrance_phase2 + entrance_phase3 + outdoor_light)) | round(1, default=0) }}
+          {% set ac = states('sensor.aircon_plug_power') | float(default=0.0) %}
+          {% set entrance_plug = states('sensor.entrance_plug_power') | float(default=0.0) %}
+          {{ (total - (bathroom_fan + internet + server + cinema + ps5 + cinema_chargers + ev + office + bedroom + fridge + kitchen + entrance_phase1 + entrance_phase2 + entrance_phase3 + outdoor_light + ac + entrance_plug)) | round(1, default=0) }}
 
       - name: "Kitchen Temperature"
         device_class: "temperature"
