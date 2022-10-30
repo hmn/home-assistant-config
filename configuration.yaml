@@ -1145,9 +1145,9 @@ shell_command:
 
 sensor:
   - platform: statistics
-    name: "Bathroom H&T humidity median over last 24 hours"
+    name: "Bathroom H&T humidity over last 24 hours"
     entity_id: sensor.bathroom_h_and_t_humidity
-    state_characteristic: median
+    state_characteristic: average_linear
     max_age:
       hours: 24
     sampling_size: 50
