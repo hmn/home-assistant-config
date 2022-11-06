@@ -5,26 +5,3 @@ hello_world:
     name:
       description: Name to say Hello to
       example: World
-fan_control:
-  name: Fan Control
-  description: Siku RV fan controller
-  fields:
-    ip:
-      description: IP address of the fan controller
-      example: 192.168.8.149
-    port:
-      description: Fan UDP port
-      example: 4000
-    command:
-      description: Fan command ['status', 'power', 'speed', 'direction', 'sleep', 'party', 'power_on', 'power_off']
-      example: status
-    speed:
-      description: Fan speed ['01', '02', '03']
-      example: 01
-    direction:
-      description: airflow direction ['out', 'alternating', 'in']
-      example: alternating
-    return_value:
-      description: Return the response from the fan controller ['all', 'power', 'speed', 'direction']
-      example: all
-  

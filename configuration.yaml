@@ -489,13 +489,7 @@ timer:
   office_lights:
     duration: '00:10:00'
     icon: mdi:lightbulb-on
-  fan_direction_timer:
-    duration: '00:10:00'
-    icon: mdi:fan
-  fan_speed_timer:
-    duration: '01:00:00'
-    icon: mdi:fan
-  fan_power_timer:
+  fan_change_timer:
     duration: '00:30:00'
     icon: mdi:fan
 
@@ -507,48 +501,8 @@ timer:
 python_script:
 
 switch:
-  - platform: command_line
-    scan_interval: 120
-    switches:
-      bedroom_fan:
-        friendly_name: Bedroom fan power
-        command_on: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command on --print power"
-        command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command off --print power"
-        command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print power"
-        value_template: '{{ value == "01" }}'
-      livingroom_fan:
-        friendly_name: Livingroom fan power
-        command_on: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command on --print power"
-        command_off: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command off --print power"
-        command_state: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print power"
-        value_template: '{{ value == "01" }}'
-      #genie_deployments:
-      #  friendly_name: Genie App deployments
-      #  command_on: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-start.sh'"
-      #  command_off: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-stop.sh'"
-      #  command_state: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-status.sh'"
-      #genie_power_state:
-      #  friendly_name: genie power state
-      #  command_on: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-start.sh'"
-      #  command_off: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-stop.sh'"
-      #  command_state: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 '~/kube-app-status.sh'"
   - platform: template
     switches:
-      bedroom_fan_python_script:
-        friendly_name: Bedroom fan power (python script)
-        value_template: '{{ value == "01" }}'
-        turn_on:
-          service: python_script.fan_control
-          data:
-            ip: 192.168.8.249
-            command: power_on
-            return_value: "power"
-        turn_off:
-          service: python_script.fan_control
-          data:
-            ip: 192.168.8.249
-            command: power_off
-            return_value: "power"
       servers:
         friendly_name: Servers
         value_template: "{{ is_state('switch.synology_power_state', 'on') or is_state('switch.genie_power_state', 'on') }}"
@@ -1129,14 +1083,6 @@ binary_sensor:
 #python_script:
 
 shell_command:
-  #livingroom_fan_speed: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x03\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
-  #livingroom_fan_status: python custom_scripts/fan_control.py --ip 192.168.9.248 --command status --print power
-  #livingroom_fan_power: python custom_scripts/fan_control.py --ip 192.168.9.248 --command power --print power
-  bedroom_fan_speed: python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command speed --speed {{speed}} --print speed
-  bedroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command direction --direction {{direction}} --print direction
-  livingroom_fan_speed: python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command speed --speed {{speed}} --print speed
-  livingroom_fan_direction: python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command direction --direction {{direction}} --print direction
-  #livingroom_fan_speed_var: echo -n -e '\x6d\x6f\x62\x69\x6c\x65\x04\x'{{speed}}'\x0d\x0a' | nc -w 1 -u -n 192.168.9.248 4000
   smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
   genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'sudo shutdown -h now homeassistant-shutdown'"
   genie_poweroff: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set GracefulShutdown
@@ -1184,27 +1130,6 @@ sensor:
     max_age:
         days: 30
     state_characteristic: mean
-
-  # fans
-  - platform: command_line
-    name: Livingroom fan speed
-    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print speed"
-    scan_interval: 300
-
-  - platform: command_line
-    name: Livingroom fan direction
-    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.248 --command status --print direction"
-    scan_interval: 300
-
-  - platform: command_line
-    name: Bedroom fan speed
-    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print speed"
-    scan_interval: 300
-
-  - platform: command_line
-    name: Bedroom fan direction
-    command: "python3 custom_scripts/fan_control.py --ip 192.168.8.249 --command status --print direction"
-    scan_interval: 300
 
   # light
   - platform: statistics
@@ -1643,37 +1568,6 @@ input_boolean:
     icon: mdi:door
 
 input_select:
-  # Keep track of the current speed
-  livingroom_fan_speed:
-    name: Livingroom fan speed
-    icon: mdi:speedometer
-    options:
-      - '01'
-      - '02'
-      - '03'
-  livingroom_fan_direction:
-    name: Livingroom fan direction
-    icon: mdi:dip-switch
-    options:
-      - 'in'
-      - 'alternating'
-      - 'out'
-
-  bedroom_fan_speed:
-    name: Bedroom fan speed
-    icon: mdi:speedometer
-    options:
-      - '01'
-      - '02'
-      - '03'
-  bedroom_fan_direction:
-    name: Bedroom fan direction
-    icon: mdi:dip-switch
-    options:
-      - 'in'
-      - 'alternating'
-      - 'out'
-
   fan_mode:
     name: Fan mode
     icon: mdi:dip-switch
@@ -1795,8 +1689,6 @@ logger:
     homeassistant.components.mqtt: warning
     # log level for all python scripts
     homeassistant.components.python_script: info
-    # individual log level for this python script
-    homeassistant.components.python_script.fan_control.py: debug
     # log level for a custom component
     # custom_components.my_integration: debug
     # log level for the `aiohttp` Python package
