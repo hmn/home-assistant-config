@@ -1288,53 +1288,47 @@ sensor:
     # default {{0.0|float}}
     # https://energinet.dk/Om-nyheder/Nyheder/2022/09/06/Energinet-justerer-tarif
     # https://www.nordpoolgroup.com/Market-data1/Elspot/Area-Prices/Denmark/DK1/hourly/?view=table
+    #
     additional_costs: >
       {%- set s = {
-          "afgift": 0.763,
-          "winter_low": 0.2068,
-          "winter_high": 0.2068,
-          "winter_peak": 0.5404,
-          "summer_low": 0.1682,
-          "summer_high": 0.1682,
-          "summer_peak": 0.4591,
-          "transmissionsnettarif": 0.049,
-          "systemtarif": 0.061,
-          "balancetarif": 0.0023,
-          "ok": 0.1057,
-          "vat": 1.25
+          "afgift": states('input_text.electricity_state_tax') | float,
+          "winter_low": states('input_text.electricity_winter_low') | float,
+          "winter_high": states('input_text.electricity_winter_high') | float,
+          "winter_peak": states('input_text.electricity_winter_peak') | float,
+          "summer_low": states('input_text.electricity_summer_low') | float,
+          "summer_high": states('input_text.electricity_summer_high') | float,
+          "summer_peak": states('input_text.electricity_summer_peak') | float,
+          "transmissionsnettarif": states('input_text.electricity_transmission_tarif') | float,
+          "systemtarif": states('input_text.electricity_system_tarif') | float,
+          "balancetarif": states('input_text.electricity_balance_tarif') | float,
+          "ok": states('input_text.electricity_supplier') | float,
+          "vat": ((states('input_number.electricity_vat') | int) / 100 + 1),
+          "summer_start": states('input_number.electricity_summer_start_month') | int,
+          "summer_end": states('input_number.electricity_summer_end_month') | int,
+          "peak_start": states('input_number.electricity_peak_start_hour') | int,
+          "peak_end": states('input_number.electricity_peak_end_hour') | int,
+          "low_start": states('input_number.electricity_low_start_hour') | int,
+          "low_end": states('input_number.electricity_low_end_hour') | int,
       } -%}
-      {% set s2023 = {
-          "afgift": 0.7310,
-          "winter_low": 0.1397,
-          "winter_high": 0.4192,
-          "winter_peak": 1.2576,
-          "summer_low": 0.1397,
-          "summer_high": 0.2096,
-          "summer_peak": 0.5450,
-          "transmissionsnettarif": 0.0760,
-          "systemtarif": 0.0670,
-          "balancetarif": 0.0000,
-          "ok": 0.1057,
-          "vat": 1.25
-      }
-      %}
-      {%- if now().month >= 4 and now().month <=9 %}
-          {%- if now().hour >=17 and now().hour <21 %}
-              {{- (s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
-          {%- elif now().hour >=0 and now().hour <6 %}
-              {{- (s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.systemtarif + s.supplier) -%}
+      {%- if now().month >= s.summer_start and now().month < s.summer_end %}
+          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
+              {%- set unit_price = s.summer_peak %}
+          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
+              {%- set unit_price = s.summer_low %}
           {%- else %}
-            {{- (s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+              {%- set unit_price = s.summer_high %}
           {%- endif %}
       {%- else %}
-          {%- if now().hour >=17 and now().hour <21 %}
-              {{- (s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
-          {%- elif now().hour >=0 and now().hour <6 %}
-              {{- (s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
+              {%- set unit_price = s.winter_peak %}
+          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
+              {%- set unit_price = s.winter_low %}
           {%- else %}
-              {{- (s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+              {%- set unit_price = s.winter_high %}
           {%- endif %}
       {%- endif %}
+      {{- (unit_price + static) * s.vat | float}}
 
   - platform: nordpool
     # Should the prices include vat? Default True
@@ -1370,51 +1364,44 @@ sensor:
     # default {{0.0|float}}
     additional_costs: >
       {%- set s = {
-          "afgift": 0.763,
-          "winter_low": 0.2068,
-          "winter_high": 0.2068,
-          "winter_peak": 0.5404,
-          "summer_low": 0.1682,
-          "summer_high": 0.1682,
-          "summer_peak": 0.4591,
-          "transmissionsnettarif": 0.049,
-          "systemtarif": 0.061,
-          "balancetarif": 0.0023,
-          "ok": 0.1057,
-          "vat": 1.00
+          "afgift": states('input_text.electricity_state_tax') | float,
+          "winter_low": states('input_text.electricity_winter_low') | float,
+          "winter_high": states('input_text.electricity_winter_high') | float,
+          "winter_peak": states('input_text.electricity_winter_peak') | float,
+          "summer_low": states('input_text.electricity_summer_low') | float,
+          "summer_high": states('input_text.electricity_summer_high') | float,
+          "summer_peak": states('input_text.electricity_summer_peak') | float,
+          "transmissionsnettarif": states('input_text.electricity_transmission_tarif') | float,
+          "systemtarif": states('input_text.electricity_system_tarif') | float,
+          "balancetarif": states('input_text.electricity_balance_tarif') | float,
+          "ok": states('input_text.electricity_supplier') | float,
+          "vat": ((states('input_number.electricity_vat') | int) / 100 + 1),
+          "summer_start": states('input_number.electricity_summer_start_month') | int,
+          "summer_end": states('input_number.electricity_summer_end_month') | int,
+          "peak_start": states('input_number.electricity_peak_start_hour') | int,
+          "peak_end": states('input_number.electricity_peak_end_hour') | int,
+          "low_start": states('input_number.electricity_low_start_hour') | int,
+          "low_end": states('input_number.electricity_low_end_hour') | int,
       } -%}
-      {% set s2023 = {
-          "afgift": 0.7310,
-          "winter_low": 0.1397,
-          "winter_high": 0.4192,
-          "winter_peak": 1.2576,
-          "summer_low": 0.1397,
-          "summer_high": 0.2096,
-          "summer_peak": 0.5450,
-          "transmissionsnettarif": 0.0760,
-          "systemtarif": 0.0670,
-          "balancetarif": 0.0000,
-          "ok": 0.1057,
-          "vat": 1.00
-      }
-      %}
-      {%- if now().month >= 4 and now().month <=9 %}
-          {%- if now().hour >=17 and now().hour <21 %}
-              {{- (s.summer_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
-          {%- elif now().hour >=0 and now().hour <6 %}
-              {{- (s.summer_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.systemtarif + s.supplier) -%}
+      {%- if now().month >= s.summer_start and now().month < s.summer_end %}
+          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
+              {%- set unit_price = s.summer_peak %}
+          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
+              {%- set unit_price = s.summer_low %}
           {%- else %}
-            {{- (s.summer_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+              {%- set unit_price = s.summer_high %}
           {%- endif %}
       {%- else %}
-          {%- if now().hour >=17 and now().hour <21 %}
-              {{- (s.winter_peak+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
-          {%- elif now().hour >=0 and now().hour <6 %}
-              {{- (s.winter_low+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
+              {%- set unit_price = s.winter_peak %}
+          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
+              {%- set unit_price = s.winter_low %}
           {%- else %}
-              {{- (s.winter_high+s.afgift+s.transmissionsnettarif+s.systemtarif+s.systemtarif+s.ok)*s.vat|float}}
+              {%- set unit_price = s.winter_high %}
           {%- endif %}
       {%- endif %}
+      {{- (unit_price + static) | float}}
 
   - platform: nordpool
 
