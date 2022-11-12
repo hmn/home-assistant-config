@@ -1078,12 +1078,12 @@ binary_sensor:
     host: 192.168.8.2
     name: "genie"
     count: 2
-    scan_interval: 30
+    scan_interval: 5
   - platform: ping
     host: 192.168.8.10
     name: "alladin"
     count: 2
-    scan_interval: 30
+    scan_interval: 5
 
 #python_script:
 
