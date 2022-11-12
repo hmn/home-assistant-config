@@ -512,7 +512,7 @@ switch:
           service: script.servers_off
       genie_power_state:
         friendly_name: genie power state
-        value_template: "{{ is_state('binary_sensor.genie', 'on') }}"
+        value_template: "{{ is_state('binary_sensor.genie_ping', 'on') }}"
         turn_on:
           service: shell_command.genie_poweron
           data:
@@ -1076,12 +1076,12 @@ template:
 binary_sensor:
   - platform: ping
     host: 192.168.8.2
-    name: "genie"
+    name: "genie ping"
     count: 2
     scan_interval: 5
   - platform: ping
     host: 192.168.8.10
-    name: "alladin"
+    name: "alladin ping"
     count: 2
     scan_interval: 5
 
@@ -1093,6 +1093,7 @@ shell_command:
   genie_poweroff: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set GracefulShutdown
   genie_poweron: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set On
   alladin_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo shutdown -h now homeassistant-shutdown'"
+  alladin_reboot: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo reboot'"
 
 sensor:
   - platform: statistics
