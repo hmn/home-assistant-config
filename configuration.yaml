@@ -8,6 +8,7 @@ homeassistant:
   elevation: !secret elevation
   unit_system: metric
   currency: DKK
+  country: DK
   temperature_unit: C
   time_zone: "Europe/Copenhagen"
   external_url: !secret external_url
