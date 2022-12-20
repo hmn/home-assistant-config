@@ -145,6 +145,7 @@ history:
       - sensor.smappee_fase_2_power
       - sensor.smappee_fase_3_power
       - sensor.henriks_iphone_bssid
+      - device_tracker.udr
 
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
@@ -182,6 +183,7 @@ recorder:
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
       - sensor.henriks_iphone_bssid
+      - device_tracker.udr
     #event_types:
     #  - 
 
