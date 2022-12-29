@@ -1112,6 +1112,15 @@ sensor:
     sampling_size: 50
     precision: 1
 
+  - platform: statistics
+    name: "Bathroom aqara humidity over last 24 hours"
+    entity_id: sensor.bathroom_aqara_humidity
+    state_characteristic: average_linear
+    max_age:
+      hours: 24
+    sampling_size: 50
+    precision: 1
+
   # energy
   # power conversion
   # https://www.home-assistant.io/integrations/integration/#energy
