@@ -321,6 +321,7 @@ zha:
       salus_provider: true                       # Auto update SALUS/Computime devices
       inovelli_provider: true                    # Auto update INOVELLI devices
       #otau_directory: /path/to/your/ota/folder  # Utilize .ota files to update everything else
+      otau_directory: /config/zigpy_ota
 
 # smappee:
 #   host: 192.168.7.116
