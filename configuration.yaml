@@ -398,10 +398,10 @@ plex:
 #  client_secret: !secret spotify_client_secret
 
 weather:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-  - platform: pirateweather
-    api_key: !secret pirateweather_api_key
+#  - platform: darksky
+#    api_key: !secret darksky_api_key
+#  - platform: pirateweather
+#    api_key: !secret pirateweather_api_key
   - platform: template
     name: "Netatmo Current Conditions"
     condition_template: "{{ states('sensor.netatmo_outdoor_temperature') }}"
