@@ -1325,7 +1325,7 @@ sensor:
           "low_start": states('input_number.electricity_low_start_hour') | int,
           "low_end": states('input_number.electricity_low_end_hour') | int,
       } -%}
-      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.systemtarif + s.supplier) -%}
+      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.balancetarif + s.supplier) -%}
       {%- if now().month >= s.summer_start and now().month < s.summer_end %}
           {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
               {%- set unit_price = s.summer_peak %}
@@ -1398,7 +1398,7 @@ sensor:
           "low_start": states('input_number.electricity_low_start_hour') | int,
           "low_end": states('input_number.electricity_low_end_hour') | int,
       } -%}
-      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.systemtarif + s.supplier) -%}
+      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.balancetarif + s.supplier) -%}
       {%- if now().month >= s.summer_start and now().month < s.summer_end %}
           {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
               {%- set unit_price = s.summer_peak %}
