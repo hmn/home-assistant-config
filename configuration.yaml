@@ -107,7 +107,7 @@ http:
 
 # Enables support for tracking state changes over time.
 history:
-  use_include_order: true
+  # use_include_order: true
   exclude:
     domains:
       - script
@@ -139,11 +139,6 @@ history:
       - sensor.internet_time
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
-      - sensor.smappee_power
-      - sensor.smappee_usage_today
-      - sensor.smappee_fase_1_power
-      - sensor.smappee_fase_2_power
-      - sensor.smappee_fase_3_power
       - sensor.henriks_iphone_bssid
       - device_tracker.udr
       - device_tracker.shelly_h_t
@@ -224,11 +219,6 @@ logbook:
       - sensor.internet_time
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
-      - sensor.smappee_power
-      - sensor.smappee_usage_today
-      - sensor.smappee_fase_1_power
-      - sensor.smappee_fase_2_power
-      - sensor.smappee_fase_3_power
       - sensor.henriks_iphone_bssid
 
 
@@ -246,63 +236,63 @@ wake_on_lan:
 ifttt:
   key: !secret ifttt_key
 
-mqtt:
-  sensor:
-    - name: Smappee power
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      value_template: "{{ value_json.totalPower }}"
-      device_class: power
-      state_class: measurement
+# mqtt:
+#   sensor:
+#     - name: Smappee power
+#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#       unit_of_measurement: "W"
+#       icon: "mdi:power-plug"
+#       value_template: "{{ value_json.totalPower }}"
+#       device_class: power
+#       state_class: measurement
 
-    - name: Smappee usage today (raw)
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      value_template: "{{ value_json.totalImportEnergy }}"
-      device_class: power
-      state_class: measurement
+#     - name: Smappee usage today (raw)
+#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#       unit_of_measurement: "W"
+#       icon: "mdi:power-plug"
+#       value_template: "{{ value_json.totalImportEnergy }}"
+#       device_class: power
+#       state_class: measurement
 
-    - name: Smappee usage today
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-      unit_of_measurement: "kWh"
-      icon: "mdi:power-plug"
-      value_template: "{{ ((value_json.totalImportEnergy / 3600000) | float | round(2, default=0)) }}"
-      device_class: energy
-      state_class: measurement
+#     - name: Smappee usage today
+#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#       unit_of_measurement: "kWh"
+#       icon: "mdi:power-plug"
+#       value_template: "{{ ((value_json.totalImportEnergy / 3600000) | float | round(2, default=0)) }}"
+#       device_class: energy
+#       state_class: measurement
 
-    - name: Smappee fase 1 power
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      value_template: "{{ value_json.channelPowers[0].power }}"
-      device_class: power
-      state_class: measurement
+#     - name: Smappee fase 1 power
+#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#       unit_of_measurement: "W"
+#       icon: "mdi:power-plug"
+#       value_template: "{{ value_json.channelPowers[0].power }}"
+#       device_class: power
+#       state_class: measurement
 
-    - name: Smappee fase 2 power
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      value_template: "{{ value_json.channelPowers[1].power }}"
-      device_class: power
-      state_class: measurement
+#     - name: Smappee fase 2 power
+#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#       unit_of_measurement: "W"
+#       icon: "mdi:power-plug"
+#       value_template: "{{ value_json.channelPowers[1].power }}"
+#       device_class: power
+#       state_class: measurement
 
-    - name: Smappee fase 3 power
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      value_template: "{{ value_json.channelPowers[2].power }}"
-      device_class: power
-      state_class: measurement
+#     - name: Smappee fase 3 power
+#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
+#       unit_of_measurement: "W"
+#       icon: "mdi:power-plug"
+#       value_template: "{{ value_json.channelPowers[2].power }}"
+#       device_class: power
+#       state_class: measurement
 
-    - name: Smappee always on
-      state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
-      unit_of_measurement: "W"
-      icon: "mdi:power-plug"
-      value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2, default=0) }}"
-      device_class: power
-      state_class: measurement
+#     - name: Smappee always on
+#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
+#       unit_of_measurement: "W"
+#       icon: "mdi:power-plug"
+#       value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2, default=0) }}"
+#       device_class: power
+#       state_class: measurement
 
 
 homekit:
@@ -428,18 +418,18 @@ aws:
       region_name: !secret aws_region_name
 
 utility_meter:
-  smappee_usage_hourly:
-    source: sensor.smappee_usage_today
-    name: Smappee hourly energy
-    cycle: hourly
-  smappee_usage_daily:
-    source: sensor.smappee_usage_today
-    name: Smappee daily energy
-    cycle: daily
-  smappee_usage_monthly:
-    source: sensor.smappee_usage_today
-    name: Smappee monthly energy
-    cycle: monthly
+  # smappee_usage_hourly:
+  #   source: sensor.smappee_usage_today
+  #   name: Smappee hourly energy
+  #   cycle: hourly
+  # smappee_usage_daily:
+  #   source: sensor.smappee_usage_today
+  #   name: Smappee daily energy
+  #   cycle: daily
+  # smappee_usage_monthly:
+  #   source: sensor.smappee_usage_today
+  #   name: Smappee monthly energy
+  #   cycle: monthly
   energy_spent_hourly:
     source: sensor.energy_spent
     name: Hourly energy spent
@@ -968,12 +958,22 @@ template:
         state_class: "measurement"
         state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "off_peak_2") }}'
 
+      - name: "Total power"
+        device_class: "power"
+        unit_of_measurement: "W"
+        state_class: "measurement"
+        state: >
+          {% set phase1 = states('sensor.shelly_pro_3em_phase_a_active_power') | float(default=0.0) %}
+          {% set phase2 = states('sensor.shelly_pro_3em_phase_b_active_power') | float(default=0.0) %}
+          {% set phase3 = states('sensor.shelly_pro_3em_phase_c_active_power') | float(default=0.0) %}
+          {{ (phase1 + phase2 + phase3) | round(1, default=0) }}
+
       - name: "Other power"
         device_class: "power"
         unit_of_measurement: "W"
         state_class: "measurement"
         state: >
-          {% set total = states('sensor.smappee_power') | float(default=0.0) %}
+          {% set total = states('sensor.total_power') | float(default=0.0) %}
           {% set combined = states('sensor.combined_measured_power') | float(default=0.0) %}
           {{ (total - combined) | round(1, default=0) }}
 
@@ -1078,7 +1078,7 @@ binary_sensor:
 #python_script:
 
 shell_command:
-  smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
+  # smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
   genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'sudo shutdown -h now homeassistant-shutdown'"
   genie_poweroff: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set GracefulShutdown
   genie_poweron: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set On
@@ -1108,7 +1108,7 @@ sensor:
   # power conversion
   # https://www.home-assistant.io/integrations/integration/#energy
   - platform: integration
-    source: sensor.smappee_power
+    source: sensor.total_power
     name: Energy spent
     unit_prefix: k
     round: 2
@@ -1192,65 +1192,65 @@ sensor:
   # smappee
   # remap realtime sensors for history use
 
-  - platform: filter
-    name: "Smappee power (moving average)"
-    entity_id: sensor.smappee_power
-    filters:
-      - filter: outlier
-        window_size: 4
-        radius: 2.0
-      - filter: lowpass
-        time_constant: 10
-      - filter: time_simple_moving_average
-        window_size: 00:05
-        precision: 0
-      - filter: time_throttle
-        window_size: 00:01
+  # - platform: filter
+  #   name: "Smappee power (moving average)"
+  #   entity_id: sensor.smappee_power
+  #   filters:
+  #     - filter: outlier
+  #       window_size: 4
+  #       radius: 2.0
+  #     - filter: lowpass
+  #       time_constant: 10
+  #     - filter: time_simple_moving_average
+  #       window_size: 00:05
+  #       precision: 0
+  #     - filter: time_throttle
+  #       window_size: 00:01
 
-  - platform: filter
-    name: "Smappee fase 1 power (moving average)"
-    entity_id: sensor.smappee_fase_1_power
-    filters:
-      - filter: outlier
-        window_size: 4
-        radius: 2.0
-      - filter: lowpass
-        time_constant: 10
-      - filter: time_simple_moving_average
-        window_size: 00:05
-        precision: 0
-      - filter: time_throttle
-        window_size: 00:01
+  # - platform: filter
+  #   name: "Smappee fase 1 power (moving average)"
+  #   entity_id: sensor.smappee_fase_1_power
+  #   filters:
+  #     - filter: outlier
+  #       window_size: 4
+  #       radius: 2.0
+  #     - filter: lowpass
+  #       time_constant: 10
+  #     - filter: time_simple_moving_average
+  #       window_size: 00:05
+  #       precision: 0
+  #     - filter: time_throttle
+  #       window_size: 00:01
 
-  - platform: filter
-    name: "Smappee fase 2 power (moving average)"
-    entity_id: sensor.smappee_fase_2_power
-    filters:
-      - filter: outlier
-        window_size: 4
-        radius: 2.0
-      - filter: lowpass
-        time_constant: 10
-      - filter: time_simple_moving_average
-        window_size: 00:05
-        precision: 0
-      - filter: time_throttle
-        window_size: 00:01
+  # - platform: filter
+  #   name: "Smappee fase 2 power (moving average)"
+  #   entity_id: sensor.smappee_fase_2_power
+  #   filters:
+  #     - filter: outlier
+  #       window_size: 4
+  #       radius: 2.0
+  #     - filter: lowpass
+  #       time_constant: 10
+  #     - filter: time_simple_moving_average
+  #       window_size: 00:05
+  #       precision: 0
+  #     - filter: time_throttle
+  #       window_size: 00:01
 
-  - platform: filter
-    name: "Smappee fase 3 power (moving average)"
-    entity_id: sensor.smappee_fase_3_power
-    filters:
-      - filter: outlier
-        window_size: 4
-        radius: 2.0
-      - filter: lowpass
-        time_constant: 10
-      - filter: time_simple_moving_average
-        window_size: 00:05
-        precision: 0
-      - filter: time_throttle
-        window_size: 00:01
+  # - platform: filter
+  #   name: "Smappee fase 3 power (moving average)"
+  #   entity_id: sensor.smappee_fase_3_power
+  #   filters:
+  #     - filter: outlier
+  #       window_size: 4
+  #       radius: 2.0
+  #     - filter: lowpass
+  #       time_constant: 10
+  #     - filter: time_simple_moving_average
+  #       window_size: 00:05
+  #       precision: 0
+  #     - filter: time_throttle
+  #       window_size: 00:01
 
   - platform: nordpool
     # Should the prices include vat? Default True
