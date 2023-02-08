@@ -1588,26 +1588,26 @@ modbus:
     type: tcp # maybe rtuovertcp ?
     host: 192.168.8.189
     port: 502
-    binary_sensors:
-      - name: "Pump"
-        address: 4001
-    sensors:
-      - name: "S1 actual"
-        unit_of_measurement: °C
-        device_class: temperature
-        address: 11200
-      - name: "S2 actual"
-        unit_of_measurement: °C
-        device_class: temperature
-        address: 11201
-      - name: "S3 actual"
-        unit_of_measurement: °C
-        device_class: temperature
-        address: 11202
-      - name: "S4 actual"
-        unit_of_measurement: °C
-        device_class: temperature
-        address: 11203
+    # binary_sensors:
+    #   - name: "Pump"
+    #     address: 4001
+    # sensors:
+    #   - name: "S1 actual"
+    #     unit_of_measurement: °C
+    #     device_class: temperature
+    #     address: 11200
+    #   - name: "S2 actual"
+    #     unit_of_measurement: °C
+    #     device_class: temperature
+    #     address: 11201
+    #   - name: "S3 actual"
+    #     unit_of_measurement: °C
+    #     device_class: temperature
+    #     address: 11202
+    #   - name: "S4 actual"
+    #     unit_of_measurement: °C
+    #     device_class: temperature
+    #     address: 11203
 
 notify:
   - platform: syslog
@@ -1712,5 +1712,5 @@ logger:
     custom_components.nordpool: debug
     custom_components.nordpool.sensor: debug
     custom_components.nordpool.aio_price: debug
-    homeassistant.components.modbus: debug
-    pymodbus: debug
+    #homeassistant.components.modbus: debug
+    #pymodbus: debug
