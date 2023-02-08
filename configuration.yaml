@@ -1608,18 +1608,6 @@ modbus:
         unit_of_measurement: °C
         device_class: temperature
         address: 11203
- 
-sensor:
- platform: modbus
- registers:
- - name: Sensor3
- unit_of_measurement: °C
- slave: 1
- register: 0
- count: 2
- register_type: input
- data_type: float
- precision: 2
 
 notify:
   - platform: syslog
@@ -1724,3 +1712,5 @@ logger:
     custom_components.nordpool: debug
     custom_components.nordpool.sensor: debug
     custom_components.nordpool.aio_price: debug
+    homeassistant.components.modbus: debug
+    pymodbus: debug
