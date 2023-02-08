@@ -1583,6 +1583,43 @@ input_select:
       - 'on'
       - 'off'
 
+modbus:
+  - name: kmtronic
+    type: tcp # maybe rtuovertcp ?
+    host: 192.168.8.189
+    port: 502
+    binary_sensors:
+      - name: "Pump"
+        address: 4001
+    sensors:
+      - name: "S1 actual"
+        unit_of_measurement: °C
+        device_class: temperature
+        address: 11200
+      - name: "S2 actual"
+        unit_of_measurement: °C
+        device_class: temperature
+        address: 11201
+      - name: "S3 actual"
+        unit_of_measurement: °C
+        device_class: temperature
+        address: 11202
+      - name: "S4 actual"
+        unit_of_measurement: °C
+        device_class: temperature
+        address: 11203
+ 
+sensor:
+ platform: modbus
+ registers:
+ - name: Sensor3
+ unit_of_measurement: °C
+ slave: 1
+ register: 0
+ count: 2
+ register_type: input
+ data_type: float
+ precision: 2
 
 notify:
   - platform: syslog
