@@ -995,8 +995,8 @@ template:
         state_class: "measurement"
         state: >
           {% set count = 0 %}
-          {% set door = states('sensor.entrance_motion_sensor_1_temperature') | float(default=0.0) %}
-          {% set wall = states('sensor.entrance_motion_sensor_2_temperature') | float(default=0.0) %}
+          {% set door = states('sensor.entrance_motion_sensor_door_temperature') | float(default=0.0) %}
+          {% set wall = states('sensor.entrance_motion_sensor_wall_temperature') | float(default=0.0) %}
           {% set count = count + 1 if is_number(door) and door > 0.0 else count %}
           {% set count = count + 1 if is_number(wall) and wall > 0.0 else count %}
           {{ ((door + wall) / count) | round(1, default=0) }}
