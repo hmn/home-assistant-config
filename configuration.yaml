@@ -228,7 +228,7 @@ ssdp:
 ios:
 alexa:
 mobile_app:
-prometheus:
+#prometheus:
 energy:
 sun:
 wake_on_lan:
