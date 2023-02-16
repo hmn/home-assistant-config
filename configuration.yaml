@@ -1703,5 +1703,6 @@ logger:
     custom_components.nordpool: debug
     custom_components.nordpool.sensor: debug
     custom_components.nordpool.aio_price: debug
+    custom_components.zaptec: debug
     #homeassistant.components.modbus: debug
     #pymodbus: debug
