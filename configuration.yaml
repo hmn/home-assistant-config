@@ -1579,7 +1579,6 @@ modbus:
     type: tcp # maybe rtuovertcp ?
     host: 192.168.8.189
     port: 502
-
     binary_sensors:
       - name: "Pump"
         scan_interval: 30
