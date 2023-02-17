@@ -1590,11 +1590,7 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 4001
-        count: 1
         slave: 5
-    #   - name: "Pump"
-    #     scan_interval: 30
-    #     address: 4001
     sensors:
       - name: "Danfoss ECL Comfort 110 Outside temperature (S1)"
         unit_of_measurement: °C
