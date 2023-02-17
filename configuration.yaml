@@ -1576,18 +1576,19 @@ input_select:
 
 modbus:
   - name: kmtronic
-    type: tcp # maybe rtuovertcp ?
+    #type: tcp # maybe rtuovertcp ?
+    type: rtuovertcp ?
     host: 192.168.8.189
     port: 502
-    binary_sensors:
-      - name: "Pump"
-        scan_interval: 30
-        address: 4001
-    # sensors:
-    #   - name: "S1 actual"
-    #     unit_of_measurement: °C
-    #     device_class: temperature
-    #     address: 11200
+    # binary_sensors:
+    #   - name: "Pump"
+    #     scan_interval: 30
+    #     address: 4001
+    sensors:
+      - name: "S1 actual"
+        unit_of_measurement: °C
+        device_class: temperature
+        address: 11200
     #   - name: "S2 actual"
     #     unit_of_measurement: °C
     #     device_class: temperature
