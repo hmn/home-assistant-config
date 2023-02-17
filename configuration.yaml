@@ -1586,7 +1586,7 @@ modbus:
     port: 502
     binary_sensors:
       - name: "Danfoss ECL Comfort 110 Pump"
-        device_class: heat
+        #device_class: heat
         scan_interval: 30
         input_type: holding
         address: 4001
