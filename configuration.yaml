@@ -1591,6 +1591,12 @@ modbus:
         input_type: holding
         address: 4001
         slave: 5
+      - name: "Danfoss ECL Comfort 110 Valve"
+        #device_class: heat
+        scan_interval: 30
+        input_type: holding
+        address: 4100
+        slave: 5
     sensors:
       - name: "Danfoss ECL Comfort 110 Outside temperature (S1)"
         unit_of_measurement: °C
@@ -1679,15 +1685,15 @@ modbus:
     climates:
       - name: "Danfoss ECL Comfort 110"
         scan_interval: 30
-        address: 11228
+        address: 11179
         count: 1
         slave: 5
         data_type: int16
         max_temp: 25
         min_temp: 2
         offset: 0
-        scale: 0.1
-        precision: 0.1
+        #scale: 0.1
+        #precision: 0.1
         target_temp_register: 11179
         temp_step: 1
 
