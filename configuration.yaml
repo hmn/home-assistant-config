@@ -1688,7 +1688,7 @@ modbus:
         offset: 0
         precision: 1
         scale: 0.1
-        #structure: ">f"
+        structure: ">f"
         target_temp_register: 11179
         temp_step: 1
         temperature_unit: C
