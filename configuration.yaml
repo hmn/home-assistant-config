@@ -1692,6 +1692,7 @@ modbus:
         target_temp_register: 11179
         temp_step: 1
         temperature_unit: C
+
 notify:
   - platform: syslog
     name: syslog
