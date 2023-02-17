@@ -1574,12 +1574,24 @@ input_select:
       - 'on'
       - 'off'
 
+# debug
+# https://github.com/pymodbus-dev/pymodbus/blob/dev/pymodbus/repl/client/README.md
+# pymodbus.console tcp --host 192.168.8.189 --port 502 --framer tcp
+#
+# client.read_holding_registers count=1 address=11203 slave=5
 modbus:
   - name: kmtronic
     type: tcp
     host: 192.168.8.189
     port: 502
-    # binary_sensors:
+    binary_sensors:
+      - name: "Danfoss ECL Comfort 110 Pump"
+        device_class: heat
+        scan_interval: 30
+        input_type: holding
+        address: 4001
+        count: 1
+        slave: 5
     #   - name: "Pump"
     #     scan_interval: 30
     #     address: 4001
@@ -1596,18 +1608,78 @@ modbus:
         scale: 0.1
         precision: 1
         data_type: int16
-    #   - name: "S2 actual"
-    #     unit_of_measurement: °C
-    #     device_class: temperature
-    #     address: 11201
-    #   - name: "S3 actual"
-    #     unit_of_measurement: °C
-    #     device_class: temperature
-    #     address: 11202
-    #   - name: "S4 actual"
-    #     unit_of_measurement: °C
-    #     device_class: temperature
-    #     address: 11203
+      - name: "Danfoss ECL Comfort 110 Flow temperature (S3)"
+        unit_of_measurement: °C
+        device_class: temperature
+        state_class: measurement
+        scan_interval: 30
+        input_type: holding
+        address: 11202
+        count: 1
+        slave: 5
+        scale: 0.1
+        precision: 1
+        data_type: int16
+      - name: "Danfoss ECL Comfort 110 Return temperature (S4)"
+        unit_of_measurement: °C
+        device_class: temperature
+        state_class: measurement
+        scan_interval: 30
+        input_type: holding
+        address: 11203
+        count: 1
+        slave: 5
+        scale: 0.1
+        precision: 1
+        data_type: int16
+      - name: "Danfoss ECL Comfort 110 Accumulated outside temperature"
+        unit_of_measurement: °C
+        device_class: temperature
+        state_class: measurement
+        scan_interval: 30
+        input_type: holding
+        address: 11099
+        count: 1
+        slave: 5
+        scale: 0.1
+        precision: 1
+        data_type: int16
+      - name: "Danfoss ECL Comfort 110 Desired room temperature (S2)"
+        unit_of_measurement: °C
+        device_class: temperature
+        state_class: measurement
+        scan_interval: 30
+        input_type: holding
+        address: 11228
+        count: 1
+        slave: 5
+        scale: 0.1
+        precision: 1
+        data_type: int16
+      - name: "Danfoss ECL Comfort 110 Desired flow temperature (S3)"
+        unit_of_measurement: °C
+        device_class: temperature
+        state_class: measurement
+        scan_interval: 30
+        input_type: holding
+        address: 11229
+        count: 1
+        slave: 5
+        scale: 0.1
+        precision: 1
+        data_type: int16
+      - name: "Danfoss ECL Comfort 110 Desired return temperature (S4)"
+        unit_of_measurement: °C
+        device_class: temperature
+        state_class: measurement
+        scan_interval: 30
+        input_type: holding
+        address: 11230
+        count: 1
+        slave: 5
+        scale: 0.1
+        precision: 1
+        data_type: int16
 
 notify:
   - platform: syslog
