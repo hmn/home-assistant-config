@@ -1584,7 +1584,7 @@ modbus:
     #     scan_interval: 30
     #     address: 4001
     sensors:
-      - name: "Outside temperature (S1)"
+      - name: "Central Heating Outside temperature (S1)"
         unit_of_measurement: °C
         device_class: temperature
         state_class: measurement
