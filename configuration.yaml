@@ -1678,16 +1678,17 @@ modbus:
         data_type: int16
     climates:
       - name: "Danfoss ECL Comfort 110"
+        scan_interval: 30
         address: 11228
         count: 1
         slave: 5
-        data_type: int16
-        max_temp: 25
-        min_temp: 2
-        offset: 0
-        scale: 0.1
+        #data_type: int16
+        #max_temp: 25
+        #min_temp: 2
+        #offset: 0
+        #scale: 0.1
         target_temp_register: 11179
-        temp_step: 1
+        #temp_step: 1
 
 notify:
   - platform: syslog
