@@ -1579,9 +1579,9 @@ modbus:
     type: tcp # maybe rtuovertcp ?
     host: 192.168.8.189
     port: 502
-    # binary_sensors:
-    #   - name: "Pump"
-    #     address: 4001
+    binary_sensors:
+      - name: "Pump"
+        address: 4001
     # sensors:
     #   - name: "S1 actual"
     #     unit_of_measurement: °C
@@ -1704,5 +1704,5 @@ logger:
     custom_components.nordpool.sensor: debug
     custom_components.nordpool.aio_price: debug
     custom_components.zaptec: debug
-    #homeassistant.components.modbus: debug
-    #pymodbus: debug
+    homeassistant.components.modbus: debug
+    pymodbus: debug
