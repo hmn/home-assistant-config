@@ -1685,7 +1685,6 @@ modbus:
         max_temp: 25
         min_temp: 2
         offset: 0
-        precision: 1
         scale: 0.1
         target_temp_register: 11179
         temp_step: 1
