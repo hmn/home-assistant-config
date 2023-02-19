@@ -1690,9 +1690,6 @@ modbus:
       #   precision: 1
       #   data_type: int16
       - name: "Danfoss ECL Comfort 110 Mode"
-        unit_of_measurement: °C
-        device_class: temperature
-        state_class: measurement
         scan_interval: 30
         input_type: holding
         address: 4200
