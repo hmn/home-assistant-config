@@ -1709,6 +1709,37 @@ modbus:
             state_fan_only: 4
             state_dry: 3
             state_off: 0
+    switches:
+      - name: "Danfoss ECL Comfort 110 Mode Manual"
+        scan_interval: 30
+        address: 4200
+        slave: 5
+        command_on: 0
+        command_off: 1
+      - name: "Danfoss ECL Comfort 110 Mode Auto"
+        scan_interval: 30
+        address: 4200
+        slave: 5
+        command_on: 1
+        command_off: 4
+      - name: "Danfoss ECL Comfort 110 Mode Comfort"
+        scan_interval: 30
+        address: 4200
+        slave: 5
+        command_on: 2
+        command_off: 1
+      - name: "Danfoss ECL Comfort 110 Mode Setback"
+        scan_interval: 30
+        address: 4200
+        slave: 5
+        command_on: 3
+        command_off: 1
+      - name: "Danfoss ECL Comfort 110 Mode Standby"
+        scan_interval: 30
+        address: 4200
+        slave: 5
+        command_on: 4
+        command_off: 1
 
 notify:
   - platform: syslog
