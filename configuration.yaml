@@ -1700,6 +1700,15 @@ modbus:
         min_temp: 2
         target_temp_register: 11179
         temp_step: 1
+        hvac_mode_register:
+          address: 4200
+          values:
+            state_auto: 1
+            #state_cool: 1
+            state_heat: 2
+            state_fan_only: 4
+            state_dry: 3
+            state_off: 0
 
 notify:
   - platform: syslog
