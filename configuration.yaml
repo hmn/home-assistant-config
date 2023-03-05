@@ -1132,7 +1132,7 @@ sensor:
     state_characteristic: average_linear
   - platform: statistics
     name: Kitchen light statistics
-    entity_id: sensor.kitchen_motion_sensor_1_illuminance
+    entity_id: sensor.kitchen_motion_sensor_2_illuminance
     #max_age:
     #  minutes: 30
     sampling_size: 10
@@ -1150,7 +1150,7 @@ sensor:
     state_characteristic: average_linear
   - platform: statistics
     name: Entrance light statistics
-    entity_id: sensor.kitchen_motion_sensor_1_illuminance
+    entity_id: sensor.entrance_motion_sensor_wall_illuminance
     #max_age:
     #  minutes: 30
     sampling_size: 10
