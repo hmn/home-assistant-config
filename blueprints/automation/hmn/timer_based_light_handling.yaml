@@ -31,7 +31,7 @@ blueprint:
       selector:
         number:
           min: 0
-          max: 100
+          max: 200
           unit_of_measurement: lx
     light_statistics:
       name: Light statistics sensor
