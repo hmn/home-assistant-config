@@ -104,7 +104,7 @@ blueprint:
           step: 1.0
           unit_of_measurement: "s"
 
-mode: queued
+mode: restart
 
 variables:
   #light_list: !input target_lights
