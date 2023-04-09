@@ -208,6 +208,8 @@ logbook:
       - binary_sensor.*_motion_sensor_*
       - automation.motion*
       - automation.*light_timer*
+      - sensor.lenovo_*
+      - binary_sensor.lenovo_*
     entities:
       - sensor.date
       - sensor.time
@@ -220,6 +222,8 @@ logbook:
       - sensor.henriks_iphone_battery_state
       - sensor.henriks_ipad_battery_state
       - sensor.henriks_iphone_bssid
+      - media_player.hmnmbp
+      - binary_sensor.lenovo
 
 
 cloud:
