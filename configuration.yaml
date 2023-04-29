@@ -1129,7 +1129,7 @@ sensor:
     name: Office light statistics
     entity_id: sensor.office_motion_sensor_1_illuminance
     max_age:
-      minutes: 15
+      minutes: 5
     sampling_size: 10
     precision: 1
     #device_class: illuminance
