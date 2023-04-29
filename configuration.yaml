@@ -1128,36 +1128,40 @@ sensor:
   - platform: statistics
     name: Office light statistics
     entity_id: sensor.office_motion_sensor_1_illuminance
-    #max_age:
-    #  minutes: 30
+    max_age:
+      minutes: 15
     sampling_size: 10
+    precision: 1
     #device_class: illuminance
     #state_class: measurement
     state_characteristic: average_linear
   - platform: statistics
     name: Kitchen light statistics
     entity_id: sensor.kitchen_motion_sensor_2_illuminance
-    #max_age:
-    #  minutes: 30
+    max_age:
+      minutes: 15
     sampling_size: 10
+    precision: 1
     #device_class: illuminance
     #state_class: measurement
     state_characteristic: average_linear
   - platform: statistics
     name: Bedroom light statistics
     entity_id: sensor.bedroom_motion_sensor_1_illuminance
-    #max_age:
-    #  minutes: 30
+    max_age:
+      minutes: 15
     sampling_size: 10
+    precision: 1
     #device_class: illuminance
     #state_class: measurement
     state_characteristic: average_linear
   - platform: statistics
     name: Entrance light statistics
     entity_id: sensor.entrance_motion_sensor_wall_illuminance
-    #max_age:
-    #  minutes: 30
+    max_age:
+      minutes: 15
     sampling_size: 10
+    precision: 1
     #device_class: illuminance
     #state_class: measurement
     state_characteristic: average_linear
