@@ -105,43 +105,43 @@ http:
 
 #prometheus:
 
-# Enables support for tracking state changes over time.
-history:
-  # use_include_order: true
-  exclude:
-    domains:
-      - script
-      - weblink
-      - homekit
-      - updater
-      - light
-    entity_globs:
-      - binary_sensor.hmnmbp*
-      - sensor.hmnmbp*
-      - sensor.clock*
-      - sensor.date*
-      - sensor.glances*
-      - sensor.load_*m
-      - sensor.time*
-      - sensor.uptime*
-      - input_boolean.*_motion
-      - binary_sensor.*_motion_sensor_*
-      - automation.motion*
-      - automation.*lights_timer*
-    entities:
-      - sensor.date
-      - sensor.time
-      - sensor.time_utc
-      - sensor.time_date
-      - sensor.date_time
-      - sensor.date_time_iso
-      - sensor.date_time_utc
-      - sensor.internet_time
-      - sensor.henriks_iphone_battery_state
-      - sensor.henriks_ipad_battery_state
-      - sensor.henriks_iphone_bssid
-      - device_tracker.udr
-      - device_tracker.shelly_h_t
+# # Enables support for tracking state changes over time.
+# history:
+#   # use_include_order: true
+#   exclude:
+#     domains:
+#       - script
+#       - weblink
+#       - homekit
+#       - updater
+#       - light
+#     entity_globs:
+#       - binary_sensor.hmnmbp*
+#       - sensor.hmnmbp*
+#       - sensor.clock*
+#       - sensor.date*
+#       - sensor.glances*
+#       - sensor.load_*m
+#       - sensor.time*
+#       - sensor.uptime*
+#       - input_boolean.*_motion
+#       - binary_sensor.*_motion_sensor_*
+#       - automation.motion*
+#       - automation.*lights_timer*
+#     entities:
+#       - sensor.date
+#       - sensor.time
+#       - sensor.time_utc
+#       - sensor.time_date
+#       - sensor.date_time
+#       - sensor.date_time_iso
+#       - sensor.date_time_utc
+#       - sensor.internet_time
+#       - sensor.henriks_iphone_battery_state
+#       - sensor.henriks_ipad_battery_state
+#       - sensor.henriks_iphone_bssid
+#       - device_tracker.udr
+#       - device_tracker.shelly_h_t
 
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
