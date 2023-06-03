@@ -1716,6 +1716,17 @@ modbus:
             state_fan_only: 4
             state_dry: 3
             state_off: 0
+    switches:
+      - name: "Danfoss ECL Comfort 110 Pump switch"
+        scan_interval: 30
+        address: 4001
+        slave: 5
+        command_on: 1
+        command_off: 0
+        verify:
+          delay: 1
+          state_on: 1
+          state_off: 0
     # switches:
     #   - name: "Danfoss ECL Comfort 110 Mode Manual"
     #     scan_interval: 30
