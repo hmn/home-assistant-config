@@ -324,13 +324,13 @@ zha:
 #   username: !secret smappee_username
 #   password: !secret smappee_password
 
-apple_tv:
-  host: 192.168.8.199
+#apple_tv:
+#  host: 192.168.8.199
 #  login_id: !secret apple_tv_login_id
 #  credentials: !secret apple_tv_credentials
 
-denonavr:
-  host: 192.168.8.198
+#denonavr:
+#  host: 192.168.8.198
 
 # logi_circle:
 #   client_id: !secret logi_circle_client_id
