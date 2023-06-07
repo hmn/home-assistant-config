@@ -347,10 +347,10 @@ nissan_leaf:
   password: !secret nissan_leaf_password
   region: !secret nissan_leaf_region
 
-roomba:
-  - host: !secret roomba_host
-    blid: !secret roomba_username
-    password: !secret roomba_password
+#roomba:
+#  - host: !secret roomba_host
+#    blid: !secret roomba_username
+#    password: !secret roomba_password
 
 # withings:
 #   client_id: !secret withings_client_id
