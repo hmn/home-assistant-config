@@ -1535,14 +1535,6 @@ input_boolean:
     name: Home
     icon: mdi:home
 
-  bedroom_window:
-    name: Bedroom window
-    icon: mdi:window-closed-variant
-
-  bedroom_door:
-    name: Bedroom door
-    icon: mdi:door
-
 input_select:
   fan_mode:
     name: Fan mode
@@ -1564,7 +1556,6 @@ input_select:
       - 'cool'
       - 'heat'
       - 'off'
-
 
   server_mode:
     name: Server mode
