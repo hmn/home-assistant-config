@@ -357,14 +357,14 @@ nissan_leaf:
 #   client_secret: !secret withings_client_secret
 #   use_webhook: true
 
-plex:
-  host: !secret plex_host
-  port: 32400
-  token: !secret plex_token
-  ssl: true
-  verify_ssl: false
-  media_player:
-    use_episode_art: true
+# plex:
+#   host: !secret plex_host
+#   port: 32400
+#   token: !secret plex_token
+#   ssl: true
+#   verify_ssl: false
+#   media_player:
+#     use_episode_art: true
 
 #hue:
 #  bridges:
