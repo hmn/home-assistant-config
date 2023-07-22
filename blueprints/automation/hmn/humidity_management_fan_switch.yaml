@@ -54,21 +54,14 @@ trigger:
     platform: state
   - entity_id: !input reference_humidity_sensor
     platform: state
-  - entity_id: !input humidity_automation_boolean
-    platform: state
 
 condition:
-  condition: and
+  condition: or
   conditions:
     - condition: template
       value_template: '{{ mode != switch_state }}'
-    - condition: or
-      conditions:
-        - condition: template
-          value_template: "{{ mode == 'on' }}"
-        - condition: state
-          entity_id: !input humidity_automation_boolean
-          state: "on"
+    - condition: template
+      value_template: '{{ mode != states(boolean_switch) }}'
 action:
   - if:
       - condition: template
@@ -89,6 +82,7 @@ variables:
     humidity_sensor: !input humidity_sensor
     reference_humidity_sensor: !input reference_humidity_sensor
     fan_switch: !input fan_switch
+    boolean_switch: !input humidity_automation_boolean
     switch_state: "{{ states(fan_switch) }}"
     rising_threshold: !input rising_threshold
     falling_threshold: !input falling_threshold
