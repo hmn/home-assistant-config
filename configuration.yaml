@@ -525,8 +525,8 @@ switch:
             password: !secret genie_idrac_password
   - platform: wake_on_lan
     name: LG OLED
-    host: 192.168.8.197
-    mac: !secret lg_oled_wifi_mac
+    host: 192.168.8.182
+    mac: !secret lg_oled_wired_mac
     turn_off:
       service: media_player.turn_off
       data:
