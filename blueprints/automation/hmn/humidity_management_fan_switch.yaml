@@ -54,6 +54,9 @@ trigger:
     platform: state
   - entity_id: !input reference_humidity_sensor
     platform: state
+  - entity_id: !input humidity_automation_boolean
+    platform: state
+
 condition:
   condition: and
   conditions:
@@ -67,10 +70,20 @@ condition:
           entity_id: !input humidity_automation_boolean
           state: "on"
 action:
-  - service: switch.turn_{{mode}}
-    entity_id: !input fan_switch
-  - service: input_boolean.turn_{{mode}}
-    entity_id: !input humidity_automation_boolean
+  - if:
+      - condition: template
+        value_template: "{{ mode == ''on'' }}"
+    then:
+      - service: switch.turn_on
+        entity_id: !input fan_switch
+      - service: input_boolean.turn_on
+        entity_id: !input humidity_automation_boolean
+    else:
+      - service: switch.turn_off
+        entity_id: !input fan_switch
+      - service: input_boolean.turn_off
+        entity_id: !input humidity_automation_boolean
+
 variables:
     reference_humidity: !input reference_humidity
     humidity_sensor: !input humidity_sensor
@@ -81,4 +94,5 @@ variables:
     falling_threshold: !input falling_threshold
     difference: '{{ states(humidity_sensor)|float - (states(reference_humidity_sensor)|float or reference_humidity|float) }}'
     mode: '{% if switch_state == ''off'' and difference|float > rising_threshold|float %}on{% elif switch_state == ''on'' and difference|float > falling_threshold|float %}on{% else %}off{% endif %}'
+
 mode: single
