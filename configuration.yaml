@@ -1078,6 +1078,11 @@ binary_sensor:
     name: "alladin ping"
     count: 2
     scan_interval: 5
+  - platform: ping
+    host: !secret lg_oled_wired_mac
+    name: "LG OLED ping"
+    count: 2
+    scan_interval: 10
 
 #python_script:
 
