@@ -525,7 +525,7 @@ switch:
             password: !secret genie_idrac_password
   - platform: wake_on_lan
     name: LG OLED power state
-    host: 192.168.8.182
+    host: !secret lg_oled_wired_ip
     mac: !secret lg_oled_wired_mac
     turn_off:
       service: media_player.turn_off
@@ -1079,10 +1079,10 @@ binary_sensor:
     count: 2
     scan_interval: 5
   - platform: ping
-    host: !secret lg_oled_wired_mac
+    host: !secret lg_oled_wired_ip
     name: "LG OLED ping"
     count: 2
-    scan_interval: 10
+    scan_interval: 5
 
 #python_script:
 
