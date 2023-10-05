@@ -1608,7 +1608,7 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 11200
-        count: 1
+        # count: 1
         slave: 5
         scale: 0.1
         precision: 1
@@ -1620,7 +1620,7 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 11202
-        count: 1
+        # count: 1
         slave: 5
         scale: 0.1
         precision: 1
@@ -1632,7 +1632,7 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 11203
-        count: 1
+        # count: 1
         slave: 5
         scale: 0.1
         precision: 1
@@ -1644,7 +1644,7 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 11099
-        count: 1
+        # count: 1
         slave: 5
         scale: 0.1
         precision: 1
@@ -1656,7 +1656,7 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 11228
-        count: 1
+        # count: 1
         slave: 5
         scale: 0.1
         precision: 1
@@ -1668,7 +1668,7 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 11229
-        count: 1
+        ## count: 1
         slave: 5
         scale: 0.1
         precision: 1
@@ -1680,7 +1680,7 @@ modbus:
       #   scan_interval: 30
       #   input_type: holding
       #   address: 11230
-      #   count: 1
+      #   # count: 1
       #   slave: 5
       #   scale: 0.1
       #   precision: 1
@@ -1689,14 +1689,14 @@ modbus:
         scan_interval: 30
         input_type: holding
         address: 4200
-        count: 1
+        # count: 1
         slave: 5
         data_type: int16
     climates:
       - name: "Danfoss ECL Comfort 110"
         scan_interval: 30
         address: 11179
-        count: 1
+        # count: 1
         slave: 5
         data_type: int16
         max_temp: 25
