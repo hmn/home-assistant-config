@@ -1067,22 +1067,22 @@ template:
           {% endif %}
         state: "{{ is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') }}"
 
-binary_sensor:
-  - platform: ping
-    host: 192.168.8.2
-    name: "genie ping"
-    count: 2
-    scan_interval: 5
-  - platform: ping
-    host: 192.168.8.10
-    name: "alladin ping"
-    count: 2
-    scan_interval: 5
-  - platform: ping
-    host: !secret lg_oled_wired_ip
-    name: "LG OLED ping"
-    count: 2
-    scan_interval: 5
+# binary_sensor:
+#   - platform: ping
+#     host: 192.168.8.2
+#     name: "genie ping"
+#     count: 2
+#     scan_interval: 5
+#   - platform: ping
+#     host: 192.168.8.10
+#     name: "alladin ping"
+#     count: 2
+#     scan_interval: 5
+#   - platform: ping
+#     host: !secret lg_oled_wired_ip
+#     name: "LG OLED ping"
+#     count: 2
+#     scan_interval: 5
 
 #python_script:
 
