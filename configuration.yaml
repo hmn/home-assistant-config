@@ -299,13 +299,13 @@ ifttt:
 #       state_class: measurement
 
 
-homekit:
-  filter:
-    include_domains:
-      - script
-      - input_boolean
-      - switch
-      - timer
+#homekit:
+#  filter:
+#    include_domains:
+#      - script
+#      - input_boolean
+#      - switch
+#      - timer
 
 zha:
   zigpy_config:
