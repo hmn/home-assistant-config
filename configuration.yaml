@@ -881,14 +881,14 @@ template:
           {% set phase3 = states('sensor.shelly_pro_3em_phase_c_active_power') | float(default=0.0) %}
           {{ (phase1 + phase2 + phase3) | round(1, default=0) }}
 
-      - name: "Other power"
-        device_class: "power"
-        unit_of_measurement: "W"
-        state_class: "measurement"
-        state: >
-          {% set total = states('sensor.total_power') | float(default=0.0) %}
-          {% set combined = states('sensor.combined_measured_power') | float(default=0.0) %}
-          {{ (total - combined) | round(1, default=0) }}
+      # - name: "Other power"
+      #   device_class: "power"
+      #   unit_of_measurement: "W"
+      #   state_class: "measurement"
+      #   state: >
+      #     {% set total = states('sensor.total_power') | float(default=0.0) %}
+      #     {% set combined = states('sensor.combined_measured_power') | float(default=0.0) %}
+      #     {{ (total - combined) | round(1, default=0) }}
 
       - name: "Kitchen Temperature"
         device_class: "temperature"
