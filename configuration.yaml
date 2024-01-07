@@ -1004,7 +1004,7 @@ sensor:
     method: left
 
   - platform: integration
-    source: henrik_nicolaisen_charge_power
+    source: sensor.henrik_nicolaisen_charge_power
     name: Car charger spent
     unit_prefix: k
     round: 2
