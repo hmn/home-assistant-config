@@ -552,97 +552,6 @@ template:
   - trigger:
       - platform: time_pattern
         seconds: "/30"
-    sensor:
-      - name: "Car charger power"
-        #icon: mdi:power-plug
-        device_class: "power"
-        unit_of_measurement: "W"
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power') | round(0, default=0) }}"
-
-      - name: "Car charger voltage"
-        #icon: mdi:flash
-        device_class: "voltage"
-        unit_of_measurement: "V"
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'voltage_phase1') | round(0, default=0) }}"
-
-      - name: "Car charger temperature"
-        #icon: mdi:thermometer
-        device_class: "temperature"
-        unit_of_measurement: '°C'
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'temperature_internal5') | round(2, default=0) }}"
-
-      - name: "Car charger humidity"
-        #icon: mdi:water-percent
-        device_class: "humidity"
-        unit_of_measurement: "%"
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'humidity') | round(0, default=0) }}"
-
-      - name: "Car charger energy session"
-        #icon: mdi:counter
-        device_class: "energy"
-        unit_of_measurement: "kWh"
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'total_charge_power_session') | round(2, default=0) }}"
-
-      - name: "Car charger energy total"
-        #icon: mdi:counter
-        device_class: "energy"
-        unit_of_measurement: "kWh"
-        state_class: "total_increasing"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'signed_meter_value_kwh') }}"
-
-      - name: "Car charger current"
-        #icon: mdi:current-ac
-        device_class: "current"
-        unit_of_measurement: "A"
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_phase1') | round(0, default=0) }}"
-
-      - name: "Car charger allocated current"
-        #icon: mdi:waves
-        device_class: "current"
-        unit_of_measurement: "A"
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'charge_current_set') | round(0, default=0) }}"
-
-      - name: "Car charger signal strength"
-        icon: mdi:wifi-strength-outline
-        device_class: "signal_strength"
-        unit_of_measurement: "dBm"
-        state_class: "measurement"
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'communication_signal_strength') }}"
-
-      - name: "Car charger software app firmware"
-        icon: mdi:label
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'smart_computer_software_application_version') }}"
-
-      - name: "Car charger current firmware"
-        icon: mdi:label
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'current_firmware_version') }}"
-
-      - name: "Car charger available firmware"
-        icon: mdi:label
-        state: "{{ state_attr('sensor.zaptec_charger_zap016548', 'available_firmware_version') }}"
-
-      - name: "Car charger mode"
-        icon: mdi:alpha-z-circle-outline
-        state: >-
-          {% if is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '1') %}
-            Disconnected
-          {% elif is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '2') %}
-            Waiting
-          {% elif is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '3') %}
-            Charging
-          {% elif is_state_attr('sensor.zaptec_charger_zap016548', 'charger_operation_mode', '5') %}
-            Finished
-          {% else %}
-            Unknown
-          {% endif %}
-
   - sensor:
       - name: NordPool today hr 00:00
         device_class: "monetary"
@@ -1046,26 +955,6 @@ template:
   - trigger:
       - platform: time_pattern
         seconds: "/30"
-    binary_sensor:
-      - name: "Car charger firmware"
-        #icon: mdi:update
-        device_class: update
-        state: '{{ state_attr("sensor.zaptec_charger_zap016548", "firmware_update_to_date") != true }}'
-
-      - name: "Car charger warnings"
-        #icon: mdi:alert-circle-outline
-        device_class: problem
-        state: '{{ state_attr("sensor.zaptec_charger_zap016548", "warnings") }}'
-
-      - name: "Car charger state"
-        device_class: connectivity
-        icon: >-
-          {% if is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') %}
-            mdi:access-point-network
-          {% else %}
-            mdi:access-point-network-off
-          {% endif %}
-        state: "{{ is_state_attr('sensor.zaptec_charger_zap016548', 'is_online', '1') }}"
 
 # binary_sensor:
 #   - platform: ping
@@ -1115,7 +1004,7 @@ sensor:
     method: left
 
   - platform: integration
-    source: sensor.car_charger_power
+    source: henrik_nicolaisen_charge_power
     name: Car charger spent
     unit_prefix: k
     round: 2
