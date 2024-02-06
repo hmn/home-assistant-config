@@ -1051,14 +1051,6 @@ sensor:
     #device_class: illuminance
     #state_class: measurement
     state_characteristic: average_linear
-  - platform: statistics
-    name: Entrance wall light statistics
-    entity_id: sensor.entrance_motion_sensor_wall_belysningsstyrke
-    sampling_size: 5
-    precision: 1
-    #device_class: illuminance
-    #state_class: measurement
-    state_characteristic: average_linear
 
   - platform: min_max
     name: Combined light levels
