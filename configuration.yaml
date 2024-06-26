@@ -342,11 +342,6 @@ zha:
 #  client_id: !secret nest_client_id
 #  client_secret: !secret nest_client_secret
 
-nissan_leaf:
-  username: !secret nissan_leaf_username
-  password: !secret nissan_leaf_password
-  region: !secret nissan_leaf_region
-
 #roomba:
 #  - host: !secret roomba_host
 #    blid: !secret roomba_username
@@ -1718,16 +1713,9 @@ logger:
     #aiounifi: debug
     #homeassistant.components.unifi: debug
     #homeassistant.components.switch.unifi: debug
-    #homeassistant.components.nissan_leaf: debug
-    #homeassistant.components.device_tracker.nissan_leaf: debug
-    #homeassistant.components.sensor.nissan_leaf: debug
-    #homeassistant.components.switch.nissan_leaf: debug
     homeassistant.components.shell_command: debug
     #pyatv: debug
     #homeassistant.components.apple_tv: debug
-    homeassistant.components.nissan_leaf: debug
-    homeassistant.components.sensor.nissan_leaf: debug
-    homeassistant.components.switch.nissan_leaf: debug
     # eloverblik: debug
     # pyeloverblik.eloverblik: debug
     # custom_components.eloverblik: debug
