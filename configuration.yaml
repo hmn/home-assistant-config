@@ -1040,7 +1040,7 @@ sensor:
     state_characteristic: average_linear
   - platform: statistics
     name: Entrance door light statistics
-    entity_id: sensor.entrance_motion_sensor_door_illuminance
+    entity_id: sensor.entrance_motion_sensor_door_belysningsstyrke
     sampling_size: 5
     precision: 1
     #device_class: illuminance
