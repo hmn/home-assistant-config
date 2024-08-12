@@ -977,6 +977,16 @@ shell_command:
   genie_poweron: python3 custom_scripts/GetSetPowerStateREDFISH.py -ip 192.168.8.3 -u {{ username }} -p {{ password }} --set On
   alladin_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo shutdown -h now homeassistant-shutdown'"
   alladin_reboot: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo reboot'"
+  alladin_btrfs_scrub_start: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub start /volume1'"
+
+binary_sensor:
+  - platform: command_line
+    name: "alladin data scrubbing status"
+    command: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub status /volume1 | grep -q running && (echo "running") || (echo "not running")'
+    device_class: moving
+    payload_on: "running"
+    payload_off: "not running"
+    scan_interval: 3600
 
 sensor:
   - platform: statistics
@@ -1646,6 +1656,7 @@ modbus:
     #       delay: 1
     #       state_on: 4
     #       state_off: 1
+
 
 notify:
   - platform: syslog
