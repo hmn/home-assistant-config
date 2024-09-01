@@ -1750,3 +1750,4 @@ logger:
     #custom_components.zaptec: debug
     #homeassistant.components.modbus: debug
     #pymodbus: debug
+    custom_components.siku: debug
