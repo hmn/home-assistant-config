@@ -980,6 +980,16 @@ shell_command:
   alladin_btrfs_scrub_start: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub start /volume1'"
   alladin_btrfs_scrub_resume: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub resume /volume1'"
   alladin_btrfs_scrub_cancel: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub cancel /volume1'"
+  alladin_btrfs_scrub_status: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub status /volume1'"
+
+command_line:
+  - binary_sensor:
+      command: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub status /volume1' | grep -q running && (echo 'running') || (echo 'not running')"
+      name: "synology btrfs scrub status"
+      device_class: running
+      payload_on: "running"
+      payload_off: "not running"
+      scan_interval: 3600
 
 sensor:
   - platform: statistics
