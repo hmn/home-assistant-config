@@ -1675,11 +1675,11 @@ notify:
     sender: !secret notify_email_sender
     recipient: !secret notify_email_recipient
 
-  - platform: html5
-    name: HTML5
-    vapid_pub_key: !secret vapid_pub_key
-    vapid_prv_key: !secret vapid_prv_key
-    vapid_email: !secret vapid_email
+  #- platform: html5
+  #  name: HTML5
+  #  vapid_pub_key: !secret vapid_pub_key
+  #  vapid_prv_key: !secret vapid_prv_key
+  #  vapid_email: !secret vapid_email
 
   - platform: group
     name: ALL_DEVICES
