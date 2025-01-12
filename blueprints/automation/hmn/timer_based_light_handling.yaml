@@ -172,7 +172,7 @@ condition:
 action:
   - service: light.turn_on
     data:
-      kelvin: "{{ color_temp }}"
+      color_temp_kelvin: "{{ color_temp }}"
       brightness_pct: "{{ brightness|int }}"
       transition: !input transition
     target: !input target_lights
