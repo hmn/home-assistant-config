@@ -57,19 +57,21 @@ blueprint:
     min_color_temp:
       name: Minimum Color Temperature
       description:  The coolest color your bulbs will be set to
-      default: 250
+      default: 4000
       selector:
         color_temp:
-          #min_mireds: 153
-          #max_mireds: 500
+          unit: kelvin
+          min: 1500
+          max: 7000
     max_color_temp:
       name: Maximum Color Temperature
       description:  The warmest color your bulbs will be set to
-      default: 454
+      default: 2202
       selector:
         color_temp:
-          #min_mireds: 153
-          #max_mireds: 500
+          unit: kelvin
+          min: 1500
+          max: 7000
     # min_brightness:
     #   name: Minimum Brightness
     #   description: Minimum brightness of the light(s)
@@ -116,10 +118,12 @@ variables:
   #  | map(attribute='entity_id') | select("in",target_lights) | list }}
   min_color_temp: !input min_color_temp
   max_color_temp: !input max_color_temp
+  sun_elevation: >-
+    {{ [([0,state_attr('sun.sun','elevation')]|max),90] | min**0.81 }}
   #min_brightness: !input "min_brightness"
   max_brightness: !input "max_brightness"
   color_temp: >-
-    {{ [([((1000000/(4791.67 - 3290.66/(1 + 0.222 * ([([0,state_attr('sun.sun','elevation')]|max),90]|min**0.81))))|int),min_color_temp]|max),max_color_temp]|min}}
+    {{ [([(((4791.67 - 3290.66/(1 + 0.222 * sun_elevation)))|int),max_color_temp]|max),min_color_temp]|min }}
   brightness_entity: !input illuminance_sensor
   # brightness_pct: >-
   #  {%- set livingroombrightness = ((20 * states(brightness_entity) | float) + 308.6 )| round(0) | int %}
@@ -168,7 +172,7 @@ condition:
 action:
   - service: light.turn_on
     data:
-      color_temp: "{{ color_temp }}"
+      kelvin: "{{ color_temp }}"
       brightness_pct: "{{ brightness|int }}"
       transition: !input transition
     target: !input target_lights

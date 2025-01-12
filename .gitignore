@@ -15,6 +15,9 @@ www/
 .storage/
 .HA_VERSION
 themes/
+zigpy_ota/
+esphome/
+image/
 
 # misc
 *.uuid
@@ -38,3 +41,8 @@ customize.yaml
 automations.yaml
 scripts.yaml
 scenes.yaml
+zigbee.db-shm
+ssh/id_rsa
+ssh/id_rsa.pub
+addons_autoscripts/portainer-agent.sh
+addons_config/portainer-agent/config.yaml

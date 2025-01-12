@@ -23,7 +23,6 @@ system_health:
 frontend:
   themes: !include_dir_merge_named themes
 person:
-browser_mod:
 
 http:
   # Uncomment this to add a password (recommended!)
@@ -50,99 +49,6 @@ http:
   #ip_ban_enabled: True
   #login_attempts_threshold: 5
 
-# history_graph:
-#   energy_today:
-#     entities:
-#       - sensor.smappee_power
-#       - sensor.smappee_fase_1_power
-#       - sensor.smappee_fase_2_power
-#       - sensor.smappee_fase_3_power
-#   temperature:
-#     entities:
-#       - sensor.bedroom_motion_sensor_1
-#       - sensor.entrance_motion_sensor_1
-#       - sensor.kitchen_motion_sensor_1_2
-
-
-#influxdb:
-#  host: 127.0.0.1
-#  database: home_assistant
-#  username: !secret influxdb_username
-#  password: !secret influxdb_password
-#  ssl: true
-#  verify_ssl: false
-#  default_measurement: state
-#  blacklist:
-#    - entity.id1
-#    - entity.id2
-#  whitelist:
-#    - entity.id3
-#    - entity.id4
-#  tags:
-#    instance: prod
-#    source: hass
-
-# influxdb:
-#   host: !secret influxdb_host
-#   port: 8086
-#   database: home_assistant
-#   username: !secret influxdb_username
-#   password: !secret influxdb_password
-#   max_retries: 3
-#   default_measurement: state
-#   tags:
-#     source: hass
-
-# panel_iframe:
-#   grafana:
-#     title: Grafana
-#     icon: mdi:chart-timeline
-#     url: !secret grafana_url
-#   influxdb:
-#     title: Chronograf
-#     icon: mdi:chart-areaspline
-#     url: !secret influxdb_url
-
-#prometheus:
-
-# # Enables support for tracking state changes over time.
-# history:
-#   # use_include_order: true
-#   exclude:
-#     domains:
-#       - script
-#       - weblink
-#       - homekit
-#       - updater
-#       - light
-#     entity_globs:
-#       - binary_sensor.hmnmbp*
-#       - sensor.hmnmbp*
-#       - sensor.clock*
-#       - sensor.date*
-#       - sensor.glances*
-#       - sensor.load_*m
-#       - sensor.time*
-#       - sensor.uptime*
-#       - input_boolean.*_motion
-#       - binary_sensor.*_motion_sensor_*
-#       - automation.motion*
-#       - automation.*lights_timer*
-#     entities:
-#       - sensor.date
-#       - sensor.time
-#       - sensor.time_utc
-#       - sensor.time_date
-#       - sensor.date_time
-#       - sensor.date_time_iso
-#       - sensor.date_time_utc
-#       - sensor.internet_time
-#       - sensor.henriks_iphone_battery_state
-#       - sensor.henriks_ipad_battery_state
-#       - sensor.henriks_iphone_bssid
-#       - device_tracker.udr
-#       - device_tracker.shelly_h_t
-
 # The recorder component is storing details in a database which then are handled by the history component.
 recorder:
   db_url: !secret db_url
@@ -154,6 +60,7 @@ recorder:
       - updater
       - light
       - scene
+      - update
     entity_globs:
       - binary_sensor.hmnmbp*
       - sensor.hmnmbp*
@@ -167,6 +74,10 @@ recorder:
       - binary_sensor.*_motion_sensor_*
       - automation.motion*
       - automation.*light_timer*
+      - 2dc21c2c_13160d33_*
+      - number.everything_presence_lite_209d88*
+      - sensor.everything_presence_lite_209d88*
+      - binary_sensor.everything_presence_lite_209d88*
     entities:
       - sensor.date
       - sensor.time
@@ -195,6 +106,7 @@ logbook:
       - uptime
       - updater
       - scene
+      - update
     entity_globs:
       - binary_sensor.hmnmbp*
       - sensor.hmnmbp*
@@ -210,6 +122,11 @@ logbook:
       - automation.*light_timer*
       - sensor.lenovo_*
       - binary_sensor.lenovo_*
+      - number.everything_presence_lite_209d88*
+      - sensor.everything_presence_lite_209d88*
+      - binary_sensor.everything_presence_lite_209d88*
+      - sensor.nzbget_*
+      - binary_sensor.alladin_drive_*
     entities:
       - sensor.date
       - sensor.time
@@ -230,269 +147,50 @@ cloud:
 zeroconf:
 ssdp:
 ios:
-alexa:
+#alexa:
 mobile_app:
-#prometheus:
 energy:
 sun:
 wake_on_lan:
 
-ifttt:
-  key: !secret ifttt_key
-
-# mqtt:
-#   sensor:
-#     - name: Smappee power
-#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#       unit_of_measurement: "W"
-#       icon: "mdi:power-plug"
-#       value_template: "{{ value_json.totalPower }}"
-#       device_class: power
-#       state_class: measurement
-
-#     - name: Smappee usage today (raw)
-#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#       unit_of_measurement: "W"
-#       icon: "mdi:power-plug"
-#       value_template: "{{ value_json.totalImportEnergy }}"
-#       device_class: power
-#       state_class: measurement
-
-#     - name: Smappee usage today
-#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#       unit_of_measurement: "kWh"
-#       icon: "mdi:power-plug"
-#       value_template: "{{ ((value_json.totalImportEnergy / 3600000) | float | round(2, default=0)) }}"
-#       device_class: energy
-#       state_class: measurement
-
-#     - name: Smappee fase 1 power
-#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#       unit_of_measurement: "W"
-#       icon: "mdi:power-plug"
-#       value_template: "{{ value_json.channelPowers[0].power }}"
-#       device_class: power
-#       state_class: measurement
-
-#     - name: Smappee fase 2 power
-#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#       unit_of_measurement: "W"
-#       icon: "mdi:power-plug"
-#       value_template: "{{ value_json.channelPowers[1].power }}"
-#       device_class: power
-#       state_class: measurement
-
-#     - name: Smappee fase 3 power
-#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/realtime"
-#       unit_of_measurement: "W"
-#       icon: "mdi:power-plug"
-#       value_template: "{{ value_json.channelPowers[2].power }}"
-#       device_class: power
-#       state_class: measurement
-
-#     - name: Smappee always on
-#       state_topic: "servicelocation/579acd67-d672-11e7-ac58-022d286959f5/aggregated"
-#       unit_of_measurement: "W"
-#       icon: "mdi:power-plug"
-#       value_template: "{{ (value_json.intervalDatas[0].alwaysOn | multiply(0.001)) | round(2, default=0) }}"
-#       device_class: power
-#       state_class: measurement
-
-
-#homekit:
-#  filter:
-#    include_domains:
-#      - script
-#      - input_boolean
-#      - switch
-#      - timer
-
 zha:
+  custom_quirks_path: /config/custom_zha_quirks/
   zigpy_config:
     ota:
-      ikea_provider: true                        # Auto update Trådfri devices
-      ledvance_provider: true                    # Auto update LEDVANCE/OSRAM devices
-      salus_provider: true                       # Auto update SALUS/Computime devices
-      inovelli_provider: true                    # Auto update INOVELLI devices
-      #otau_directory: /path/to/your/ota/folder  # Utilize .ota files to update everything else
       otau_directory: /config/zigpy_ota
+      extra_providers:
+        - type: salus
+        - type: ikea  # Disabled by default, some updates change device functionality. A recent one bricked bulbs.
+        - type: z2m  # Disabled by default, community contributed. Points to the GitHub repository by default.
 
-# smappee:
-#   host: 192.168.7.116
-#   client_id: !secret smappee_client_id
-#   client_secret: !secret smappee_client_secret
-#   username: !secret smappee_username
-#   password: !secret smappee_password
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
 
-#apple_tv:
-#  host: 192.168.8.199
-#  login_id: !secret apple_tv_login_id
-#  credentials: !secret apple_tv_credentials
+# weather:
+#   - platform: template
+#     name: "Netatmo"
+#     condition_template: "{{ states('weather.pirateweather') }}"
+#     temperature_template: "{{ states('sensor.kitchen_outdoor_temperatur') | float }}"
+#     temperature_unit: "°C"
+#     humidity_template: "{{ states('sensor.kitchen_outdoor_luftfugtighed') | float }}"
+#     #forecast_template: "{{ state_attr('weather.my_region', 'forecast') }}"
 
-#denonavr:
-#  host: 192.168.8.198
+#aws:
+#  credentials:
+#    - name: hass
+#      aws_access_key_id: !secret aws_access_key_id
+#      aws_secret_access_key: !secret aws_secret_access_key
+#  notify:
+#    - service: sns
+#      name: awssns
+#      region_name: !secret aws_region_name
 
-# logi_circle:
-#   client_id: !secret logi_circle_client_id
-#   client_secret: !secret logi_circle_client_secret
-#   api_key: !secret logi_circle_api_key
-#   redirect_uri: !secret logi_circle_redirect_url
-
-#nest:
-#  client_id: !secret nest_client_id
-#  client_secret: !secret nest_client_secret
-
-#roomba:
-#  - host: !secret roomba_host
-#    blid: !secret roomba_username
-#    password: !secret roomba_password
-
-# withings:
-#   client_id: !secret withings_client_id
-#   client_secret: !secret withings_client_secret
-#   use_webhook: true
-
-# plex:
-#   host: !secret plex_host
-#   port: 32400
-#   token: !secret plex_token
-#   ssl: true
-#   verify_ssl: false
-#   media_player:
-#     use_episode_art: true
-
-#hue:
-#  bridges:
-#    - host: 192.168.7.105
-#      allow_hue_groups: true
-
-# webostv:
-#   host: 192.168.8.197
-#   name: LG OLED
-#   turn_on_action:
-#     service: wake_on_lan.send_magic_packet
-#     data:
-#       mac: !secret lg_oled_wifi_mac
-#   customize:
-#     sources:
-#     - Apple TV
-#     - PS5
-#     - HDMI4
-#     - Netflix
-#     - YouTube
-#     - Plex
-
-#spotify:
-#  client_id: !secret spotify_client_id
-#  client_secret: !secret spotify_client_secret
-
-weather:
-#  - platform: darksky
-#    api_key: !secret darksky_api_key
-#  - platform: pirateweather
-#    api_key: !secret pirateweather_api_key
-  - platform: template
-    name: "Netatmo"
-    condition_template: "{{ states('weather.pirateweather') }}"
-    temperature_template: "{{ states('sensor.netatmo_outdoor_temperature') | float }}"
-    temperature_unit: "°C"
-    humidity_template: "{{ states('sensor.netatmo_outdoor_humidity') | float }}"
-    #forecast_template: "{{ state_attr('weather.my_region', 'forecast') }}"
-
-#cast:
-stream:
-
-#netatmo:
-#  client_id: !secret netatmo_client_id
-#  client_secret: !secret netatmo_client_secret
-
-aws:
-  credentials:
-    - name: hass
-      aws_access_key_id: !secret aws_access_key_id
-      aws_secret_access_key: !secret aws_secret_access_key
-  notify:
-    - service: sns
-      name: awssns
-      region_name: !secret aws_region_name
-
-utility_meter:
-  # smappee_usage_hourly:
-  #   source: sensor.smappee_usage_today
-  #   name: Smappee hourly energy
-  #   cycle: hourly
-  # smappee_usage_daily:
-  #   source: sensor.smappee_usage_today
-  #   name: Smappee daily energy
-  #   cycle: daily
-  # smappee_usage_monthly:
-  #   source: sensor.smappee_usage_today
-  #   name: Smappee monthly energy
-  #   cycle: monthly
-  energy_spent_hourly:
-    source: sensor.energy_spent
-    name: Hourly energy spent
-    cycle: hourly
-  energy_spent_daily:
-    source: sensor.energy_spent
-    name: Daily energy spent
-    cycle: daily
-  energy_spent_monthly:
-    source: sensor.energy_spent
-    name: Monthly energy spent
-    cycle: monthly
-  car_charger_spent_hourly:
-    source: sensor.henrik_nicolaisen_energy_meter
-    name: Hourly car charger spent
-    cycle: hourly
-  car_charger_spent_daily:
-    source: sensor.henrik_nicolaisen_energy_meter
-    name: Daily car charger spent
-    cycle: daily
-  car_charger_spent_monthly:
-    source: sensor.henrik_nicolaisen_energy_meter
-    name: Monthly car charger spent
-    cycle: monthly
-
-# rest_command:
-#   particle_relay1_on:
-#     url: !secret particle_relay_post_url
-#     method: post
-#     payload: '{ "arg": "relay1:on" }'
-#     timeout: 5
-#     content_type: 'application/json'
-#   particle_relay1_off:
-#     url: !secret particle_relay_post_url
-#     method: post
-#     payload: '{ "arg": "relay1:off" }'
-#     timeout: 5
-#     content_type: 'application/json'
-
-timer:
-  sleep:
-    duration: '00:30:00'
-    icon: mdi:sleep
-  entrance_lights:
-    duration: '00:02:00'
-    icon: mdi:lightbulb-on
-  kitchen_lights:
-    duration: '00:05:00'
-    icon: mdi:lightbulb-on
-  bedroom_lights:
-    duration: '00:05:00'
-    icon: mdi:lightbulb-on
-  office_lights:
-    duration: '00:10:00'
-    icon: mdi:lightbulb-on
-  fan_change_timer:
-    duration: '00:30:00'
-    icon: mdi:fan
-
-#nordpool:
-#pfsense:
-#eloverblik:
-#wavinsentio:
-#zaptec:
 python_script:
 
 switch:
@@ -543,433 +241,6 @@ switch:
   #   turn_off:
   #     service: shell_command.genie_shutdown
 
-template:
-  - trigger:
-      - platform: time_pattern
-        seconds: "/30"
-  - sensor:
-      - name: NordPool today hr 00:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[0] | float(default=0.0) }}'
-
-      - name: NordPool today hr 01:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[1] | float(default=0.0) }}'
-
-      - name: NordPool today hr 02:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[2] | float(default=0.0) }}'
-
-      - name: NordPool today hr 03:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[3] | float(default=0.0) }}'
-
-      - name: NordPool today hr 04:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[4] | float(default=0.0) }}'
-
-      - name: NordPool today hr 05:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[5] | float(default=0.0) }}'
-
-      - name: NordPool today hr 06:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[6] | float(default=0.0) }}'
-
-      - name: NordPool today hr 07:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[7] | float(default=0.0) }}'
-
-      - name: NordPool today hr 08:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[8] | float(default=0.0) }}'
-
-      - name: NordPool today hr 09:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[9] | float(default=0.0) }}'
-
-      - name: NordPool today hr 10:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[10] | float(default=0.0) }}'
-      
-      - name: NordPool today hr 11:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[11] | float(default=0.0) }}'
-
-      - name: NordPool today hr 12:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[12] | float(default=0.0) }}'
-
-      - name: NordPool today hr 13:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[13] | float(default=0.0) }}'
-
-      - name: NordPool today hr 14:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[14] | float(default=0.0) }}'
-
-      - name: NordPool today hr 15:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[15] | float(default=0.0) }}'
-
-      - name: NordPool today hr 16:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[16] | float(default=0.0) }}'
-
-      - name: NordPool today hr 17:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[17] | float(default=0.0) }}'
-
-      - name: NordPool today hr 18:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[18] | float(default=0.0) }}'
-
-      - name: NordPool today hr 19:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[19] | float(default=0.0) }}'
-
-      - name: NordPool today hr 20:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[20] | float(default=0.0) }}'
-
-      - name: NordPool today hr 21:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[21] | float(default=0.0) }}'
-
-      - name: NordPool today hr 22:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[22] | float(default=0.0) }}'
-
-      - name: NordPool today hr 23:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "today")[23] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 00:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[0] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 01:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[1] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 02:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[2] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 03:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[3] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 04:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[4] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 05:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[5] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 06:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[6] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 07:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[7] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 08:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[8] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 09:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[9] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 10:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[10] | float(default=0.0) }}'
-      
-      - name: NordPool tomorrow hr 11:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[11] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 12:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[12] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 13:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[13] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 14:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[14] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 15:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[15] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 16:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[16] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 17:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[17] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 18:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[18] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 19:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[19] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 20:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[20] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 21:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[21] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 22:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[22] | float(default=0.0) }}'
-
-      - name: NordPool tomorrow hr 23:00
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "tomorrow")[23] | float(default=0.0) }}'
-
-      - name: NordPool current price
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "current_price") | float(default=0.0) }}'
-
-      - name: NordPool min price
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "min") | float(default=0.0) }}'
-
-      - name: NordPool max price
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "max") | float(default=0.0) }}'
-
-      - name: NordPool off peak 1
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "off_peak_1") | float(default=0.0) }}'
-
-      - name: NordPool off peak 2
-        device_class: "monetary"
-        unit_of_measurement: DKK
-        #state_class: "measurement"
-        state: '{{ state_attr("sensor.nordpool_kwh_dk1_dkk_3_095_025", "off_peak_2") | float(default=0.0) }}'
-
-      - name: "Total power"
-        device_class: "power"
-        unit_of_measurement: "W"
-        state_class: "measurement"
-        state: >
-          {% set phase1 = states('sensor.shelly_pro_3em_phase_a_active_power') | float(default=0.0) %}
-          {% set phase2 = states('sensor.shelly_pro_3em_phase_b_active_power') | float(default=0.0) %}
-          {% set phase3 = states('sensor.shelly_pro_3em_phase_c_active_power') | float(default=0.0) %}
-          {{ (phase1 + phase2 + phase3) | round(1, default=0) }}
-
-      # - name: "Other power"
-      #   device_class: "power"
-      #   unit_of_measurement: "W"
-      #   state_class: "measurement"
-      #   state: >
-      #     {% set total = states('sensor.total_power') | float(default=0.0) %}
-      #     {% set combined = states('sensor.combined_measured_power') | float(default=0.0) %}
-      #     {{ (total - combined) | round(1, default=0) }}
-
-      - name: "Kitchen Temperature"
-        device_class: "temperature"
-        unit_of_measurement: '°C'
-        state_class: "measurement"
-        state: >
-          {% set count = 0 %}
-          {% set netatmo = states('sensor.netatmo_kitchen_temperature') | float(default=0.0) %}
-          {% set motion1 = states('sensor.kitchen_motion_sensor_1_temperature') | float(default=0.0) %}
-          {% set count = count + 1 if is_number(netatmo) and netatmo > 0.0 else count %}
-          {% set count = count + 1 if is_number(motion1) and motion1 > 0.0 else count %}
-          {{ ((netatmo + motion1) / count) | round(1, default=0) }}
-
-      - name: "Entrance Temperature"
-        device_class: "temperature"
-        unit_of_measurement: '°C'
-        state_class: "measurement"
-        state: >
-          {% set count = 0 %}
-          {% set door = states('sensor.entrance_motion_sensor_door_temperature') | float(default=0.0) %}
-          {% set wall = states('sensor.entrance_motion_sensor_wall_temperature') | float(default=0.0) %}
-          {% set count = count + 1 if is_number(door) and door > 0.0 else count %}
-          {% set count = count + 1 if is_number(wall) and wall > 0.0 else count %}
-          {{ ((door + wall) / count) | round(1, default=0) }}
-
-      - name: "Bedroom Temperature"
-        device_class: "temperature"
-        unit_of_measurement: '°C'
-        state_class: "measurement"
-        state: >
-          {% set count = 0 %}
-          {% set netatmo = states('sensor.netatmo_bedroom_temperature') | float(default=0.0) %}
-          {% set motion1 = states('sensor.bedroom_motion_sensor_1_temperature') | float(default=0.0) %}
-          {% set ac = states('sensor.bedroom_room_temperature') | float(default=0.0) %}
-          {% set count = count + 1 if is_number(netatmo) and netatmo > 0.0 else count %}
-          {% set count = count + 1 if is_number(motion1) and netatmo > 0.0 else count %}
-          {% set count = count + 1 if is_number(ac) and netatmo > 0.0 else count %}
-          {{ ((netatmo + motion1 + ac) / count) | round(1, default=0) }}
-
-      - name: Bathroom humidity
-        device_class: "humidity"
-        unit_of_measurement: percent
-        state_class: "measurement"
-        state: '{{ state_attr("climate.badevaerelse", "current_humidity") | float(default=0.0) }}'
-
-      - name: Bathroom temperature
-        device_class: "temperature"
-        unit_of_measurement: '°C'
-        state_class: "measurement"
-        state: '{{ state_attr("climate.badevaerelse", "current_temperature_air") | float(default=0.0) }}'
-
-      - name: Living room humidity
-        device_class: "humidity"
-        unit_of_measurement: percent
-        state_class: "measurement"
-        state: '{{ state_attr("climate.stue", "current_humidity") | float(default=0.0) }}'
-
-      - name: Living room temperature
-        device_class: "temperature"
-        unit_of_measurement: '°C'
-        state_class: "measurement"
-        state: '{{ state_attr("climate.stue", "current_temperature_air") | float(default=0.0) }}'
-
-  - trigger:
-      - platform: time_pattern
-        seconds: "/30"
-
-# binary_sensor:
-#   - platform: ping
-#     host: 192.168.8.2
-#     name: "genie ping"
-#     count: 2
-#     scan_interval: 5
-#   - platform: ping
-#     host: 192.168.8.10
-#     name: "alladin ping"
-#     count: 2
-#     scan_interval: 5
-#   - platform: ping
-#     host: !secret lg_oled_wired_ip
-#     name: "LG OLED ping"
-#     count: 2
-#     scan_interval: 5
-
-#python_script:
-
 shell_command:
   # smappee_reboot: bash /config/shell_scripts/smappee_reboot.sh
   genie_shutdown: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'sudo shutdown -h now homeassistant-shutdown'"
@@ -984,13 +255,22 @@ shell_command:
 
 command_line:
   - binary_sensor:
-      command: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub status /volume1' | grep -q running && (echo 'running') || (echo 'not running')"
       name: "synology btrfs scrub status"
+      command: "ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.10 'sudo btrfs scrub status /volume1' | grep -q running && (echo 'running') || (echo 'not running')"
       device_class: running
       payload_on: "running"
       payload_off: "not running"
-      scan_interval: 3600
-
+      scan_interval: 900
+      unique_id: synology_btrfs_scrub_status
+  - binary_sensor:
+      name: "kometa sensor"
+      command: "ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/ssh/id_rsa hmn@192.168.8.2 'ps aux' | grep -q '[k]ometa' && (echo 'running') || (echo 'not running')"
+      device_class: running
+      payload_on: "running"
+      payload_off: "not running"
+      scan_interval: 900
+      unique_id: kometa_status
+  
 sensor:
   - platform: statistics
     name: "Bathroom aqara humidity over last 24 hours"
@@ -1017,388 +297,6 @@ sensor:
     unit_prefix: k
     round: 2
     method: left
-
-  # eloverblik
-  - platform: statistics
-    entity_id: sensor.eloverblik_energy_total
-    name: Eloverblik Monthly Statistics
-    max_age:
-        days: 30
-    state_characteristic: mean
-
-  # light
-  - platform: statistics
-    name: Office light statistics
-    entity_id: sensor.everything_presence_lite_209d88_illuminance
-    sampling_size: 5
-    precision: 1
-    #device_class: illuminance
-    #state_class: measurement
-    state_characteristic: average_linear
-  - platform: statistics
-    name: Kitchen light statistics
-    entity_id: sensor.kitchen_motion_sensor_2_illuminance
-    sampling_size: 5
-    precision: 1
-    #device_class: illuminance
-    #state_class: measurement
-    state_characteristic: average_linear
-  - platform: statistics
-    name: Bedroom light statistics
-    entity_id: sensor.bedroom_motion_sensor_1_illuminance
-    sampling_size: 5
-    precision: 1
-    #device_class: illuminance
-    #state_class: measurement
-    state_characteristic: average_linear
-  - platform: statistics
-    name: Entrance door light statistics
-    entity_id: sensor.entrance_motion_sensor_door_belysningsstyrke
-    sampling_size: 5
-    precision: 1
-    #device_class: illuminance
-    #state_class: measurement
-    state_characteristic: average_linear
-
-  - platform: min_max
-    name: Combined light levels
-    entity_ids:
-      - sensor.office_light_statistics
-      - sensor.kitchen_light_statistics
-      - sensor.bedroom_light_statistics
-    type: mean
-    #device_class: illuminance
-    #state_class: measurement
-
-  # smappee
-  # remap realtime sensors for history use
-
-  # - platform: filter
-  #   name: "Smappee power (moving average)"
-  #   entity_id: sensor.smappee_power
-  #   filters:
-  #     - filter: outlier
-  #       window_size: 4
-  #       radius: 2.0
-  #     - filter: lowpass
-  #       time_constant: 10
-  #     - filter: time_simple_moving_average
-  #       window_size: 00:05
-  #       precision: 0
-  #     - filter: time_throttle
-  #       window_size: 00:01
-
-  # - platform: filter
-  #   name: "Smappee fase 1 power (moving average)"
-  #   entity_id: sensor.smappee_fase_1_power
-  #   filters:
-  #     - filter: outlier
-  #       window_size: 4
-  #       radius: 2.0
-  #     - filter: lowpass
-  #       time_constant: 10
-  #     - filter: time_simple_moving_average
-  #       window_size: 00:05
-  #       precision: 0
-  #     - filter: time_throttle
-  #       window_size: 00:01
-
-  # - platform: filter
-  #   name: "Smappee fase 2 power (moving average)"
-  #   entity_id: sensor.smappee_fase_2_power
-  #   filters:
-  #     - filter: outlier
-  #       window_size: 4
-  #       radius: 2.0
-  #     - filter: lowpass
-  #       time_constant: 10
-  #     - filter: time_simple_moving_average
-  #       window_size: 00:05
-  #       precision: 0
-  #     - filter: time_throttle
-  #       window_size: 00:01
-
-  # - platform: filter
-  #   name: "Smappee fase 3 power (moving average)"
-  #   entity_id: sensor.smappee_fase_3_power
-  #   filters:
-  #     - filter: outlier
-  #       window_size: 4
-  #       radius: 2.0
-  #     - filter: lowpass
-  #       time_constant: 10
-  #     - filter: time_simple_moving_average
-  #       window_size: 00:05
-  #       precision: 0
-  #     - filter: time_throttle
-  #       window_size: 00:01
-
-  - platform: nordpool
-    # Should the prices include vat? Default True
-    VAT: True
-
-    # What currency the api fetches the prices in
-    # this is only need if you want a sensor in a non local currency
-    currency: "DKK"
-    
-    # Option to show prices in cents (or the equivalent in local currency)
-    price_in_cents: false
-
-    # Helper so you can set your "low" price
-    # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.95
-
-    # What power regions your are interested in.
-    # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
-    region: "DK1"
-
-    # How many decimals to use in the display of the price
-    precision: 3
-
-    # What the price should be displayed in default
-    # Possible values: MWh, kWh and Wh
-    # default: kWh
-    price_type: kWh
-
-    # This option allows the usage of a template to add a tariff.
-    # now() always refers start of the hour of that price.
-    # this way we can calculate the correct costs add that to graphs etc.
-    # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
-    # default {{0.0|float}}
-    # https://energinet.dk/Om-nyheder/Nyheder/2022/09/06/Energinet-justerer-tarif
-    # https://www.nordpoolgroup.com/Market-data1/Elspot/Area-Prices/Denmark/DK1/hourly/?view=table
-    #
-    additional_costs: >
-      {%- set s = {
-          "afgift": states('input_text.electricity_state_tax') | float,
-          "winter_low": states('input_text.electricity_winter_low') | float,
-          "winter_high": states('input_text.electricity_winter_high') | float,
-          "winter_peak": states('input_text.electricity_winter_peak') | float,
-          "summer_low": states('input_text.electricity_summer_low') | float,
-          "summer_high": states('input_text.electricity_summer_high') | float,
-          "summer_peak": states('input_text.electricity_summer_peak') | float,
-          "transmissionsnettarif": states('input_text.electricity_transmission_tarif') | float,
-          "systemtarif": states('input_text.electricity_system_tarif') | float,
-          "balancetarif": states('input_text.electricity_balance_tarif') | float,
-          "supplier": states('input_text.electricity_supplier') | float,
-          "vat": ((states('input_number.electricity_vat') | int) / 100 + 1),
-          "summer_start": states('input_number.electricity_summer_start_month') | int,
-          "summer_end": states('input_number.electricity_summer_end_month') | int,
-          "peak_start": states('input_number.electricity_peak_start_hour') | int,
-          "peak_end": states('input_number.electricity_peak_end_hour') | int,
-          "low_start": states('input_number.electricity_low_start_hour') | int,
-          "low_end": states('input_number.electricity_low_end_hour') | int,
-      } -%}
-      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.balancetarif + s.supplier) -%}
-      {%- if now().month >= s.summer_start and now().month < s.summer_end %}
-          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
-              {%- set unit_price = s.summer_peak %}
-          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
-              {%- set unit_price = s.summer_low %}
-          {%- else %}
-              {%- set unit_price = s.summer_high %}
-          {%- endif %}
-      {%- else %}
-          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
-              {%- set unit_price = s.winter_peak %}
-          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
-              {%- set unit_price = s.winter_low %}
-          {%- else %}
-              {%- set unit_price = s.winter_high %}
-          {%- endif %}
-      {%- endif %}
-      {{- (unit_price + static) * s.vat | float}}
-
-  - platform: nordpool
-    # Should the prices include vat? Default True
-    VAT: False
-
-    # What currency the api fetches the prices in
-    # this is only need if you want a sensor in a non local currency
-    currency: "DKK"
-    
-    # Option to show prices in cents (or the equivalent in local currency)
-    price_in_cents: false
-
-    # Helper so you can set your "low" price
-    # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.95
-
-    # What power regions your are interested in.
-    # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
-    region: "DK1"
-
-    # How many decimals to use in the display of the price
-    precision: 3
-
-    # What the price should be displayed in default
-    # Possible values: MWh, kWh and Wh
-    # default: kWh
-    price_type: kWh
-
-    # This option allows the usage of a template to add a tariff.
-    # now() always refers start of the hour of that price.
-    # this way we can calculate the correct costs add that to graphs etc.
-    # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
-    # default {{0.0|float}}
-    additional_costs: >
-      {%- set s = {
-          "afgift": states('input_text.electricity_state_tax') | float,
-          "winter_low": states('input_text.electricity_winter_low') | float,
-          "winter_high": states('input_text.electricity_winter_high') | float,
-          "winter_peak": states('input_text.electricity_winter_peak') | float,
-          "summer_low": states('input_text.electricity_summer_low') | float,
-          "summer_high": states('input_text.electricity_summer_high') | float,
-          "summer_peak": states('input_text.electricity_summer_peak') | float,
-          "transmissionsnettarif": states('input_text.electricity_transmission_tarif') | float,
-          "systemtarif": states('input_text.electricity_system_tarif') | float,
-          "balancetarif": states('input_text.electricity_balance_tarif') | float,
-          "supplier": states('input_text.electricity_supplier') | float,
-          "vat": ((states('input_number.electricity_vat') | int) / 100 + 1),
-          "summer_start": states('input_number.electricity_summer_start_month') | int,
-          "summer_end": states('input_number.electricity_summer_end_month') | int,
-          "peak_start": states('input_number.electricity_peak_start_hour') | int,
-          "peak_end": states('input_number.electricity_peak_end_hour') | int,
-          "low_start": states('input_number.electricity_low_start_hour') | int,
-          "low_end": states('input_number.electricity_low_end_hour') | int,
-      } -%}
-      {%- set static = (s.afgift + s.transmissionsnettarif + s.systemtarif + s.balancetarif + s.supplier) -%}
-      {%- if now().month >= s.summer_start and now().month < s.summer_end %}
-          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
-              {%- set unit_price = s.summer_peak %}
-          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
-              {%- set unit_price = s.summer_low %}
-          {%- else %}
-              {%- set unit_price = s.summer_high %}
-          {%- endif %}
-      {%- else %}
-          {%- if now().hour >= s.peak_start and now().hour < s.peak_end %}
-              {%- set unit_price = s.winter_peak %}
-          {%- elif now().hour >= s.low_start and now().hour < s.low_start %}
-              {%- set unit_price = s.winter_low %}
-          {%- else %}
-              {%- set unit_price = s.winter_high %}
-          {%- endif %}
-      {%- endif %}
-      {{- (unit_price + static) | float}}
-
-  - platform: nordpool
-
-    # Should the prices include vat? Default True
-    VAT: False
-
-    # What currency the api fetches the prices in
-    # this is only need if you want a sensor in a non local currency
-    currency: "DKK"
-    
-    # Option to show prices in cents (or the equivalent in local currency)
-    price_in_cents: false
-
-    # Helper so you can set your "low" price
-    # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.00
-
-    # What power regions your are interested in.
-    # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
-    region: "DK1"
-
-    # How many decimals to use in the display of the price
-    precision: 3
-
-    # What the price should be displayed in default
-    # Possible values: MWh, kWh and Wh
-    # default: kWh
-    price_type: kWh
-
-    # This option allows the usage of a template to add a tariff.
-    # now() always refers start of the hour of that price.
-    # this way we can calculate the correct costs add that to graphs etc.
-    # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
-    # default {{0.0|float}}
-    # additional_costs: "{{0.0|float}}"
-
-  - platform: nordpool
-
-    # Should the prices include vat? Default True
-    VAT: True
-
-    # What currency the api fetches the prices in
-    # this is only need if you want a sensor in a non local currency
-    currency: "DKK"
-    
-    # Option to show prices in cents (or the equivalent in local currency)
-    price_in_cents: false
-
-    # Helper so you can set your "low" price
-    # low_price = hour_price < average * low_price_cutoff
-    low_price_cutoff: 0.00
-
-    # What power regions your are interested in.
-    # Possible values: "DK1", "DK2", "FI", "LT", "LV", "Oslo", "Kr.sand", "Bergen", "Molde", "Tr.heim", "Tromsø", "SE1", "SE2", "SE3","SE4", "SYS", "EE"
-    region: "DK1"
-
-    # How many decimals to use in the display of the price
-    precision: 3
-
-    # What the price should be displayed in default
-    # Possible values: MWh, kWh and Wh
-    # default: kWh
-    price_type: kWh
-
-    # This option allows the usage of a template to add a tariff.
-    # now() always refers start of the hour of that price.
-    # this way we can calculate the correct costs add that to graphs etc.
-    # The price result of the additional_costs template expects this additional cost to be in kWh and not cents as a float
-    # default {{0.0|float}}
-    # additional_costs: "{{0.5|float}}"
-
-
-# light:
-#   - platform: group
-#     name: Kitchen lights
-#     entities:
-#       - light.kitchen
-
-#   - platform: group
-#     name: Entrance lights
-#     entities:
-#       - light.entrance
-
-#   - platform: group
-#     name: Bedroom Lights
-#     entities:
-#       - light.bedroom
-
-#   - platform: group
-#     name: Office lights
-#     entities:
-#       - light.office
-
-#   - platform: group
-#     name: Cinema lights
-#     entities:
-#       - light.cinema
-
-#   - platform: group
-#     name: Living room lights
-#     entities:
-#       - light.living_room
-
-#   - platform: group
-#     name: Outdoor lights
-#     entities:
-#       - light.outdoor
-
-#   - platform: group
-#     name: All lights
-#     entities:
-#       - light.living_room
-#       - light.office
-#       - light.cinema
-#       - light.bedroom
-#       - light.entrance
-#       - light.kitchen
-
 
 input_boolean:
   power_stay_on:
@@ -1454,6 +352,7 @@ input_select:
       - 'auto'
       - 'on'
       - 'off'
+      - 'working'
 
 # debug
 # https://github.com/Ingramz/ecl110
@@ -1662,8 +561,8 @@ modbus:
 
 
 notify:
-  - platform: syslog
-    name: syslog
+#  - platform: syslog
+#    name: syslog
 
   - platform: smtp
     name: email
@@ -1685,16 +584,16 @@ notify:
     name: ALL_DEVICES
     services:
       - service: mobile_app_henriks_iphone
-      - service: mobile_app_henriks_ipad
+      #- service: mobile_app_henriks_ipad
       - service: mobile_app_hmnmbp
 
   - platform: group
     name: all
     services:
-      - service: syslog
+      #- service: syslog
       - service: email
-      - service: html5
-      - service: lg_oled
+      #- service: html5
+      #- service: lg_oled
 
 
 zone: !include zones.yaml
@@ -1707,6 +606,14 @@ logger:
   default: info
   #default: warning
   logs:
+    # homeassistant.core: debug
+    #nordpool: debug
+    #custom_components.nordpool: debug
+    #custom_components.nordpool.sensor: debug
+    #custom_components.nordpool.aio_price: debug
+    custom_components.siku: info
+    zigpy.ota: debug
+    #ayncio: debug
     # log level for the `aiohttp` Python package
     #aiohttp: debug
     #urllib3: debug
@@ -1727,7 +634,7 @@ logger:
     #aiounifi: debug
     #homeassistant.components.unifi: debug
     #homeassistant.components.switch.unifi: debug
-    homeassistant.components.shell_command: debug
+    #homeassistant.components.shell_command: debug
     #pyatv: debug
     #homeassistant.components.apple_tv: debug
     # eloverblik: debug
@@ -1739,25 +646,23 @@ logger:
     # custom_components.nordpool.aio_price: debug
     # custom_components: debug
     # log level for HA core
-    homeassistant.core: fatal
     # log level for MQTT integration
-    homeassistant.components.mqtt: warning
+    #homeassistant.components.mqtt: warning
     # log level for all python scripts
-    homeassistant.components.python_script: info
+    #homeassistant.components.python_script: info
     # log level for a custom component
     # custom_components.my_integration: debug
     # log level for the `aiohttp` Python package
-    aiohttp: error
+    #aiohttp: error
     # log level for both 'glances_api' and 'glances' integration
-    homeassistant.components.glances: fatal
-    glances_api: fatal
-    homeassistant.components.switch: debug
-    homeassistant.components.command_line: debug
-    nordpool: debug
-    custom_components.nordpool: debug
-    custom_components.nordpool.sensor: debug
-    custom_components.nordpool.aio_price: debug
+    #homeassistant.components.glances: fatal
+    #glances_api: fatal
+    #homeassistant.components.switch: debug
+    #homeassistant.components.command_line: debug
+    #nordpool: debug
+    #custom_components.nordpool: debug
+    #custom_components.nordpool.sensor: debug
+    #custom_components.nordpool.aio_price: debug
     #custom_components.zaptec: debug
     #homeassistant.components.modbus: debug
     #pymodbus: debug
-    custom_components.siku: info
